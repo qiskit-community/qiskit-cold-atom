@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+ # editor files
+.vscode/
+.idea/
+
 # C extensions
 *.so
 
@@ -70,6 +74,7 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+docs/stubs
 
 # PyBuilder
 target/
