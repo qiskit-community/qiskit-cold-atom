@@ -7,4 +7,5 @@ sphinx-tabs
 jupyter
 jupyter-sphinx
 nbsphinx
+pylatexenc
 
