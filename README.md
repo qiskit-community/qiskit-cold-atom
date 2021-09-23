@@ -1,6 +1,6 @@
 # Qiskit Cold Atom 
 
-<img src="docs/images/qiskit_cold_atom_logo_with_text.svg" alt="Qiskit cold atom logo" style="height: 70px; width:70px;"/>
+<img src="docs/images/qiskit_cold_atom_logo_with_text.svg" alt="Qiskit cold atom logo" style="height: 228px; width:450px;"/>
 
 **Qiskit** is an open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules.
 
