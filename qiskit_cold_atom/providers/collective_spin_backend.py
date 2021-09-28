@@ -45,7 +45,7 @@ class CollectiveSpinSimulator(SpinSimulator):
             "coupling_map": None,
             "description": "simulator of a collective hardware. Each wire in the circuit denotes the "
             "orientation of one collective spin in the hardware",
-            "basis_gates": ["rLx", "rLz", "rLz2", "OAT", "rLzz"],
+            "basis_gates": ["rLx", "rLz", "rLy", "rLz2", "OAT", "rLzz"],
             "memory": True,
             "n_qubits": 3,
             "conditional": False,
@@ -59,6 +59,13 @@ class CollectiveSpinSimulator(SpinSimulator):
                     "name": "rx",
                     "parameters": ["omega"],
                     "qasm_def": "gate rx(omega) {}",
+                },
+                {
+                    "coupling_map": single_spin_coupl,
+                    "description": "local rotation of the coherent spin around y",
+                    "name": "ry",
+                    "parameters": ["delta"],
+                    "qasm_def": "gate ry(delta) {}",
                 },
                 {
                     "coupling_map": single_spin_coupl,
@@ -94,6 +101,7 @@ class CollectiveSpinSimulator(SpinSimulator):
             "supported_instructions": [
                 "rLz",
                 "rLx",
+                "rLy",
                 "rLz2",
                 "OAT",
                 "rLzz",
