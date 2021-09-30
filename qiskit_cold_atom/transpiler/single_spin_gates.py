@@ -37,8 +37,6 @@ class Optimize1SpinGates(TransformationPass):
                 ┌───────────┐┌────────┐┌──────────┐
         spin_0: ┤ Rlx(3π/2) ├┤ Rly(π) ├┤ Rlx(π/2) ├
                 └───────────┘└────────┘└──────────┘
-
-
     """
 
     def __init__(self):
