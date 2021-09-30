@@ -50,3 +50,23 @@ class TestSpinTranspilation(QiskitTestCase):
         self.assertTrue(np.allclose(circ_new.data[1][0].params[0], np.pi))
         self.assertTrue(np.allclose(circ_new.data[2][0].params[0], 3 * np.pi / 4))
         self.assertTrue(np.allclose(circ_new.data[3][0].params[0], np.pi / 2))
+
+    def test_optimize_1s_gates_multi_spin(self):
+        """Test the single-spin gate transpilation."""
+
+        circ = QuantumCircuit(2)
+        circ.lx(np.pi / 3, 0)
+        circ.lx(np.pi / 3, 0)
+        circ.lx(np.pi / 3, 0)
+        circ.ly(np.pi / 4, 1)
+        circ.ly(np.pi / 4, 1)
+
+        pass_manager = PassManager(Optimize1SpinGates())
+
+        circ_new = pass_manager.run(circ)
+
+        self.assertEqual(circ_new.count_ops()["rLx"], 1)
+        self.assertEqual(circ_new.count_ops()["rLy"], 1)
+
+        self.assertTrue(np.allclose(circ_new.data[0][0].params[0], np.pi))
+        self.assertTrue(np.allclose(circ_new.data[1][0].params[0], np.pi / 2))
