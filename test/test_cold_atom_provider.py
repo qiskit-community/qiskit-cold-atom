@@ -22,13 +22,18 @@ class TestHeidelbergProvider(QiskitTestCase):
 
     def setUp(self):
         super().setUp()
+
+        # create directory for credentials if it doesn't already exist
+        self.path = os.path.join(os.path.expanduser("~"), ".qiskit")
+        self.path_exists = os.path.isdir(self.path)
+        if not self.path_exists:
+            os.mkdir(self.path)
+
         # Store some credentials
         self.username = "test_user"
         self.token = "test_token"
         self.url = "http://localhost:9000/shots"
-        self.filename = os.path.join(
-            os.path.expanduser("~"), ".qiskit", "cold_atom_provider_test"
-        )
+        self.filename = os.path.join(self.path, "cold_atom_provider_test")
 
     def test_credential_management(self):
         """Test the management of locally stored credential data"""
@@ -99,3 +104,5 @@ class TestHeidelbergProvider(QiskitTestCase):
     def tearDown(self):
         super().tearDown()
         os.remove(self.filename)
+        if not self.path_exists:
+            os.rmdir(self.path)
