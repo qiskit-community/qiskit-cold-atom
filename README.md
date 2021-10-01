@@ -65,6 +65,14 @@ make -C docs html
 open docs/_build/html/index.html
 ```
 
+## Tests
+Test are located in the `test` folder. All contributions should come with test files that are named `test_*.py` which test the new functionalities. 
+To execute the test suite locally, run
+```bash
+python -m unittest
+```
+from the project root. 
+
 ## License
 
 [Apache License 2.0].
