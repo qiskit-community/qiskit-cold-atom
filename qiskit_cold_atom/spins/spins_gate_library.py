@@ -112,7 +112,7 @@ class SpinGate(Gate):
 
     @property
     def generator(self) -> SpinOp:
-        """The Hamiltonian that generates the unitary of the gate, given as a SpinOp. """
+        """The Hamiltonian that generates the unitary of the gate, given as a SpinOp."""
         return self._generator
 
 
@@ -317,6 +317,7 @@ def lzz(self, gamma: float, wires: List[int], label=None):
     """Add the LZZ gate to a QuantumCircuit."""
     return self.append(LZZGate(gamma=gamma, label=label), qargs=wires)
 
+
 class LxLyGate(SpinGate):
     r"""The spin exchange gate of two collective spins.
 
@@ -337,7 +338,9 @@ class LxLyGate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LxLy gate."""
-        return self.params[0] * (SpinOp("X_0 X_1", register_length=2)+SpinOp("Y_0 Y_1", register_length=2))
+        return self.params[0] * (
+            SpinOp("X_0 X_1", register_length=2) + SpinOp("Y_0 Y_1", register_length=2)
+        )
 
 
 @add_gate
