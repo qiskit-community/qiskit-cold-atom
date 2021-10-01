@@ -61,7 +61,7 @@ class TestSpinGates(QiskitTestCase):
                 )
             )
 
-     def test_lxly_gate(self):
+    def test_lxly_gate(self):
          """check matrix form of the lxly gate"""
          omega = np.pi
          circ = QuantumCircuit(2)
@@ -73,8 +73,8 @@ class TestSpinGates(QiskitTestCase):
 
          for circuit in [circ, circ_decorated]:
              unitary = self.backend.run(circuit, spin=1/2).result().get_unitary()
-             self.assertEqual(unitary,
-                  np.array(
+             self.assertTrue(
+                  np.allclose(unitary,
                          [
                              [1, 0, 0, 0],
                              [0, 0, -1j, 0],
@@ -82,7 +82,7 @@ class TestSpinGates(QiskitTestCase):
                              [0, 0, 0, 1],
                          ]
                          )
-                )
+            )
 
     def test_ly_gate(self):
         """check matrix form of the ly gate"""
