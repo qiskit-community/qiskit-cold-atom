@@ -318,7 +318,7 @@ def lzz(self, gamma: float, wires: List[int], label=None):
     return self.append(LZZGate(gamma=gamma, label=label), qargs=wires)
 
 class LxLyGate(SpinGate):
-    r"""The spin exchange gate o two collective spins.
+    r"""The spin exchange gate of two collective spins.
 
     The generating Hamiltonian of the LxLyGate is
 
