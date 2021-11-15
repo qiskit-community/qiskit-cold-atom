@@ -141,7 +141,7 @@ def circuit_to_data(circuit: QuantumCircuit) -> List[Tuple]:
         name = inst[0].name
         wires = [circuit.qubits.index(qubit) for qubit in inst[1]]
         params = [float(param) for param in inst[0].params]
-        instructions.append((name, wires, params))
+        instructions.append([name, wires, params])
 
     return instructions
 
