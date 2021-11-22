@@ -45,7 +45,7 @@ class CollectiveSpinSimulator(SpinSimulator):
             "coupling_map": None,
             "description": "simulator of a collective hardware. Each wire in the circuit denotes the "
             "orientation of one collective spin in the hardware",
-            "basis_gates": ["rLx", "rLz", "rLy", "rLz2", "OAT", "rLzz"],
+            "basis_gates": ["rLx", "rLy", "rLz", "rLz2", "OAT", "rLzz", "rLxLy"],
             "memory": True,
             "n_qubits": 3,
             "conditional": False,
@@ -105,6 +105,7 @@ class CollectiveSpinSimulator(SpinSimulator):
                 "rLz2",
                 "OAT",
                 "rLzz",
+                "rLxLy",
                 "measure",
                 "barrier",
             ],

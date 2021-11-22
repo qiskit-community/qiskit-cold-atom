@@ -20,7 +20,13 @@ from qiskit import QuantumCircuit
 from qiskit_nature.operators.second_quantization import SpinOp
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins import SpinSimulator
-from qiskit_cold_atom.spins.spins_gate_library import LXGate, LYGate, LZGate, LZ2Gate
+from qiskit_cold_atom.spins.spins_gate_library import (
+    LXGate,
+    LYGate,
+    LZGate,
+    LZ2Gate,
+    LxLyGate,
+)
 
 
 class TestSpinGates(QiskitTestCase):
@@ -58,6 +64,30 @@ class TestSpinGates(QiskitTestCase):
                             ]
                         )
                     ),
+                )
+            )
+
+    def test_lxly_gate(self):
+        """check matrix form of the lxly gate"""
+        omega = np.pi
+        circ = QuantumCircuit(2)
+        circ.append(LxLyGate(omega), qargs=[0, 1])
+
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.lxly(omega, [0, 1])
+
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit, spin=1 / 2).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    [
+                        [1, 0, 0, 0],
+                        [0, 0, -1j, 0],
+                        [0, -1j, 0, 0],
+                        [0, 0, 0, 1],
+                    ],
                 )
             )
 
