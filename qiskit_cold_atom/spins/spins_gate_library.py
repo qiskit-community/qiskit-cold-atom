@@ -17,7 +17,7 @@ from fractions import Fraction
 import numpy as np
 from scipy.linalg import expm
 
-from qiskit.circuit.gate import Gate
+from qiskit.circuit.gate import Instruction, Gate
 from qiskit_nature.operators.second_quantization import SpinOp
 from qiskit_cold_atom import QiskitColdAtomError, add_gate
 
@@ -347,3 +347,26 @@ class LxLyGate(SpinGate):
 def lxly(self, gamma: float, wires: List[int], label=None):
     """Add the LxLy gate to a QuantumCircuit."""
     return self.append(LxLyGate(gamma=gamma, label=label), qargs=wires)
+
+
+class LoadSpins(Instruction):
+    """
+    LoadSpins makes it possible to define the spin length of each qudit mode.
+
+    **Circuit symbol:**
+
+    .. parsed-literal::
+
+             ┌──────┐
+        q_0: ┤ Load ├
+             └──────┘
+    """
+    def __init__(self, num_atoms:int) -> None:
+        """Initialise new load instruction."""
+        super().__init__(name="load", num_qubits=1, num_clbits=0, params=[num_atoms], label=None)
+        
+@add_gate
+def load_spins(self, wire, num_atoms):
+    # pylint: disable=invalid-name
+    """Add the load spin gate to a QuantumCircuit."""
+    return self.append(LoadSpins(num_atoms), [wire], [])
