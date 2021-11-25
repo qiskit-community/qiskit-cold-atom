@@ -277,11 +277,10 @@ class OATGate(SpinGate):
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the OAT gate."""
         return (
-            self.params[0] * SpinOp("Z_0^2", register_length=1)
-            + self.params[1] * SpinOp("Z")
-            + self.params[2] * SpinOp("X")
+            float(self.params[0]) * SpinOp("Z_0^2", register_length=1)
+            + float(self.params[1]) * SpinOp("Z")
+            + float(self.params[2]) * SpinOp("X")
         )
-
 
 @add_gate
 def oat(self, chi: float, delta: float, omega: float, wire: int, label=None):
@@ -364,7 +363,7 @@ class LoadSpins(Instruction):
     def __init__(self, num_atoms:int) -> None:
         """Initialise new load instruction."""
         super().__init__(name="load", num_qubits=1, num_clbits=0, params=[num_atoms], label=None)
-        
+
 @add_gate
 def load_spins(self, wire, num_atoms):
     # pylint: disable=invalid-name
