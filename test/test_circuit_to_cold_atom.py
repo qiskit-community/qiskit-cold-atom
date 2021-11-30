@@ -102,12 +102,12 @@ class TestCircuitToColdAtom(QiskitTestCase):
         """test the circuit_to_cold_atom function"""
 
         circ1 = QuantumCircuit(3)
-        circ1.lx(0.5, [0, 1])
-        circ1.lz(0.3, [1, 2])
+        circ1.rlx(0.5, [0, 1])
+        circ1.rlz(0.3, [1, 2])
         circ1.measure_all()
 
         circ2 = QuantumCircuit(2)
-        circ2.lz2(0.5, 1)
+        circ2.rlz2(0.5, 1)
         circ2.measure_all()
 
         shots = 10
@@ -150,7 +150,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
 
         with self.subTest("test size of circuit"):
             circ = QuantumCircuit(6)
-            circ.lx(0.4, 2)
+            circ.rlx(0.4, 2)
             with self.assertRaises(QiskitColdAtomError):
                 validate_circuits(circ, backend=self.dummy_backend)
 
@@ -163,7 +163,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
 
         with self.subTest("check gate coupling map"):
             circ = QuantumCircuit(5)
-            circ.lz2(0.5, 4)
+            circ.rlz2(0.5, 4)
             with self.assertRaises(QiskitColdAtomError):
                 validate_circuits(circ, backend=self.dummy_backend)
 
@@ -182,7 +182,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
         with self.subTest("test running with unbound parameters"):
             theta = Parameter("θ")
             circ = QuantumCircuit(1)
-            circ.lx(theta, 0)
+            circ.rlx(theta, 0)
             with self.assertRaises(QiskitColdAtomError):
                 validate_circuits(circ, backend=self.dummy_backend)
 
@@ -190,8 +190,8 @@ class TestCircuitToColdAtom(QiskitTestCase):
         """test the circuit to data method"""
 
         circ = QuantumCircuit(3)
-        circ.lx(0.5, [0, 1])
-        circ.lz(0.3, [1, 2])
+        circ.rlx(0.5, [0, 1])
+        circ.rlz(0.3, [1, 2])
         circ.measure_all()
 
         target_output = [

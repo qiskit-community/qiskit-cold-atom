@@ -52,10 +52,12 @@ collective spins.
    :toctree: ../stubs/
 
     SpinGate
-    LXGate
-    LYGate
-    LZGate
-    LZ2Gate
+    RLXGate
+    RLYGate
+    RLZGate
+    RLZ2Gate
+    OATGate
+    RLZZGate
 
 These gates should serve as an example of how a concrete collective spin platform can be described
 through :mod:`qiskit_cold_atom`.
@@ -86,10 +88,10 @@ from .spin_circuit_solver import SpinCircuitSolver
 # Gate imports
 from .spins_gate_library import (
     SpinGate,
-    LXGate,
-    LYGate,
-    LZGate,
-    LZ2Gate,
+    RLXGate,
+    RLYGate,
+    RLZGate,
+    RLZ2Gate,
     OATGate,
-    LZZGate,
+    RLZZGate,
 )

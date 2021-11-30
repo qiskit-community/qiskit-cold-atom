@@ -28,15 +28,15 @@ class TestSpinTranspilation(QiskitTestCase):
         """Test the single-spin gate transpilation."""
 
         circ = QuantumCircuit(1)
-        circ.lx(np.pi / 2, 0)
-        circ.lx(np.pi / 2, 0)
-        circ.lx(np.pi / 2, 0)
-        circ.ly(np.pi / 2, 0)
-        circ.ly(np.pi / 2, 0)
-        circ.lz2(np.pi / 4, 0)
-        circ.lz2(np.pi / 4, 0)
-        circ.lz2(np.pi / 4, 0)
-        circ.lx(np.pi / 2, 0)
+        circ.rlx(np.pi / 2, 0)
+        circ.rlx(np.pi / 2, 0)
+        circ.rlx(np.pi / 2, 0)
+        circ.rly(np.pi / 2, 0)
+        circ.rly(np.pi / 2, 0)
+        circ.rlz2(np.pi / 4, 0)
+        circ.rlz2(np.pi / 4, 0)
+        circ.rlz2(np.pi / 4, 0)
+        circ.rlx(np.pi / 2, 0)
 
         pass_manager = PassManager(Optimize1SpinGates())
 
@@ -55,11 +55,11 @@ class TestSpinTranspilation(QiskitTestCase):
         """Test the single-spin gate transpilation."""
 
         circ = QuantumCircuit(2)
-        circ.lx(np.pi / 3, 0)
-        circ.lx(np.pi / 3, 0)
-        circ.lx(np.pi / 3, 0)
-        circ.ly(np.pi / 4, 1)
-        circ.ly(np.pi / 4, 1)
+        circ.rlx(np.pi / 3, 0)
+        circ.rlx(np.pi / 3, 0)
+        circ.rlx(np.pi / 3, 0)
+        circ.rly(np.pi / 4, 1)
+        circ.rly(np.pi / 4, 1)
 
         pass_manager = PassManager(Optimize1SpinGates())
 
