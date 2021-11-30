@@ -17,7 +17,7 @@ from fractions import Fraction
 import numpy as np
 from scipy.linalg import expm
 
-from qiskit.circuit.gate import Gate
+from qiskit.circuit.gate import Instruction, Gate
 from qiskit_nature.operators.second_quantization import SpinOp
 from qiskit_cold_atom import QiskitColdAtomError, add_gate
 
@@ -277,11 +277,10 @@ class OATGate(SpinGate):
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the OAT gate."""
         return (
-            self.params[0] * SpinOp("Z_0^2", register_length=1)
-            + self.params[1] * SpinOp("Z")
-            + self.params[2] * SpinOp("X")
+            float(self.params[0]) * SpinOp("Z_0^2", register_length=1)
+            + float(self.params[1]) * SpinOp("Z")
+            + float(self.params[2]) * SpinOp("X")
         )
-
 
 @add_gate
 def oat(self, chi: float, delta: float, omega: float, wire: int, label=None):
@@ -347,3 +346,34 @@ class LxLyGate(SpinGate):
 def lxly(self, gamma: float, wires: List[int], label=None):
     """Add the LxLy gate to a QuantumCircuit."""
     return self.append(LxLyGate(gamma=gamma, label=label), qargs=wires)
+
+
+class LoadSpins(Instruction):
+    """
+    LoadSpins makes it possible to define the spin length of each qudit mode.
+
+    **Circuit symbol:**
+
+    .. parsed-literal::
+
+             ┌──────┐
+        q_0: ┤ Load ├
+             └──────┘
+    """
+    def __init__(self, num_atoms:int) -> None:
+        """Initialise new load instruction."""
+        super().__init__(name="load", num_qubits=1, num_clbits=0, params=[num_atoms], label=None)
+
+@add_gate
+def load_spins(self, num_atoms: int, wire: int):
+    # pylint: disable=invalid-name
+    """Add the load spin gate to a QuantumCircuit.
+
+    This gate loads `num_atoms` onto the wire of index `wire`. This results in a
+    local spin length of :math:`\ell = N/2`.
+
+    Args:
+        num_atoms: The integer number of atoms loaded into this wire. n Qobj name of the gate.
+        wire: The wire onto which the atoms are loaded.
+    """
+    return self.append(LoadSpins(num_atoms), [wire], [])
