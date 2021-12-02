@@ -93,7 +93,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
         with self.subTest("check operator type"):
             circ = QuantumCircuit(4, 4)
             circ.hop_fermions([0.5], [0, 1, 2, 3])
-            circ.lx(0.5, 0)  # apply gate with a SpinOp generator
+            circ.rlx(0.5, 0)  # apply gate with a SpinOp generator
             with self.assertRaises(QiskitColdAtomError):
                 self.solver1._check_conservations(circ)
 

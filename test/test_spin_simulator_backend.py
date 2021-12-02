@@ -90,8 +90,8 @@ class TestSpinSimulatorBackend(QiskitTestCase):
 
         with self.subTest("test dimension of simulation"):
             test_circ = QuantumCircuit(2)
-            test_circ.lx(np.pi / 2, 0)
-            test_circ.ly(np.pi / 4, [0, 1])
+            test_circ.rlx(np.pi / 2, 0)
+            test_circ.rly(np.pi / 4, [0, 1])
 
             statevector_1 = (
                 self.backend.run(test_circ, spin=1).result().get_statevector()
@@ -115,8 +115,8 @@ class TestSpinSimulatorBackend(QiskitTestCase):
         """test the ._execute() method internally called by .run()"""
 
         test_circ = QuantumCircuit(2)
-        test_circ.ly(np.pi / 2, 0)
-        test_circ.lx(np.pi / 2, 1)
+        test_circ.rly(np.pi / 2, 0)
+        test_circ.rlx(np.pi / 2, 1)
         test_circ.measure_all()
 
         result = self.backend.run(test_circ, spin=1, seed=45, shots=5).result()
@@ -152,8 +152,8 @@ class TestSpinSimulatorBackend(QiskitTestCase):
         with self.subTest("test simulation unitary"):
             # test the unitary on a single spin-2 example
             test_circ = QuantumCircuit(1)
-            test_circ.lx(np.pi / 2, 0)
-            test_circ.lz(np.pi / 2, 0)
+            test_circ.rlx(np.pi / 2, 0)
+            test_circ.rlz(np.pi / 2, 0)
             test_circ.measure_all()
 
             result = self.backend.run(test_circ, spin=2, seed=45, shots=5).result()

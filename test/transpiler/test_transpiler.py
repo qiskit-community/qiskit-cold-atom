@@ -28,23 +28,23 @@ class TestSpinTranspilation(QiskitTestCase):
         """Test the single-spin gate transpilation."""
 
         circ = QuantumCircuit(1)
-        circ.lx(np.pi / 2, 0)
-        circ.lx(np.pi / 2, 0)
-        circ.lx(np.pi / 2, 0)
-        circ.ly(np.pi / 2, 0)
-        circ.ly(np.pi / 2, 0)
-        circ.lz2(np.pi / 4, 0)
-        circ.lz2(np.pi / 4, 0)
-        circ.lz2(np.pi / 4, 0)
-        circ.lx(np.pi / 2, 0)
+        circ.rlx(np.pi / 2, 0)
+        circ.rlx(np.pi / 2, 0)
+        circ.rlx(np.pi / 2, 0)
+        circ.rly(np.pi / 2, 0)
+        circ.rly(np.pi / 2, 0)
+        circ.rlz2(np.pi / 4, 0)
+        circ.rlz2(np.pi / 4, 0)
+        circ.rlz2(np.pi / 4, 0)
+        circ.rlx(np.pi / 2, 0)
 
         pass_manager = PassManager(Optimize1SpinGates())
 
         circ_new = pass_manager.run(circ)
 
-        self.assertEqual(circ_new.count_ops()["rLx"], 2)
-        self.assertEqual(circ_new.count_ops()["rLy"], 1)
-        self.assertEqual(circ_new.count_ops()["rLz2"], 1)
+        self.assertEqual(circ_new.count_ops()["rlx"], 2)
+        self.assertEqual(circ_new.count_ops()["rly"], 1)
+        self.assertEqual(circ_new.count_ops()["rlz2"], 1)
 
         self.assertTrue(np.allclose(circ_new.data[0][0].params[0], 3 * np.pi / 2))
         self.assertTrue(np.allclose(circ_new.data[1][0].params[0], np.pi))
@@ -55,18 +55,18 @@ class TestSpinTranspilation(QiskitTestCase):
         """Test the single-spin gate transpilation."""
 
         circ = QuantumCircuit(2)
-        circ.lx(np.pi / 3, 0)
-        circ.lx(np.pi / 3, 0)
-        circ.lx(np.pi / 3, 0)
-        circ.ly(np.pi / 4, 1)
-        circ.ly(np.pi / 4, 1)
+        circ.rlx(np.pi / 3, 0)
+        circ.rlx(np.pi / 3, 0)
+        circ.rlx(np.pi / 3, 0)
+        circ.rly(np.pi / 4, 1)
+        circ.rly(np.pi / 4, 1)
 
         pass_manager = PassManager(Optimize1SpinGates())
 
         circ_new = pass_manager.run(circ)
 
-        self.assertEqual(circ_new.count_ops()["rLx"], 1)
-        self.assertEqual(circ_new.count_ops()["rLy"], 1)
+        self.assertEqual(circ_new.count_ops()["rlx"], 1)
+        self.assertEqual(circ_new.count_ops()["rly"], 1)
 
         self.assertTrue(np.allclose(circ_new.data[0][0].params[0], np.pi))
         self.assertTrue(np.allclose(circ_new.data[1][0].params[0], np.pi / 2))

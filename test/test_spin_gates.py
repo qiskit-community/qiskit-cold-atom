@@ -21,11 +21,11 @@ from qiskit_nature.operators.second_quantization import SpinOp
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins import SpinSimulator
 from qiskit_cold_atom.spins.spins_gate_library import (
-    LXGate,
-    LYGate,
-    LZGate,
-    LZ2Gate,
-    LxLyGate,
+    RLXGate,
+    RLYGate,
+    RLZGate,
+    RLZ2Gate,
+    RLxLyGate,
 )
 
 
@@ -42,10 +42,10 @@ class TestSpinGates(QiskitTestCase):
         """check matrix form of the lx gate"""
         omega = np.pi / 2
         circ = QuantumCircuit(1)
-        circ.append(LXGate(omega), qargs=[0])
+        circ.append(RLXGate(omega), qargs=[0])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(1)
-        circ_decorated.lx(omega, 0)
+        circ_decorated.rlx(omega, 0)
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, spin=self.spin).result().get_unitary()
@@ -71,11 +71,11 @@ class TestSpinGates(QiskitTestCase):
         """check matrix form of the lxly gate"""
         omega = np.pi
         circ = QuantumCircuit(2)
-        circ.append(LxLyGate(omega), qargs=[0, 1])
+        circ.append(RLxLyGate(omega), qargs=[0, 1])
 
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(2)
-        circ_decorated.lxly(omega, [0, 1])
+        circ_decorated.rlxly(omega, [0, 1])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, spin=1 / 2).result().get_unitary()
@@ -95,10 +95,10 @@ class TestSpinGates(QiskitTestCase):
         """check matrix form of the ly gate"""
         omega = np.pi / 2
         circ = QuantumCircuit(1)
-        circ.append(LYGate(omega), qargs=[0])
+        circ.append(RLYGate(omega), qargs=[0])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(1)
-        circ_decorated.ly(omega, 0)
+        circ_decorated.rly(omega, 0)
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, spin=self.spin).result().get_unitary()
@@ -124,10 +124,10 @@ class TestSpinGates(QiskitTestCase):
         """check matrix form of the lz gate"""
         delta = np.pi / 2
         circ = QuantumCircuit(1)
-        circ.append(LZGate(delta), qargs=[0])
+        circ.append(RLZGate(delta), qargs=[0])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(1)
-        circ_decorated.lz(delta, 0)
+        circ_decorated.rlz(delta, 0)
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, spin=self.spin).result().get_unitary()
@@ -153,10 +153,10 @@ class TestSpinGates(QiskitTestCase):
         """check matrix form of the lz2 gate"""
         chi = np.pi / 2
         circ = QuantumCircuit(1)
-        circ.append(LZ2Gate(chi), qargs=[0])
+        circ.append(RLZ2Gate(chi), qargs=[0])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(1)
-        circ_decorated.lz2(chi, 0)
+        circ_decorated.rlz2(chi, 0)
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, spin=self.spin).result().get_unitary()
@@ -181,7 +181,7 @@ class TestSpinGates(QiskitTestCase):
 
     def test_spin_gate(self):
         """test the functionality of the base class for fermionic gates"""
-        test_gates = [LXGate(0.8), LYGate(2.4), LZGate(5.6), LZ2Gate(1.3)]
+        test_gates = [RLXGate(0.8), RLYGate(2.4), RLZGate(5.6), RLZ2Gate(1.3)]
         with self.subTest("test to_matrix and power"):
             for gate in test_gates:
                 exp_matrix = gate.to_matrix() @ gate.to_matrix()
@@ -196,7 +196,7 @@ class TestSpinGates(QiskitTestCase):
 
     def test_identity_gates(self):
         """test that gates with parameters equal to zero still have a well-defined generator."""
-        test_gates = [LXGate(0.0), LYGate(0.0), LZGate(0.0), LZ2Gate(0.0)]
+        test_gates = [RLXGate(0.0), RLYGate(0.0), RLZGate(0.0), RLZ2Gate(0.0)]
 
         for gate in test_gates:
             self.assertIsInstance(gate.generator, SpinOp)
