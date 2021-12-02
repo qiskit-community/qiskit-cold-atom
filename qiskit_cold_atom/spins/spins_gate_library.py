@@ -137,7 +137,7 @@ class RLXGate(SpinGate):
 
     def __init__(self, omega, label=None):
         """Create new RLX gate."""
-        super().__init__("rLx", 1, [omega], label=label)
+        super().__init__("rlx", 1, [omega], label=label)
 
     @property
     def generator(self) -> SpinOp:
@@ -173,7 +173,7 @@ class RLYGate(SpinGate):
 
     def __init__(self, omega, label=None):
         """Create new RLY gate."""
-        super().__init__("rLy", 1, [omega], label=label)
+        super().__init__("rly", 1, [omega], label=label)
 
     @property
     def generator(self) -> SpinOp:
@@ -209,7 +209,7 @@ class RLZGate(SpinGate):
 
     def __init__(self, delta, label=None):
         """Create new RZ gate."""
-        super().__init__("rLz", 1, [delta], label=label)
+        super().__init__("rlz", 1, [delta], label=label)
 
     @property
     def generator(self) -> SpinOp:
@@ -244,7 +244,7 @@ class RLZ2Gate(SpinGate):
 
     def __init__(self, chi, label=None):
         """Create new rz2 gate."""
-        super().__init__("rLz2", 1, [chi], label=label)
+        super().__init__("rlz2", 1, [chi], label=label)
 
     @property
     def generator(self) -> SpinOp:
@@ -303,7 +303,7 @@ class RLZZGate(SpinGate):
 
     def __init__(self, gamma: float, label=None):
         """Create new LZZ gate."""
-        super().__init__("rLzz", 2, [gamma], label=label)
+        super().__init__("rlzz", 2, [gamma], label=label)
 
     @property
     def generator(self) -> SpinOp:
@@ -332,7 +332,7 @@ class RLxLyGate(SpinGate):
 
     def __init__(self, gamma: float, label=None):
         """Create new LxLy gate."""
-        super().__init__("rLxLy", 2, [gamma], label=label)
+        super().__init__("rlxly", 2, [gamma], label=label)
 
     @property
     def generator(self) -> SpinOp:

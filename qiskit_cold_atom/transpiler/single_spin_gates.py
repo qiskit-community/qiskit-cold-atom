@@ -46,7 +46,7 @@ class Optimize1SpinGates(TransformationPass):
 
     def __init__(self):
         super().__init__()
-        self._gate_names = ["rLx", "rLy", "rLz", "rLz2"]
+        self._gate_names = ["rlx", "rly", "rlz", "rlz2"]
 
     def run(self, dag):
         """Run the Optimize1qSpinGates pass on `dag`.
@@ -70,13 +70,13 @@ class Optimize1SpinGates(TransformationPass):
                 for dag_node in run:
                     total_angle += dag_node.op.params[0]
 
-                if gate_name == "rLx":
+                if gate_name == "rlx":
                     new_op = RLXGate(total_angle)
-                elif gate_name == "rLy":
+                elif gate_name == "rly":
                     new_op = RLYGate(total_angle)
-                elif gate_name == "rLz":
+                elif gate_name == "rlz":
                     new_op = RLZGate(total_angle)
-                elif gate_name == "rLz2":
+                elif gate_name == "rlz2":
                     new_op = RLZ2Gate(total_angle)
                 else:
                     raise TranspilerError(

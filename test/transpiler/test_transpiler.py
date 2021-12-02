@@ -42,9 +42,9 @@ class TestSpinTranspilation(QiskitTestCase):
 
         circ_new = pass_manager.run(circ)
 
-        self.assertEqual(circ_new.count_ops()["rLx"], 2)
-        self.assertEqual(circ_new.count_ops()["rLy"], 1)
-        self.assertEqual(circ_new.count_ops()["rLz2"], 1)
+        self.assertEqual(circ_new.count_ops()["rlx"], 2)
+        self.assertEqual(circ_new.count_ops()["rly"], 1)
+        self.assertEqual(circ_new.count_ops()["rlz2"], 1)
 
         self.assertTrue(np.allclose(circ_new.data[0][0].params[0], 3 * np.pi / 2))
         self.assertTrue(np.allclose(circ_new.data[1][0].params[0], np.pi))
@@ -65,8 +65,8 @@ class TestSpinTranspilation(QiskitTestCase):
 
         circ_new = pass_manager.run(circ)
 
-        self.assertEqual(circ_new.count_ops()["rLx"], 1)
-        self.assertEqual(circ_new.count_ops()["rLy"], 1)
+        self.assertEqual(circ_new.count_ops()["rlx"], 1)
+        self.assertEqual(circ_new.count_ops()["rly"], 1)
 
         self.assertTrue(np.allclose(circ_new.data[0][0].params[0], np.pi))
         self.assertTrue(np.allclose(circ_new.data[1][0].params[0], np.pi / 2))
