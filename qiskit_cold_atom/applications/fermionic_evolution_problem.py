@@ -69,9 +69,7 @@ class FermionicEvolutionProblem:
         # check if matrix is diagonal
         # can later be replaced when the FermionicOp from qiskit-nature has its own .to_matrix() method
         basis = FermionicBasis.from_fermionic_op(observable)
-        observable_mat = FermionicGate.operator_to_mat(
-            observable, num_species=1, basis=basis
-        )
+        observable_mat = FermionicGate.operator_to_mat(observable, num_species=1, basis=basis)
 
         if list(observable_mat.nonzero()[0]) != list(observable_mat.nonzero()[1]):
             raise QiskitColdAtomError(

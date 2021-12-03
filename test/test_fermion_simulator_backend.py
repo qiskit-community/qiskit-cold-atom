@@ -56,9 +56,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
 
         backend = FermionSimulator()
         self.assertIsInstance(backend, BaseFermionBackend)
-        self.assertTrue(
-            target_config.items() <= backend.configuration().to_dict().items()
-        )
+        self.assertTrue(target_config.items() <= backend.configuration().to_dict().items())
 
     def test_run_method(self):
         """Test the run method of the backend simulator"""
@@ -100,9 +98,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
             statevector_1 = self.backend.run(test_circ).result().get_statevector()
             self.assertEqual(len(statevector_1), 6)
             # check whether specifying the number of species reduces the dimension of the simulation
-            statevector_2 = (
-                self.backend.run(test_circ, num_species=2).result().get_statevector()
-            )
+            statevector_2 = self.backend.run(test_circ, num_species=2).result().get_statevector()
             self.assertEqual(len(statevector_2), 4)
 
     def test_execute(self):
@@ -127,15 +123,11 @@ class TestFermionSimulatorBackend(QiskitTestCase):
             self.assertEqual(result.get_counts(), {"1010": 1, "0110": 3, "0101": 1})
 
         with self.subTest("test simulation memory"):
-            self.assertEqual(
-                result.get_memory(), ["0110", "0101", "1010", "0110", "0110"]
-            )
+            self.assertEqual(result.get_memory(), ["0110", "0101", "1010", "0110", "0110"])
 
         with self.subTest("test simulation statevector"):
             self.assertTrue(
-                np.allclose(
-                    result.get_statevector(), np.array([-0.5j, -0.5, 0.5, -0.5j])
-                )
+                np.allclose(result.get_statevector(), np.array([-0.5j, -0.5, 0.5, -0.5j]))
             )
 
         with self.subTest("test simulation unitary"):
@@ -171,9 +163,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
 
         with self.subTest("Initialize circuit with multiple species of fermions"):
             actual_circ = self.backend.initialize_circuit([[0, 1], [0, 1]])
-            target_circ = QuantumCircuit(
-                QuantumRegister(2, "spin_0"), QuantumRegister(2, "spin_1")
-            )
+            target_circ = QuantumCircuit(QuantumRegister(2, "spin_0"), QuantumRegister(2, "spin_1"))
             target_circ.load_fermions(1)
             target_circ.load_fermions(3)
             self.assertEqual(actual_circ, target_circ)
@@ -248,9 +238,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
 
         with self.subTest("test running with unbound parameters:"):
             with self.assertRaises(TypeError):
-                self.assertTrue(
-                    isinstance(self.backend.run(test_circ).result(), Result)
-                )
+                self.assertTrue(isinstance(self.backend.run(test_circ).result(), Result))
 
         with self.subTest("test running with bound parameters"):
             bound_circ = test_circ.bind_parameters([0.2])

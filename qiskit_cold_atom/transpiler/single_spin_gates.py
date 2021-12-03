@@ -79,9 +79,7 @@ class Optimize1SpinGates(TransformationPass):
                 elif gate_name == "rlz2":
                     new_op = RLZ2Gate(total_angle)
                 else:
-                    raise TranspilerError(
-                        f"Could not use the basis {self._gate_names}."
-                    )
+                    raise TranspilerError(f"Could not use the basis {self._gate_names}.")
 
                 dag.substitute_node(run[0], new_op, inplace=True)
 

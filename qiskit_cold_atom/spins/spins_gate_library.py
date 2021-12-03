@@ -71,9 +71,7 @@ class SpinGate(Gate):
         # the generator of the exponentiated gate is the old generator times the exponent
         exp_generator = exponent * self.generator
 
-        exp_params = (
-            None if not self.params else [exponent * param for param in self.params]
-        )
+        exp_params = None if not self.params else [exponent * param for param in self.params]
 
         exp_label = None if not self.label else self.label + f"^{exponent}"
 
@@ -95,9 +93,7 @@ class SpinGate(Gate):
         Returns:
             A dense np.array of the unitary of the gate
         """
-        spin_op = SpinOp(
-            self.generator.to_list(), spin=spin, register_length=self.num_qubits
-        )
+        spin_op = SpinOp(self.generator.to_list(), spin=spin, register_length=self.num_qubits)
         return expm(-1j * spin_op.to_matrix())
 
     def control(
@@ -282,12 +278,11 @@ class OATGate(SpinGate):
             + float(self.params[2]) * SpinOp("X")
         )
 
+
 @add_gate
 def oat(self, chi: float, delta: float, omega: float, wire: int, label=None):
     """Add the RLZ2 gate to a QuantumCircuit."""
-    return self.append(
-        OATGate(chi=chi, delta=delta, omega=omega, label=label), [wire], []
-    )
+    return self.append(OATGate(chi=chi, delta=delta, omega=omega, label=label), [wire], [])
 
 
 class RLZZGate(SpinGate):
@@ -360,9 +355,11 @@ class LoadSpins(Instruction):
         q_0: ┤ Load ├
              └──────┘
     """
-    def __init__(self, num_atoms:int) -> None:
+
+    def __init__(self, num_atoms: int) -> None:
         """Initialise new load instruction."""
         super().__init__(name="load", num_qubits=1, num_clbits=0, params=[num_atoms], label=None)
+
 
 @add_gate
 def load_spins(self, num_atoms: int, wire: int):

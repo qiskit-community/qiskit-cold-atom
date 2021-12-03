@@ -147,9 +147,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
                     [0.0, -0.5, -0.5, 0.0],
                 ]
             )
-            test_op = self.solver2.operator_to_mat(
-                Hopping(num_modes=4, j=[0.5]).generator
-            )
+            test_op = self.solver2.operator_to_mat(Hopping(num_modes=4, j=[0.5]).generator)
             self.assertTrue(np.alltrue(test_op.toarray() == target))
 
     def test_draw_shots(self):
@@ -219,9 +217,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
                 FermionicOp([("NINI", 1), ("ININ", 1)]),
             ]
             for i, op in enumerate(operators):
-                self.assertEqual(
-                    set(op.reduce().to_list()), set(target[i].reduce().to_list())
-                )
+                self.assertEqual(set(op.reduce().to_list()), set(target[i].reduce().to_list()))
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""
@@ -236,14 +232,10 @@ class TestFermionCircuitSolver(QiskitTestCase):
             self.solver2.seed = 40
             simulation = self.solver2(test_circ)
 
-            self.assertEqual(
-                simulation["memory"], ["0110", "0101", "1010", "0110", "0110"]
-            )
+            self.assertEqual(simulation["memory"], ["0110", "0101", "1010", "0110", "0110"])
             self.assertEqual(simulation["counts"], {"1010": 1, "0110": 3, "0101": 1})
             self.assertTrue(
-                np.allclose(
-                    simulation["statevector"], np.array([-0.5j, -0.5, 0.5, -0.5j])
-                )
+                np.allclose(simulation["statevector"], np.array([-0.5j, -0.5, 0.5, -0.5j]))
             )
             self.assertTrue(
                 np.allclose(

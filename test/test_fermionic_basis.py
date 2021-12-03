@@ -29,14 +29,10 @@ class TestFermionicBasis(QiskitTestCase):
             self.assertEqual(basis.num_species, 3)
             self.assertEqual(basis.dimension, 9)
         with self.subTest("particle number not conserved"):
-            basis = FermionicBasis(
-                sites=3, n_particles=[1, 2, 3], particle_conservation=False
-            )
+            basis = FermionicBasis(sites=3, n_particles=[1, 2, 3], particle_conservation=False)
             self.assertEqual(basis.dimension, 512)
         with self.subTest("particle number not conserved"):
-            basis = FermionicBasis(
-                sites=3, n_particles=[1, 2, 3], spin_conservation=False
-            )
+            basis = FermionicBasis(sites=3, n_particles=[1, 2, 3], spin_conservation=False)
             self.assertEqual(basis.dimension, 84)
 
     def test_string(self):

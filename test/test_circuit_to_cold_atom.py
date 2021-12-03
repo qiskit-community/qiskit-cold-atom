@@ -175,9 +175,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
         with self.subTest("test max. allowed shots"):
             circuits = QuantumCircuit(2)
             with self.assertRaises(QiskitColdAtomError):
-                circuit_to_cold_atom(
-                    circuits=circuits, backend=self.dummy_backend, shots=1000
-                )
+                circuit_to_cold_atom(circuits=circuits, backend=self.dummy_backend, shots=1000)
 
         with self.subTest("test running with unbound parameters"):
             theta = Parameter("θ")

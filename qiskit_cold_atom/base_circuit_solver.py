@@ -163,8 +163,7 @@ class BaseCircuitSolver(ABC):
 
             meas_results = self.draw_shots(meas_distr)
             counts_dict = {
-                outcome: list(meas_results).count(outcome)
-                for outcome in set(meas_results)
+                outcome: list(meas_results).count(outcome) for outcome in set(meas_results)
             }
             output["memory"] = meas_results
             output["counts"] = counts_dict
@@ -242,9 +241,7 @@ class BaseCircuitSolver(ABC):
                 )
 
             else:
-                raise QiskitColdAtomError(
-                    f"Unknown instruction {name} applied to circuit"
-                )
+                raise QiskitColdAtomError(f"Unknown instruction {name} applied to circuit")
 
         return operators
 

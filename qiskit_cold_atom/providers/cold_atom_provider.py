@@ -125,9 +125,7 @@ class ColdAtomProvider(Provider):
                         f"Backend configuration could not be read: {r.text}, {json_error}"
                     )
                 except KeyError:
-                    warnings.warn(
-                        f"backend at url {url} has no specified cold atom type"
-                    )
+                    warnings.warn(f"backend at url {url} has no specified cold atom type")
 
         self._backends = BackendService(backends)
 
@@ -189,9 +187,7 @@ class ColdAtomProvider(Provider):
                 credentials_present = True
 
             if credentials_present and not overwrite:
-                warnings.warn(
-                    "Credentials already present. Set overwrite=True to overwrite."
-                )
+                warnings.warn("Credentials already present. Set overwrite=True to overwrite.")
 
         if not credentials_present or overwrite:
 
@@ -231,9 +227,7 @@ class ColdAtomProvider(Provider):
         except KeyError as err:
             raise QiskitColdAtomError("No stored credentials found") from err
         urls.append(url)
-        ColdAtomProvider.save_account(
-            urls, name, token, overwrite=True, filename=filename
-        )
+        ColdAtomProvider.save_account(urls, name, token, overwrite=True, filename=filename)
 
     @classmethod
     def load_account(cls, filename: Optional[str] = None) -> "ColdAtomProvider":
@@ -317,9 +311,7 @@ class ColdAtomProvider(Provider):
         try:
             config_parser.read(filename)
         except ParsingError as ex:
-            raise QiskitColdAtomError(
-                f"Error parsing file {filename}: {str(ex)}"
-            ) from ex
+            raise QiskitColdAtomError(f"Error parsing file {filename}: {str(ex)}") from ex
 
         credentials_dict = {}
 
@@ -328,9 +320,7 @@ class ColdAtomProvider(Provider):
                 credentials_dict = dict(config_parser.items(name))
                 credentials_dict["urls"] = credentials_dict["urls"].split()
             else:
-                raise QiskitColdAtomError(
-                    f"stored credentials file has unknown section {name}"
-                )
+                raise QiskitColdAtomError(f"stored credentials file has unknown section {name}")
 
         return credentials_dict
 
@@ -339,9 +329,7 @@ class ColdAtomProvider(Provider):
         return self.credentials
 
     # pylint: disable=arguments-differ
-    def backends(
-        self, name: Optional[str] = None, filters: Optional[Callable] = None, **kwargs
-    ):
+    def backends(self, name: Optional[str] = None, filters: Optional[Callable] = None, **kwargs):
         """Abstract method of the Base Provider class"""
         return self._backends(name, filters, **kwargs)
 
