@@ -129,9 +129,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
             ]
 
             for i, op in enumerate(operators):
-                self.assertEqual(
-                    set(op.reduce().to_list()), set(target[i].reduce().to_list())
-                )
+                self.assertEqual(set(op.reduce().to_list()), set(target[i].reduce().to_list()))
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""
@@ -215,9 +213,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
             self.solver.seed = 45
             simulation = self.solver(multiple_wire_circ)
             self.assertTrue(simulation["memory"], ["0 3", "0 2", "0 1", "0 0", "0 1"])
-            self.assertTrue(
-                simulation["counts"], {"0 2": 1, "0 0": 1, "0 3": 1, "0 1": 2}
-            )
+            self.assertTrue(simulation["counts"], {"0 2": 1, "0 0": 1, "0 3": 1, "0 1": 2})
 
         with self.subTest("check equivalence to qubits for spin-1/2"):
             from qiskit import Aer

@@ -89,9 +89,7 @@ class FermiHubbard1D(FermionicLattice):
         self.particles_down = particles_down
         self.J = hop_strength
         self.U = int_strength
-        self.basis = FermionicBasis(
-            self.size, n_particles=[self.particles_up, self.particles_down]
-        )
+        self.basis = FermionicBasis(self.size, n_particles=[self.particles_up, self.particles_down])
 
         if not len(potential) == self.size:
             raise QiskitColdAtomError(
@@ -121,24 +119,14 @@ class FermiHubbard1D(FermionicLattice):
             operator_labels.append((right_to_left_up, -self.J))
             left_to_right_up = "I" * idx + "-+" + "I" * (self.size * 2 - idx - 2)
             operator_labels.append((left_to_right_up, self.J))
-            right_to_left_down = (
-                "I" * (self.size + idx) + "+-" + "I" * (self.size - idx - 2)
-            )
+            right_to_left_down = "I" * (self.size + idx) + "+-" + "I" * (self.size - idx - 2)
             operator_labels.append((right_to_left_down, -self.J))
-            left_to_right_down = (
-                "I" * (self.size + idx) + "-+" + "I" * (self.size - idx - 2)
-            )
+            left_to_right_down = "I" * (self.size + idx) + "-+" + "I" * (self.size - idx - 2)
             operator_labels.append((left_to_right_down, self.J))
 
         # add interaction terms
         for idx in range(self.size):
-            opstring = (
-                "I" * idx
-                + "N"
-                + "I" * (self.size - 1)
-                + "N"
-                + "I" * (self.size - 1 - idx)
-            )
+            opstring = "I" * idx + "N" + "I" * (self.size - 1) + "N" + "I" * (self.size - 1 - idx)
             operator_labels.append((opstring, self.U))
 
         # add potential terms

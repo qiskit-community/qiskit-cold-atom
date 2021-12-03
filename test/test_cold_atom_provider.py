@@ -74,9 +74,7 @@ class TestHeidelbergProvider(QiskitTestCase):
         with self.subTest("test delete account"):
             with self.assertWarns(UserWarning):
                 ColdAtomProvider.delete_account(
-                    filename=os.path.join(
-                        os.path.expanduser("~"), ".qiskit", "wrong_filename"
-                    )
+                    filename=os.path.join(os.path.expanduser("~"), ".qiskit", "wrong_filename")
                 )
             ColdAtomProvider.delete_account(filename=self.filename)
             stored_credentials = ColdAtomProvider.stored_account(self.filename)
@@ -102,7 +100,11 @@ class TestHeidelbergProvider(QiskitTestCase):
                 self.assertTrue(provider.active_account() == target)
 
     def tearDown(self):
+        """Clean-up after the test."""
         super().tearDown()
-        os.remove(self.filename)
+
+        if os.path.exists(self.filename):
+            os.remove(self.filename)
+
         if not self.path_exists:
             os.rmdir(self.path)

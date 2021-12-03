@@ -68,14 +68,10 @@ class SpinCircuitSolver(BaseCircuitSolver):
 
         dim = int((2 * self.spin + 1) ** circuit.num_qubits)
 
-        initial_state = csc_matrix(
-            ([1 + 0j], ([0], [0])), shape=(dim, 1), dtype=complex
-        )
+        initial_state = csc_matrix(([1 + 0j], ([0], [0])), shape=(dim, 1), dtype=complex)
         return initial_state
 
-    def _embed_operator(
-        self, operator: SpinOp, num_wires: int, qargs: List[int]
-    ) -> SpinOp:
+    def _embed_operator(self, operator: SpinOp, num_wires: int, qargs: List[int]) -> SpinOp:
         """
         Turning a SpinOp operator that acts onto the wires given in qargs into an operator
         that acts on the entire register of the circuit by manipulating the indices of the
@@ -94,9 +90,7 @@ class SpinCircuitSolver(BaseCircuitSolver):
                                  - If the size of the operator does not match the given qargs
         """
         if not isinstance(operator, SpinOp):
-            raise QiskitColdAtomError(
-                f"Expected SpinOp; got {type(operator).__name__} instead"
-            )
+            raise QiskitColdAtomError(f"Expected SpinOp; got {type(operator).__name__} instead")
 
         embedded_op_list = []
 
@@ -175,9 +169,7 @@ class SpinCircuitSolver(BaseCircuitSolver):
             )
 
         # Draw measurements as the indices of the basis states:
-        meas_results = np.random.choice(
-            range(meas_dim), self.shots, p=measurement_distribution
-        )
+        meas_results = np.random.choice(range(meas_dim), self.shots, p=measurement_distribution)
         base = int(2 * self.spin + 1)
         num_wires = math.log(meas_dim, base)
 

@@ -69,22 +69,16 @@ class FermionicBasis:
                         occupations[idx] = 1
 
                     states.append(
-                        FermionicState.from_total_occupations(
-                            occupations, self.num_species
-                        )
+                        FermionicState.from_total_occupations(occupations, self.num_species)
                     )
 
             else:
-                for indices_tot in list(
-                    combinations(range(self.num_species * sites), self.n_tot)
-                ):
+                for indices_tot in list(combinations(range(self.num_species * sites), self.n_tot)):
                     occupations_tot = [0] * sites * self.num_species
                     for i in indices_tot:
                         occupations_tot[i] = 1
                     states.append(
-                        FermionicState.from_total_occupations(
-                            occupations_tot, self.num_species
-                        )
+                        FermionicState.from_total_occupations(occupations_tot, self.num_species)
                     )
         else:
             for occs in product("10", repeat=(self.num_species * self.sites)):
@@ -134,9 +128,7 @@ class FermionicBasis:
         """Helper function to create the full Fock space basis corresponding to a given FermionicOp."""
         sites = fer_op.register_length
         n_particles = fer_op.register_length
-        return cls(
-            sites, n_particles, particle_conservation=False, spin_conservation=False
-        )
+        return cls(sites, n_particles, particle_conservation=False, spin_conservation=False)
 
     def get_occupations(self) -> List[List[int]]:
         """Get a list of the flattened occupations of the individual basis states."""

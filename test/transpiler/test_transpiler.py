@@ -21,6 +21,7 @@ from qiskit.test import QiskitTestCase
 from qiskit_cold_atom.transpiler import Optimize1SpinGates
 
 
+# pylint: disable=no-member
 class TestSpinTranspilation(QiskitTestCase):
     """Test class for spin-based transpilation."""
 

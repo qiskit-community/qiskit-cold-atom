@@ -279,8 +279,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
         outcome_strings = ["".join(map(str, k)) for k in self.basis.get_occupations()]
 
         # Draw measurements:
-        meas_results = np.random.choice(
-            outcome_strings, self.shots, p=measurement_distribution
-        )
+        meas_results = np.random.choice(outcome_strings, self.shots, p=measurement_distribution)
 
         return meas_results.tolist()

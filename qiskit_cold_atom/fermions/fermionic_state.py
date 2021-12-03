@@ -60,9 +60,7 @@ class FermionicState:
                 )
             for n in occs:
                 if n not in (0, 1):
-                    raise QiskitColdAtomError(
-                        f"Fermionic occupations must be 0 or 1, got {n}."
-                    )
+                    raise QiskitColdAtomError(f"Fermionic occupations must be 0 or 1, got {n}.")
 
     @property
     def occupations(self) -> List[List[int]]:
@@ -91,9 +89,7 @@ class FermionicState:
         return output
 
     @classmethod
-    def from_total_occupations(
-        cls, occupations: List[int], num_species: int
-    ) -> "FermionicState":
+    def from_total_occupations(cls, occupations: List[int], num_species: int) -> "FermionicState":
         """
         Create a fermionic state from a single (flat) list of total occupations.
 
@@ -120,9 +116,7 @@ class FermionicState:
         return cls(np.reshape(occupations, (num_species, sites)).tolist())
 
     @classmethod
-    def initial_state(
-        cls, circuit: QuantumCircuit, num_species: int = 1
-    ) -> "FermionicState":
+    def initial_state(cls, circuit: QuantumCircuit, num_species: int = 1) -> "FermionicState":
         """
         Create a fermionic state from a quantum circuit that uses the `LoadFermion` instruction.
         This instruction must be the first instructions of the circuit and no further LoadFermion

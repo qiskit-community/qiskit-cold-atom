@@ -71,9 +71,7 @@ class SpinGate(Gate):
         # the generator of the exponentiated gate is the old generator times the exponent
         exp_generator = exponent * self.generator
 
-        exp_params = (
-            None if not self.params else [exponent * param for param in self.params]
-        )
+        exp_params = None if not self.params else [exponent * param for param in self.params]
 
         exp_label = None if not self.label else self.label + f"^{exponent}"
 
@@ -95,9 +93,7 @@ class SpinGate(Gate):
         Returns:
             A dense np.array of the unitary of the gate
         """
-        spin_op = SpinOp(
-            self.generator.to_list(), spin=spin, register_length=self.num_qubits
-        )
+        spin_op = SpinOp(self.generator.to_list(), spin=spin, register_length=self.num_qubits)
         return expm(-1j * spin_op.to_matrix())
 
     def control(
@@ -282,12 +278,11 @@ class OATGate(SpinGate):
             + float(self.params[2]) * SpinOp("X")
         )
 
+
 @add_gate
 def oat(self, chi: float, delta: float, omega: float, wire: int, label=None):
     """Add the RLZ2 gate to a QuantumCircuit."""
-    return self.append(
-        OATGate(chi=chi, delta=delta, omega=omega, label=label), [wire], []
-    )
+    return self.append(OATGate(chi=chi, delta=delta, omega=omega, label=label), [wire], [])
 
 
 class RLZZGate(SpinGate):
@@ -349,8 +344,10 @@ def rlxly(self, gamma: float, wires: List[int], label=None):
 
 
 class LoadSpins(Instruction):
-    """
-    LoadSpins makes it possible to define the spin length of each qudit mode.
+    r"""An instruction to define the spin length of each qudit mode.
+
+    This gate loads `num_atoms` onto the wire of index `wire`. This results in a
+    local spin length of :math:`\ell = N/2`.
 
     **Circuit symbol:**
 
@@ -360,20 +357,17 @@ class LoadSpins(Instruction):
         q_0: ┤ Load ├
              └──────┘
     """
-    def __init__(self, num_atoms:int) -> None:
-        """Initialise new load instruction."""
+
+    def __init__(self, num_atoms: int):
+        """Initialise new load instruction.
+
+        Args:
+            num_atoms: The integer number of atoms loaded into this wire. n Qobj name of the gate.
+        """
         super().__init__(name="load", num_qubits=1, num_clbits=0, params=[num_atoms], label=None)
+
 
 @add_gate
 def load_spins(self, num_atoms: int, wire: int):
-    # pylint: disable=invalid-name
-    """Add the load spin gate to a QuantumCircuit.
-
-    This gate loads `num_atoms` onto the wire of index `wire`. This results in a
-    local spin length of :math:`\ell = N/2`.
-
-    Args:
-        num_atoms: The integer number of atoms loaded into this wire. n Qobj name of the gate.
-        wire: The wire onto which the atoms are loaded.
-    """
+    """Add the load spin gate to a QuantumCircuit."""
     return self.append(LoadSpins(num_atoms), [wire], [])

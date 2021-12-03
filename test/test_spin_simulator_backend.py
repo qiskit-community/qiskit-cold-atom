@@ -54,9 +54,7 @@ class TestSpinSimulatorBackend(QiskitTestCase):
 
         backend = SpinSimulator()
         self.assertIsInstance(backend, BaseSpinBackend)
-        self.assertTrue(
-            target_config.items() <= backend.configuration().to_dict().items()
-        )
+        self.assertTrue(target_config.items() <= backend.configuration().to_dict().items())
 
     def test_run_method(self):
         """Test the run method of the backend simulator"""
@@ -93,14 +91,10 @@ class TestSpinSimulatorBackend(QiskitTestCase):
             test_circ.rlx(np.pi / 2, 0)
             test_circ.rly(np.pi / 4, [0, 1])
 
-            statevector_1 = (
-                self.backend.run(test_circ, spin=1).result().get_statevector()
-            )
+            statevector_1 = self.backend.run(test_circ, spin=1).result().get_statevector()
             self.assertEqual(len(statevector_1), 3 ** 2)
 
-            statevector_2 = (
-                self.backend.run(test_circ, spin=5 / 2).result().get_statevector()
-            )
+            statevector_2 = self.backend.run(test_circ, spin=5 / 2).result().get_statevector()
             self.assertEqual(len(statevector_2), 6 ** 2)
 
         with self.subTest("test irregular spin values"):
@@ -122,9 +116,7 @@ class TestSpinSimulatorBackend(QiskitTestCase):
         result = self.backend.run(test_circ, spin=1, seed=45, shots=5).result()
 
         with self.subTest("test simulation counts"):
-            self.assertEqual(
-                result.get_counts(), {"0 1": 1, "2 2": 1, "1 1": 2, "1 0": 1}
-            )
+            self.assertEqual(result.get_counts(), {"0 1": 1, "2 2": 1, "1 1": 2, "1 0": 1})
 
         with self.subTest("test simulation memory"):
             self.assertEqual(result.get_memory(), ["2 2", "1 1", "0 1", "1 0", "1 1"])
