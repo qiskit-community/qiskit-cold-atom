@@ -13,6 +13,8 @@
 """Cold atom provider tests"""
 
 import os
+import uuid
+
 from qiskit.test import QiskitTestCase
 from qiskit_cold_atom.providers import ColdAtomProvider
 
@@ -24,7 +26,9 @@ class TestHeidelbergProvider(QiskitTestCase):
         super().setUp()
 
         # create directory for credentials if it doesn't already exist
-        self.path = os.path.join(os.path.expanduser("~"), ".qiskit")
+        self._uuid = str(uuid.uuid4())
+
+        self.path = os.path.join(os.path.expanduser("~"), ".qiskit" + self._uuid)
         self.path_exists = os.path.isdir(self.path)
         if not self.path_exists:
             os.mkdir(self.path)
@@ -33,7 +37,8 @@ class TestHeidelbergProvider(QiskitTestCase):
         self.username = "test_user"
         self.token = "test_token"
         self.url = "http://localhost:9000/shots"
-        self.filename = os.path.join(self.path, "cold_atom_provider_test")
+
+        self.filename = os.path.join(self.path, "cold_atom_provider_test" + self._uuid)
 
     def test_credential_management(self):
         """Test the management of locally stored credential data"""
@@ -74,9 +79,7 @@ class TestHeidelbergProvider(QiskitTestCase):
         with self.subTest("test delete account"):
             with self.assertWarns(UserWarning):
                 ColdAtomProvider.delete_account(
-                    filename=os.path.join(
-                        os.path.expanduser("~"), ".qiskit", "wrong_filename"
-                    )
+                    filename=os.path.join(os.path.expanduser("~"), ".qiskit", "wrong_filename")
                 )
             ColdAtomProvider.delete_account(filename=self.filename)
             stored_credentials = ColdAtomProvider.stored_account(self.filename)
@@ -102,7 +105,11 @@ class TestHeidelbergProvider(QiskitTestCase):
                 self.assertTrue(provider.active_account() == target)
 
     def tearDown(self):
+        """Clean-up after the test."""
         super().tearDown()
-        os.remove(self.filename)
+
+        if os.path.exists(self.filename):
+            os.remove(self.filename)
+
         if not self.path_exists:
             os.rmdir(self.path)

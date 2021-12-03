@@ -15,7 +15,12 @@
 from qiskit.transpiler.basepasses import TransformationPass
 from qiskit.transpiler.exceptions import TranspilerError
 
-from qiskit_cold_atom.spins.spins_gate_library import LXGate, LYGate, LZGate, LZ2Gate
+from qiskit_cold_atom.spins.spins_gate_library import (
+    RLXGate,
+    RLYGate,
+    RLZGate,
+    RLZ2Gate,
+)
 
 
 class Optimize1SpinGates(TransformationPass):
@@ -41,7 +46,7 @@ class Optimize1SpinGates(TransformationPass):
 
     def __init__(self):
         super().__init__()
-        self._gate_names = ["rLx", "rLy", "rLz", "rLz2"]
+        self._gate_names = ["rlx", "rly", "rlz", "rlz2"]
 
     def run(self, dag):
         """Run the Optimize1qSpinGates pass on `dag`.
@@ -51,6 +56,9 @@ class Optimize1SpinGates(TransformationPass):
 
         Returns:
             DAGCircuit: the optimized DAG.
+
+        Raises:
+            TranspilerError: if the considered gate is not supported.
         """
 
         for gate_name in self._gate_names:
@@ -65,18 +73,16 @@ class Optimize1SpinGates(TransformationPass):
                 for dag_node in run:
                     total_angle += dag_node.op.params[0]
 
-                if gate_name == "rLx":
-                    new_op = LXGate(total_angle)
-                elif gate_name == "rLy":
-                    new_op = LYGate(total_angle)
-                elif gate_name == "rLz":
-                    new_op = LZGate(total_angle)
-                elif gate_name == "rLz2":
-                    new_op = LZ2Gate(total_angle)
+                if gate_name == "rlx":
+                    new_op = RLXGate(total_angle)
+                elif gate_name == "rly":
+                    new_op = RLYGate(total_angle)
+                elif gate_name == "rlz":
+                    new_op = RLZGate(total_angle)
+                elif gate_name == "rlz2":
+                    new_op = RLZ2Gate(total_angle)
                 else:
-                    raise TranspilerError(
-                        f"Could not use the basis {self._gate_names}."
-                    )
+                    raise TranspilerError(f"Could not use the basis {self._gate_names}.")
 
                 dag.substitute_node(run[0], new_op, inplace=True)
 

@@ -75,9 +75,7 @@ class FermionicGate(Gate):
         # the generator of the exponentiated gate is the old generator times the exponent
         exp_generator = exponent * self.generator.reduce()
 
-        exp_params = (
-            None if not self.params else [exponent * param for param in self.params]
-        )
+        exp_params = None if not self.params else [exponent * param for param in self.params]
 
         exp_label = None if not self.label else self.label + f"^{exponent}"
 
@@ -90,9 +88,7 @@ class FermionicGate(Gate):
         )
 
     # pylint: disable=arguments-differ
-    def to_matrix(
-        self, num_species: int = 1, basis: Optional[FermionicBasis] = None
-    ) -> np.ndarray:
+    def to_matrix(self, num_species: int = 1, basis: Optional[FermionicBasis] = None) -> np.ndarray:
         """Return a Numpy.array for the gate unitary matrix. This function will compute :math:`exp(-i H)`
         where :math:`H` is the generator of the gate.
 
@@ -165,7 +161,9 @@ class FermionicGate(Gate):
             for i_basis, occupations in enumerate(basis_occupations):
 
                 new_occupations = deepcopy(occupations)
-                mapped_to_zero = False  # boolean flag to check whether the basis state is mapped to zero
+                mapped_to_zero = (
+                    False  # boolean flag to check whether the basis state is mapped to zero
+                )
                 sign = 1
 
                 # in reverse, loop over all individual fermionic creators/annihilators in the opstring:
@@ -257,9 +255,7 @@ class FermiHubbard(FermionicGate):
 
     """
 
-    def __init__(
-        self, num_modes: int, j: List[float], u: float, mu: List[float], label=None
-    ):
+    def __init__(self, num_modes: int, j: List[float], u: float, mu: List[float], label=None):
         """Initialize a global Fermi-Hubbard gate
 
         Args:
@@ -421,9 +417,7 @@ class Interaction(FermionicGate):
         """
 
         if not num_modes % 2 == 0:
-            raise QiskitColdAtomError(
-                f"number of modes must be even, {num_modes} given."
-            )
+            raise QiskitColdAtomError(f"number of modes must be even, {num_modes} given.")
 
         super().__init__(
             name="int",
@@ -483,9 +477,7 @@ class LocalPhase(FermionicGate):
         """
 
         if not num_modes % 2 == 0:
-            raise QiskitColdAtomError(
-                f"number of modes must be even, {num_modes} given."
-            )
+            raise QiskitColdAtomError(f"number of modes must be even, {num_modes} given.")
 
         if not len(mu) == num_modes / 2:
             raise QiskitColdAtomError(
@@ -502,9 +494,7 @@ class LocalPhase(FermionicGate):
 
     def inverse(self):
         """Get inverse gate by reversing the sign of all potentials"""
-        return LocalPhase(
-            num_modes=self.num_modes, mu=[-1 * param for param in self.params]
-        )
+        return LocalPhase(num_modes=self.num_modes, mu=[-1 * param for param in self.params])
 
     @property
     def generator(self) -> FermionicOp:
@@ -525,9 +515,7 @@ class LocalPhase(FermionicGate):
 @add_gate
 def phase_fermions(self, mu: List[float], modes: List[int], label=None):
     """Add the local phase gate to a QuantumCircuit."""
-    return self.append(
-        LocalPhase(num_modes=len(modes), mu=mu, label=label), qargs=modes
-    )
+    return self.append(LocalPhase(num_modes=len(modes), mu=mu, label=label), qargs=modes)
 
 
 class FermionRX(FermionicGate):
@@ -595,9 +583,9 @@ class FermionRY(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRY gate."""
-        op = -1j * float(self.params[0]) * FermionicOp(
-            "+_0 -_1", register_length=2
-        ) - 1j * float(self.params[0]) * FermionicOp("-_0 +_1", register_length=2)
+        op = -1j * float(self.params[0]) * FermionicOp("+_0 -_1", register_length=2) - 1j * float(
+            self.params[0]
+        ) * FermionicOp("-_0 +_1", register_length=2)
         return op
 
 

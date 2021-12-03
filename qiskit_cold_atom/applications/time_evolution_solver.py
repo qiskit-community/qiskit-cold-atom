@@ -108,15 +108,11 @@ class TimeEvolutionSolver:
                 for outcome_ind in counts:
                     prob = counts[outcome_ind] / self.shots
 
-                    observable_evs[idx] += (
-                        prob * observable_mat.diagonal()[outcome_ind].real
-                    )
+                    observable_evs[idx] += prob * observable_mat.diagonal()[outcome_ind].real
 
         return observable_evs
 
-    def construct_qubit_circuits(
-        self, problem: FermionicEvolutionProblem
-    ) -> List[QuantumCircuit]:
+    def construct_qubit_circuits(self, problem: FermionicEvolutionProblem) -> List[QuantumCircuit]:
         """Convert the problem to a trotterized qubit circuit using the specified map_type
 
         Args:

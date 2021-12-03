@@ -97,8 +97,8 @@ class TestSpinCircuitSolver(QiskitTestCase):
         """test the to_operators method inherited form BaseCircuitSolver"""
 
         test_circ = QuantumCircuit(2)
-        test_circ.lx(0.5, [0, 1])
-        test_circ.lz2(0.25, 1)
+        test_circ.rlx(0.5, [0, 1])
+        test_circ.rlz2(0.25, 1)
         test_circ.measure_all()
 
         with self.subTest("test ignore barriers"):
@@ -116,7 +116,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
         with self.subTest("gate after previous measurement instruction"):
             meas_circ = QuantumCircuit(2)
             meas_circ.measure_all()
-            meas_circ.lx(0.5, 0)
+            meas_circ.rlx(0.5, 0)
             with self.assertRaises(QiskitColdAtomError):
                 self.solver.to_operators(meas_circ)
 
@@ -129,15 +129,13 @@ class TestSpinCircuitSolver(QiskitTestCase):
             ]
 
             for i, op in enumerate(operators):
-                self.assertEqual(
-                    set(op.reduce().to_list()), set(target[i].reduce().to_list())
-                )
+                self.assertEqual(set(op.reduce().to_list()), set(target[i].reduce().to_list()))
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""
 
         test_circ = QuantumCircuit(1)
-        test_circ.lx(np.pi / 2, 0)
+        test_circ.rlx(np.pi / 2, 0)
         test_circ.measure_all()
 
         with self.subTest("running the circuit"):
@@ -208,16 +206,14 @@ class TestSpinCircuitSolver(QiskitTestCase):
             self.solver.shots = 5
 
         multiple_wire_circ = QuantumCircuit(2)
-        multiple_wire_circ.lx(np.pi / 2, [0])
-        multiple_wire_circ.lz(-np.pi / 2, [0, 1])
+        multiple_wire_circ.rlx(np.pi / 2, [0])
+        multiple_wire_circ.rlz(-np.pi / 2, [0, 1])
 
         with self.subTest("formatting of multiple wires"):
             self.solver.seed = 45
             simulation = self.solver(multiple_wire_circ)
             self.assertTrue(simulation["memory"], ["0 3", "0 2", "0 1", "0 0", "0 1"])
-            self.assertTrue(
-                simulation["counts"], {"0 2": 1, "0 0": 1, "0 3": 1, "0 1": 2}
-            )
+            self.assertTrue(simulation["counts"], {"0 2": 1, "0 0": 1, "0 3": 1, "0 1": 2})
 
         with self.subTest("check equivalence to qubits for spin-1/2"):
             from qiskit import Aer

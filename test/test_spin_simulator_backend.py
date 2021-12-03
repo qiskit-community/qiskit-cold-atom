@@ -54,9 +54,7 @@ class TestSpinSimulatorBackend(QiskitTestCase):
 
         backend = SpinSimulator()
         self.assertIsInstance(backend, BaseSpinBackend)
-        self.assertTrue(
-            target_config.items() <= backend.configuration().to_dict().items()
-        )
+        self.assertTrue(target_config.items() <= backend.configuration().to_dict().items())
 
     def test_run_method(self):
         """Test the run method of the backend simulator"""
@@ -90,17 +88,13 @@ class TestSpinSimulatorBackend(QiskitTestCase):
 
         with self.subTest("test dimension of simulation"):
             test_circ = QuantumCircuit(2)
-            test_circ.lx(np.pi / 2, 0)
-            test_circ.ly(np.pi / 4, [0, 1])
+            test_circ.rlx(np.pi / 2, 0)
+            test_circ.rly(np.pi / 4, [0, 1])
 
-            statevector_1 = (
-                self.backend.run(test_circ, spin=1).result().get_statevector()
-            )
+            statevector_1 = self.backend.run(test_circ, spin=1).result().get_statevector()
             self.assertEqual(len(statevector_1), 3 ** 2)
 
-            statevector_2 = (
-                self.backend.run(test_circ, spin=5 / 2).result().get_statevector()
-            )
+            statevector_2 = self.backend.run(test_circ, spin=5 / 2).result().get_statevector()
             self.assertEqual(len(statevector_2), 6 ** 2)
 
         with self.subTest("test irregular spin values"):
@@ -115,16 +109,14 @@ class TestSpinSimulatorBackend(QiskitTestCase):
         """test the ._execute() method internally called by .run()"""
 
         test_circ = QuantumCircuit(2)
-        test_circ.ly(np.pi / 2, 0)
-        test_circ.lx(np.pi / 2, 1)
+        test_circ.rly(np.pi / 2, 0)
+        test_circ.rlx(np.pi / 2, 1)
         test_circ.measure_all()
 
         result = self.backend.run(test_circ, spin=1, seed=45, shots=5).result()
 
         with self.subTest("test simulation counts"):
-            self.assertEqual(
-                result.get_counts(), {"0 1": 1, "2 2": 1, "1 1": 2, "1 0": 1}
-            )
+            self.assertEqual(result.get_counts(), {"0 1": 1, "2 2": 1, "1 1": 2, "1 0": 1})
 
         with self.subTest("test simulation memory"):
             self.assertEqual(result.get_memory(), ["2 2", "1 1", "0 1", "1 0", "1 1"])
@@ -152,8 +144,8 @@ class TestSpinSimulatorBackend(QiskitTestCase):
         with self.subTest("test simulation unitary"):
             # test the unitary on a single spin-2 example
             test_circ = QuantumCircuit(1)
-            test_circ.lx(np.pi / 2, 0)
-            test_circ.lz(np.pi / 2, 0)
+            test_circ.rlx(np.pi / 2, 0)
+            test_circ.rlz(np.pi / 2, 0)
             test_circ.measure_all()
 
             result = self.backend.run(test_circ, spin=2, seed=45, shots=5).result()

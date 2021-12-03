@@ -63,9 +63,7 @@ class RemoteBackend(Backend):
                 "connection to the backend server can not be established."
             ) from err
 
-        super().__init__(
-            configuration=BackendConfiguration.from_dict(r.json()), provider=provider
-        )
+        super().__init__(configuration=BackendConfiguration.from_dict(r.json()), provider=provider)
 
     @classmethod
     def _default_options(cls) -> Options:

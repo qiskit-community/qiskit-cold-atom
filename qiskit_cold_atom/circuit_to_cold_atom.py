@@ -12,7 +12,7 @@
 
 """Module to convert cold atom circuits to dictionaries."""
 
-from typing import List, Tuple, Union, Optional
+from typing import List, Union, Optional
 
 from qiskit import QuantumCircuit
 from qiskit.providers import BackendV1 as Backend
@@ -65,9 +65,7 @@ def validate_circuits(
     for circuit in circuits:
 
         try:
-            native_gates = {
-                gate.name: gate.coupling_map for gate in backend.configuration().gates
-            }
+            native_gates = {gate.name: gate.coupling_map for gate in backend.configuration().gates}
             native_instructions = backend.configuration().supported_instructions
         except NameError as name_error:
             raise QiskitColdAtomError(
@@ -85,10 +83,7 @@ def validate_circuits(
         # and the circuit must exactly match the expected wire count of the backend.
         if "num_species" in backend.configuration().to_dict().keys():
             num_species = backend.configuration().num_species
-            if (
-                num_species > 1
-                and circuit.num_qubits < backend.configuration().num_qubits
-            ):
+            if num_species > 1 and circuit.num_qubits < backend.configuration().num_qubits:
                 raise QiskitColdAtomError(
                     f"{backend.name()} requires circuits to be submitted with exactly "
                     f"{backend.configuration().num_qubits} wires, but "
@@ -125,7 +120,7 @@ def validate_circuits(
 
 def circuit_to_data(circuit: QuantumCircuit) -> List[List]:
     """Convert the circuit to JSON serializable instructions.
-    
+
     Helper function that converts a QuantumCircuit into a list of symbolic
     instructions as required by the Json format which is sent to the backend.
 

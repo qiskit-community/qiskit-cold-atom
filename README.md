@@ -14,6 +14,7 @@ This currently covers two settings, one for fermionic modes and one for spin mod
 demonstrating that a broad range of hardware can be accommodated in Qiskit.
 
 We encourage new users to familiarize themselves with the basic functionalities through the tutorial-style python notebooks in `/docs/tutorials`. 
+These require an environment to execute `.ipynb` notebooks such as jupyter lab. 
 
 ## Installation
 
