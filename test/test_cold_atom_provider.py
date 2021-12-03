@@ -13,6 +13,8 @@
 """Cold atom provider tests"""
 
 import os
+import uuid
+
 from qiskit.test import QiskitTestCase
 from qiskit_cold_atom.providers import ColdAtomProvider
 
@@ -33,7 +35,9 @@ class TestHeidelbergProvider(QiskitTestCase):
         self.username = "test_user"
         self.token = "test_token"
         self.url = "http://localhost:9000/shots"
-        self.filename = os.path.join(self.path, "cold_atom_provider_test")
+
+        self._uuid = str(uuid.uuid4())
+        self.filename = os.path.join(self.path, "cold_atom_provider_test" + self._uuid)
 
     def test_credential_management(self):
         """Test the management of locally stored credential data"""
