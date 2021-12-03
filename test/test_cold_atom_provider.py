@@ -26,7 +26,9 @@ class TestHeidelbergProvider(QiskitTestCase):
         super().setUp()
 
         # create directory for credentials if it doesn't already exist
-        self.path = os.path.join(os.path.expanduser("~"), ".qiskit")
+        self._uuid = str(uuid.uuid4())
+
+        self.path = os.path.join(os.path.expanduser("~"), ".qiskit" + self._uuid)
         self.path_exists = os.path.isdir(self.path)
         if not self.path_exists:
             os.mkdir(self.path)
@@ -36,7 +38,6 @@ class TestHeidelbergProvider(QiskitTestCase):
         self.token = "test_token"
         self.url = "http://localhost:9000/shots"
 
-        self._uuid = str(uuid.uuid4())
         self.filename = os.path.join(self.path, "cold_atom_provider_test" + self._uuid)
 
     def test_credential_management(self):
