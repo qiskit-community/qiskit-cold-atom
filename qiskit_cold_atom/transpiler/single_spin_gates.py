@@ -56,6 +56,9 @@ class Optimize1SpinGates(TransformationPass):
 
         Returns:
             DAGCircuit: the optimized DAG.
+
+        Raises:
+            TranspilerError: if the considered gate is not supported.
         """
 
         for gate_name in self._gate_names:

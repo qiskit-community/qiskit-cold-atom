@@ -12,7 +12,7 @@
 
 """Module to convert cold atom circuits to dictionaries."""
 
-from typing import List, Tuple, Union, Optional
+from typing import List, Union, Optional
 
 from qiskit import QuantumCircuit
 from qiskit.providers import BackendV1 as Backend

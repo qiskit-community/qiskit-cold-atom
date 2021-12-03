@@ -344,8 +344,10 @@ def rlxly(self, gamma: float, wires: List[int], label=None):
 
 
 class LoadSpins(Instruction):
-    """
-    LoadSpins makes it possible to define the spin length of each qudit mode.
+    r"""An instruction to define the spin length of each qudit mode.
+
+    This gate loads `num_atoms` onto the wire of index `wire`. This results in a
+    local spin length of :math:`\ell = N/2`.
 
     **Circuit symbol:**
 
@@ -356,21 +358,16 @@ class LoadSpins(Instruction):
              └──────┘
     """
 
-    def __init__(self, num_atoms: int) -> None:
-        """Initialise new load instruction."""
+    def __init__(self, num_atoms: int):
+        """Initialise new load instruction.
+
+        Args:
+            num_atoms: The integer number of atoms loaded into this wire. n Qobj name of the gate.
+        """
         super().__init__(name="load", num_qubits=1, num_clbits=0, params=[num_atoms], label=None)
 
 
 @add_gate
 def load_spins(self, num_atoms: int, wire: int):
-    # pylint: disable=invalid-name
-    """Add the load spin gate to a QuantumCircuit.
-
-    This gate loads `num_atoms` onto the wire of index `wire`. This results in a
-    local spin length of :math:`\ell = N/2`.
-
-    Args:
-        num_atoms: The integer number of atoms loaded into this wire. n Qobj name of the gate.
-        wire: The wire onto which the atoms are loaded.
-    """
+    """Add the load spin gate to a QuantumCircuit."""
     return self.append(LoadSpins(num_atoms), [wire], [])
