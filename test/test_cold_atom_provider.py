@@ -100,7 +100,11 @@ class TestHeidelbergProvider(QiskitTestCase):
                 self.assertTrue(provider.active_account() == target)
 
     def tearDown(self):
+        """Clean-up after the test."""
         super().tearDown()
-        os.remove(self.filename)
+
+        if os.path.exists(self.filename):
+            os.remove(self.filename)
+
         if not self.path_exists:
             os.rmdir(self.path)
