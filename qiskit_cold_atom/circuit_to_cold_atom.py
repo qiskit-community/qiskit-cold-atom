@@ -123,8 +123,9 @@ def validate_circuits(
                     )
 
 
-def circuit_to_data(circuit: QuantumCircuit) -> List[Tuple]:
-    """
+def circuit_to_data(circuit: QuantumCircuit) -> List[List]:
+    """Convert the circuit to JSON serializable instructions.
+    
     Helper function that converts a QuantumCircuit into a list of symbolic
     instructions as required by the Json format which is sent to the backend.
 
@@ -132,7 +133,9 @@ def circuit_to_data(circuit: QuantumCircuit) -> List[Tuple]:
         circuit: The quantum circuit for which to extract the instructions.
 
     Returns:
-        A list of tuples describing the instructions in the circuit.
+        A list of lists describing the instructions in the circuit. Each sublist
+        has three entries the name of the instruction, the wires that the instruction
+        applies to and the parameter values of the instruction.
     """
 
     instructions = []
@@ -141,7 +144,7 @@ def circuit_to_data(circuit: QuantumCircuit) -> List[Tuple]:
         name = inst[0].name
         wires = [circuit.qubits.index(qubit) for qubit in inst[1]]
         params = [float(param) for param in inst[0].params]
-        instructions.append((name, wires, params))
+        instructions.append([name, wires, params])
 
     return instructions
 
