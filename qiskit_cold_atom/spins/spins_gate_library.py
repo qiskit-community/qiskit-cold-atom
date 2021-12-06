@@ -307,8 +307,8 @@ class RLZLZGate(SpinGate):
 
 
 @add_gate
-def rlzz(self, gamma: float, wires: List[int], label=None):
-    """Add the LZZ gate to a QuantumCircuit."""
+def rlzlz(self, gamma: float, wires: List[int], label=None):
+    """Add the RLZLZ gate to a QuantumCircuit."""
     return self.append(RLZLZGate(gamma=gamma, label=label), qargs=wires)
 
 
