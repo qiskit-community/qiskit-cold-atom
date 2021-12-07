@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Backend to simulate collective spin experiments."""
+"""Mock backend to simulate collective spin experiments."""
 
 from typing import Optional
 
@@ -20,7 +20,8 @@ from qiskit_cold_atom.spins.spin_simulator_backend import SpinSimulator
 
 
 class CollectiveSpinSimulator(SpinSimulator):
-    """Simulator backend of a collective spin system of trapped BECs in optical tweezers."""
+    """Mock backend of a spin device with collective spins of trapped BECs in optical tweezers.
+    For a general spin simulator backend, use the SpinSimulator base class."""
 
     def __init__(self, n_tweezers: int = 3, provider: Optional[Provider] = None):
         """Create a new collective spin simulator backend.

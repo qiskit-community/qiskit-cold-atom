@@ -10,13 +10,14 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Backend to simulate fermionic tweezer experiments."""
+"""Mock backend to simulate fermionic tweezer experiments."""
 
 from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 
 
 class FermionicTweezerSimulator(FermionSimulator):
-    """simulator backend of a fermionic hardware with four tweezer sites that uses two spin species"""
+    """Mock backend of a fermionic device with four tweezer sites that uses two spin species.
+    For a general fermionic simulator backend, use the FermionSimulator base class."""
 
     def __init__(self, n_tweezers: int = 4, provider=None):
         """Create a new fermionic tweezer simulator backend.
@@ -43,7 +44,7 @@ class FermionicTweezerSimulator(FermionSimulator):
             "simulator": True,
             "local": True,
             "coupling_map": None,
-            "description": "simulator of a fermionic tweezer hardware. The first half of wires in a "
+            "description": "Mock backend of a fermionic tweezer hardware. The first half of wires in a "
             "circuit denote the occupations of the spin-up fermions and the last half "
             "of wires denote the spin-down fermions",
             "basis_gates": [

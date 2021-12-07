@@ -26,6 +26,9 @@ from qiskit.providers.providerutils import filter_backends
 from qiskit.providers.exceptions import QiskitBackendNotFoundError
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
+from qiskit_cold_atom.fermions import FermionSimulator
+from qiskit_cold_atom.spins import SpinSimulator
+
 from qiskit_cold_atom.providers.fermionic_tweezer_backend import (
     FermionicTweezerSimulator,
 )
@@ -77,6 +80,8 @@ class ColdAtomProvider(Provider):
 
         # Populate the list of backends with the local simulators
         backends = [
+            FermionSimulator(provider=self),
+            SpinSimulator(provider=self),
             FermionicTweezerSimulator(provider=self),
             CollectiveSpinSimulator(provider=self),
         ]

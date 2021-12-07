@@ -32,9 +32,10 @@ from qiskit_cold_atom.circuit_to_cold_atom import validate_circuits
 
 
 class SpinSimulator(BaseSpinBackend):
-    """
-    A general spin simulator backend that simulates circuits with gates that have
-    generators described by spin Hamiltonians. Computes the statevector and unitary
+    """A simulator to simulate general spin circuits.
+
+    This general spin simulator backend simulates spin circuits with gates that have
+    generators described by spin Hamiltonians. It computes the statevector and unitary
     of a circuit and simulates measurements.
     """
 

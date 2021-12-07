@@ -30,10 +30,10 @@ from qiskit_cold_atom.circuit_to_cold_atom import validate_circuits
 
 
 class FermionSimulator(BaseFermionBackend):
-    """A simulator to simulate fermionic circuits.
+    """A simulator to simulate general fermionic circuits.
 
     This general fermion simulator backend simulates fermionic circuits with gates that have
-    generators described by Fermionic Hamiltonians. It computes the statevector and unitary
+    generators described by fermionic Hamiltonians. It computes the statevector and unitary
     of a circuit and simulates measurements.
     """
 
