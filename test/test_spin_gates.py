@@ -25,7 +25,7 @@ from qiskit_cold_atom.spins.spins_gate_library import (
     RLYGate,
     RLZGate,
     RLZ2Gate,
-    RLxLyGate,
+    RLXLYGate,
 )
 
 
@@ -71,7 +71,7 @@ class TestSpinGates(QiskitTestCase):
         """check matrix form of the lxly gate"""
         omega = np.pi
         circ = QuantumCircuit(2)
-        circ.append(RLxLyGate(omega), qargs=[0, 1])
+        circ.append(RLXLYGate(omega), qargs=[0, 1])
 
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(2)

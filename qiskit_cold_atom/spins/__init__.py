@@ -57,7 +57,8 @@ collective spins.
     RLZGate
     RLZ2Gate
     OATGate
-    RLZZGate
+    RLZLZGate
+    RLXLYGate
 
 These gates should serve as an example of how a concrete collective spin platform can be described
 through :mod:`qiskit_cold_atom`.
@@ -93,5 +94,6 @@ from .spins_gate_library import (
     RLZGate,
     RLZ2Gate,
     OATGate,
-    RLZZGate,
+    RLZLZGate,
+    RLXLYGate,
 )

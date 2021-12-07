@@ -204,7 +204,7 @@ class RLZGate(SpinGate):
     """
 
     def __init__(self, delta, label=None):
-        """Create new RZ gate."""
+        """Create new RLZ gate."""
         super().__init__("rlz", 1, [delta], label=label)
 
     @property
@@ -285,20 +285,20 @@ def oat(self, chi: float, delta: float, omega: float, wire: int, label=None):
     return self.append(OATGate(chi=chi, delta=delta, omega=omega, label=label), [wire], [])
 
 
-class RLZZGate(SpinGate):
+class RLZLZGate(SpinGate):
     r"""Coupled ZZ-rotation of two collective spins.
 
-    The generating Hamiltonian of the LZZGate is
+    The generating Hamiltonian of the RLZLZGate is
 
     :math:`H = \gamma L_{z, i} + L_{z, j}`
 
-    where :math:`\gamma` is the free gate parameter and :math:`i` and :math:`j` index the wires the gate
-    acts on.
+    where :math:`\gamma` is the free gate parameter and :math:`i` and :math:`j` index the wires
+    the gate acts on.
     """
 
     def __init__(self, gamma: float, label=None):
-        """Create new LZZ gate."""
-        super().__init__("rlzz", 2, [gamma], label=label)
+        """Create new RLZLZ gate."""
+        super().__init__("rlzlz", 2, [gamma], label=label)
 
     @property
     def generator(self) -> SpinOp:
@@ -307,12 +307,12 @@ class RLZZGate(SpinGate):
 
 
 @add_gate
-def rlzz(self, gamma: float, wires: List[int], label=None):
-    """Add the LZZ gate to a QuantumCircuit."""
-    return self.append(RLZZGate(gamma=gamma, label=label), qargs=wires)
+def rlzlz(self, gamma: float, wires: List[int], label=None):
+    """Add the RLZLZ gate to a QuantumCircuit."""
+    return self.append(RLZLZGate(gamma=gamma, label=label), qargs=wires)
 
 
-class RLxLyGate(SpinGate):
+class RLXLYGate(SpinGate):
     r"""The spin exchange gate of two collective spins.
 
     The generating Hamiltonian of the LxLyGate is
@@ -326,7 +326,7 @@ class RLxLyGate(SpinGate):
     """
 
     def __init__(self, gamma: float, label=None):
-        """Create new LxLy gate."""
+        """Create new RLXLY gate."""
         super().__init__("rlxly", 2, [gamma], label=label)
 
     @property
@@ -339,8 +339,8 @@ class RLxLyGate(SpinGate):
 
 @add_gate
 def rlxly(self, gamma: float, wires: List[int], label=None):
-    """Add the RLxLy gate to a QuantumCircuit."""
-    return self.append(RLxLyGate(gamma=gamma, label=label), qargs=wires)
+    """Add the RLXLY gate to a QuantumCircuit."""
+    return self.append(RLXLYGate(gamma=gamma, label=label), qargs=wires)
 
 
 class LoadSpins(Instruction):

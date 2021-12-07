@@ -45,7 +45,7 @@ class CollectiveSpinSimulator(SpinSimulator):
             "coupling_map": None,
             "description": "simulator of a collective hardware. Each wire in the circuit denotes the "
             "orientation of one collective spin in the hardware",
-            "basis_gates": ["rlx", "rly", "rlz", "rlz2", "OAT", "rlzz", "rlxly"],
+            "basis_gates": ["rlx", "rly", "rlz", "rlz2", "OAT", "rlzlz", "rlxly"],
             "memory": True,
             "n_qubits": 3,
             "conditional": False,
@@ -93,9 +93,16 @@ class CollectiveSpinSimulator(SpinSimulator):
                 {
                     "coupling_map": two_spin_coupl,
                     "description": "ZZ-interaction coupling two collective spins",
-                    "name": "rlzz",
+                    "name": "rlzlz",
                     "parameters": ["gamma"],
-                    "qasm_def": "gate rlzz(gamma) {}",
+                    "qasm_def": "gate rlzlz(gamma) {}",
+                },
+                {
+                    "coupling_map": two_spin_coupl,
+                    "description": "LXLY-interaction coupling two collective spins",
+                    "name": "rlxly",
+                    "parameters": ["gamma"],
+                    "qasm_def": "gate rlxly(gamma) {}",
                 },
             ],
             "supported_instructions": [
@@ -104,7 +111,7 @@ class CollectiveSpinSimulator(SpinSimulator):
                 "rly",
                 "rlz2",
                 "OAT",
-                "rlzz",
+                "rlzlz",
                 "rlxly",
                 "measure",
                 "barrier",
