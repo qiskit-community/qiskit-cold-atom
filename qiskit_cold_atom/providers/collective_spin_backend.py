@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Backend to simulate collective spin experiments."""
+"""Backend to emulate collective spin experiments."""
 
 from typing import Optional
 
@@ -20,7 +20,13 @@ from qiskit_cold_atom.spins.spin_simulator_backend import SpinSimulator
 
 
 class CollectiveSpinSimulator(SpinSimulator):
-    """Simulator backend of a collective spin system of trapped BECs in optical tweezers."""
+    """Emulator backend of a spin device with collective spins of trapped BECs in optical tweezers.
+
+    This backend will define a configuration with a set of supported gates and a line coupling map.
+    At instantiation users can chose the length of the coupling map which by default is three. This
+    backend is intended to be a realistic representation of a collective spin experiment with BECs.
+    For a general spin simulator backend, use the SpinSimulator base class.
+    """
 
     def __init__(self, n_tweezers: int = 3, provider: Optional[Provider] = None):
         """Create a new collective spin simulator backend.
