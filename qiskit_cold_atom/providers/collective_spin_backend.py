@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Mock backend to simulate collective spin experiments."""
+"""Backend to emulate collective spin experiments."""
 
 from typing import Optional
 
