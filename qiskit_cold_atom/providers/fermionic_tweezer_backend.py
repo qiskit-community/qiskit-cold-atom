@@ -16,8 +16,13 @@ from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 
 
 class FermionicTweezerSimulator(FermionSimulator):
-    """Mock backend of a fermionic device with four tweezer sites that uses two spin species.
-    For a general fermionic simulator backend, use the FermionSimulator base class."""
+    """Emulator backend of a fermionic device with n tweezer sites that uses two spin species.
+    
+    This backend will define a configuration with a set of supported gates and a line coupling map.
+    At instantiation users can chose the length of the coupling map which by default is four sites.
+    This backend is intended to be a realistic representation of a ferminoic tweezer experiment.
+    For a general fermionic simulator backend, use the FermionSimulator base class.
+    """
 
     def __init__(self, n_tweezers: int = 4, provider=None):
         """Create a new fermionic tweezer simulator backend.
