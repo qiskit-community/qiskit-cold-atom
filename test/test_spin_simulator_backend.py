@@ -166,7 +166,7 @@ class TestSpinSimulatorBackend(QiskitTestCase):
             )
 
         with self.subTest("test time taken"):
-            self.assertTrue(result.to_dict()["time_taken"] < 0.1)
+            self.assertTrue(result.to_dict()["time_taken"] < 0.5)
 
         with self.subTest("test result success"):
             self.assertTrue(result.to_dict()["success"])
