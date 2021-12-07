@@ -21,10 +21,10 @@ from qiskit_cold_atom.spins.spin_simulator_backend import SpinSimulator
 
 class CollectiveSpinSimulator(SpinSimulator):
     """Emulator backend of a spin device with collective spins of trapped BECs in optical tweezers.
-    
+
     This backend will define a configuration with a set of supported gates and a line coupling map.
-    At instantiation users can chose the length of the coupling map which by default is three. This 
-    backend is intended to be a realistic representation of a collective spin experiment with BECs. 
+    At instantiation users can chose the length of the coupling map which by default is three. This
+    backend is intended to be a realistic representation of a collective spin experiment with BECs.
     For a general spin simulator backend, use the SpinSimulator base class.
     """
 
