@@ -20,11 +20,7 @@ from qiskit.circuit import Parameter
 from qiskit.providers import BackendV1 as Backend
 from qiskit.providers.models import BackendConfiguration
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
-from qiskit_cold_atom.circuit_to_cold_atom import (
-    circuit_to_cold_atom,
-    circuit_to_data,
-    validate_circuits,
-)
+from qiskit_cold_atom.circuit_tools import CircuitTools
 
 # These imports are needed to decorate the quantum circuit
 import qiskit_cold_atom.spins  # pylint: disable=unused-import
@@ -126,6 +122,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
                 ],
                 "num_wires": 3,
                 "shots": shots,
+                "wire_order": "sequential",
             },
             "experiment_1": {
                 "instructions": [
@@ -136,10 +133,11 @@ class TestCircuitToColdAtom(QiskitTestCase):
                 ],
                 "num_wires": 2,
                 "shots": shots,
+                "wire_order": "sequential",
             },
         }
 
-        actual_output = circuit_to_cold_atom(
+        actual_output = CircuitTools.circuit_to_cold_atom(
             [circ1, circ2], backend=self.dummy_backend, shots=shots
         )
 
@@ -152,37 +150,39 @@ class TestCircuitToColdAtom(QiskitTestCase):
             circ = QuantumCircuit(6)
             circ.rlx(0.4, 2)
             with self.assertRaises(QiskitColdAtomError):
-                validate_circuits(circ, backend=self.dummy_backend)
+                CircuitTools.validate_circuits(circ, backend=self.dummy_backend)
 
         with self.subTest("test support of native instructions"):
             circ = QuantumCircuit(4)
             # add gate that is not supported by the backend
             circ.hop_fermions([0.5], [0, 1, 2, 3])
             with self.assertRaises(QiskitColdAtomError):
-                validate_circuits(circ, backend=self.dummy_backend)
+                CircuitTools.validate_circuits(circ, backend=self.dummy_backend)
 
         with self.subTest("check gate coupling map"):
             circ = QuantumCircuit(5)
             circ.rlz2(0.5, 4)
             with self.assertRaises(QiskitColdAtomError):
-                validate_circuits(circ, backend=self.dummy_backend)
+                CircuitTools.validate_circuits(circ, backend=self.dummy_backend)
 
         with self.subTest("test max. allowed circuits"):
             circuits = [QuantumCircuit(2)] * 3
             with self.assertRaises(QiskitColdAtomError):
-                circuit_to_cold_atom(circuits=circuits, backend=self.dummy_backend)
+                CircuitTools.circuit_to_cold_atom(circuits=circuits, backend=self.dummy_backend)
 
         with self.subTest("test max. allowed shots"):
             circuits = QuantumCircuit(2)
             with self.assertRaises(QiskitColdAtomError):
-                circuit_to_cold_atom(circuits=circuits, backend=self.dummy_backend, shots=1000)
+                CircuitTools.circuit_to_cold_atom(
+                    circuits=circuits, backend=self.dummy_backend, shots=1000
+                )
 
         with self.subTest("test running with unbound parameters"):
             theta = Parameter("θ")
             circ = QuantumCircuit(1)
             circ.rlx(theta, 0)
             with self.assertRaises(QiskitColdAtomError):
-                validate_circuits(circ, backend=self.dummy_backend)
+                CircuitTools.validate_circuits(circ, backend=self.dummy_backend)
 
     def test_circuit_to_data(self):
         """test the circuit to data method"""
@@ -203,6 +203,6 @@ class TestCircuitToColdAtom(QiskitTestCase):
             ["measure", [2], []],
         ]
 
-        actual_output = circuit_to_data(circ)
+        actual_output = CircuitTools.circuit_to_data(circ)
 
         self.assertEqual(actual_output, target_output)
