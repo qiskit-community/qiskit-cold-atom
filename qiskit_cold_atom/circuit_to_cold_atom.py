@@ -42,9 +42,9 @@ class CircuitTools:
         shots: Optional[int] = None,
     ) -> None:
         """
-        Performs validity checks on circuits against the configuration of the backends. This checks whether
-        all applied instructions in the circuit are accepted by the backend and whether the applied gates
-        comply with their respective coupling maps.
+        Performs validity checks on circuits against the configuration of the backends. This checks
+        whether all applied instructions in the circuit are accepted by the backend and whether the
+        applied gates comply with their respective coupling maps.
 
         Args:
             circuits: The circuits that need to be run.
@@ -52,11 +52,10 @@ class CircuitTools:
             shots: The number of shots for each circuit.
 
         Raises:
-            QiskitColdAtomError: - If the maximum number of experiments or shots specified by the backend is
-                                 exceeded
-                                 - If the backend does not support an instruction given in the circuit
-                                 - If the width of the circuit is too large
-                                 - If the circuit has unbound parameters
+            QiskitColdAtomError: If the maximum shot number specified by the backend is exceeded.
+            QiskitColdAtomError: If the backend does not support an instruction in the circuit.
+            QiskitColdAtomError: If the width of the circuit is too large.
+            QiskitColdAtomError: If the circuit has unbound parameters.
         """
 
         if isinstance(circuits, QuantumCircuit):
