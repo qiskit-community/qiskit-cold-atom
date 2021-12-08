@@ -26,7 +26,7 @@ from qiskit.result import Result
 
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolver
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
-from qiskit_cold_atom.circuit_to_cold_atom import CircuitTools
+from qiskit_cold_atom.circuit_tools import CircuitTools
 
 
 class FermionSimulator(BaseFermionBackend):

@@ -28,7 +28,7 @@ from qiskit.circuit.measure import Measure
 
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins.base_spin_backend import BaseSpinBackend
-from qiskit_cold_atom.circuit_to_cold_atom import CircuitTools
+from qiskit_cold_atom.circuit_tools import CircuitTools
 
 
 class SpinSimulator(BaseSpinBackend):

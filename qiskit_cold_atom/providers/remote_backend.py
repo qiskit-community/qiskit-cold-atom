@@ -25,7 +25,7 @@ from qiskit.providers import JobStatus
 
 from qiskit_cold_atom.spins.base_spin_backend import BaseSpinBackend
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
-from qiskit_cold_atom.circuit_to_cold_atom import CircuitTools
+from qiskit_cold_atom.circuit_tools import CircuitTools
 from qiskit_cold_atom.providers.cold_atom_job import ColdAtomJob
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
