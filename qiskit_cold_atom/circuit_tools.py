@@ -10,7 +10,7 @@
 # copyright notice, and modified files need to carry a notice indicating
 # that they have been altered from the originals.
 
-"""Module to convert cold atom circuits to dictionaries."""
+"""Module to convert cold atom circuits to dictionaries that cen be sent to backends."""
 
 from typing import List, Union, Optional
 
