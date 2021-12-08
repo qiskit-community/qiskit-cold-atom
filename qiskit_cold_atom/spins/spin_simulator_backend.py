@@ -28,7 +28,7 @@ from qiskit.circuit.measure import Measure
 
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins.base_spin_backend import BaseSpinBackend
-from qiskit_cold_atom.circuit_to_cold_atom import validate_circuits
+from qiskit_cold_atom.circuit_to_cold_atom import CircuitTools
 
 
 class SpinSimulator(BaseSpinBackend):
@@ -114,7 +114,7 @@ class SpinSimulator(BaseSpinBackend):
             # perform compatibility checks with the backend configuration in case gates and supported
             # instructions are constrained by the backend's configuration
             if self.configuration().gates and self.configuration().supported_instructions:
-                validate_circuits(circuits=circuit, backend=self, shots=shots)
+                CircuitTools.validate_circuits(circuits=circuit, backend=self, shots=shots)
 
             # check whether all wires are measured
             measured_wires = set()

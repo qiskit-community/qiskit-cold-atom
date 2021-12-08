@@ -26,7 +26,7 @@ from qiskit.result import Result
 
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolver
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
-from qiskit_cold_atom.circuit_to_cold_atom import validate_circuits
+from qiskit_cold_atom.circuit_to_cold_atom import CircuitTools
 
 
 class FermionSimulator(BaseFermionBackend):
@@ -105,7 +105,7 @@ class FermionSimulator(BaseFermionBackend):
             # perform compatibility checks with the backend configuration in case gates and supported
             # instructions are constrained by the backend's configuration
             if self.configuration().gates and self.configuration().supported_instructions:
-                validate_circuits(circuits=circuit, backend=self, shots=shots)
+                CircuitTools.validate_circuits(circuits=circuit, backend=self, shots=shots)
 
             # check whether all wires are measured
             measured_wires = []

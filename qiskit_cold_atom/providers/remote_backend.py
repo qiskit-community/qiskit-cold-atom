@@ -25,7 +25,7 @@ from qiskit.providers import JobStatus
 
 from qiskit_cold_atom.spins.base_spin_backend import BaseSpinBackend
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
-from qiskit_cold_atom.circuit_to_cold_atom import circuit_to_cold_atom
+from qiskit_cold_atom.circuit_to_cold_atom import CircuitTools
 from qiskit_cold_atom.providers.cold_atom_job import ColdAtomJob
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
@@ -102,7 +102,7 @@ class RemoteBackend(Backend):
             A Job object through the backend can be queried for status, result etc.
         """
 
-        job_payload = circuit_to_cold_atom(circuit, self, shots=shots)
+        job_payload = CircuitTools.circuit_to_cold_atom(circuit, self, shots=shots)
 
         res = requests.post(
             self.url + "/post_job/",
