@@ -135,7 +135,7 @@ class ColdAtomJob(Job):
 
         return status
 
-    def error_message(self):
+    def error_message(self) -> Optional[str]:
         """
         Retrieve the error message from the backend.
 
