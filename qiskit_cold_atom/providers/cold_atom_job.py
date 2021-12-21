@@ -153,9 +153,9 @@ class ColdAtomJob(Job):
             },
         )
 
-        # TODO: Read off error message from the JSON
+        error_message = r.json()["error_message"]
 
-        pass
+        return error_message
 
     def cancel(self):
         raise NotImplementedError
