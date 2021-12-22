@@ -173,7 +173,7 @@ class CircuitTools:
 
         Args:
             circuits: The circuits that need to be run.
-            backend: The backend on which the circuit should be run
+            backend: The backend on which the circuit should be run.
             shots: The number of shots for each circuit.
 
         Returns:
@@ -195,3 +195,47 @@ class CircuitTools:
             }
 
         return experiments
+
+    @classmethod
+    def convert_wire_order(
+        cls,
+        wires: List[int],
+        convention_from: str,
+        convention_to: str,
+        num_sites: int,
+        num_species: int,
+    ) -> List[int]:
+        """
+        Converts a list of wire indices onto which a gate acts from one convention to another.
+        Possible conventions are "sequential", where the first num_sites wires denote the
+        first species, the second num_sites wires denote the second species etc., and "interleaved",
+        where the first num_species wires denote the first site, the second num_species wires denote
+        the second site etc.
+
+        Args:
+            wires: Wires onto which a gate acts, e.g. [3, 4, 7, 8].
+            convention_from: The convention in which "wires" is given.
+            convention_to: The convention into which to convert.
+            num_sites: The total number of sites.
+            num_species: The number of different atomic species.
+
+        Raises:
+            QiskitColdAtomError: If the convention to and from is not supported.
+
+        Returns:
+            A list of wire indices following the convention_to.
+        """
+        if (convention_to or convention_from) not in ["sequential", "interleaved"]:
+            raise QiskitColdAtomError(f"Wire order conversion from {convention_from} to {convention_to}"
+                                      f" not supported.")
+
+        if convention_from == convention_to:
+            return wires
+
+        if convention_from == "sequential" and convention_to == "interleaved":
+            new_wires = [idx % num_sites * num_species + idx // num_sites for idx in wires]
+
+        elif convention_from == "interleaved" and convention_to == "sequential":
+            new_wires = [idx % num_species * num_sites + idx // num_species for idx in wires]
+
+        return sorted(new_wires)
