@@ -135,6 +135,26 @@ class ColdAtomJob(Job):
 
         return status
 
+    def error_message(self) -> Optional[str]:
+        """
+        Retrieve the error message from the backend.
+
+        Returns:
+            error: A string describing the error that happened on the backend.
+        """
+        status_payload = {"job_id": self.job_id()}
+
+        r = requests.get(
+            self._backend.url + "/get_job_status/",
+            params={
+                "json": json.dumps(status_payload),
+                "username": self.user,
+                "password": self.token,
+            },
+        )
+
+        return r.json().get("error_message", None)
+
     def cancel(self):
         raise NotImplementedError
 
