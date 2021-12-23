@@ -203,6 +203,6 @@ class TestCircuitToColdAtom(QiskitTestCase):
             ["measure", [2], []],
         ]
 
-        actual_output = CircuitTools.circuit_to_data(circ)
+        actual_output = CircuitTools.circuit_to_data(circ, backend=self.dummy_backend)
 
         self.assertEqual(actual_output, target_output)
