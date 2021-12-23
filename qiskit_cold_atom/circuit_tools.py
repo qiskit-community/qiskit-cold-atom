@@ -78,6 +78,8 @@ class CircuitTools:
                     f"{shots} shots were requested"
                 )
 
+        config_dict = backend.configuration().to_dict()
+
         for circuit in circuits:
 
             try:
@@ -99,8 +101,15 @@ class CircuitTools:
 
             # If num_species is specified by the backend, the wires describe different atomic species
             # and the circuit must exactly match the expected wire count of the backend.
-            if "num_species" in backend.configuration().to_dict().keys():
+            num_species = None
+            wire_order = None
+            if "num_species" in config_dict:
                 num_species = backend.configuration().num_species
+                if "wire_order" in config_dict:
+                    wire_order = backend.configuration().wire_order
+                else:
+                    wire_order = cls.__wire_order__
+
                 if num_species > 1 and circuit.num_qubits < backend.configuration().num_qubits:
                     raise QiskitColdAtomError(
                         f"{backend.name()} requires circuits to be submitted with exactly "
@@ -129,6 +138,16 @@ class CircuitTools:
                 # for the gates, check whether coupling map fits
                 if name in native_gates:
                     couplings = native_gates[name]
+
+                    if num_species:
+                        wires = cls.convert_wire_order(
+                            wires,
+                            convention_from=cls.__wire_order__,
+                            convention_to=wire_order,
+                            num_species=num_species,
+                            num_sites=circuit.num_qubits,
+                        )
+
                     if wires not in couplings:
                         raise QiskitColdAtomError(
                             f"coupling {wires} not supported for gate "
@@ -136,7 +155,7 @@ class CircuitTools:
                         )
 
     @classmethod
-    def circuit_to_data(cls, circuit: QuantumCircuit) -> List[List]:
+    def circuit_to_data(cls, circuit: QuantumCircuit, backend: Backend) -> List[List]:
         """Convert the circuit to JSON serializable instructions.
 
         Helper function that converts a QuantumCircuit into a list of symbolic
@@ -144,6 +163,7 @@ class CircuitTools:
 
         Args:
             circuit: The quantum circuit for which to extract the instructions.
+            backend: The backend on which the circuit should be run.
 
         Returns:
             A list of lists describing the instructions in the circuit. Each sublist
@@ -153,9 +173,27 @@ class CircuitTools:
 
         instructions = []
 
+        config_dict = backend.configuration().to_dict()
+        num_species = None
+        wire_order = None
+        if "num_species" in config_dict:
+            num_species = backend.configuration().num_species
+            if "wire_order" in config_dict:
+                wire_order = backend.configuration().wire_order
+            else:
+                wire_order = cls.__wire_order__
+
         for inst in circuit.data:
             name = inst[0].name
             wires = [circuit.qubits.index(qubit) for qubit in inst[1]]
+            if num_species:
+                wires = cls.convert_wire_order(
+                    wires,
+                    convention_from=cls.__wire_order__,
+                    convention_to=wire_order,
+                    num_species=num_species,
+                    num_sites=circuit.num_qubits,
+                )
             params = [float(param) for param in inst[0].params]
             instructions.append([name, wires, params])
 
@@ -188,7 +226,7 @@ class CircuitTools:
         experiments = {}
         for idx, circuit in enumerate(circuits):
             experiments["experiment_%i" % idx] = {
-                "instructions": cls.circuit_to_data(circuit),
+                "instructions": cls.circuit_to_data(circuit, backend=backend),
                 "shots": shots,
                 "num_wires": circuit.num_qubits,
                 "wire_order": cls.__wire_order__,
@@ -226,11 +264,15 @@ class CircuitTools:
             A list of wire indices following the convention_to.
         """
         if (convention_to or convention_from) not in ["sequential", "interleaved"]:
-            raise QiskitColdAtomError(f"Wire order conversion from {convention_from} to {convention_to}"
-                                      f" not supported.")
+            raise QiskitColdAtomError(
+                f"Wire order conversion from {convention_from} to {convention_to}"
+                f" not supported."
+            )
 
         if convention_from == convention_to:
             return wires
+
+        new_wires = None
 
         if convention_from == "sequential" and convention_to == "interleaved":
             new_wires = [idx % num_sites * num_species + idx // num_sites for idx in wires]
