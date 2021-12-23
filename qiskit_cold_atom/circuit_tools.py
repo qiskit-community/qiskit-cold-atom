@@ -146,7 +146,7 @@ class CircuitTools:
                             convention_to=wire_order,
                             num_species=num_species,
                             num_sites=circuit.num_qubits,
-                            sort=True
+                            sort=True,
                         )
 
                     if wires not in couplings:
@@ -194,7 +194,7 @@ class CircuitTools:
                     convention_to=wire_order,
                     num_species=num_species,
                     num_sites=circuit.num_qubits,
-                    sort=True
+                    sort=True,
                 )
             params = [float(param) for param in inst[0].params]
             instructions.append([name, wires, params])
@@ -249,7 +249,7 @@ class CircuitTools:
         convention_to: str,
         num_sites: int,
         num_species: int,
-        sort: Optional[bool] = False
+        sort: Optional[bool] = False,
     ) -> List[int]:
         """
         Converts a list of wire indices onto which a gate acts from one convention to another.
