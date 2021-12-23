@@ -146,6 +146,7 @@ class CircuitTools:
                             convention_to=wire_order,
                             num_species=num_species,
                             num_sites=circuit.num_qubits,
+                            sort=True
                         )
 
                     if wires not in couplings:
@@ -193,6 +194,7 @@ class CircuitTools:
                     convention_to=wire_order,
                     num_species=num_species,
                     num_sites=circuit.num_qubits,
+                    sort=True
                 )
             params = [float(param) for param in inst[0].params]
             instructions.append([name, wires, params])
@@ -223,13 +225,18 @@ class CircuitTools:
         # validate the circuits against the backend configuration
         cls.validate_circuits(circuits=circuits, backend=backend, shots=shots)
 
+        if "wire_order" in backend.configuration().to_dict():
+            wire_order = backend.configuration().wire_order
+        else:
+            wire_order = cls.__wire_order__
+
         experiments = {}
         for idx, circuit in enumerate(circuits):
             experiments["experiment_%i" % idx] = {
                 "instructions": cls.circuit_to_data(circuit, backend=backend),
                 "shots": shots,
                 "num_wires": circuit.num_qubits,
-                "wire_order": cls.__wire_order__,
+                "wire_order": wire_order,
             }
 
         return experiments
@@ -242,6 +249,7 @@ class CircuitTools:
         convention_to: str,
         num_sites: int,
         num_species: int,
+        sort: Optional[bool] = False
     ) -> List[int]:
         """
         Converts a list of wire indices onto which a gate acts from one convention to another.
@@ -256,6 +264,7 @@ class CircuitTools:
             convention_to: The convention into which to convert.
             num_sites: The total number of sites.
             num_species: The number of different atomic species.
+            sort: If true, the returned list of indices is sorted in ascending order.
 
         Raises:
             QiskitColdAtomError: If the convention to and from is not supported.
@@ -269,10 +278,10 @@ class CircuitTools:
                 f" not supported."
             )
 
-        if convention_from == convention_to:
-            return wires
-
         new_wires = None
+
+        if convention_from == convention_to:
+            new_wires = wires
 
         if convention_from == "sequential" and convention_to == "interleaved":
             new_wires = [idx % num_sites * num_species + idx // num_sites for idx in wires]
@@ -280,4 +289,7 @@ class CircuitTools:
         elif convention_from == "interleaved" and convention_to == "sequential":
             new_wires = [idx % num_species * num_sites + idx // num_species for idx in wires]
 
-        return sorted(new_wires)
+        if sort:
+            return sorted(new_wires)
+        else:
+            return new_wires
