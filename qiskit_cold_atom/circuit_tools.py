@@ -275,7 +275,7 @@ class CircuitTools:
         if (convention_to or convention_from) not in ["sequential", "interleaved"]:
             raise QiskitColdAtomError(
                 f"Wire order conversion from {convention_from} to {convention_to}"
-                f" not supported."
+                f" is not supported."
             )
 
         new_wires = None
