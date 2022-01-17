@@ -368,7 +368,7 @@ class Hopping(FermionicGate):
         if not len(j) == (num_modes / 2 - 1):
             raise QiskitColdAtomError("j has to be a list of length num_modes/2 -1")
 
-        super().__init__(name="hop", num_modes=num_modes, params=j, label=label)
+        super().__init__(name="fhop", num_modes=num_modes, params=j, label=label)
 
     def inverse(self):
         """Get inverse gate by reversing the sign of all hopping strengths"""

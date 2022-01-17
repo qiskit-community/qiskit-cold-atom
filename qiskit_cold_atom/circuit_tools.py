@@ -145,7 +145,7 @@ class CircuitTools:
                             convention_from=cls.__wire_order__,
                             convention_to=wire_order,
                             num_species=num_species,
-                            num_sites=circuit.num_qubits,
+                            num_sites=circuit.num_qubits//num_species,
                             sort=True,
                         )
 
@@ -193,7 +193,7 @@ class CircuitTools:
                     convention_from=cls.__wire_order__,
                     convention_to=wire_order,
                     num_species=num_species,
-                    num_sites=circuit.num_qubits,
+                    num_sites=circuit.num_qubits//num_species,
                     sort=True,
                 )
             params = [float(param) for param in inst[0].params]
