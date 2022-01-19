@@ -216,17 +216,21 @@ class TestCircuitToColdAtom(QiskitTestCase):
         wires_interleaved = [0, 3, 1, 4, 2, 5]
 
         with self.subTest("test sequential to interleaved"):
-            wires_converted = CircuitTools.convert_wire_order(wires=wires_sequential,
-                                                              convention_from=WireOrder.SEQUENTIAL,
-                                                              convention_to=WireOrder.INTERLEAVED,
-                                                              num_sites=num_sites,
-                                                              num_species=num_species)
+            wires_converted = CircuitTools.convert_wire_order(
+                wires=wires_sequential,
+                convention_from=WireOrder.SEQUENTIAL,
+                convention_to=WireOrder.INTERLEAVED,
+                num_sites=num_sites,
+                num_species=num_species,
+            )
             self.assertEqual(wires_converted, wires_interleaved)
 
         with self.subTest("test interleaved to sequential"):
-            wires_converted = CircuitTools.convert_wire_order(wires=wires_interleaved,
-                                                              convention_from=WireOrder.INTERLEAVED,
-                                                              convention_to=WireOrder.SEQUENTIAL,
-                                                              num_sites=num_sites,
-                                                              num_species=num_species)
+            wires_converted = CircuitTools.convert_wire_order(
+                wires=wires_interleaved,
+                convention_from=WireOrder.INTERLEAVED,
+                convention_to=WireOrder.SEQUENTIAL,
+                num_sites=num_sites,
+                num_species=num_species,
+            )
             self.assertEqual(wires_converted, wires_sequential)
