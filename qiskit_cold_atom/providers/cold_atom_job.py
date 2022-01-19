@@ -160,8 +160,6 @@ class ColdAtomJob(Job):
 
         return Result.from_dict(reordered_result_dict)
 
-
-
     def status(self):
         """
         Retrieve the status from the backend.

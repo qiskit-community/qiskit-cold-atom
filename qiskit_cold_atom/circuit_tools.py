@@ -13,6 +13,7 @@
 """Module to convert cold atom circuits to dictionaries that can be sent to backends."""
 
 from typing import List, Union, Optional
+from enum import Enum
 
 from qiskit import QuantumCircuit
 from qiskit.providers import BackendV1 as Backend
@@ -293,3 +294,14 @@ class CircuitTools:
             return sorted(new_wires)
         else:
             return new_wires
+
+
+class WireOrder(str, Enum):
+    """The possible wire orderings for cold atomic circuits.
+
+    For example, a sequential register [0, 1, 2, 3, 4, 5] with two species implies that wires 0, 1, 2
+    are of the same type while an interleaved ordering implies that wires 0, 2, and 4 are of the
+    same type.
+    """
+    SEQUENTIAL = "sequential"
+    INTERLEAVED = "interleaved"
