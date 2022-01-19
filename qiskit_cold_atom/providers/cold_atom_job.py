@@ -15,18 +15,13 @@
 from typing import Dict, Optional
 import time
 import json
-from copy import deepcopy
 import requests
-import numpy as np
 
 from qiskit.providers import BackendV1 as Backend
 from qiskit.providers import JobV1 as Job
 from qiskit.providers import JobTimeoutError, JobError
 from qiskit.providers import JobStatus
 from qiskit.result import Result
-
-from qiskit_cold_atom.exceptions import QiskitColdAtomError
-from qiskit_cold_atom.circuit_tools import CircuitTools, WireOrder
 
 
 class ColdAtomJob(Job):

@@ -304,5 +304,3 @@ class CircuitTools:
             return sorted(new_wires)
         else:
             return new_wires
-
-
