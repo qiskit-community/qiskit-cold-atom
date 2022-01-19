@@ -73,8 +73,8 @@ class TestFermionState(QiskitTestCase):
         """Test that we can load an initial state from a circuit."""
 
         circ = QuantumCircuit(4)
-        circ.load_fermions(0)
-        circ.load_fermions(2)
+        circ.fload(0)
+        circ.fload(2)
 
         state = FermionicState.initial_state(circ, 2)
         self.assertEqual(state.occupations, [[1, 0], [1, 0]])

@@ -155,7 +155,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
         with self.subTest("test support of native instructions"):
             circ = QuantumCircuit(4)
             # add gate that is not supported by the backend
-            circ.hop_fermions([0.5], [0, 1, 2, 3])
+            circ.fhop([0.5], [0, 1, 2, 3])
             with self.assertRaises(QiskitColdAtomError):
                 CircuitTools.validate_circuits(circ, backend=self.dummy_backend)
 
