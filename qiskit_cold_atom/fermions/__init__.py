@@ -58,14 +58,14 @@ dynamics.
    :toctree: ../stubs/
 
     FermionicGate
-    LoadFermions
-    LocalPhase
-    Hopping
-    Interaction
     FermiHubbard
-    FermionRX
-    FermionRY
-    FermionRZ
+    Hop
+    Interaction
+    Phase
+    FRXGate
+    FRYGate
+    FRZGate
+    LoadFermions
 
 These gates should serve as an example of how a concrete fermionic platform can be described
 through :mod:`qiskit_cold_atom`.
@@ -96,11 +96,11 @@ from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolve
 from qiskit_cold_atom.fermions.fermion_gate_library import (
     FermionicGate,
     LoadFermions,
-    LocalPhase,
-    Hopping,
+    Phase,
+    Hop,
     Interaction,
     FermiHubbard,
-    FermionRX,
-    FermionRY,
-    FermionRZ,
+    FRXGate,
+    FRYGate,
+    FRZGate,
 )

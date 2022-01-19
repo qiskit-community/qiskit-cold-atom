@@ -53,13 +53,13 @@ class FermionicTweezerSimulator(FermionSimulator):
             "circuit denote the occupations of the spin-up fermions and the last half "
             "of wires denote the spin-down fermions",
             "basis_gates": [
-                "hop",
-                "int",
-                "phase",
-                "FH",
-                "fer_rx",
-                "fer_ry",
-                "fer_rz",
+                "fhop",
+                "fint",
+                "fphase",
+                "fhubbard",
+                "frx",
+                "fry",
+                "frz",
                 "load",
             ],
             "num_species": 2,
@@ -71,28 +71,28 @@ class FermionicTweezerSimulator(FermionSimulator):
             "open_pulse": False,
             "gates": [
                 {
-                    "name": "hop",
+                    "name": "fhop",
                     "parameters": ["j_i"],
                     "qasm_def": "{}",
                     "description": "hopping of atoms to neighboring tweezers",
                     "coupling_map": self._neighbouring_sites_couplings,
                 },
                 {
-                    "name": "int",
+                    "name": "fint",
                     "parameters": ["u"],
                     "qasm_def": "{}",
                     "description": "on-site interaction of atoms of opposite spin state",
                     "coupling_map": self._global_site_couplings,
                 },
                 {
-                    "name": "phase",
+                    "name": "fphase",
                     "parameters": ["mu_i"],
                     "qasm_def": "{}",
                     "description": "Applying a local phase to tweezers through an external potential",
                     "coupling_map": self._single_site_couplings,
                 },
                 {
-                    "name": "fer_rx",
+                    "name": "frx",
                     "parameters": ["phi"],
                     "qasm_def": "{}",
                     "description": "x-rotation between the spin-up and spin-down state at one "
@@ -100,7 +100,7 @@ class FermionicTweezerSimulator(FermionSimulator):
                     "coupling_map": self._single_site_couplings,
                 },
                 {
-                    "name": "fer_ry",
+                    "name": "fry",
                     "parameters": ["phi"],
                     "qasm_def": "{}",
                     "description": "y-rotation between the spin-up and spin-down state at one "
@@ -108,7 +108,7 @@ class FermionicTweezerSimulator(FermionSimulator):
                     "coupling_map": self._single_site_couplings,
                 },
                 {
-                    "name": "fer_rz",
+                    "name": "frz",
                     "parameters": ["phi"],
                     "qasm_def": "{}",
                     "description": "z-rotation between the spin-up and spin-down state at one "
@@ -120,13 +120,13 @@ class FermionicTweezerSimulator(FermionSimulator):
                 "load",
                 "measure",
                 "barrier",
-                "hop",
-                "int",
-                "phase",
-                "FH",
-                "fer_rx",
-                "fer_ry",
-                "fer_rz",
+                "fhop",
+                "fint",
+                "fphase",
+                "fhubbard",
+                "frx",
+                "fry",
+                "frz",
             ],
         }
 
