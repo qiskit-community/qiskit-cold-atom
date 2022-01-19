@@ -273,7 +273,7 @@ class CircuitTools:
         Returns:
             A list of wire indices following the convention_to.
         """
-        if (convention_to or convention_from) not in ["sequential", "interleaved"]:
+        if (convention_to or convention_from) not in WireOrder:
             raise QiskitColdAtomError(
                 f"Wire order conversion from {convention_from} to {convention_to}"
                 f" is not supported."
