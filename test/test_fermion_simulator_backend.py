@@ -92,8 +92,8 @@ class TestFermionSimulatorBackend(QiskitTestCase):
         with self.subTest("test number of fermionic species"):
             # define a circuit that conserves the particle number per fermionic spin species
             test_circ = QuantumCircuit(4)
-            test_circ.load_fermions([0, 3])
-            test_circ.hop_fermions([np.pi / 4], [0, 1, 2, 3])
+            test_circ.fload([0, 3])
+            test_circ.fhop([np.pi / 4], [0, 1, 2, 3])
 
             statevector_1 = self.backend.run(test_circ).result().get_statevector()
             self.assertEqual(len(statevector_1), 6)
@@ -106,15 +106,15 @@ class TestFermionSimulatorBackend(QiskitTestCase):
 
         with self.subTest("test partial measurement"):
             circ_meas = QuantumCircuit(2, 2)
-            circ_meas.load_fermions(0)
+            circ_meas.fload(0)
             circ_meas.measure(0, 0)
             with self.assertWarns(UserWarning):
                 self.backend.run(circ_meas)
 
         test_circ = QuantumCircuit(4)
-        test_circ.load_fermions([0, 3])
-        test_circ.hop_fermions([np.pi / 4], [0, 1, 2, 3])
-        test_circ.int_fermions(np.pi, [0, 1, 2, 3])
+        test_circ.fload([0, 3])
+        test_circ.fhop([np.pi / 4], [0, 1, 2, 3])
+        test_circ.fint(np.pi, [0, 1, 2, 3])
         test_circ.measure_all()
 
         result = self.backend.run(test_circ, num_species=2, seed=40, shots=5).result()
@@ -157,15 +157,15 @@ class TestFermionSimulatorBackend(QiskitTestCase):
         with self.subTest("Initialize circuit with single species of fermions"):
             actual_circ = self.backend.initialize_circuit([0, 1, 0, 1])
             target_circ = QuantumCircuit(QuantumRegister(4, "fer_mode"))
-            target_circ.load_fermions(1)
-            target_circ.load_fermions(3)
+            target_circ.fload(1)
+            target_circ.fload(3)
             self.assertEqual(actual_circ, target_circ)
 
         with self.subTest("Initialize circuit with multiple species of fermions"):
             actual_circ = self.backend.initialize_circuit([[0, 1], [0, 1]])
             target_circ = QuantumCircuit(QuantumRegister(2, "spin_0"), QuantumRegister(2, "spin_1"))
-            target_circ.load_fermions(1)
-            target_circ.load_fermions(3)
+            target_circ.fload(1)
+            target_circ.fload(3)
             self.assertEqual(actual_circ, target_circ)
 
         with self.subTest("check maximum size of circuit"):
@@ -233,8 +233,8 @@ class TestFermionSimulatorBackend(QiskitTestCase):
         theta = Parameter("theta")
 
         test_circ = QuantumCircuit(4)
-        test_circ.load_fermions([0, 3])
-        test_circ.hop_fermions([theta], [0, 1, 2, 3])
+        test_circ.fload([0, 3])
+        test_circ.fhop([theta], [0, 1, 2, 3])
 
         with self.subTest("test running with unbound parameters:"):
             with self.assertRaises(TypeError):
