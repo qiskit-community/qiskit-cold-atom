@@ -20,6 +20,17 @@ from qiskit.providers import BackendV1 as Backend
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
 
+class WireOrder(str, Enum):
+    """The possible wire orderings for cold atomic circuits.
+
+    For example, a sequential register [0, 1, 2, 3, 4, 5] with two species implies that wires 0, 1, 2
+    are of the same type while an interleaved ordering implies that wires 0, 2, and 4 are of the
+    same type.
+    """
+    SEQUENTIAL = "sequential"
+    INTERLEAVED = "interleaved"
+
+
 class CircuitTools:
     """A class to provide tooling for cold-atomic circuits.
 
@@ -33,7 +44,7 @@ class CircuitTools:
     # sequential registers with the same length. For example, a three site system with two
     # species will have two sequential registers with three wires each. Other packages may
     # use an "interleaved" wire order.
-    __wire_order__ = "sequential"
+    __wire_order__ = WireOrder("sequential")
 
     @classmethod
     def validate_circuits(
@@ -101,7 +112,7 @@ class CircuitTools:
                 )
 
             # If num_species is specified by the backend, the wires describe different atomic species
-            # and the circuit must exactly match the expected wire count of the backend.
+            # and the circuit's wire count must be a multiple of this.
             num_species = None
             wire_order = None
             if "num_species" in config_dict:
@@ -111,11 +122,10 @@ class CircuitTools:
                 else:
                     wire_order = cls.__wire_order__
 
-                if num_species > 1 and circuit.num_qubits < backend.configuration().num_qubits:
+                if num_species > 1 and circuit.num_qubits % num_species:
                     raise QiskitColdAtomError(
-                        f"{backend.name()} requires circuits to be submitted with exactly "
-                        f"{backend.configuration().num_qubits} wires, but "
-                        f"{circuit.num_qubits} wires were given."
+                        f"{backend.name()} requires circuits to be submitted with a multiple of "
+                        f"{num_species} wires, but {circuit.num_qubits} wires were given."
                     )
 
             for inst in circuit.data:
@@ -296,12 +306,3 @@ class CircuitTools:
             return new_wires
 
 
-class WireOrder(str, Enum):
-    """The possible wire orderings for cold atomic circuits.
-
-    For example, a sequential register [0, 1, 2, 3, 4, 5] with two species implies that wires 0, 1, 2
-    are of the same type while an interleaved ordering implies that wires 0, 2, and 4 are of the
-    same type.
-    """
-    SEQUENTIAL = "sequential"
-    INTERLEAVED = "interleaved"

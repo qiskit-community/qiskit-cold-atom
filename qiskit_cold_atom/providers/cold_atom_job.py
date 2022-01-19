@@ -19,7 +19,6 @@ from copy import deepcopy
 import requests
 import numpy as np
 
-
 from qiskit.providers import BackendV1 as Backend
 from qiskit.providers import JobV1 as Job
 from qiskit.providers import JobTimeoutError, JobError
@@ -27,7 +26,7 @@ from qiskit.providers import JobStatus
 from qiskit.result import Result
 
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
-from qiskit_cold_atom.circuit_tools import CircuitTools
+from qiskit_cold_atom.circuit_tools import CircuitTools, WireOrder
 
 
 class ColdAtomJob(Job):
@@ -94,71 +93,12 @@ class ColdAtomJob(Job):
             timeout: time after which the server is no longer queried for the result
             wait: waiting time between queries for the result of the backend
 
-        Raises:
-            QiskitColdAtomError: If the backend specifies multiple atomic species but does not
-            communicate its wire order convention in its configuration
-
         Returns:
             qiskit.result object that contains the outcome of the job
         """
         result_dict = self._wait_for_result(timeout, wait=wait)
 
-        if "num_species" not in self._backend.configuration().to_dict():
-            return Result.from_dict(result_dict)
-
-        num_species = self._backend.configuration().num_species
-        try:
-            wire_order = WireOrder(self._backend.configuration().wire_order)
-        except KeyError as key_error:
-            raise QiskitColdAtomError(
-                "Backends that specify a number of atomic species also need to specify the wiring "
-                "convention of the circuits."
-            ) from key_error
-
-        reordered_result_dict = deepcopy(result_dict)
-
-        for exp_idx, circ_result in enumerate(reordered_result_dict["results"]):
-
-            if "memory" in circ_result["data"]:
-                received_memory = circ_result["data"]["memory"]
-                reordered_memory = []
-
-                length = len(received_memory[0])
-
-                new_order = CircuitTools.convert_wire_order(
-                    wires=list(range(length)),
-                    convention_from=wire_order,
-                    convention_to=CircuitTools.__wire_order__,
-                    num_species=num_species,
-                    num_sites=length//num_species,
-                )
-
-                for outcome in received_memory:
-                    reordered_memory.append("".join(np.array(list(outcome))[new_order]))
-
-                reordered_result_dict["results"][exp_idx]["data"]["memory"] = reordered_memory
-
-            if "counts" in circ_result["data"]:
-                received_counts = circ_result["data"]["counts"]
-                reordered_counts = {}
-
-                length = len(list(received_counts.keys())[0])
-
-                new_order = CircuitTools.convert_wire_order(
-                    wires=list(range(length)),
-                    convention_from=wire_order,
-                    convention_to=CircuitTools.__wire_order__,
-                    num_species=num_species,
-                    num_sites=length//num_species,
-                )
-
-                for outcome, count in received_counts.items():
-                    reordered_outcome = "".join(np.array(list(outcome))[new_order])
-                    reordered_counts[reordered_outcome] = count
-
-                reordered_result_dict["results"][exp_idx]["data"]["counts"] = reordered_counts
-
-        return Result.from_dict(reordered_result_dict)
+        return Result.from_dict(result_dict)
 
     def status(self):
         """

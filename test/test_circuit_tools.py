@@ -20,7 +20,7 @@ from qiskit.circuit import Parameter
 from qiskit.providers import BackendV1 as Backend
 from qiskit.providers.models import BackendConfiguration
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
-from qiskit_cold_atom.circuit_tools import CircuitTools
+from qiskit_cold_atom.circuit_tools import CircuitTools, WireOrder
 
 # These imports are needed to decorate the quantum circuit
 import qiskit_cold_atom.spins  # pylint: disable=unused-import
