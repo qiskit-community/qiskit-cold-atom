@@ -17,6 +17,7 @@ import warnings
 import json
 from configparser import ConfigParser, ParsingError
 from typing import Callable, Dict, Optional, Union, List
+import errno
 
 import requests
 
@@ -193,6 +194,12 @@ class ColdAtomProvider(Provider):
 
             if credentials_present and not overwrite:
                 warnings.warn("Credentials already present. Set overwrite=True to overwrite.")
+        else:
+            try:
+                os.makedirs(os.path.dirname(filename))
+            except OSError as exc:  # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise
 
         if not credentials_present or overwrite:
 
