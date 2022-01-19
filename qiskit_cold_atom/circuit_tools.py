@@ -246,8 +246,8 @@ class CircuitTools:
     def convert_wire_order(
         cls,
         wires: List[int],
-        convention_from: str,
-        convention_to: str,
+        convention_from: WireOrder,
+        convention_to: WireOrder,
         num_sites: int,
         num_species: int,
         sort: Optional[bool] = False,
