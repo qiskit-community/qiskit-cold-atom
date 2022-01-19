@@ -249,9 +249,9 @@ class FermiHubbard(FermionicGate):
 
         .. parsed-literal::
 
-                 ┌────────┐
-            q_0: ┤   FH   ├
-                 └────────┘
+                 ┌──────────────┐
+            q_0: ┤   FHubbard   ├
+                 └──────────────┘
 
     """
 
@@ -282,7 +282,7 @@ class FermiHubbard(FermionicGate):
         params = [item for sublist in param_list for item in sublist]
 
         super().__init__(
-            name="FH",
+            name="fhubbard",
             num_modes=num_modes,
             params=params,
             label=label,
@@ -328,14 +328,14 @@ class FermiHubbard(FermionicGate):
 
 # pylint: disable=invalid-name
 @add_gate
-def FH(self, j: List[float], u: float, mu: List[float], modes: List[int], label=None):
+def fhubbard(self, j: List[float], u: float, mu: List[float], modes: List[int], label=None):
     """Add the FermiHubbard gate to a QuantumCircuit."""
     return self.append(
         FermiHubbard(num_modes=len(modes), j=j, u=u, mu=mu, label=label), qargs=modes
     )
 
 
-class Hopping(FermionicGate):
+class Hop(FermionicGate):
     r"""
     Hopping of particles to neighbouring wells due to tunneling.
 
@@ -372,7 +372,7 @@ class Hopping(FermionicGate):
 
     def inverse(self):
         """Get inverse gate by reversing the sign of all hopping strengths"""
-        return Hopping(num_modes=self.num_modes, j=self.params)
+        return Hop(num_modes=self.num_modes, j=self.params)
 
     @property
     def generator(self) -> FermionicOp:
@@ -388,9 +388,9 @@ class Hopping(FermionicGate):
 
 
 @add_gate
-def hop_fermions(self, j: List[float], modes: List[int], label=None):
+def fhop(self, j: List[float], modes: List[int], label=None):
     """Add the hopping gate to a QuantumCircuit."""
-    return self.append(Hopping(num_modes=len(modes), j=j, label=label), qargs=modes)
+    return self.append(Hop(num_modes=len(modes), j=j, label=label), qargs=modes)
 
 
 class Interaction(FermionicGate):
@@ -420,7 +420,7 @@ class Interaction(FermionicGate):
             raise QiskitColdAtomError(f"number of modes must be even, {num_modes} given.")
 
         super().__init__(
-            name="int",
+            name="fint",
             num_modes=num_modes,
             params=[u],
             label=label,
@@ -447,12 +447,12 @@ class Interaction(FermionicGate):
 
 
 @add_gate
-def int_fermions(self, u: float, modes: List[int], label=None):
+def fint(self, u: float, modes: List[int], label=None):
     """Add the interaction gate to a QuantumCircuit."""
     return self.append(Interaction(num_modes=len(modes), u=u, label=label), qargs=modes)
 
 
-class LocalPhase(FermionicGate):
+class Phase(FermionicGate):
     r"""
     Applying a local phase to individual tweezers through an external potential
 
@@ -486,7 +486,7 @@ class LocalPhase(FermionicGate):
             )
 
         super().__init__(
-            name="phase",
+            name="fphase",
             num_modes=num_modes,
             params=mu,
             label=label,
@@ -494,7 +494,7 @@ class LocalPhase(FermionicGate):
 
     def inverse(self):
         """Get inverse gate by reversing the sign of all potentials"""
-        return LocalPhase(num_modes=self.num_modes, mu=[-1 * param for param in self.params])
+        return Phase(num_modes=self.num_modes, mu=[-1 * param for param in self.params])
 
     @property
     def generator(self) -> FermionicOp:
@@ -513,12 +513,12 @@ class LocalPhase(FermionicGate):
 
 
 @add_gate
-def phase_fermions(self, mu: List[float], modes: List[int], label=None):
+def fphase(self, mu: List[float], modes: List[int], label=None):
     """Add the local phase gate to a QuantumCircuit."""
-    return self.append(LocalPhase(num_modes=len(modes), mu=mu, label=label), qargs=modes)
+    return self.append(Phase(num_modes=len(modes), mu=mu, label=label), qargs=modes)
 
 
-class FermionRX(FermionicGate):
+class FRXGate(FermionicGate):
     r"""X-rotation between the spin-up and spin-down state at one tweezer site.
 
     The generating Hamiltonian of the FermionRx gate is
@@ -536,11 +536,11 @@ class FermionRX(FermionicGate):
             label: optional
         """
 
-        super().__init__(name="fer_rx", num_modes=2, params=[phi], label=label)
+        super().__init__(name="frx", num_modes=2, params=[phi], label=label)
 
     def inverse(self):
         """Get inverse gate by inverting the sign of the rotation angle"""
-        return FermionRX(-self.params[0])
+        return FRXGate(-self.params[0])
 
     @property
     def generator(self) -> FermionicOp:
@@ -552,12 +552,12 @@ class FermionRX(FermionicGate):
 
 
 @add_gate
-def rx_fermions(self, phi: float, wires: List[int]):
+def frx(self, phi: float, wires: List[int]):
     """Add the FermionRX gate to a QuantumCircuit."""
-    return self.append(FermionRX(phi=phi), qargs=wires)
+    return self.append(FRXGate(phi=phi), qargs=wires)
 
 
-class FermionRY(FermionicGate):
+class FRYGate(FermionicGate):
     r"""Y-rotation between the spin-up and spin-down state at one tweezer site.
 
     The generating Hamiltonian of the FermionRy gate is
@@ -574,11 +574,11 @@ class FermionRY(FermionicGate):
             phi: angle of the rotation
             label: optional
         """
-        super().__init__(name="fer_ry", num_modes=2, params=[phi], label=label)
+        super().__init__(name="fry", num_modes=2, params=[phi], label=label)
 
     def inverse(self):
         """Get inverse gate by inverting the sign of the rotation angle"""
-        return FermionRY(-self.params[0])
+        return FRYGate(-self.params[0])
 
     @property
     def generator(self) -> FermionicOp:
@@ -590,12 +590,12 @@ class FermionRY(FermionicGate):
 
 
 @add_gate
-def ry_fermions(self, phi: float, wires: List[int]):
+def fry(self, phi: float, wires: List[int]):
     """Add the FermionRY gate to a QuantumCircuit."""
-    return self.append(FermionRY(phi=phi), qargs=wires)
+    return self.append(FRYGate(phi=phi), qargs=wires)
 
 
-class FermionRZ(FermionicGate):
+class FRZGate(FermionicGate):
     r"""Z-rotation between the spin-up and spin-down state at one tweezer site.
 
     The generating Hamiltonian of the FermionRz gate is
@@ -612,11 +612,11 @@ class FermionRZ(FermionicGate):
             phi: angle of the rotation
             label: optional
         """
-        super().__init__(name="fer_rz", num_modes=2, params=[phi], label=label)
+        super().__init__(name="frz", num_modes=2, params=[phi], label=label)
 
     def inverse(self):
         """Get inverse gate by inverting the sign of the rotation angle"""
-        return FermionRZ(-self.params[0])
+        return FRZGate(-self.params[0])
 
     @property
     def generator(self) -> FermionicOp:
@@ -628,9 +628,9 @@ class FermionRZ(FermionicGate):
 
 
 @add_gate
-def rz_fermions(self, phi: float, wires: List[int]):
+def frz(self, phi: float, wires: List[int]):
     """Add the FermionRZ gate to a QuantumCircuit."""
-    return self.append(FermionRZ(phi=phi), qargs=wires)
+    return self.append(FRZGate(phi=phi), qargs=wires)
 
 
 class LoadFermions(Instruction):
@@ -652,6 +652,6 @@ class LoadFermions(Instruction):
 
 
 @add_gate
-def load_fermions(self, wire):
+def fload(self, wire):
     """Add the load fermion gate to a QuantumCircuit."""
     return self.append(LoadFermions(), [wire], [])

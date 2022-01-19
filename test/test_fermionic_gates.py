@@ -18,12 +18,12 @@ from qiskit.test import QiskitTestCase
 from qiskit_nature.operators.second_quantization import FermionicOp
 from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 from qiskit_cold_atom.fermions.fermion_gate_library import (
-    Hopping,
+    Hop,
     Interaction,
-    LocalPhase,
-    FermionRX,
-    FermionRY,
-    FermionRZ,
+    Phase,
+    FRXGate,
+    FRYGate,
+    FRZGate,
     FermiHubbard,
 )
 
@@ -42,7 +42,7 @@ class TestFermionicGates(QiskitTestCase):
         circ.append(Interaction(4, u_val), qargs=[0, 1, 2, 3])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ_decorated.int_fermions(u_val, [0, 1, 2, 3])
+        circ_decorated.fint(u_val, [0, 1, 2, 3])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
@@ -67,10 +67,10 @@ class TestFermionicGates(QiskitTestCase):
         """check matrix form of hopping gate in a two-tweezer example"""
         j = np.pi / 4
         circ = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ.append(Hopping(4, [j]), qargs=[0, 1, 2, 3])
+        circ.append(Hop(4, [j]), qargs=[0, 1, 2, 3])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ_decorated.hop_fermions([j], [0, 1, 2, 3])
+        circ_decorated.fhop([j], [0, 1, 2, 3])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
@@ -95,10 +95,10 @@ class TestFermionicGates(QiskitTestCase):
         """check matrix form of phase gate in a two-tweezer example"""
         phi1, phi2 = np.pi / 4, np.pi / 8
         circ = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ.append(LocalPhase(4, [phi1, phi2]), qargs=[0, 1, 2, 3])
+        circ.append(Phase(4, [phi1, phi2]), qargs=[0, 1, 2, 3])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ_decorated.phase_fermions([phi1, phi2], [0, 1, 2, 3])
+        circ_decorated.fphase([phi1, phi2], [0, 1, 2, 3])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
@@ -124,10 +124,10 @@ class TestFermionicGates(QiskitTestCase):
         """check matrix form of spin_rx gate in a two-tweezer example"""
         phi = np.pi / 4
         circ = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ.append(FermionRX(phi), qargs=[0, 2])
+        circ.append(FRXGate(phi), qargs=[0, 2])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ_decorated.rx_fermions(phi, [0, 2])
+        circ_decorated.frx(phi, [0, 2])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
@@ -155,10 +155,10 @@ class TestFermionicGates(QiskitTestCase):
         """check matrix form of spin_ry gate in a two-tweezer example"""
         phi = np.pi / 4
         circ = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ.append(FermionRY(phi), qargs=[0, 2])
+        circ.append(FRYGate(phi), qargs=[0, 2])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ_decorated.ry_fermions(phi, [0, 2])
+        circ_decorated.fry(phi, [0, 2])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
@@ -186,10 +186,10 @@ class TestFermionicGates(QiskitTestCase):
         """check matrix form of spin_rz gate in a two-tweezer example"""
         phi = np.pi / 4
         circ = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ.append(FermionRZ(phi), qargs=[0, 2])
+        circ.append(FRZGate(phi), qargs=[0, 2])
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = self.backend.initialize_circuit([[0, 1], [1, 0]])
-        circ_decorated.rz_fermions(phi, [0, 2])
+        circ_decorated.frz(phi, [0, 2])
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
@@ -215,12 +215,12 @@ class TestFermionicGates(QiskitTestCase):
         """test the functionality of the base class for fermionic gates"""
 
         test_gates = [
-            Hopping(num_modes=4, j=[0.5]),
+            Hop(num_modes=4, j=[0.5]),
             Interaction(num_modes=8, u=2.0),
-            LocalPhase(num_modes=2, mu=[1.0]),
-            FermionRX(phi=0.5),
-            FermionRY(phi=-0.7),
-            FermionRZ(phi=1.3),
+            Phase(num_modes=2, mu=[1.0]),
+            FRXGate(phi=0.5),
+            FRYGate(phi=-0.7),
+            FRZGate(phi=1.3),
             FermiHubbard(num_modes=4, j=[0.5], u=1.0, mu=[0.4, 1.2]),
         ]
 
@@ -239,12 +239,12 @@ class TestFermionicGates(QiskitTestCase):
     def test_identity_gates(self):
         """test that gates with parameters equal to zero still have a well-defined generator."""
         test_gates = [
-            Hopping(num_modes=4, j=[0.0]),
+            Hop(num_modes=4, j=[0.0]),
             Interaction(num_modes=4, u=0.0),
-            LocalPhase(num_modes=2, mu=[0.0]),
-            FermionRX(phi=0.0),
-            FermionRY(phi=-0.0),
-            FermionRZ(phi=0.0),
+            Phase(num_modes=2, mu=[0.0]),
+            FRXGate(phi=0.0),
+            FRYGate(phi=-0.0),
+            FRZGate(phi=0.0),
             FermiHubbard(num_modes=4, j=[0.0], u=0.0, mu=[0.0, 0.0]),
         ]
 

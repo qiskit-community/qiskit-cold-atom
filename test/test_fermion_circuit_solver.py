@@ -22,7 +22,7 @@ from qiskit_cold_atom.fermions.fermion_circuit_solver import (
     FermionCircuitSolver,
     FermionicBasis,
 )
-from qiskit_cold_atom.fermions.fermion_gate_library import Hopping
+from qiskit_cold_atom.fermions.fermion_gate_library import Hop
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
 # Black import needed to decorate the quantum circuit with spin gates.
@@ -47,8 +47,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
     def test_preprocess_circuit(self):
         """test the preprocessing of the circuit"""
         circ = QuantumCircuit(4, 4)
-        circ.load_fermions([0, 2])
-        circ.hop_fermions([0.5], [0, 1, 2, 3])
+        circ.fload([0, 2])
+        circ.fhop([0.5], [0, 1, 2, 3])
         with self.subTest("spin conserving circuit"):
             self.solver2.preprocess_circuit(circ)
             self.assertEqual(self.solver2._dim, 4)
@@ -59,7 +59,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
     def test_get_initial_state(self):
         """test initialization of the state for the simulation"""
         circ = QuantumCircuit(4, 4)
-        circ.load_fermions([0, 3])
+        circ.fload([0, 3])
         self.solver2.preprocess_circuit(circ)
         init_state = self.solver2.get_initial_state(circ)
         target = np.array([0, 0, 1, 0])
@@ -92,29 +92,29 @@ class TestFermionCircuitSolver(QiskitTestCase):
         """test the checks for conservation of spin-species."""
         with self.subTest("check operator type"):
             circ = QuantumCircuit(4, 4)
-            circ.hop_fermions([0.5], [0, 1, 2, 3])
+            circ.fhop([0.5], [0, 1, 2, 3])
             circ.rlx(0.5, 0)  # apply gate with a SpinOp generator
             with self.assertRaises(QiskitColdAtomError):
                 self.solver1._check_conservations(circ)
 
         with self.subTest("check compatibility with number of species"):
             circ = QuantumCircuit(5, 5)
-            circ.hop_fermions([0.5], [0, 1, 2, 3])
+            circ.fhop([0.5], [0, 1, 2, 3])
             self.assertTrue(self.solver1._check_conservations(circ) == (True, True))
             with self.assertRaises(QiskitColdAtomError):
                 self.solver2._check_conservations(circ)
 
         with self.subTest("spin conserved"):
             circ = QuantumCircuit(4, 4)
-            circ.load_fermions([0, 3])
-            circ.hop_fermions([0.5], [0, 1, 2, 3])
+            circ.fload([0, 3])
+            circ.fhop([0.5], [0, 1, 2, 3])
             self.assertTrue(self.solver2._check_conservations(circ) == (True, True))
 
         with self.subTest("spin not conserved"):
             circ = QuantumCircuit(4, 4)
-            circ.load_fermions([0, 3])
-            circ.hop_fermions([0.5], [0, 1, 2, 3])
-            circ.rx_fermions(0.3, [0, 2])  # non spin-conserving gate
+            circ.fload([0, 3])
+            circ.fhop([0.5], [0, 1, 2, 3])
+            circ.frx(0.3, [0, 2])  # non spin-conserving gate
             self.assertTrue(self.solver2._check_conservations(circ) == (True, False))
 
     def test_operator_to_mat(self):
@@ -126,8 +126,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
                 self.solver1.operator_to_mat(spin_op)
 
         circ = QuantumCircuit(4, 4)
-        circ.load_fermions([0, 3])
-        circ.hop_fermions([0.5], [0, 1, 2, 3])
+        circ.fload([0, 3])
+        circ.fhop([0.5], [0, 1, 2, 3])
 
         with self.subTest("check dimensionality of operator"):
             self.solver2.preprocess_circuit(circ)
@@ -147,14 +147,14 @@ class TestFermionCircuitSolver(QiskitTestCase):
                     [0.0, -0.5, -0.5, 0.0],
                 ]
             )
-            test_op = self.solver2.operator_to_mat(Hopping(num_modes=4, j=[0.5]).generator)
+            test_op = self.solver2.operator_to_mat(Hop(num_modes=4, j=[0.5]).generator)
             self.assertTrue(np.alltrue(test_op.toarray() == target))
 
     def test_draw_shots(self):
         """test drawing of the shots from a measurement distribution"""
         circ = QuantumCircuit(4, 4)
-        circ.load_fermions([0, 3])
-        circ.hop_fermions([0.5], [0, 1, 2, 3])
+        circ.fload([0, 3])
+        circ.fhop([0.5], [0, 1, 2, 3])
         self.solver2.preprocess_circuit(circ)
 
         with self.subTest("check missing shot number"):
@@ -179,9 +179,9 @@ class TestFermionCircuitSolver(QiskitTestCase):
         """test the to_operators method inherited form BaseCircuitSolver"""
 
         test_circ = QuantumCircuit(4, 4)
-        test_circ.load_fermions([0, 3])
-        test_circ.hop_fermions([0.5], [0, 1, 2, 3])
-        test_circ.int_fermions(1.0, [0, 1, 2, 3])
+        test_circ.fload([0, 3])
+        test_circ.fhop([0.5], [0, 1, 2, 3])
+        test_circ.fint(1.0, [0, 1, 2, 3])
         test_circ.measure_all()
 
         with self.subTest("test ignore barriers"):
@@ -199,7 +199,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
         with self.subTest("gate after previous measurement instruction"):
             meas_circ = QuantumCircuit(4, 4)
             meas_circ.measure_all()
-            meas_circ.hop_fermions([0.5], [0, 1, 2, 3])
+            meas_circ.fhop([0.5], [0, 1, 2, 3])
             with self.assertRaises(QiskitColdAtomError):
                 self.solver1.to_operators(meas_circ)
 
@@ -223,9 +223,9 @@ class TestFermionCircuitSolver(QiskitTestCase):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""
 
         test_circ = QuantumCircuit(4)
-        test_circ.load_fermions([0, 3])
-        test_circ.hop_fermions([np.pi / 4], [0, 1, 2, 3])
-        test_circ.int_fermions(np.pi, [0, 1, 2, 3])
+        test_circ.fload([0, 3])
+        test_circ.fhop([np.pi / 4], [0, 1, 2, 3])
+        test_circ.fint(np.pi, [0, 1, 2, 3])
 
         with self.subTest("running the circuit"):
             self.solver2.shots = 5
