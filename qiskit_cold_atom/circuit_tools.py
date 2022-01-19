@@ -287,7 +287,7 @@ class CircuitTools:
         if convention_from == WireOrder.SEQUENTIAL and convention_to == WireOrder.INTERLEAVED:
             new_wires = [idx % num_sites * num_species + idx // num_sites for idx in wires]
 
-        elif convention_from == "interleaved" and convention_to == "sequential":
+        elif convention_from == WireOrder.INTERLEAVED and convention_to == WireOrder.SEQUENTIAL:
             new_wires = [idx % num_species * num_sites + idx // num_species for idx in wires]
 
         if sort:
