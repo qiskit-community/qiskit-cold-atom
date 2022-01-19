@@ -53,6 +53,7 @@ class CircuitTools:
         circuits: Union[List[QuantumCircuit], QuantumCircuit],
         backend: Backend,
         shots: Optional[int] = None,
+        convert_wires: bool = True,
     ) -> None:
         """
         Performs validity checks on circuits against the configuration of the backends. This checks
@@ -63,6 +64,7 @@ class CircuitTools:
             circuits: The circuits that need to be run.
             backend: The backend on which the circuit should be run.
             shots: The number of shots for each circuit.
+            convert_wires: If True, the circuits are converted to the wiring convention of the backend.
 
         Raises:
             QiskitColdAtomError: If the maximum shot number specified by the backend is exceeded.
@@ -116,7 +118,7 @@ class CircuitTools:
             # and the circuit's wire count must be a multiple of this.
             num_species = None
             wire_order = None
-            if "num_species" in config_dict:
+            if "num_species" in config_dict and convert_wires:
                 num_species = backend.configuration().num_species
                 if "wire_order" in config_dict:
                     wire_order = WireOrder(backend.configuration().wire_order)
@@ -151,7 +153,7 @@ class CircuitTools:
                 if name in native_gates:
                     couplings = native_gates[name]
 
-                    if num_species:
+                    if num_species and convert_wires:
                         wires = cls.convert_wire_order(
                             wires,
                             convention_from=cls.__wire_order__,
@@ -168,7 +170,9 @@ class CircuitTools:
                         )
 
     @classmethod
-    def circuit_to_data(cls, circuit: QuantumCircuit, backend: Backend) -> List[List]:
+    def circuit_to_data(
+        cls, circuit: QuantumCircuit, backend: Backend, convert_wires: bool = True
+    ) -> List[List]:
         """Convert the circuit to JSON serializable instructions.
 
         Helper function that converts a QuantumCircuit into a list of symbolic
@@ -177,6 +181,7 @@ class CircuitTools:
         Args:
             circuit: The quantum circuit for which to extract the instructions.
             backend: The backend on which the circuit should be run.
+            convert_wires: If True, the circuits are converted to the wiring convention of the backend.
 
         Returns:
             A list of lists describing the instructions in the circuit. Each sublist
@@ -199,7 +204,7 @@ class CircuitTools:
         for inst in circuit.data:
             name = inst[0].name
             wires = [circuit.qubits.index(qubit) for qubit in inst[1]]
-            if num_species:
+            if num_species and convert_wires:
                 wires = cls.convert_wire_order(
                     wires,
                     convention_from=cls.__wire_order__,
@@ -219,6 +224,7 @@ class CircuitTools:
         circuits: Union[List[QuantumCircuit], QuantumCircuit],
         backend: Backend,
         shots: int = 60,
+        convert_wires: bool = True,
     ) -> dict:
         """
         Converts a circuit to a JSon payload to be sent to a given backend.
@@ -227,6 +233,7 @@ class CircuitTools:
             circuits: The circuits that need to be run.
             backend: The backend on which the circuit should be run.
             shots: The number of shots for each circuit.
+            convert_wires: If True, the circuits are converted to the wiring convention of the backend.
 
         Returns:
             A list of dicts.
@@ -235,7 +242,9 @@ class CircuitTools:
             circuits = [circuits]
 
         # validate the circuits against the backend configuration
-        cls.validate_circuits(circuits=circuits, backend=backend, shots=shots)
+        cls.validate_circuits(
+            circuits=circuits, backend=backend, shots=shots, convert_wires=convert_wires
+        )
 
         if "wire_order" in backend.configuration().to_dict():
             wire_order = WireOrder(backend.configuration().wire_order)
@@ -245,7 +254,9 @@ class CircuitTools:
         experiments = {}
         for idx, circuit in enumerate(circuits):
             experiments["experiment_%i" % idx] = {
-                "instructions": cls.circuit_to_data(circuit, backend=backend),
+                "instructions": cls.circuit_to_data(
+                    circuit, backend=backend, convert_wires=convert_wires
+                ),
                 "shots": shots,
                 "num_wires": circuit.num_qubits,
                 "wire_order": wire_order,

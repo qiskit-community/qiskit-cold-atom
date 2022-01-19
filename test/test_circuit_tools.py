@@ -212,6 +212,7 @@ class TestCircuitToColdAtom(QiskitTestCase):
 
         num_sites = 4
         num_species = 3
+        # conversion rule: i -> (i % num_sites) * num_species + i // num_sites
         wires_sequential = [0, 1, 4, 5, 8, 9]
         wires_interleaved = [0, 3, 1, 4, 2, 5]
 
