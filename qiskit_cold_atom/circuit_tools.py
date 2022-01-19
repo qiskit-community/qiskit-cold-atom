@@ -181,7 +181,7 @@ class CircuitTools:
         if "num_species" in config_dict:
             num_species = backend.configuration().num_species
             if "wire_order" in config_dict:
-                wire_order = backend.configuration().wire_order
+                wire_order = WireOrder(backend.configuration().wire_order)
             else:
                 wire_order = cls.__wire_order__
 
