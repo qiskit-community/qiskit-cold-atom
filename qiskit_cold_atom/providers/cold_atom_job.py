@@ -108,7 +108,7 @@ class ColdAtomJob(Job):
 
         num_species = self._backend.configuration().num_species
         try:
-            wire_order = self._backend.configuration().wire_order
+            wire_order = WireOrder(self._backend.configuration().wire_order)
         except KeyError as key_error:
             raise QiskitColdAtomError(
                 "Backends that specify a number of atomic species also need to specify the wiring "
