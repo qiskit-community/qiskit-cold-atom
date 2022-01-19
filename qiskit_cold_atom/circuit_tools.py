@@ -227,7 +227,7 @@ class CircuitTools:
         cls.validate_circuits(circuits=circuits, backend=backend, shots=shots)
 
         if "wire_order" in backend.configuration().to_dict():
-            wire_order = backend.configuration().wire_order
+            wire_order = WireOrder(backend.configuration().wire_order)
         else:
             wire_order = cls.__wire_order__
 
