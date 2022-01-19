@@ -177,6 +177,10 @@ class ColdAtomProvider(Provider):
             overwrite: If true, will overwrite any credentials already stored on disk
             filename: Full path to the credentials file. If ``None``, the default
                 location is used (``$HOME/.qiskit/cold_atom_credentials``).
+
+        Raises:
+            OSError: If there is a race condition when creating the directory for the
+                credentials if it does not already exist.
         """
         if isinstance(url, str):
             url = [url]
