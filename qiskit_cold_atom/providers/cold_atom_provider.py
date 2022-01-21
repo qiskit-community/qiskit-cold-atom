@@ -17,6 +17,7 @@ import warnings
 import json
 from configparser import ConfigParser, ParsingError
 from typing import Callable, Dict, Optional, Union, List
+import errno
 
 import requests
 
@@ -176,6 +177,10 @@ class ColdAtomProvider(Provider):
             overwrite: If true, will overwrite any credentials already stored on disk
             filename: Full path to the credentials file. If ``None``, the default
                 location is used (``$HOME/.qiskit/cold_atom_credentials``).
+
+        Raises:
+            OSError: If there is a race condition when creating the directory for the
+                credentials if it does not already exist.
         """
         if isinstance(url, str):
             url = [url]
@@ -193,6 +198,12 @@ class ColdAtomProvider(Provider):
 
             if credentials_present and not overwrite:
                 warnings.warn("Credentials already present. Set overwrite=True to overwrite.")
+        else:
+            try:
+                os.makedirs(os.path.dirname(filename))
+            except OSError as exc:  # Guard against race condition
+                if exc.errno != errno.EEXIST:
+                    raise
 
         if not credentials_present or overwrite:
 
