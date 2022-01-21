@@ -20,7 +20,7 @@ from qiskit.circuit import Parameter
 from qiskit.providers import BackendV1 as Backend
 from qiskit.providers.models import BackendConfiguration
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
-from qiskit_cold_atom.circuit_tools import CircuitTools
+from qiskit_cold_atom.circuit_tools import CircuitTools, WireOrder
 
 # These imports are needed to decorate the quantum circuit
 import qiskit_cold_atom.spins  # pylint: disable=unused-import
@@ -203,6 +203,35 @@ class TestCircuitToColdAtom(QiskitTestCase):
             ["measure", [2], []],
         ]
 
-        actual_output = CircuitTools.circuit_to_data(circ)
+        actual_output = CircuitTools.circuit_to_data(circ, backend=self.dummy_backend)
 
         self.assertEqual(actual_output, target_output)
+
+    def test_convert_wire_order(self):
+        """test the convert_wire_order method"""
+
+        num_sites = 4
+        num_species = 3
+        # conversion rule: i -> (i % num_sites) * num_species + i // num_sites
+        wires_sequential = [0, 1, 4, 5, 8, 9]
+        wires_interleaved = [0, 3, 1, 4, 2, 5]
+
+        with self.subTest("test sequential to interleaved"):
+            wires_converted = CircuitTools.convert_wire_order(
+                wires=wires_sequential,
+                convention_from=WireOrder.SEQUENTIAL,
+                convention_to=WireOrder.INTERLEAVED,
+                num_sites=num_sites,
+                num_species=num_species,
+            )
+            self.assertEqual(wires_converted, wires_interleaved)
+
+        with self.subTest("test interleaved to sequential"):
+            wires_converted = CircuitTools.convert_wire_order(
+                wires=wires_interleaved,
+                convention_from=WireOrder.INTERLEAVED,
+                convention_to=WireOrder.SEQUENTIAL,
+                num_sites=num_sites,
+                num_species=num_species,
+            )
+            self.assertEqual(wires_converted, wires_sequential)
