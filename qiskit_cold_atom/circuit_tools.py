@@ -115,7 +115,7 @@ class CircuitTools:
                 )
 
             # If num_species is specified by the backend, the wires describe different atomic species
-            # and the circuit's wire count must be a multiple of this.
+            # and the circuit's wire count must be a multiple of the number of species.
             num_species = None
             wire_order = None
             if "num_species" in config_dict and convert_wires:
