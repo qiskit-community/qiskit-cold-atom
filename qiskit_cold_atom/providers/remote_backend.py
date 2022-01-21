@@ -93,7 +93,7 @@ class RemoteBackend(Backend):
         Args:
             circuit: The quantum circuits to be executed on the device backend
             shots: The number of measurement shots to be measured for each given circuit
-            convert_wires: If True, the circuits are converted to the wiring convention of the backend.
+            convert_wires: If True (the default), the circuits are converted to the wiring convention of the backend.
             run_kwargs: Additional keyword arguments that might be passed down when calling
             qiskit.execute() which will have no effect on this backend.
 
