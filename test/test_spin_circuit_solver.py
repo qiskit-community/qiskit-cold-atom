@@ -68,7 +68,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
         """test whether preprocessing of the circuit correctly sets the dimension"""
         circ = QuantumCircuit(2)
         self.solver.preprocess_circuit(circ)
-        self.assertEqual(self.solver.dim, 4 ** 2)
+        self.assertEqual(self.solver.dim, 4**2)
 
     def test_draw_shots(self):
         """test drawing of the shots from a measurement distribution"""
