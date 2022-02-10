@@ -92,10 +92,10 @@ class TestSpinSimulatorBackend(QiskitTestCase):
             test_circ.rly(np.pi / 4, [0, 1])
 
             statevector_1 = self.backend.run(test_circ, spin=1).result().get_statevector()
-            self.assertEqual(len(statevector_1), 3 ** 2)
+            self.assertEqual(len(statevector_1), 3**2)
 
             statevector_2 = self.backend.run(test_circ, spin=5 / 2).result().get_statevector()
-            self.assertEqual(len(statevector_2), 6 ** 2)
+            self.assertEqual(len(statevector_2), 6**2)
 
         with self.subTest("test irregular spin values"):
             test_circ = QuantumCircuit(2)
