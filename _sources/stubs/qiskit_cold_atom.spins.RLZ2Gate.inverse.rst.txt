@@ -1,0 +1,8 @@
+
+
+RLZ2Gate.inverse
+=======================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLZ2Gate.inverse

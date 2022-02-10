@@ -1,0 +1,1105 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fermionic Tweezer Hardware &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Collective Spin Hardware" href="04_collective_spin_hardware.html" />
+    <link rel="prev" title="Spin circuits" href="02_spin_circuits.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Fermionic Tweezer Hardware</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/03_fermionic_tweezer_hardware.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Fermionic-Tweezer-Hardware">
+<h1>Fermionic Tweezer Hardware<a class="headerlink" href="#Fermionic-Tweezer-Hardware" title="Permalink to this headline">¶</a></h1>
+<section id="Experimental-system">
+<h2>Experimental system<a class="headerlink" href="#Experimental-system" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, we give a concrete example of how the fermionic setting introduced in the <a class="reference internal" href="01_introduction_and_fermionic_circuits.html"><span class="doc">first tutorial</span></a> can be used to describe a realistic cold atomic experimental setup as a backend in Qiskit-cold-atom. We call this setting the “fermionic tweezer hardware”.</p>
+<p>In this architecture, individual fermionic atoms are trapped and cooled in optical microtraps or “tweezers” [1]. The trapped fermionic atoms come in two different atomic states related to the nuclear spin which we thus refer to as spin-up (<span class="math notranslate nohighlight">\(\uparrow\)</span>) and spin-down (<span class="math notranslate nohighlight">\(\downarrow\)</span>). The system is cooled down to a point where only the lowest spatial mode of each tweezer can be occupied by at most one <span class="math notranslate nohighlight">\(\uparrow\)</span>- and one <span class="math notranslate nohighlight">\(\downarrow\)</span>-atom. The occupations of the individual
+tweezers are the carriers of quantum information in this system.</p>
+<p>The tweezers are laid out in a linear geometry. Schematically, we can picture the fermionic register with a given number of <span class="math notranslate nohighlight">\(\uparrow\)</span>-particles (red) and <span class="math notranslate nohighlight">\(\downarrow\)</span>-particles (blue) distributed over an array of wells:</p>
+<p><img alt="105e9c53cb9d48c6a7cfb5c4b8fa5575" class="no-scaled-link" src="../_images/fermionic_tweezer_array.png" style="width: 500px;" /></p>
+<p>Each tweezer can be initialized with a desired number of <span class="math notranslate nohighlight">\(\uparrow\)</span>- and <span class="math notranslate nohighlight">\(\downarrow-\)</span> particles as a state preparation step.</p>
+</section>
+<section id="Circuit-description">
+<h2>Circuit description<a class="headerlink" href="#Circuit-description" title="Permalink to this headline">¶</a></h2>
+<section id="Initialization">
+<h3>Initialization<a class="headerlink" href="#Initialization" title="Permalink to this headline">¶</a></h3>
+<p>In the circuit description, the initialization of the tweezers with atoms is carried out by the <code class="docutils literal notranslate"><span class="pre">LoadFermions</span></code> instruction. In the fermionic setting each individual fermionic mode is assigned one wire in the circuit. In our case, each spatial mode supports two spin modes. The circuit will thus consist of <span class="math notranslate nohighlight">\(2L\)</span> wires, where the first <span class="math notranslate nohighlight">\(L\)</span> wires are by convention taken to represent the spin-<span class="math notranslate nohighlight">\(\uparrow\)</span> modes, assigning the remaining wires to the spin- <span class="math notranslate nohighlight">\(\downarrow\)</span> modes.</p>
+<p>The <a class="reference internal" href="05_cold_atom_provider.html"><span class="doc">ColdAtomProvider</span></a> includes the backend to simulate the fermionic tweezer hardware. This backend (like all fermionic backends) comes with an <code class="docutils literal notranslate"><span class="pre">initialize_circuit</span></code> method that creates an empty circuit initialized with the given atomic occupations. The backend is defined for a system consisting of <span class="math notranslate nohighlight">\(L=4\)</span> tweezers. For example, the schematic state drawn above can be initialized like this:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers</span> <span class="kn">import</span> <span class="n">ColdAtomProvider</span>
+
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;fermionic_tweezer_simulator&quot;</span><span class="p">)</span>
+
+<span class="c1"># give initial occupations separated by spin species</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_03_fermionic_tweezer_hardware_2_0.png" src="../_images/tutorials_03_fermionic_tweezer_hardware_2_0.png" />
+</div>
+</div>
+</section>
+<section id="Readout:">
+<h3>Readout:<a class="headerlink" href="#Readout:" title="Permalink to this headline">¶</a></h3>
+<p>A measurement on this system will yield the occupations per spin species of the individual tweezer modes [2]. Therefore, similar to qubit circuits, each wire gets projected to 0 (mode not occupied) or 1 (mode occupied) upon measurement of the circuit.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;measured counts: &quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;measured counts: &quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_memory</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+measured counts:  {&#39;10010011&#39;: 10}
+measured counts:  [&#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;, &#39;10010011&#39;]
+</pre></div></div>
+</div>
+</section>
+<section id="Gates-and-dynamics">
+<h3>Gates and dynamics<a class="headerlink" href="#Gates-and-dynamics" title="Permalink to this headline">¶</a></h3>
+<p>As laid out in the introductory notebook, within Qiskit-cold-atom, the unitary gates available in the hardware are described on the basis of their generating Hamiltonian. Here, the physical dynamics of the 1-D tweezer array are governed by a Fermi-Hubbard Hamiltonian in second quantization:</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{FH}}(\boldsymbol{J},U,\boldsymbol{\mu}) =  \underbrace{\sum_{i=1,\sigma}^{L-1} -J_i (f^\dagger_{i,\sigma} f_{i+1,\sigma} + f^\dagger_{i+1,\sigma} f_{i,\sigma} )}_{\text{Tunneling/Hopping}} + \underbrace{U \sum_{i=1}^{L}  n_{i,\uparrow}n_{i,\downarrow}}_{\text{interaction}} + \underbrace{\sum_{i=1,\sigma}^{L} \mu_i n_{i,\sigma}}_{\text{potential offset}}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(f_{i,\sigma}, f^\dagger_{i,\sigma}\)</span> are annihilation/creation operators for atoms in tweezers at site <span class="math notranslate nohighlight">\(i\)</span> with spin <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(n_{i,\sigma} = f^\dagger_{i,\sigma} f_{i,\sigma}\)</span> is the number operator.</p>
+<p>The dynamics depend on the parameters <span class="math notranslate nohighlight">\(\{ \boldsymbol{J}, U, \boldsymbol{\mu} \}\)</span> that determine the strength of the different contributions:</p>
+<ul class="simple">
+<li><p>The first term describes hopping between the site <span class="math notranslate nohighlight">\(i\)</span> and its neighboring site <span class="math notranslate nohighlight">\(i+1\)</span> (for both spin species) through the tunnel effect. The parameter <span class="math notranslate nohighlight">\(J_i\)</span> determines the strength of this hopping and can be tuned by adjusting the potential barrier between these two wells.</p></li>
+<li><p>The second term describes an interaction between two atoms when they occupy the same site. It is controlled globally by the parameter <span class="math notranslate nohighlight">\(U\)</span> set by an external magnetic field exploiting a Feshbach resonance.</p></li>
+<li><p>The third term describes local offsets in the potential which can locally imprint a phase by tuning <span class="math notranslate nohighlight">\(\mu_i\)</span>.</p></li>
+</ul>
+<p>Here, we assume that the parameters <span class="math notranslate nohighlight">\(\{ J_i, U, \mu_i \}\)</span> are tuned individually and can be switched on and off quasi-instantaneously. We can thus use this Hamiltonian to define a set of unitary quantum gates that can be implemented on the hardware. By choosing specific values <span class="math notranslate nohighlight">\(\{ J_i, U, \mu_i \}\)</span>, the unitary of the gate is defined as <span class="math notranslate nohighlight">\(U_{\text{FH}} = e^{-i H_{\text{FH}}(J_i, U, \mu_i)}\)</span>.</p>
+<p>Let’s look at a first example circuit where a global “Fermi-Hubbard-gate” is applied:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermion_gate_library</span> <span class="kn">import</span> <span class="n">FermiHubbard</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">all_modes</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FermiHubbard</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">],</span> <span class="n">u</span><span class="o">=</span><span class="mf">5.</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">0.</span><span class="p">]),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">all_modes</span><span class="p">)</span>
+
+<span class="c1"># alternatively append the FH gate directly:</span>
+<span class="c1"># qc.fhubbard(j=[0.5, 1., -1.], u=5., mu=[0., -1., 1., 0.], modes=all_modes)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_03_fermionic_tweezer_hardware_6_0.png" src="../_images/tutorials_03_fermionic_tweezer_hardware_6_0.png" />
+</div>
+</div>
+<p>This Fermi-Hubbard gate always acts globally on the entire fermionic register. The dynamics can be broken apart to separate the different interactions in the hardware by having only one term of the Hamiltonian active at a given time to create three individual gates:</p>
+<ul class="simple">
+<li><p>a “hopping” gate with unitary <span class="math notranslate nohighlight">\(U_{\text{hop}}(J_i) = U_{\text{FH}}( J, U=0, \mu=0)\)</span>. This hopping gate is a local gate that turns on the hopping of particles to neighbouring wells which is the crucial tool to create superposition in the occupation number basis.</p></li>
+<li><p>an “interaction” gate with unitary <span class="math notranslate nohighlight">\(U_{\text{int}}(U) = U_{\text{FH}}( U, J=0, \mu=0)\)</span>. This interaction gate is always a global gate acting on the entire register. It turns on the interaction of particles which affects only the states where two particles of opposite spin occupy the same well. It is thus diagonal in the occupation number basis and imprints conditional phases on the states with double occupations.</p></li>
+<li><p>a “local phase” gate with unitary <span class="math notranslate nohighlight">\(U_{\text{ext}}(\mu) = U_{\text{FH}}( \mu, J=0, U=0)\)</span>. This gate acts locally on individual tweezers. For each index <span class="math notranslate nohighlight">\(i\)</span> in the tweezer array, the parameter <span class="math notranslate nohighlight">\(\mu_i\)</span> creates an external offset potential. This operation is also diagonal in the occupation number basis and imprints local phases.</p></li>
+</ul>
+<p>These gates are available as <code class="docutils literal notranslate"><span class="pre">FermionicGates</span></code> from the <code class="docutils literal notranslate"><span class="pre">fermion_gate_library</span></code>. Let’s use them to build up a small circuit:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermion_gate_library</span> <span class="kn">import</span> <span class="n">Hop</span><span class="p">,</span> <span class="n">Interaction</span><span class="p">,</span> <span class="n">Phase</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">hop_gate</span> <span class="o">=</span> <span class="n">Hop</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="p">[</span><span class="mf">0.5</span><span class="p">])</span>
+<span class="n">interaction_gate</span> <span class="o">=</span> <span class="n">Interaction</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="n">phase_gate</span> <span class="o">=</span> <span class="n">Phase</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="mf">1.</span><span class="p">])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hop_gate</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">interaction_gate</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="n">all_modes</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">phase_gate</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># equivalently, we can build the same circuit with a shortcut notation:</span>
+<span class="c1"># qc.fhop([0.5], [0, 1, 4, 5])</span>
+<span class="c1"># qc.fint(2., all_modes)</span>
+<span class="c1"># qc.fphase([1.], [2, 6])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span> <span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_03_fermionic_tweezer_hardware_8_0.png" src="../_images/tutorials_03_fermionic_tweezer_hardware_8_0.png" />
+</div>
+</div>
+<p>As detailed in the introduction notebook, these gates have their generating Hamiltonians defined as a <code class="docutils literal notranslate"><span class="pre">FermionicOp</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hopping generator: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">hop_gate</span><span class="o">.</span><span class="n">generator</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> interaction generator: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">interaction_gate</span><span class="o">.</span><span class="n">generator</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> phase generator: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">phase_gate</span><span class="o">.</span><span class="n">generator</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+hopping generator:
+ Fermionic Operator
+register length=4, number terms=4
+  (-0.5+0j) * ( +-II )
++ (0.5+0j) * ( -+II )
++ (-0.5+0j) * ( II+- )
++ (0.5+0j) * ( II-+ )
+
+ interaction generator:
+ Fermionic Operator
+register length=8, number terms=4
+  (2+0j) * ( IIINIIIN )
++ (2+0j) * ( IINIIINI )
++ (2+0j) * ( INIIINII )
++ (2+0j) * ( NIIINIII )
+
+ phase generator:
+ Fermionic Operator
+register length=2, number terms=2
+  (1+0j) * ( IN )
++ (1+0j) * ( NI )
+</pre></div></div>
+</div>
+<p>Let’s run this circuit on the backend:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counts: &quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time taken: &quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">time_taken</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+counts:  {&#39;10101001&#39;: 4, &#39;01100101&#39;: 51, &#39;10100101&#39;: 20, &#39;01101001&#39;: 25}
+time taken:  0.06326532363891602
+</pre></div></div>
+</div>
+<p>Note that in the measured result bitstrings, the number of 1s is always constant. This is of course a direct result of the fact that all dynamics conserve the total number of atoms initialized in the circuit.</p>
+<p>This is also reflected in the basis states over which the simulation is performed:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_basis</span><span class="p">(</span><span class="n">qc</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+ 0.  |0, 0, 0, 0, 1, 1, 1, 1&gt;
+ 1.  |0, 0, 0, 1, 0, 1, 1, 1&gt;
+ 2.  |0, 0, 0, 1, 1, 0, 1, 1&gt;
+ 3.  |0, 0, 0, 1, 1, 1, 0, 1&gt;
+ 4.  |0, 0, 0, 1, 1, 1, 1, 0&gt;
+ .
+ .
+ .
+ 65.  |1, 1, 1, 0, 0, 0, 0, 1&gt;
+ 66.  |1, 1, 1, 0, 0, 0, 1, 0&gt;
+ 67.  |1, 1, 1, 0, 0, 1, 0, 0&gt;
+ 68.  |1, 1, 1, 0, 1, 0, 0, 0&gt;
+ 69.  |1, 1, 1, 1, 0, 0, 0, 0&gt;
+</pre></div></div>
+</div>
+<p>However, this circuit not only conserves the total atom number, but also the atom number per spin species. This can be leveraged to reduce the dimension of the basis of the simulation dramatically. When running the circuit, by passing <code class="docutils literal notranslate"><span class="pre">num_species</span> <span class="pre">=</span> <span class="pre">2</span></code> as a keyword argument, the solver checks for conservation of each species. In our example, this almost halves the dimension of the basis. This also works for any number of different fermionic species.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job_efficient</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">num_species</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counts: &quot;</span><span class="p">,</span> <span class="n">job_efficient</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;time taken: &quot;</span><span class="p">,</span><span class="n">job_efficient</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">time_taken</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;basis: &quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_basis</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">num_species</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+counts:  {&#39;10101001&#39;: 5, &#39;01100101&#39;: 62, &#39;10100101&#39;: 18, &#39;01101001&#39;: 15}
+time taken:  0.044211387634277344
+basis:
+ 0.  |0, 0, 1, 1&gt;|0, 0, 1, 1&gt;
+ 1.  |0, 0, 1, 1&gt;|0, 1, 0, 1&gt;
+ 2.  |0, 0, 1, 1&gt;|0, 1, 1, 0&gt;
+ 3.  |0, 0, 1, 1&gt;|1, 0, 0, 1&gt;
+ 4.  |0, 0, 1, 1&gt;|1, 0, 1, 0&gt;
+ .
+ .
+ .
+ 31.  |1, 1, 0, 0&gt;|0, 1, 0, 1&gt;
+ 32.  |1, 1, 0, 0&gt;|0, 1, 1, 0&gt;
+ 33.  |1, 1, 0, 0&gt;|1, 0, 0, 1&gt;
+ 34.  |1, 1, 0, 0&gt;|1, 0, 1, 0&gt;
+ 35.  |1, 1, 0, 0&gt;|1, 1, 0, 0&gt;
+</pre></div></div>
+</div>
+</section>
+<section id="Spin-changing-gates:">
+<h3>Spin-changing gates:<a class="headerlink" href="#Spin-changing-gates:" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the gates introduced above that stem from the internal Fermi-Hubbard dynamics, resonant laser pulses can be used to locally manipulate the spin state of the atoms in an individual tweezer. In this way, <span class="math notranslate nohighlight">\(x\)</span> - <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(z-\)</span>rotations of the two level system defined by the spin-<span class="math notranslate nohighlight">\(\uparrow\)</span> and spin-<span class="math notranslate nohighlight">\(\downarrow\)</span> state at a single site can be performed. These gates can break the spin-conservation symmetry we have observed in the circuits above:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermion_gate_library</span> <span class="kn">import</span> <span class="n">FRXGate</span><span class="p">,</span> <span class="n">FRYGate</span><span class="p">,</span> <span class="n">FRZGate</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+
+<span class="c1"># flip the spin of the atom at site 3</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FRXGate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+
+<span class="c1"># equivalently use shortcut</span>
+<span class="c1"># qc.frx(np.pi, [2, 6])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counts: &quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">num_species</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;basis dimension :&quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">.</span><span class="n">get_basis</span><span class="p">(</span><span class="n">qc</span><span class="p">)</span><span class="o">.</span><span class="n">dimension</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+counts:  {&#39;01100101&#39;: 1000}
+basis dimension : 70
+</pre></div></div>
+</div>
+<p>Note that the wire indices of the gates always need to specify the indices of both spin modes corresponding to a single spatial mode.</p>
+</section>
+</section>
+<section id="Description-as-a-backend">
+<h2>Description as a backend<a class="headerlink" href="#Description-as-a-backend" title="Permalink to this headline">¶</a></h2>
+<p>The framework describing the fermionic tweezer hardware is implemented as a dedicated <em>backend</em>.</p>
+<p>We could have also run the circuits above on the generic <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> backend. However, by defining a specific <code class="docutils literal notranslate"><span class="pre">FermionicTweezerSimulator</span></code> backend, we have a direct way of describing the accepted gates, size and other settings of this specific system in the backend’s <em>configuration</em>.</p>
+<p>In the backend configuration, we can explicitly state which instructions the backend accepts and in what way these instructions can be applied to the fermionic register. The latter is achieved through <em>coupling maps</em> which define the accepted wiring for all gates. For reference, let’s take a look at the entire configuration of the <code class="docutils literal notranslate"><span class="pre">FermionicTweezerSimulator</span></code> below:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">tweezer_configuration</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">tweezer_configuration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;backend_name&#39;: &#39;fermionic_tweezer_simulator&#39;,
+ &#39;backend_version&#39;: &#39;0.0.1&#39;,
+ &#39;basis_gates&#39;: [&#39;fhop&#39;,
+                 &#39;fint&#39;,
+                 &#39;fphase&#39;,
+                 &#39;fhubbard&#39;,
+                 &#39;frx&#39;,
+                 &#39;fry&#39;,
+                 &#39;frz&#39;,
+                 &#39;load&#39;],
+ &#39;cold_atom_type&#39;: &#39;fermion&#39;,
+ &#39;conditional&#39;: False,
+ &#39;coupling_map&#39;: None,
+ &#39;description&#39;: &#39;Mock backend of a fermionic tweezer hardware. The first half &#39;
+                &#39;of wires in a circuit denote the occupations of the spin-up &#39;
+                &#39;fermions and the last half of wires denote the spin-down &#39;
+                &#39;fermions&#39;,
+ &#39;dynamic_reprate_enabled&#39;: False,
+ &#39;gates&#39;: [{&#39;coupling_map&#39;: [[0, 1, 4, 5],
+                             [1, 2, 5, 6],
+                             [2, 3, 6, 7],
+                             [0, 1, 2, 4, 5, 6],
+                             [1, 2, 3, 5, 6, 7],
+                             [0, 1, 2, 3, 4, 5, 6, 7]],
+            &#39;description&#39;: &#39;hopping of atoms to neighboring tweezers&#39;,
+            &#39;name&#39;: &#39;fhop&#39;,
+            &#39;parameters&#39;: [&#39;j_i&#39;],
+            &#39;qasm_def&#39;: &#39;{}&#39;},
+           {&#39;coupling_map&#39;: [[0, 1, 2, 3, 4, 5, 6, 7]],
+            &#39;description&#39;: &#39;on-site interaction of atoms of opposite spin &#39;
+                           &#39;state&#39;,
+            &#39;name&#39;: &#39;fint&#39;,
+            &#39;parameters&#39;: [&#39;u&#39;],
+            &#39;qasm_def&#39;: &#39;{}&#39;},
+           {&#39;coupling_map&#39;: [[0, 4], [1, 5], [2, 6], [3, 7]],
+            &#39;description&#39;: &#39;Applying a local phase to tweezers through an &#39;
+                           &#39;external potential&#39;,
+            &#39;name&#39;: &#39;fphase&#39;,
+            &#39;parameters&#39;: [&#39;mu_i&#39;],
+            &#39;qasm_def&#39;: &#39;{}&#39;},
+           {&#39;coupling_map&#39;: [[0, 4], [1, 5], [2, 6], [3, 7]],
+            &#39;description&#39;: &#39;x-rotation between the spin-up and spin-down state &#39;
+                           &#39;at one tweezer site&#39;,
+            &#39;name&#39;: &#39;frx&#39;,
+            &#39;parameters&#39;: [&#39;phi&#39;],
+            &#39;qasm_def&#39;: &#39;{}&#39;},
+           {&#39;coupling_map&#39;: [[0, 4], [1, 5], [2, 6], [3, 7]],
+            &#39;description&#39;: &#39;y-rotation between the spin-up and spin-down state &#39;
+                           &#39;at one tweezer site&#39;,
+            &#39;name&#39;: &#39;fry&#39;,
+            &#39;parameters&#39;: [&#39;phi&#39;],
+            &#39;qasm_def&#39;: &#39;{}&#39;},
+           {&#39;coupling_map&#39;: [[0, 4], [1, 5], [2, 6], [3, 7]],
+            &#39;description&#39;: &#39;z-rotation between the spin-up and spin-down state &#39;
+                           &#39;at one tweezer site&#39;,
+            &#39;name&#39;: &#39;frz&#39;,
+            &#39;parameters&#39;: [&#39;phi&#39;],
+            &#39;qasm_def&#39;: &#39;{}&#39;}],
+ &#39;local&#39;: True,
+ &#39;max_experiments&#39;: 10,
+ &#39;max_shots&#39;: 1000000.0,
+ &#39;memory&#39;: True,
+ &#39;n_qubits&#39;: 8,
+ &#39;num_species&#39;: 2,
+ &#39;open_pulse&#39;: False,
+ &#39;simulator&#39;: True,
+ &#39;supported_instructions&#39;: [&#39;load&#39;,
+                            &#39;measure&#39;,
+                            &#39;barrier&#39;,
+                            &#39;fhop&#39;,
+                            &#39;fint&#39;,
+                            &#39;fphase&#39;,
+                            &#39;fhubbard&#39;,
+                            &#39;frx&#39;,
+                            &#39;fry&#39;,
+                            &#39;frz&#39;]}
+</pre></div></div>
+</div>
+<p>Note how each gate has a custom coupling map which defines the allowed wire indices with which the gate can be added to the circuit.</p>
+<p>Apart from that, the <code class="docutils literal notranslate"><span class="pre">FermionicTweezerSimulator</span></code> inherits all functionality of the generic <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> such as retrieving the statevector and the unitary.</p>
+</section>
+<section id="Outlook">
+<h2>Outlook<a class="headerlink" href="#Outlook" title="Permalink to this headline">¶</a></h2>
+<p>The fermionic tweezer simulator backend can be used as a tool to study what kind of quantum computations can be performed in a realistic experimental hardware based on cold fermions. As an example application, we study the time-evolution of the FH-dynamics native to the system <a class="reference internal" href="06_time_evolution.html"><span class="doc">(see tutorial 6)</span></a>.</p>
+<p>The supported functionality for fermionic circuits in Qiskit-cold-atom can in principle be utilized to describe a larger class of fermionic setups, i.e. other trap- or lattice-based architectures that can deterministically prepare, manipulate and measure individual atoms. Such experiments might have different underlying Hamiltonian dynamics, number of spin species, available gates and coupling maps.</p>
+<p>This tutorial should be seen as just one example of how this framework can be used to build a backend for one specific experimental setting.</p>
+<p>Interested users are encouraged to explore this possibility of describing suitable fermionic gates and backend configurations of other setups.</p>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<p>[1] Murmann, Simon et al. <em>Two Fermions in a double well: Exploring a fundamental building block of the Hubbard model</em> Physical Review Letters 114, 080402, 2015</p>
+<p>[2] Bergschneider, Andrea et al. <em>Experimental Characterization of Two-Particle Entanglement through Position and Momentum Correlations</em>, Nature Physics, 15 604-4, 2019</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td>Qiskit</td><td>None</td></tr><tr><td>Terra</td><td>0.17.4</td></tr><tr><td>Aer</td><td>0.8.2</td></tr><tr><td>Ignis</td><td>None</td></tr><tr><td>Aqua</td><td>None</td></tr><tr><td>IBM Q Provider</td><td>None</td></tr><tr><th>System information</th></tr><tr><td>Python</td><td>3.9.5 | packaged by conda-forge | (default, Jun 19 2021, 00:22:33) [MSC v.1916 64 bit (AMD64)]</td></tr><tr><td>OS</td><td>Windows</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.807106018066406</td></tr><tr><td colspan='2'>Thu Jun 24 21:13:40 2021 W. Europe Daylight Time</td></tr></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2021.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="04_collective_spin_hardware.html" class="btn btn-neutral float-right" title="Collective Spin Hardware" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="02_spin_circuits.html" class="btn btn-neutral" title="Spin circuits" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Fermionic Tweezer Hardware</a><ul>
+<li><a class="reference internal" href="#Experimental-system">Experimental system</a></li>
+<li><a class="reference internal" href="#Circuit-description">Circuit description</a><ul>
+<li><a class="reference internal" href="#Initialization">Initialization</a></li>
+<li><a class="reference internal" href="#Readout:">Readout:</a></li>
+<li><a class="reference internal" href="#Gates-and-dynamics">Gates and dynamics</a></li>
+<li><a class="reference internal" href="#Spin-changing-gates:">Spin-changing gates:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Description-as-a-backend">Description as a backend</a></li>
+<li><a class="reference internal" href="#Outlook">Outlook</a></li>
+<li><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+
+
+ColdAtomProvider.version
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. autoattribute:: ColdAtomProvider.version

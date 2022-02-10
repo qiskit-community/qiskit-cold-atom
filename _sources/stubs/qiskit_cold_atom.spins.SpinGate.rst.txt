@@ -1,0 +1,62 @@
+﻿
+
+SpinGate
+===============================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: SpinGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      SpinGate.condition_bits
+      SpinGate.decompositions
+      SpinGate.definition
+      SpinGate.duration
+      SpinGate.generator
+      SpinGate.label
+      SpinGate.name
+      SpinGate.num_clbits
+      SpinGate.num_qubits
+      SpinGate.params
+      SpinGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      SpinGate.add_decomposition
+      SpinGate.assemble
+      SpinGate.broadcast_arguments
+      SpinGate.c_if
+      SpinGate.control
+      SpinGate.copy
+      SpinGate.inverse
+      SpinGate.is_parameterized
+      SpinGate.mirror
+      SpinGate.power
+      SpinGate.qasm
+      SpinGate.repeat
+      SpinGate.reverse_ops
+      SpinGate.soft_compare
+      SpinGate.to_matrix
+      SpinGate.validate_parameter
+   
+
+   
+   

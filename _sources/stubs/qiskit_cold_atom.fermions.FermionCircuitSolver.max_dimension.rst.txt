@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.max_dimension
+============================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermionCircuitSolver.max_dimension

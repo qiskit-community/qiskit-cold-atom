@@ -1,0 +1,8 @@
+﻿
+
+QiskitColdAtomError
+====================================
+
+.. currentmodule:: qiskit_cold_atom
+
+.. autoexception:: QiskitColdAtomError

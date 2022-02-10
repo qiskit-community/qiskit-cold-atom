@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.operator_to_mat
+==============================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionCircuitSolver.operator_to_mat

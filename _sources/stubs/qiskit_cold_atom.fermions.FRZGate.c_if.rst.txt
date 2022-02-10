@@ -1,0 +1,8 @@
+
+
+FRZGate.c_if
+======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRZGate.c_if

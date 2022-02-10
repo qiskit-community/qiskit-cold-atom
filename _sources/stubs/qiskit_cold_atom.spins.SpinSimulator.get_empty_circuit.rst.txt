@@ -1,0 +1,8 @@
+
+
+SpinSimulator.get_empty_circuit
+======================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinSimulator.get_empty_circuit

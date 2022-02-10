@@ -1,0 +1,8 @@
+
+
+RLZGate.condition_bits
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLZGate.condition_bits

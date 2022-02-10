@@ -1,0 +1,62 @@
+﻿
+
+RLYGate
+==============================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: RLYGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      RLYGate.condition_bits
+      RLYGate.decompositions
+      RLYGate.definition
+      RLYGate.duration
+      RLYGate.generator
+      RLYGate.label
+      RLYGate.name
+      RLYGate.num_clbits
+      RLYGate.num_qubits
+      RLYGate.params
+      RLYGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      RLYGate.add_decomposition
+      RLYGate.assemble
+      RLYGate.broadcast_arguments
+      RLYGate.c_if
+      RLYGate.control
+      RLYGate.copy
+      RLYGate.inverse
+      RLYGate.is_parameterized
+      RLYGate.mirror
+      RLYGate.power
+      RLYGate.qasm
+      RLYGate.repeat
+      RLYGate.reverse_ops
+      RLYGate.soft_compare
+      RLYGate.to_matrix
+      RLYGate.validate_parameter
+   
+
+   
+   

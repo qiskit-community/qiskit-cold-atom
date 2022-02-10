@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.draw_shots
+=========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionCircuitSolver.draw_shots

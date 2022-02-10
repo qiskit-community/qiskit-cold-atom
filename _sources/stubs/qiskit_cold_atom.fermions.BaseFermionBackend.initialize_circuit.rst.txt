@@ -1,0 +1,8 @@
+
+
+BaseFermionBackend.initialize_circuit
+===============================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: BaseFermionBackend.initialize_circuit

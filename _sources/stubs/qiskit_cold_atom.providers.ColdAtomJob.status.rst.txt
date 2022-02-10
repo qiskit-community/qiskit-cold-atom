@@ -1,0 +1,8 @@
+
+
+ColdAtomJob.status
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. automethod:: ColdAtomJob.status

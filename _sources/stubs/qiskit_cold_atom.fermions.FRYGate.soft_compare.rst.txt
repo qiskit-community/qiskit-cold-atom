@@ -1,0 +1,8 @@
+
+
+FRYGate.soft_compare
+==============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRYGate.soft_compare

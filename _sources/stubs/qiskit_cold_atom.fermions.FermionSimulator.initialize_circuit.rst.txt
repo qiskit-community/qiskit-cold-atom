@@ -1,0 +1,8 @@
+
+
+FermionSimulator.initialize_circuit
+=============================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionSimulator.initialize_circuit

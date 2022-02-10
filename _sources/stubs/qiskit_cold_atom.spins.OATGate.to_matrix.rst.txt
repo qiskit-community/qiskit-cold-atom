@@ -1,0 +1,8 @@
+
+
+OATGate.to_matrix
+========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: OATGate.to_matrix

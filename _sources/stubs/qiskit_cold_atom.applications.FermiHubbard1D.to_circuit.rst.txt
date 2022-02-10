@@ -1,0 +1,8 @@
+
+
+FermiHubbard1D.to_circuit
+=======================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. automethod:: FermiHubbard1D.to_circuit

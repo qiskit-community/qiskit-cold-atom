@@ -1,0 +1,8 @@
+
+
+Hop.c_if
+==================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Hop.c_if

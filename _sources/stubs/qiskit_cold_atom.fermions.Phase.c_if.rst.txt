@@ -1,0 +1,8 @@
+
+
+Phase.c_if
+====================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Phase.c_if

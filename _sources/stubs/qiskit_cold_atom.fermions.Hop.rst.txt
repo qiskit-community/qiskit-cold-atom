@@ -1,0 +1,63 @@
+﻿
+
+Hop
+=============================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: Hop
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      Hop.condition_bits
+      Hop.decompositions
+      Hop.definition
+      Hop.duration
+      Hop.generator
+      Hop.label
+      Hop.name
+      Hop.num_clbits
+      Hop.num_qubits
+      Hop.params
+      Hop.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      Hop.add_decomposition
+      Hop.assemble
+      Hop.broadcast_arguments
+      Hop.c_if
+      Hop.control
+      Hop.copy
+      Hop.inverse
+      Hop.is_parameterized
+      Hop.mirror
+      Hop.operator_to_mat
+      Hop.power
+      Hop.qasm
+      Hop.repeat
+      Hop.reverse_ops
+      Hop.soft_compare
+      Hop.to_matrix
+      Hop.validate_parameter
+   
+
+   
+   

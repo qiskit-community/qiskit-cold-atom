@@ -1,0 +1,8 @@
+
+
+RLYGate.validate_parameter
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLYGate.validate_parameter

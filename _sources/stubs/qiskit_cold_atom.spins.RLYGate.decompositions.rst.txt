@@ -1,0 +1,8 @@
+
+
+RLYGate.decompositions
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLYGate.decompositions

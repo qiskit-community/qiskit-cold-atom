@@ -1,0 +1,8 @@
+
+
+FRYGate.generator
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FRYGate.generator

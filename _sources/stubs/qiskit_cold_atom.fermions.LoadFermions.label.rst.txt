@@ -1,0 +1,8 @@
+
+
+LoadFermions.label
+============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: LoadFermions.label

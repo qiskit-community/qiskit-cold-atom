@@ -1,0 +1,8 @@
+
+
+RLXGate.definition
+=========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLXGate.definition

@@ -1,0 +1,8 @@
+
+
+FermionicGate.to_matrix
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionicGate.to_matrix

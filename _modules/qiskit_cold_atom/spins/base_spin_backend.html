@@ -1,0 +1,426 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qiskit_cold_atom.spins.base_spin_backend &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../index.html">Module code</a> &gt;</li>
+        
+      <li>qiskit_cold_atom.spins.base_spin_backend</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for qiskit_cold_atom.spins.base_spin_backend</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This code is part of Qiskit.</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright IBM 2021.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
+
+<span class="sd">&quot;&quot;&quot;Module for cold-atom spin backends.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">abc</span> <span class="kn">import</span> <span class="n">ABC</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="kn">import</span> <span class="n">BackendV1</span> <span class="k">as</span> <span class="n">Backend</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span><span class="p">,</span> <span class="n">ClassicalRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom</span> <span class="kn">import</span> <span class="n">QiskitColdAtomError</span>
+
+
+<div class="viewcode-block" id="BaseSpinBackend"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.BaseSpinBackend.html#qiskit_cold_atom.spins.BaseSpinBackend">[docs]</a><span class="k">class</span> <span class="nc">BaseSpinBackend</span><span class="p">(</span><span class="n">Backend</span><span class="p">,</span> <span class="n">ABC</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Abstract base class for atomic mixture backends.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="BaseSpinBackend.get_empty_circuit"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.BaseSpinBackend.get_empty_circuit.html#qiskit_cold_atom.spins.BaseSpinBackend.get_empty_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">get_empty_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumCircuit</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Convenience function to set up an empty circuit with the right QuantumRegisters.</span>
+<span class="sd">        For each atomic species specified in the config file, a quantum register is added to the circuit.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            qc: An empty quantum circuit ready to use in spin-based cold-atom setups.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError:</span>
+<span class="sd">                - If backend has no config file.</span>
+<span class="sd">                - If number of wires of the backend config is not a multiple of the atomic species.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">num_wires</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;n_qubits&quot;</span><span class="p">]</span>
+            <span class="n">num_species</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s2">&quot;atomic_species&quot;</span><span class="p">])</span>
+
+        <span class="k">except</span> <span class="ne">NameError</span> <span class="k">as</span> <span class="n">name_error</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="s2">&quot;backend needs to be initialized with config file first&quot;</span>
+            <span class="p">)</span> <span class="kn">from</span> <span class="nn">name_error</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">num_wires</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">num_wires</span> <span class="o">%</span> <span class="n">num_species</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="s2">&quot;num_wires </span><span class="si">{num_wires}</span><span class="s2"> must be multiple of num_species </span><span class="si">{num_species}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">qregs</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">QuantumRegister</span><span class="p">(</span><span class="n">num_wires</span> <span class="o">/</span> <span class="n">num_species</span><span class="p">,</span> <span class="n">species</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">species</span> <span class="ow">in</span> <span class="n">config</span><span class="p">[</span><span class="s2">&quot;atomic_species&quot;</span><span class="p">]</span>
+        <span class="p">]</span>
+
+        <span class="n">class_reg</span> <span class="o">=</span> <span class="n">ClassicalRegister</span><span class="p">(</span><span class="n">num_wires</span><span class="p">,</span> <span class="s2">&quot;c</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_wires</span><span class="p">))</span>
+        <span class="n">empty_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="o">*</span><span class="n">qregs</span><span class="p">,</span> <span class="n">class_reg</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">empty_circuit</span></div>
+
+<div class="viewcode-block" id="BaseSpinBackend.draw"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.BaseSpinBackend.draw.html#qiskit_cold_atom.spins.BaseSpinBackend.draw">[docs]</a>    <span class="k">def</span> <span class="nf">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qc</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="o">**</span><span class="n">draw_options</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Modified circuit drawer to better display atomic mixture quantum circuits.</span>
+
+<span class="sd">        For now this method is just an alias to `QuantumCircuit.draw()` but in the future this method</span>
+<span class="sd">        may be modified and tailored to spin quantum circuits.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            qc: The quantum circuit to draw.</span>
+<span class="sd">            draw_options: Key word arguments for the drawing of circuits.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="o">**</span><span class="n">draw_options</span><span class="p">)</span></div></div>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+         <script src="../../../_static/jquery.js"></script>
+         <script src="../../../_static/underscore.js"></script>
+         <script src="../../../_static/doctools.js"></script>
+         <script src="../../../_static/thebelab-helper.js"></script>
+         <script src="../../../_static/tabs.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

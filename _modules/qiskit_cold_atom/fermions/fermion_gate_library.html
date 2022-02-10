@@ -1,0 +1,1009 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qiskit_cold_atom.fermions.fermion_gate_library &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../index.html">Module code</a> &gt;</li>
+        
+      <li>qiskit_cold_atom.fermions.fermion_gate_library</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for qiskit_cold_atom.fermions.fermion_gate_library</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This code is part of Qiskit.</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright IBM 2021.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
+
+<span class="sd">&quot;&quot;&quot;Gates for fermionic backends.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csc_matrix</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">Instruction</span><span class="p">,</span> <span class="n">Gate</span>
+<span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">FermionicOp</span>
+
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.exceptions</span> <span class="kn">import</span> <span class="n">QiskitColdAtomError</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom</span> <span class="kn">import</span> <span class="n">add_gate</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermionic_basis</span> <span class="kn">import</span> <span class="n">FermionicBasis</span>
+
+
+<div class="viewcode-block" id="FermionicGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionicGate.html#qiskit_cold_atom.fermions.FermionicGate">[docs]</a><span class="k">class</span> <span class="nc">FermionicGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Unitary gates for fermionic circuits.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">num_modes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">generator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FermionicOp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a new fermionic gate.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: The Qobj name of the gate.</span>
+<span class="sd">            num_modes: The number of fermionic modes the gate acts on.</span>
+<span class="sd">            params: A list of parameters.</span>
+<span class="sd">            label: An optional label for the gate.</span>
+<span class="sd">            generator: The generating Hamiltonian of the gate unitary given as a FermionicOp</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span> <span class="o">=</span> <span class="n">generator</span>
+
+        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span> <span class="o">=</span> <span class="n">num_modes</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FermionicGate.power"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionicGate.power.html#qiskit_cold_atom.fermions.FermionicGate.power">[docs]</a>    <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a fermionic gate as `gate^exponent`</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            exponent (float): The exponent with which the gate is exponentiated</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            FermionicGate: To which `.generator` is self.generator*exponent.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: If the gate has no defined generator.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="s2">&quot;Gate can not be exponentiated if the gate generator is not defined.&quot;</span>
+            <span class="p">)</span>
+        <span class="c1"># the generator of the exponentiated gate is the old generator times the exponent</span>
+        <span class="n">exp_generator</span> <span class="o">=</span> <span class="n">exponent</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+        <span class="n">exp_params</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="k">else</span> <span class="p">[</span><span class="n">exponent</span> <span class="o">*</span> <span class="n">param</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">]</span>
+
+        <span class="n">exp_label</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;^</span><span class="si">{</span><span class="n">exponent</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">FermionicGate</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;^</span><span class="si">{</span><span class="n">exponent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">exp_params</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">exp_label</span><span class="p">,</span>
+            <span class="n">generator</span><span class="o">=</span><span class="n">exp_generator</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="c1"># pylint: disable=arguments-differ</span>
+<div class="viewcode-block" id="FermionicGate.to_matrix"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionicGate.to_matrix.html#qiskit_cold_atom.fermions.FermionicGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_species</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">basis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FermionicBasis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return a Numpy.array for the gate unitary matrix. This function will compute :math:`exp(-i H)`</span>
+<span class="sd">        where :math:`H` is the generator of the gate.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_species: Number of fermion species which defaults to 1.</span>
+<span class="sd">            basis: The basis in which to return the matrix. If None is given then the matrix will</span>
+<span class="sd">                be returned in the full basis.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: If the generator of the gate is not hermitian.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            np.array: The array of the gate unitary over the full fock basis, with states ordered like</span>
+<span class="sd">            00...0, 00...1, ..., 11...0, 11...1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># This can be simplified when the FermionicOp gets a .to_matrix() method in a future release of</span>
+        <span class="c1"># qiskit-nature</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="s2">&quot;Matrix of gate can not be computed if the gate generator is not defined.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">generator_mat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">operator_to_mat</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generator</span><span class="p">,</span> <span class="n">num_species</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">generator_mat</span><span class="o">.</span><span class="n">H</span> <span class="o">-</span> <span class="n">generator_mat</span><span class="p">)</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;generator of unitary gate is not hermitian!&quot;</span><span class="p">)</span>
+
+        <span class="n">unitary_mat</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">generator_mat</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">unitary_mat</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span></div>
+
+<div class="viewcode-block" id="FermionicGate.operator_to_mat"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionicGate.operator_to_mat.html#qiskit_cold_atom.fermions.FermionicGate.operator_to_mat">[docs]</a>    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">operator_to_mat</span><span class="p">(</span>
+        <span class="n">generator</span><span class="p">:</span> <span class="n">FermionicOp</span><span class="p">,</span> <span class="n">num_species</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">basis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">FermionicBasis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">csc_matrix</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Compute the matrix representation of the fermion operator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            generator: fermion operator of which to compute the matrix representation.</span>
+<span class="sd">            num_species: Number of fermion species which defaults to 1.</span>
+<span class="sd">            basis: The basis in which to return the matrix. If None is given then the matrix will</span>
+<span class="sd">                be returned in the full basis.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            scipy.sparse matrix of the Hamiltonian.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: If the fermion operator does not match the expected shape.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="n">basis</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">basis</span> <span class="o">=</span> <span class="n">FermionicBasis</span><span class="o">.</span><span class="n">from_fermionic_op</span><span class="p">(</span><span class="n">generator</span><span class="p">)</span>
+
+        <span class="n">csc_data</span><span class="p">,</span> <span class="n">csc_col</span><span class="p">,</span> <span class="n">csc_row</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+
+        <span class="n">basis_occupations</span> <span class="o">=</span> <span class="n">basis</span><span class="o">.</span><span class="n">get_occupations</span><span class="p">()</span>
+
+        <span class="c1"># loop over all individual terms in the generators</span>
+        <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">generator</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+            <span class="n">opstring</span> <span class="o">=</span> <span class="n">term</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">prefactor</span> <span class="o">=</span> <span class="n">term</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opstring</span><span class="p">)</span> <span class="o">!=</span> <span class="n">num_species</span> <span class="o">*</span> <span class="n">basis</span><span class="o">.</span><span class="n">sites</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Length of operator </span><span class="si">{</span><span class="n">opstring</span><span class="si">}</span><span class="s2"> must match the number of &quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot;modes in the basis </span><span class="si">{</span><span class="n">num_species</span><span class="o">*</span><span class="n">basis</span><span class="o">.</span><span class="n">sites</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+            <span class="c1"># loop over all basis states</span>
+            <span class="k">for</span> <span class="n">i_basis</span><span class="p">,</span> <span class="n">occupations</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis_occupations</span><span class="p">):</span>
+
+                <span class="n">new_occupations</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="n">occupations</span><span class="p">)</span>
+                <span class="n">mapped_to_zero</span> <span class="o">=</span> <span class="p">(</span>
+                    <span class="kc">False</span>  <span class="c1"># boolean flag to check whether the basis state is mapped to zero</span>
+                <span class="p">)</span>
+                <span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
+
+                <span class="c1"># in reverse, loop over all individual fermionic creators/annihilators in the opstring:</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="nb">reversed</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">opstring</span><span class="p">))):</span>
+
+                    <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;I&quot;</span><span class="p">:</span>
+                        <span class="k">continue</span>
+
+                    <span class="k">if</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;-&quot;</span><span class="p">:</span>
+                        <span class="c1"># If this mode is not occupied, the action of &#39;-&#39; on this state is zero</span>
+                        <span class="k">if</span> <span class="n">occupations</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">mapped_to_zero</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
+                        <span class="n">sign</span> <span class="o">*=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="nb">sum</span><span class="p">(</span><span class="n">occupations</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span>
+                        <span class="n">new_occupations</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+                    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;+&quot;</span><span class="p">:</span>
+                        <span class="c1"># If this mode is already occupied, the action of &#39;+&#39; on this state is zero</span>
+                        <span class="k">if</span> <span class="n">occupations</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="n">mapped_to_zero</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
+                        <span class="n">sign</span> <span class="o">*=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="nb">sum</span><span class="p">(</span><span class="n">occupations</span><span class="p">[:</span><span class="n">k</span><span class="p">])</span>
+                        <span class="n">new_occupations</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+                    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;N&quot;</span><span class="p">:</span>
+                        <span class="c1"># If this mode is not occupied, the action of &#39;N&#39; on this state is zero</span>
+                        <span class="k">if</span> <span class="n">occupations</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                            <span class="n">mapped_to_zero</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
+
+                    <span class="k">elif</span> <span class="n">symbol</span> <span class="o">==</span> <span class="s2">&quot;E&quot;</span><span class="p">:</span>
+                        <span class="c1"># If this mode is occupied, the action of &#39;E&#39; on this state is zero</span>
+                        <span class="k">if</span> <span class="n">occupations</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                            <span class="n">mapped_to_zero</span> <span class="o">=</span> <span class="kc">True</span>
+                            <span class="k">break</span>
+
+                <span class="k">if</span> <span class="ow">not</span> <span class="n">mapped_to_zero</span><span class="p">:</span>
+                    <span class="c1"># find the index of the new basis state that the operator strings maps to</span>
+                    <span class="n">j_basis</span> <span class="o">=</span> <span class="n">basis_occupations</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">new_occupations</span><span class="p">)</span>
+
+                    <span class="n">csc_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sign</span> <span class="o">*</span> <span class="n">prefactor</span><span class="p">)</span>
+                    <span class="n">csc_row</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">j_basis</span><span class="p">)</span>
+                    <span class="n">csc_col</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i_basis</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">csc_matrix</span><span class="p">(</span>
+            <span class="p">(</span><span class="n">csc_data</span><span class="p">,</span> <span class="p">(</span><span class="n">csc_row</span><span class="p">,</span> <span class="n">csc_col</span><span class="p">)),</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">dimension</span><span class="p">,</span> <span class="n">basis</span><span class="o">.</span><span class="n">dimension</span><span class="p">),</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+<div class="viewcode-block" id="FermionicGate.control"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionicGate.control.html#qiskit_cold_atom.fermions.FermionicGate.control">[docs]</a>    <span class="k">def</span> <span class="nf">control</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">num_ctrl_qubits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ctrl_state</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overwrite control method which is supposed to return a controlled version of the gate.</span>
+<span class="sd">        This is not applicable in the fermionic setting.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;Fermionic gates have no controlled version&quot;</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The Hamiltonian that generates the unitary of the gate, given as a FermionicOp&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span></div>
+
+
+<div class="viewcode-block" id="FermiHubbard"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermiHubbard.html#qiskit_cold_atom.fermions.FermiHubbard">[docs]</a><span class="k">class</span> <span class="nc">FermiHubbard</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Global 1D-Fermi-Hubbard dynamic consisting of the hopping, interaction and local phase gates.</span>
+
+<span class="sd">    The generating Hamiltonian of the Fermi-Hubbard gate is</span>
+
+<span class="sd">    :math:`H = \sum_{i=1,\sigma}^{L-1} - J_i (f^\dagger_{i,\sigma} f_{i+1,\sigma}</span>
+<span class="sd">    + f^\dagger_{i+1,\sigma} f_{i,\sigma})</span>
+<span class="sd">    + U \sum_{i=1}^{L} n_{i,\uparrow} n_{i,\downarrow}</span>
+<span class="sd">    + \sum_{i=1,\sigma}^{L} \mu_i n_{i,\sigma}`</span>
+
+<span class="sd">    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin, :math:`L` gives the total number</span>
+<span class="sd">    of sites, :math:`J_i` are the hopping strengths, :math:`U` is the interaction strength and</span>
+<span class="sd">    :math:`\mu_i` are the local potentials that lead to local phases.</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">        .. parsed-literal::</span>
+
+<span class="sd">                 ┌──────────────┐</span>
+<span class="sd">            q_0: ┤   FHubbard   ├</span>
+<span class="sd">                 └──────────────┘</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_modes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">u</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a global Fermi-Hubbard gate</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_modes: number of tweezers on which the hopping acts, must be entire quantum register</span>
+<span class="sd">            j: list of hopping strengths between the tweezer. j[0] gives the strength of hopping</span>
+<span class="sd">                between wires 0 and 1, j[1] gives the strength of hopping between wires 1 and 2, etc.,</span>
+<span class="sd">                so len(j) has to be of length num_wires-1</span>
+<span class="sd">            label: optional</span>
+<span class="sd">            u: global interaction strength parameter</span>
+<span class="sd">            mu: list of parameters that tune the local phases, must be on length num_wires</span>
+<span class="sd">            label: optional</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError:</span>
+<span class="sd">                - If the given num_modes is not an even integer.</span>
+<span class="sd">                - If length of j not num_modes/2 - 1.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">num_modes</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">num_modes</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;num_modes has to be even integer&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_modes</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;j has to be a list of length num_modes/2 -1&quot;</span><span class="p">)</span>
+
+        <span class="n">param_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">j</span><span class="p">,</span> <span class="p">[</span><span class="n">u</span><span class="p">],</span> <span class="n">mu</span><span class="p">]</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">param_list</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fhubbard&quot;</span><span class="p">,</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="FermiHubbard.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermiHubbard.inverse.html#qiskit_cold_atom.fermions.FermiHubbard.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get the inverse gate by reversing the sign of all gate parameters&quot;&quot;&quot;</span>
+        <span class="n">j_val</span><span class="p">,</span> <span class="n">u_val</span><span class="p">,</span> <span class="n">mu_vals</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">FermiHubbard</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">j</span><span class="o">=-</span><span class="n">j_val</span><span class="p">,</span> <span class="n">u</span><span class="o">=-</span><span class="n">u_val</span><span class="p">,</span> <span class="n">mu</span><span class="o">=-</span><span class="n">mu_vals</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the FH Gate.&quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">param</span><span class="p">)</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">]</span>
+        <span class="n">generators</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">sites</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span> <span class="o">//</span> <span class="mi">2</span>
+        <span class="c1"># add generators of hopping term</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">j</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[:</span> <span class="n">sites</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sites</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;+_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> -_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;-_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> +_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;+_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="n">sites</span><span class="si">}</span><span class="s2"> -_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="n">sites</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;-_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="n">sites</span><span class="si">}</span><span class="s2"> +_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="n">sites</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="c1"># add generators of interaction term</span>
+        <span class="k">if</span> <span class="n">params</span><span class="p">[</span><span class="n">sites</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mf">0.0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sites</span><span class="p">):</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;N_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2"> N_</span><span class="si">{</span><span class="n">i</span> <span class="o">+</span> <span class="n">sites</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">[</span><span class="n">sites</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]))</span>
+        <span class="c1"># add generators of local phase term</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">muval</span> <span class="o">==</span> <span class="mf">0.0</span> <span class="k">for</span> <span class="n">muval</span> <span class="ow">in</span> <span class="n">params</span><span class="p">[</span><span class="n">sites</span><span class="p">:]):</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sites</span><span class="p">):</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;N_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">sites</span><span class="p">])))</span>
+                <span class="n">generators</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="sa">f</span><span class="s2">&quot;N_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="n">sites</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">sites</span><span class="p">])))</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">generators</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;I_0&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span>
+                <span class="n">coeff</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">coeff</span> <span class="ow">in</span> <span class="n">generators</span>
+            <span class="p">)</span></div>
+
+
+<span class="c1"># pylint: disable=invalid-name</span>
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">fhubbard</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">u</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">modes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the FermiHubbard gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">FermiHubbard</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">),</span> <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">modes</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="Hop"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.Hop.html#qiskit_cold_atom.fermions.Hop">[docs]</a><span class="k">class</span> <span class="nc">Hop</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hopping of particles to neighbouring wells due to tunneling.</span>
+
+<span class="sd">    The generating Hamiltonian of the hopping gate is</span>
+
+<span class="sd">    :math:`H = \sum_{i=1,\sigma}^{L-1} - J_i (f^\dagger_{i,\sigma} f_{i+1,\sigma}</span>
+<span class="sd">    + f^\dagger_{i+1,\sigma} f_{i,\sigma})`</span>
+
+<span class="sd">    where :math:`i` indexes the mode, :math:`\sigma`</span>
+<span class="sd">    indexes the spin, :math:`L` gives the total number of sites and :math:`J_i` are the hopping strengths</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_modes</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize hopping gate</span>
+<span class="sd">        Args:</span>
+<span class="sd">            num_modes: number of fermionic modes that are connected by the hopping</span>
+<span class="sd">            (= 2* number of tweezers)</span>
+<span class="sd">            j: list of hopping strengths between the tweezer. j[0] gives the strength of hopping</span>
+<span class="sd">            between wires 0 and 1,</span>
+<span class="sd">            j[1] gives the strength of hopping between wires 1 and 2, etc., so len(j) has to be</span>
+<span class="sd">            of length num_wires-1</span>
+<span class="sd">            label: optional</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: given num_modes not even integer</span>
+<span class="sd">            QiskitColdAtomError: length of j not num_modes/2 - 1</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">num_modes</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="ow">and</span> <span class="n">num_modes</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;num_modes has to be even integer&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">==</span> <span class="p">(</span><span class="n">num_modes</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;j has to be a list of length num_modes/2 -1&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;fhop&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Hop.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.Hop.inverse.html#qiskit_cold_atom.fermions.Hop.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get inverse gate by reversing the sign of all hopping strengths&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Hop</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the hopping gate.&quot;&quot;&quot;</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="n">FermiHubbard</span><span class="p">(</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">j</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">u</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">generator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;I_0&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">generator</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">fhop</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">modes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the hopping gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Hop</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">),</span> <span class="n">j</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">modes</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Interaction"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.Interaction.html#qiskit_cold_atom.fermions.Interaction">[docs]</a><span class="k">class</span> <span class="nc">Interaction</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;On-site interaction of particles of opposite spin species on the same site.</span>
+
+<span class="sd">    The generating Hamiltonian of the interaction gate is</span>
+
+<span class="sd">    :math:`H = U \sum_{i=1}^{L} n_{i,\uparrow} n_{i,\downarrow}`</span>
+
+<span class="sd">    where :math:`i` indexes the mode,</span>
+<span class="sd">    :math:`L` gives the total number of sites and :math:`U` is the interaction strength</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_modes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">u</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize interaction gate.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_modes: number of modes on which the gate acts</span>
+<span class="sd">            u: global interaction strength parameter</span>
+<span class="sd">            label: optional</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: If the number of wires the gate acts on is uneven</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">num_modes</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of modes must be even, </span><span class="si">{</span><span class="n">num_modes</span><span class="si">}</span><span class="s2"> given.&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fint&quot;</span><span class="p">,</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">u</span><span class="p">],</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Interaction.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.Interaction.inverse.html#qiskit_cold_atom.fermions.Interaction.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get inverse gate by reversing the sign of the interaction parameter&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Interaction</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">u</span><span class="o">=-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the interaction gate.&quot;&quot;&quot;</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="n">FermiHubbard</span><span class="p">(</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">j</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">u</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">],</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">generator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;I_0&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">generator</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">fint</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">u</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">modes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the interaction gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Interaction</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">),</span> <span class="n">u</span><span class="o">=</span><span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">modes</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Phase"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.Phase.html#qiskit_cold_atom.fermions.Phase">[docs]</a><span class="k">class</span> <span class="nc">Phase</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Applying a local phase to individual tweezers through an external potential</span>
+
+<span class="sd">    The generating Hamiltonian of the local phase gate is</span>
+
+<span class="sd">    :math:`H = \sum_{i=1,\sigma}^{L} \mu_i n_{i,\sigma}`</span>
+
+<span class="sd">    where :math:`i` indexes the mode,</span>
+<span class="sd">    :math:`\sigma` indexes the spin, :math:`L` gives the total number of sites and</span>
+<span class="sd">    :math:`\mu_i` are the local potentials that lead to local phases</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_modes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a LocalPhase gate</span>
+<span class="sd">        Args:</span>
+<span class="sd">            num_modes: number of modes on which the local potential acts</span>
+<span class="sd">            mu: list of parameters that tune the local phases, must be of length num_modes/2</span>
+<span class="sd">            label: optional</span>
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: If the length of mu does not match the given wire count num_modes</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">num_modes</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of modes must be even, </span><span class="si">{</span><span class="n">num_modes</span><span class="si">}</span><span class="s2"> given.&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">mu</span><span class="p">)</span> <span class="o">==</span> <span class="n">num_modes</span> <span class="o">/</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;list of pre-factors </span><span class="si">{</span><span class="n">mu</span><span class="si">}</span><span class="s2"> has to be same dimension as the wire count &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;of the gate </span><span class="si">{</span><span class="n">num_modes</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;fphase&quot;</span><span class="p">,</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<div class="viewcode-block" id="Phase.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.Phase.inverse.html#qiskit_cold_atom.fermions.Phase.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get inverse gate by reversing the sign of all potentials&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">Phase</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">param</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">])</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the local phase gate.&quot;&quot;&quot;</span>
+        <span class="n">generator</span> <span class="o">=</span> <span class="n">FermiHubbard</span><span class="p">(</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">j</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">u</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span>
+            <span class="n">mu</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">,</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">reduce</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">generator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;I_0&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">generator</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">fphase</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">modes</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the local phase gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Phase</span><span class="p">(</span><span class="n">num_modes</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">modes</span><span class="p">),</span> <span class="n">mu</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">modes</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="FRXGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FRXGate.html#qiskit_cold_atom.fermions.FRXGate">[docs]</a><span class="k">class</span> <span class="nc">FRXGate</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;X-rotation between the spin-up and spin-down state at one tweezer site.</span>
+
+<span class="sd">    The generating Hamiltonian of the FermionRx gate is</span>
+
+<span class="sd">    :math:`H = \phi (f^\dagger_{x,\uparrow} f_{x,\downarrow} + f^\dagger_{x,\downarrow} f_{x,\uparrow})`</span>
+
+<span class="sd">    where :math:`x` is the index of the mode and :math:`\phi` is the free gate parameter</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialize a FermionRX gate</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            phi: angle of the rotation</span>
+<span class="sd">            label: optional</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;frx&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">phi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FRXGate.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FRXGate.inverse.html#qiskit_cold_atom.fermions.FRXGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get inverse gate by inverting the sign of the rotation angle&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FRXGate</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the FermionRX gate.&quot;&quot;&quot;</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;+_0 -_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;-_0 +_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">op</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">frx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">wires</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Add the FermionRX gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FRXGate</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">wires</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="FRYGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FRYGate.html#qiskit_cold_atom.fermions.FRYGate">[docs]</a><span class="k">class</span> <span class="nc">FRYGate</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Y-rotation between the spin-up and spin-down state at one tweezer site.</span>
+
+<span class="sd">    The generating Hamiltonian of the FermionRy gate is</span>
+
+<span class="sd">    :math:`H = \phi (f^\dagger_{x,\uparrow} f_{x,\uparrow} - f^\dagger_{x,\downarrow} f_{x,\downarrow})`</span>
+
+<span class="sd">    where :math:`x` is the index of the mode and :math:`\phi` is the free gate parameter</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a FermionRY gate</span>
+<span class="sd">        Args:</span>
+<span class="sd">            phi: angle of the rotation</span>
+<span class="sd">            label: optional</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;fry&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">phi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FRYGate.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FRYGate.inverse.html#qiskit_cold_atom.fermions.FRYGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get inverse gate by inverting the sign of the rotation angle&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FRYGate</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the FermionRY gate.&quot;&quot;&quot;</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;+_0 -_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;-_0 +_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">op</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">fry</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">wires</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Add the FermionRY gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FRYGate</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">wires</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="FRZGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FRZGate.html#qiskit_cold_atom.fermions.FRZGate">[docs]</a><span class="k">class</span> <span class="nc">FRZGate</span><span class="p">(</span><span class="n">FermionicGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Z-rotation between the spin-up and spin-down state at one tweezer site.</span>
+
+<span class="sd">    The generating Hamiltonian of the FermionRz gate is</span>
+
+<span class="sd">    :math:`H = i \phi (f^\dagger_{x,\downarrow} f_{x,\uparrow}-f^\dagger_{x,\uparrow} f_{x,\downarrow})`</span>
+
+<span class="sd">    where :math:`x` is the index of the mode and :math:`\phi` is the free gate parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a FermionRZ gate</span>
+<span class="sd">        Args:</span>
+<span class="sd">            phi: angle of the rotation</span>
+<span class="sd">            label: optional</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;frz&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">phi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<div class="viewcode-block" id="FRZGate.inverse"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FRZGate.inverse.html#qiskit_cold_atom.fermions.FRZGate.inverse">[docs]</a>    <span class="k">def</span> <span class="nf">inverse</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Get inverse gate by inverting the sign of the rotation angle&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FRZGate</span><span class="p">(</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the FermionRZ gate.&quot;&quot;&quot;</span>
+        <span class="n">op</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;N_0&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="nb">float</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="p">)</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;N_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">op</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">frz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">phi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">wires</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]):</span>
+    <span class="sd">&quot;&quot;&quot;Add the FermionRZ gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">FRZGate</span><span class="p">(</span><span class="n">phi</span><span class="o">=</span><span class="n">phi</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">wires</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="LoadFermions"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.LoadFermions.html#qiskit_cold_atom.fermions.LoadFermions">[docs]</a><span class="k">class</span> <span class="nc">LoadFermions</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    LoadFermions places a particle in an empty fermionic mode.</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">    .. parsed-literal::</span>
+
+<span class="sd">             ┌──────┐</span>
+<span class="sd">        q_0: ┤ Load ├</span>
+<span class="sd">             └──────┘</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialise new load instruction.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_clbits</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">[])</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">fload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wire</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the load fermion gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LoadFermions</span><span class="p">(),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+         <script src="../../../_static/jquery.js"></script>
+         <script src="../../../_static/underscore.js"></script>
+         <script src="../../../_static/doctools.js"></script>
+         <script src="../../../_static/thebelab-helper.js"></script>
+         <script src="../../../_static/tabs.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

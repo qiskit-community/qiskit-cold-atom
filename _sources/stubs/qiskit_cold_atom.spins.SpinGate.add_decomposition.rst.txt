@@ -1,0 +1,8 @@
+
+
+SpinGate.add_decomposition
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinGate.add_decomposition

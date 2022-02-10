@@ -1,0 +1,8 @@
+
+
+RLZGate.name
+===================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLZGate.name

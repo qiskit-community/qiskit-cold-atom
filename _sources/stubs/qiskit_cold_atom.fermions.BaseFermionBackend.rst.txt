@@ -1,0 +1,47 @@
+﻿
+
+BaseFermionBackend
+============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: BaseFermionBackend
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      BaseFermionBackend.options
+      BaseFermionBackend.version
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      BaseFermionBackend.configuration
+      BaseFermionBackend.draw
+      BaseFermionBackend.initialize_circuit
+      BaseFermionBackend.measure_observable_expectation
+      BaseFermionBackend.name
+      BaseFermionBackend.properties
+      BaseFermionBackend.provider
+      BaseFermionBackend.run
+      BaseFermionBackend.set_options
+      BaseFermionBackend.status
+   
+
+   
+   

@@ -1,0 +1,8 @@
+
+
+Phase.repeat
+======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Phase.repeat

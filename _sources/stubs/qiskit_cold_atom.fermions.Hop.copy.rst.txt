@@ -1,0 +1,8 @@
+
+
+Hop.copy
+==================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Hop.copy

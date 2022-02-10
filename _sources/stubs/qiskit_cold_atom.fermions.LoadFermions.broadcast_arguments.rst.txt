@@ -1,0 +1,8 @@
+
+
+LoadFermions.broadcast_arguments
+==========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: LoadFermions.broadcast_arguments

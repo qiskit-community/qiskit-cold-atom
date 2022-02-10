@@ -1,0 +1,8 @@
+
+
+FRYGate.validate_parameter
+====================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRYGate.validate_parameter

@@ -1,0 +1,8 @@
+
+
+SpinCircuitSolver.__call__
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinCircuitSolver.__call__

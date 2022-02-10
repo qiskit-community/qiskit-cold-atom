@@ -1,0 +1,996 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Spin circuits &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Fermionic Tweezer Hardware" href="03_fermionic_tweezer_hardware.html" />
+    <link rel="prev" title="Introduction &amp; Fermionic Circuits" href="01_introduction_and_fermionic_circuits.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Spin circuits</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/02_spin_circuits.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Spin-circuits">
+<h1>Spin circuits<a class="headerlink" href="#Spin-circuits" title="Permalink to this headline">¶</a></h1>
+<p>In addition to the fermionic setting introduced in <a class="reference internal" href="01_introduction_and_fermionic_circuits.html"><span class="doc">the first tutorial</span></a>, the Qiskit cold atom module supports a framework to describe cold atomic architectures based on high-dimensional spins.</p>
+<p>Here, the unit of information, i.e. the individual wires in the quantum circuit, are given as quantum angular momenta or spins of length <span class="math notranslate nohighlight">\(S\)</span>, where <span class="math notranslate nohighlight">\(S\)</span> can take positive integer or half-integer values. This can be seen as a generalization of the qubit setting (i.e. a qudit) where the qubit case corresponds to the smallest possible value <span class="math notranslate nohighlight">\(S=\frac{1}{2}\)</span>.</p>
+<p>Each individual spin has <span class="math notranslate nohighlight">\(2S+1\)</span> internal states which are labeled from <span class="math notranslate nohighlight">\(\left| 0 \right&gt;\)</span> to <span class="math notranslate nohighlight">\(\left| 2S \right&gt;\)</span>. In analogy to qubits, we use the convention that each wire is initialized in the <span class="math notranslate nohighlight">\(\left| 0 \right&gt;\)</span> state at the start of a circuit. A measurement of a wire will project that spin to one of the eigenstates and return the measured outcome from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2S\)</span>.</p>
+<p>The spin module comes with a <code class="docutils literal notranslate"><span class="pre">SpinSimulator()</span></code> backend which serves as a general-purpose simulation backend analogous to the <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> for fermionic circuits.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins</span> <span class="kn">import</span> <span class="n">SpinSimulator</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">SpinSimulator</span><span class="p">()</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="c1"># confirm that an empty circuit will return &#39;0 0 0 0&#39;</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;0 0 0 0&#39;: 1000}
+</pre></div></div>
+</div>
+<section id="Spin-Gates">
+<h2>Spin Gates<a class="headerlink" href="#Spin-Gates" title="Permalink to this headline">¶</a></h2>
+<p>Quantum gates define the unitary operations that are carried out on the system. The gate unitary <span class="math notranslate nohighlight">\(U\)</span> can be uniquely identified by the hermitian Hamiltonian <span class="math notranslate nohighlight">\(H\)</span> that generates the evolution of the state (see <a class="reference external" href="https://qiskit.org/textbook/ch-gates/proving-universality.html#2.2-Unitary-and-Hermitian-matrices-">Qiskit textbook</a>) as <span class="math notranslate nohighlight">\(U = e^{-i H}\)</span>. The description of the dynamics of cold atomic quantum simulators commonly takes place on the level of the Hamiltonian which the
+system implements. We therefore choose a language which defines the spin gates from their generating Hamiltonians.</p>
+<p>As a formal language to describe Hamiltonians for spin systems, we utilize the <code class="docutils literal notranslate"><span class="pre">SpinOp</span></code> from Qiskit Nature. Gates are then defined as instances or subclasses of the <code class="docutils literal notranslate"><span class="pre">SpinGate</span></code> class which inherits from Qiskit’s original <code class="docutils literal notranslate"><span class="pre">Gate</span></code> class.</p>
+<p>In order for the <code class="docutils literal notranslate"><span class="pre">SpinSimulator</span></code> to run a circuit, each gate of the circuit needs to have its generating Hamiltonian given as a <code class="docutils literal notranslate"><span class="pre">SpinOp</span></code>.</p>
+<p>As a first example, let’s look at the generalization of a <span class="math notranslate nohighlight">\(\pi\)</span>-rotation around the <span class="math notranslate nohighlight">\(X\)</span>-axis:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">SpinOp</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins</span> <span class="kn">import</span> <span class="n">SpinGate</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Hx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>  <span class="c1"># generator of a rotation of angle pi around the x-axis</span>
+
+<span class="n">rx_spin</span> <span class="o">=</span> <span class="n">SpinGate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;rx_spin&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">Hx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>For details on the syntax of how to define a SpinOp please see the <a class="reference external" href="https://qiskit.org/documentation/nature/stubs/qiskit_nature.operators.second_quantization.SpinOp.html#qiskit_nature.operators.second_quantization.SpinOp">SpinOp documentation</a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;spin&quot;</span><span class="p">))</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rx_spin</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_02_spin_circuits_6_0.png" src="../_images/tutorials_02_spin_circuits_6_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;20&#39;: 1000}
+</pre></div></div>
+</div>
+<p>After applying the x-rotation, the spin has been flipped from pointing all the way “up” (0) to pointing all the way “down” to its largest value <span class="math notranslate nohighlight">\(2S = 20\)</span>.</p>
+<p>Note that for the definition of the gate, the length of the spin <span class="math notranslate nohighlight">\(S\)</span> is not yet given explicitly. Rather, when running the job on the spin simulator backend, <span class="math notranslate nohighlight">\(S\)</span> is given as an additional parameter of the simulation. The same circuit can thus be recycled and simulated with a different spin length:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;12&#39;: 1000}
+</pre></div></div>
+</div>
+<section id="Example:-Superposition">
+<h3>Example: Superposition<a class="headerlink" href="#Example:-Superposition" title="Permalink to this headline">¶</a></h3>
+<p>As is the case for qubit systems, superpositions in the initial states can be created by rotating around the x-axis with an angle <span class="math notranslate nohighlight">\(\phi \neq \pi\)</span>. Such a parameterized rotation gate is defined in the <code class="docutils literal notranslate"><span class="pre">SpinGateLibrary</span></code>, it is called the <code class="docutils literal notranslate"><span class="pre">LXGate</span></code> (as <span class="math notranslate nohighlight">\(L\)</span> usually denotes the angular momentum in the cold atom community). Let’s see what state is created when rotating with an angle of <span class="math notranslate nohighlight">\(\phi= \frac{\pi}{2}\)</span>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins</span> <span class="kn">import</span> <span class="n">RLXGate</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;spin&quot;</span><span class="p">))</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLXGate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">),</span> <span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_02_spin_circuits_11_0.png" src="../_images/tutorials_02_spin_circuits_11_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># The same circuit can also be built by the following shorthand notation</span>
+<span class="c1"># which is added to QuantumCircuit upon importing from qiskit_cold_atom.spins</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;spin&quot;</span><span class="p">))</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_02_spin_circuits_12_0.png" src="../_images/tutorials_02_spin_circuits_12_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="c1"># convert counts to integers for better formatting</span>
+<span class="n">plot_histogram</span><span class="p">({</span><span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">):</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_02_spin_circuits_13_0.png" src="../_images/tutorials_02_spin_circuits_13_0.png" />
+</div>
+</div>
+<p>We see from the above result that a single rotation creates a superposition of all possible values, where the value “in the middle” <span class="math notranslate nohighlight">\(S=10\)</span> is most likely to be measured. The measurement outcomes follows a binomial distribution with <span class="math notranslate nohighlight">\(p=\frac{1}{2}\)</span>.</p>
+</section>
+<section id="Example:-Multi-spin-gates">
+<h3>Example: Multi-spin gates<a class="headerlink" href="#Example:-Multi-spin-gates" title="Permalink to this headline">¶</a></h3>
+<p>We can also use the language of generating Hamiltonians to create multi-spin gates. As an example, we can use a ZZ-type interaction to create an equal superposition between the different combinations of extremal spin orientations <span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(2S\)</span>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Hzz</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Z_0 Z_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># generating Hamiltonian acting on two spins</span>
+
+<span class="n">zz_gate</span> <span class="o">=</span> <span class="n">SpinGate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;zz_spin&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">Hzz</span><span class="p">)</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;spin&quot;</span><span class="p">))</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">zz_gate</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_02_spin_circuits_16_0.png" src="../_images/tutorials_02_spin_circuits_16_0.png" />
+</div>
+</div>
+<p>Note that we could have achieved the same result by using the</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">qc</span><span class="o">.</span><span class="n">rlzlz</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>instruction.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counts: &quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+counts:  {&#39;2 0&#39;: 231, &#39;2 2&#39;: 267, &#39;0 0&#39;: 249, &#39;0 2&#39;: 253}
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_02_spin_circuits_18_1.png" src="../_images/tutorials_02_spin_circuits_18_1.png" />
+</div>
+</div>
+<p>The measured counts are returned in a space delimited format, where the first entry corresponds to the last spin in the register, etc. When executing circuits with spin-1/2, this recovers Qiskit’s ordering of bitstrings for qubits.</p>
+</section>
+</section>
+<section id="The-spin-simulator-backend">
+<h2>The spin simulator backend<a class="headerlink" href="#The-spin-simulator-backend" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">SpinSimulator</span></code> backend can also be used to access the statevector and the unitary of the circuit. Internally, the backend simulates the evolution of the circuit by exact diagonalization. The statevector and unitary of the system can be retrieved in the familiar way of <code class="docutils literal notranslate"><span class="pre">result.get_statevector()</span></code> and <code class="docutils literal notranslate"><span class="pre">result.get_unitary()</span></code>. If there is a final measurement in the circuit, the returned state and unitary of the circuit are those just prior to measurement.</p>
+<p>Let’s demonstrate this on the above circuit:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># access the statevector</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">statevector :&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">())</span>
+
+<span class="c1"># accedd the unitary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">circuit unitary : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+statevector : [-5.00000000e-01-1.36845553e-48j -1.30736460e-32+1.11022302e-16j
+  5.00000000e-01-1.36845553e-48j -1.23259516e-32+1.34015774e-16j
+ -6.16297582e-33+6.12323400e-17j  0.00000000e+00+2.29934717e-17j
+  5.00000000e-01+3.42113883e-49j  4.35788200e-33+1.77904863e-17j
+  5.00000000e-01+3.42113883e-49j]
+
+circuit unitary :
+ [[-5.00000000e-01-1.36845553e-48j -1.54074396e-32+1.66533454e-16j
+   5.00000000e-01+1.36845553e-48j -1.23259516e-32+1.25886354e-16j
+   1.38777878e-17+6.12323400e-17j  6.16297582e-33+7.03752031e-17j
+   5.00000000e-01+3.42113883e-49j  6.16297582e-33+3.74166420e-17j
+   5.00000000e-01-3.42113883e-49j]
+ [-1.30736460e-32+1.11022302e-16j  1.00000000e+00+0.00000000e+00j
+   1.30736460e-32+0.00000000e+00j -6.16297582e-33+6.12323400e-17j
+   1.23259516e-32-1.37383090e-16j -6.16297582e-33-6.12323400e-17j
+   4.35788200e-33+3.74166420e-17j -3.92523115e-17+0.00000000e+00j
+  -4.35788200e-33+3.74166420e-17j]
+ [ 5.00000000e-01-1.36845553e-48j  1.54074396e-32-5.55111512e-17j
+  -5.00000000e-01+1.36845553e-48j  0.00000000e+00+7.03752031e-17j
+  -1.38777878e-17-6.12323400e-17j  6.16297582e-33+1.25886354e-16j
+   5.00000000e-01+3.42113883e-49j -6.16297582e-33+3.74166420e-17j
+   5.00000000e-01-3.42113883e-49j]
+ [-1.23259516e-32+1.34015774e-16j  1.38777878e-17+6.12323400e-17j
+   6.16297582e-33+5.07490473e-17j  1.00000000e+00+6.84227766e-49j
+   9.24446373e-33+0.00000000e+00j  0.00000000e+00-6.84227766e-49j
+   1.54074396e-32-8.12941988e-18j -4.62223187e-33-6.12323400e-17j
+  -6.16297582e-33+4.73817313e-17j]
+ [-6.16297582e-33+6.12323400e-17j  6.16297582e-33-9.81307787e-17j
+  -6.16297582e-33-6.12323400e-17j  8.71576399e-33+0.00000000e+00j
+  -1.00000000e+00-4.35788200e-33j -8.71576399e-33+5.55111512e-17j
+   0.00000000e+00-6.12323400e-17j -6.16297582e-33+3.92523115e-17j
+   0.00000000e+00+6.12323400e-17j]
+ [ 0.00000000e+00+2.29934717e-17j -1.38777878e-17-6.12323400e-17j
+   6.16297582e-33+1.06260199e-16j  0.00000000e+00+6.84227766e-49j
+  -9.24446373e-33+0.00000000e+00j  1.00000000e+00-6.84227766e-49j
+  -3.08148791e-33+4.73817313e-17j -6.16297582e-33+6.12323400e-17j
+  -6.16297582e-33-8.12941988e-18j]
+ [ 5.00000000e-01+3.42113883e-49j  3.08148791e-33+3.74166420e-17j
+   5.00000000e-01-3.42113883e-49j  1.23259516e-32-8.12941988e-18j
+  -4.62223187e-33-6.12323400e-17j -6.16297582e-33+4.73817313e-17j
+  -5.00000000e-01+3.42113883e-49j  6.16297582e-33+1.11022302e-16j
+   5.00000000e-01-3.42113883e-49j]
+ [ 4.35788200e-33+1.77904863e-17j -3.92523115e-17+0.00000000e+00j
+  -4.35788200e-33+3.74166420e-17j  0.00000000e+00-6.12323400e-17j
+  -6.16297582e-33+3.92523115e-17j  0.00000000e+00+6.12323400e-17j
+   4.35788200e-33+1.11022302e-16j  1.00000000e+00+0.00000000e+00j
+  -4.35788200e-33+0.00000000e+00j]
+ [ 5.00000000e-01+3.42113883e-49j -3.08148791e-33+3.74166420e-17j
+   5.00000000e-01-3.42113883e-49j  0.00000000e+00+4.73817313e-17j
+  -6.16297582e-33+6.12323400e-17j -6.16297582e-33-8.12941988e-18j
+   5.00000000e-01+3.42113883e-49j -6.16297582e-33+0.00000000e+00j
+  -5.00000000e-01-3.42113883e-49j]]
+</pre></div></div>
+</div>
+<p>For the above circuit with two spins of length <span class="math notranslate nohighlight">\(S=1\)</span>, the total dimension of the Hilbert space becomes <span class="math notranslate nohighlight">\((2S+1)^2 = 9\)</span>. The state ordering in the basis in this case is (0 0), (1 0), (2 0), (0 1), (1 1), (2 1), (0 2), (1 2), (2 2).</p>
+<section id="Further-remarks">
+<h3>Further remarks<a class="headerlink" href="#Further-remarks" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">SpinSimulator</span></code> is a general simulator backend in the sense that it accepts any <code class="docutils literal notranslate"><span class="pre">SpinGate</span></code> with a well-defined generator. Similar to the <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> for qubits, there are no coupling maps or further restrictions posed on the applicable gates.</p>
+<p>In order to see how the spin setting introduced here can be used to describe a concrete experimental system of ultracold bosonic atoms with a gateset and coupling maps of a real device, check out the <a class="reference internal" href="04_collective_spin_hardware.html"><span class="doc">collective spins hardware tutorial</span></a>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td><code>qiskit-terra</code></td><td>0.19.0.dev0+37684d4</td></tr><tr><td><code>qiskit-aer</code></td><td>0.9.0</td></tr><tr><td><code>qiskit-ignis</code></td><td>0.6.0</td></tr><tr><td><code>qiskit-ibmq-provider</code></td><td>0.19.0.dev0+8f49a34</td></tr><tr><td><code>qiskit-aqua</code></td><td>0.9.5</td></tr><tr><td><code>qiskit</code></td><td>0.30.0</td></tr><tr><td><code>qiskit-nature</code></td><td>0.2.1</td></tr><tr><td><code>qiskit-optimization</code></td><td>0.3.0</td></tr><tr><th>System information</th></tr><tr><td>Python version</td><td>3.8.5</td></tr><tr><td>Python compiler</td><td>GCC 7.3.0</td></tr><tr><td>Python build</td><td>default, Sep  4 2020 07:30:14</td></tr><tr><td>OS</td><td>Linux</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.525527954101562</td></tr><tr><td colspan='2'>Mon Dec 06 23:42:34 2021 CET</td></tr></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2021.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03_fermionic_tweezer_hardware.html" class="btn btn-neutral float-right" title="Fermionic Tweezer Hardware" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="01_introduction_and_fermionic_circuits.html" class="btn btn-neutral" title="Introduction &amp; Fermionic Circuits" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Spin circuits</a><ul>
+<li><a class="reference internal" href="#Spin-Gates">Spin Gates</a><ul>
+<li><a class="reference internal" href="#Example:-Superposition">Example: Superposition</a></li>
+<li><a class="reference internal" href="#Example:-Multi-spin-gates">Example: Multi-spin gates</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#The-spin-simulator-backend">The spin simulator backend</a><ul>
+<li><a class="reference internal" href="#Further-remarks">Further remarks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

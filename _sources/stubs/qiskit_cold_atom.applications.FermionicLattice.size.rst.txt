@@ -1,0 +1,8 @@
+
+
+FermionicLattice.size
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoproperty:: FermionicLattice.size

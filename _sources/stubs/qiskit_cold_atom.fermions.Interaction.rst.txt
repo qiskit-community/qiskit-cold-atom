@@ -1,0 +1,63 @@
+﻿
+
+Interaction
+=====================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: Interaction
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      Interaction.condition_bits
+      Interaction.decompositions
+      Interaction.definition
+      Interaction.duration
+      Interaction.generator
+      Interaction.label
+      Interaction.name
+      Interaction.num_clbits
+      Interaction.num_qubits
+      Interaction.params
+      Interaction.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      Interaction.add_decomposition
+      Interaction.assemble
+      Interaction.broadcast_arguments
+      Interaction.c_if
+      Interaction.control
+      Interaction.copy
+      Interaction.inverse
+      Interaction.is_parameterized
+      Interaction.mirror
+      Interaction.operator_to_mat
+      Interaction.power
+      Interaction.qasm
+      Interaction.repeat
+      Interaction.reverse_ops
+      Interaction.soft_compare
+      Interaction.to_matrix
+      Interaction.validate_parameter
+   
+
+   
+   

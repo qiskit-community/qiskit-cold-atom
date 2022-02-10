@@ -1,0 +1,8 @@
+
+
+SpinGate.validate_parameter
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinGate.validate_parameter

@@ -1,0 +1,62 @@
+﻿
+
+OATGate
+==============================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: OATGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      OATGate.condition_bits
+      OATGate.decompositions
+      OATGate.definition
+      OATGate.duration
+      OATGate.generator
+      OATGate.label
+      OATGate.name
+      OATGate.num_clbits
+      OATGate.num_qubits
+      OATGate.params
+      OATGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      OATGate.add_decomposition
+      OATGate.assemble
+      OATGate.broadcast_arguments
+      OATGate.c_if
+      OATGate.control
+      OATGate.copy
+      OATGate.inverse
+      OATGate.is_parameterized
+      OATGate.mirror
+      OATGate.power
+      OATGate.qasm
+      OATGate.repeat
+      OATGate.reverse_ops
+      OATGate.soft_compare
+      OATGate.to_matrix
+      OATGate.validate_parameter
+   
+
+   
+   

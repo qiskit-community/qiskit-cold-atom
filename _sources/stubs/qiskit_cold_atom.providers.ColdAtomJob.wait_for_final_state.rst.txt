@@ -1,0 +1,8 @@
+
+
+ColdAtomJob.wait_for_final_state
+===========================================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. automethod:: ColdAtomJob.wait_for_final_state

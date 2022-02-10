@@ -1,0 +1,8 @@
+
+
+ColdAtomJob.cancel
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. automethod:: ColdAtomJob.cancel

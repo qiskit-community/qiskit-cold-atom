@@ -1,0 +1,8 @@
+
+
+RLYGate.broadcast_arguments
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLYGate.broadcast_arguments

@@ -1,0 +1,1041 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Introduction &amp; Fermionic Circuits &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Spin circuits" href="02_spin_circuits.html" />
+    <link rel="prev" title="Qiskit Cold Atom Tutorials" href="index.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Introduction &amp; Fermionic Circuits</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/01_introduction_and_fermionic_circuits.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Introduction-&amp;-Fermionic-Circuits">
+<h1>Introduction &amp; Fermionic Circuits<a class="headerlink" href="#Introduction-&-Fermionic-Circuits" title="Permalink to this headline">¶</a></h1>
+<p>In digital quantum computing, the fundamental unit of information is typically an addressable two-level quantum system called a qubit. Within the circuit model, each qubit is assigned a wire in the circuit. After <em>initialization</em> in a well-defined state (e.g. the ground state 0), gates applied to these wires describe an <em>evolution</em> of the state under a sequence of unitary operations. A <em>measurement</em> on a wire then projects the corresponding unit of information onto one of its internal states (0
+or 1 for qubits).</p>
+<p>Quantum simulation architectures based on cold atoms have been vastly explored for the simulation of condensed matter systems in the last two decades. [1] Their experimental control has advanced to a point where they now offer varying degrees of programmability making them strong candidates for a novel kind of quantum information processor. Similar to the qubit circuits described above, experiments run on cold atomic quantum simulators are also commonly described by an <em>initialization</em> in some
+easy-to-prepare state, a subsequent <em>evolution</em> of the state under programmable unitary operations and finally a <em>measurement</em> yielding information about the quantum state of the atoms such as location, momentum or spin.</p>
+<p>Due to these similarities between the qubits and cold atomic quantum systems we can abstract quantum computations and simulations run on cold atomic systems in quantum circuits where the wires represent the internal degrees of freedom of the atoms which are accessed by the measurement.</p>
+<p>Qiskit’s cold atom module explores such circuit-based descriptions of cold atomic experiments, leveraging the existing Qiskit control stack and building upon functionality such as circuits, backends, gates, providers etc.</p>
+<p>Specifically, this module enables two different settings:</p>
+<ol class="arabic simple">
+<li><p>A “fermionic” setting where the individual units of information are the occupations of fermionic modes realized by trapped fermionic atoms as described in this tutorial.</p></li>
+<li><p>A “spin” setting where the individual units of information are orientations of long spins as realized by trapped Bose-Einstein-Condensates. This is introduced in the <a class="reference internal" href="02_spin_circuits.html"><span class="doc">spin circuits tutorial</span></a>.</p></li>
+</ol>
+<section id="Fermionic-setting">
+<h2>Fermionic setting<a class="headerlink" href="#Fermionic-setting" title="Permalink to this headline">¶</a></h2>
+<p>In a fermionic setting, the wires of a quantum circuit describe the occupations of individual fermionic modes. Due to the Pauli exclusion principle, a fermionic mode can either be empty, i.e. in the “vacuum state” <span class="math notranslate nohighlight">\(\left| 0 \right&gt;\)</span> or occupied <span class="math notranslate nohighlight">\(\left| 1 \right&gt;\)</span>. However, no two particles can occupy the same mode. We assign one wire to each fermionic mode in the quantum circuit describing such systems.</p>
+<p>Before applying gates to this fermionic register, we need to initialize some modes with particles, which is done with a <code class="docutils literal notranslate"><span class="pre">load</span></code> instruction. Importing the <code class="docutils literal notranslate"><span class="pre">qiskit_cold_atom.fermions</span></code> module will add this instruction to the <code class="docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> class.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions</span> <span class="kn">import</span> <span class="n">FermionSimulator</span>
+
+<span class="c1"># initialize the generic fermionic simulator backend</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">FermionSimulator</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="n">circ1</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Create a quantum circuit describing four fermionic modes.</span>
+
+<span class="n">circ1</span><span class="o">.</span><span class="n">load_fermions</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Load fermions into modes 1 and 2.</span>
+
+<span class="n">circ1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_01_introduction_and_fermionic_circuits_3_0.png" src="../_images/tutorials_01_introduction_and_fermionic_circuits_3_0.png" />
+</div>
+</div>
+<p>A measurement will yield the occupations of each wire. Let’s run the circuit on the <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> backend and confirm this. Calling <code class="docutils literal notranslate"><span class="pre">backend.run()</span></code> will create an <code class="docutils literal notranslate"><span class="pre">AerJob</span></code> object from qiskit-aer which comes with the same functionality to handle jobs familiar from the Aer simulation backends, such as a <code class="docutils literal notranslate"><span class="pre">.result()</span></code> method to retrieve the results.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circ1</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circ1</span><span class="p">)</span>  <span class="c1"># defaults to 1000 shots taken</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;0110&#39;: 1000}
+</pre></div></div>
+</div>
+<p>A fermionic register can also be created directly from a list of initial occupations:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circ2</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">circ2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_01_introduction_and_fermionic_circuits_7_0.png" src="../_images/tutorials_01_introduction_and_fermionic_circuits_7_0.png" />
+</div>
+</div>
+<p>Observe that the first quantum circuit has a register named <code class="docutils literal notranslate"><span class="pre">q</span></code> while the second circuit has a register named <code class="docutils literal notranslate"><span class="pre">fer_mode</span></code> to emphasize that the wires are fermionic in nature. This does not affect the instructions that can be added to a circuit and reminds us of the different nature of the wires. Circuits with registers labeled <code class="docutils literal notranslate"><span class="pre">fer_mode</span></code> can be conveniently obtained from the cold atom backend instances using the <code class="docutils literal notranslate"><span class="pre">initialize_circuit</span></code> method.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First circuit&#39;s register: </span><span class="si">{</span><span class="n">circ1</span><span class="o">.</span><span class="n">qregs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Second circuit&#39;s register: </span><span class="si">{</span><span class="n">circ2</span><span class="o">.</span><span class="n">qregs</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+First circuit&#39;s register: [QuantumRegister(4, &#39;q&#39;)]
+Second circuit&#39;s register: [QuantumRegister(3, &#39;fer_mode&#39;)]
+</pre></div></div>
+</div>
+</section>
+<section id="Fermionic-Gates">
+<h2>Fermionic Gates<a class="headerlink" href="#Fermionic-Gates" title="Permalink to this headline">¶</a></h2>
+<p>Quantum gates define the unitary operations that are carried out on the system. The gate unitary <span class="math notranslate nohighlight">\(U\)</span> can be uniquely identified by the hermitian Hamiltonian <span class="math notranslate nohighlight">\(H\)</span> that generates the evolution of the state (see <a class="reference external" href="https://qiskit.org/textbook/ch-gates/proving-universality.html#2.2-Unitary-and-Hermitian-matrices-">Qiskit textbook</a>) as <span class="math notranslate nohighlight">\(U = e^{-i H}\)</span>. The dynamics of cold atomic quantum simulators is commonly described by the Hamiltonian implemented by the system. The Qiskit Cold
+Atom module therefore defines fermionic gates using their generating Hamiltonians.</p>
+<p>As a formal language to describe fermionic Hamiltonians, we utilize the <code class="docutils literal notranslate"><span class="pre">FermionicOp</span></code> from Qiskit Nature. Gates are then defined as instances or subclasses of the <code class="docutils literal notranslate"><span class="pre">FermionicGate</span></code> class which inherits from Qiskit’s original <code class="docutils literal notranslate"><span class="pre">Gate</span></code> class.</p>
+<p>In order for the <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> to run a circuit, each gate of the circuit needs to have its generating Hamiltonian given as a <code class="docutils literal notranslate"><span class="pre">FermionicOp</span></code>.</p>
+<p>As a first example, let’s define a gate <span class="math notranslate nohighlight">\(U_{\text{swap}} = e^{-i H_{\text{swap}}}\)</span> which takes one particle from mode <span class="math notranslate nohighlight">\(i\)</span> to another mode <span class="math notranslate nohighlight">\(j\)</span> (and vice versa). In second quantization, the generating Hamiltonian is given as</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{swap}} = \frac{\pi}{2} (f^\dagger_{i} f_{j} + f^\dagger_{j} f_{i})\]</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">FermionicOp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># define the Hamiltonian as a FermionicOp</span>
+<span class="n">H_swap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">FermionicOp</span><span class="p">([(</span><span class="s2">&quot;+_0 -_1&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;-_0 +_1&quot;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)],</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>For details on the syntax of how to define a <code class="docutils literal notranslate"><span class="pre">FermionicOp</span></code> please see the <a class="reference external" href="https://qiskit.org/documentation/nature/stubs/qiskit_nature.operators.second_quantization.FermionicOp.html#qiskit_nature.operators.second_quantization.FermionicOp">FermionicOp documentation</a></p>
+<p>We can now define the fermionic gate:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions</span> <span class="kn">import</span> <span class="n">FermionicGate</span>
+
+<span class="n">swap_fermions</span> <span class="o">=</span> <span class="n">FermionicGate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;swap_fermion&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">H_swap</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s use this gate to define and run a circuit on the simulator:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circ</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">circ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">circ</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_01_introduction_and_fermionic_circuits_15_0.png" src="../_images/tutorials_01_introduction_and_fermionic_circuits_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circ</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;0011&#39;: 1000}
+</pre></div></div>
+</div>
+<p>The fermions initialized at positions 0 and 2 got moved to position 2 and 3. Therefore, the outcome ‘0011’ is always measured at each shot.</p>
+<section id="Superposition">
+<h3>Superposition<a class="headerlink" href="#Superposition" title="Permalink to this headline">¶</a></h3>
+<p>With the SWAP gate only, the system will always stay in a computational basis state. To create a superposition we define a similar gate which lets a particle tunnel from mode <span class="math notranslate nohighlight">\(i\)</span> to mode <span class="math notranslate nohighlight">\(j\)</span>. This is achieved by applying the same Hamiltonian <span class="math notranslate nohighlight">\(H_{\text{swap}}\)</span> for half the time, i.e. with a prefactor half as large.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># define a gate which will create superposition in the circuit</span>
+<span class="n">split_fermions</span> <span class="o">=</span> <span class="n">FermionicGate</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;split_fermion&quot;</span><span class="p">,</span> <span class="n">num_modes</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">generator</span><span class="o">=</span><span class="n">H_swap</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qc_sup</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="n">qc_sup</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">split_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc_sup</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">qc_sup</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">qc_sup</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_01_introduction_and_fermionic_circuits_20_0.png" src="../_images/tutorials_01_introduction_and_fermionic_circuits_20_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+
+<span class="n">job_sup</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc_sup</span><span class="p">)</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">job_sup</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_01_introduction_and_fermionic_circuits_21_0.png" src="../_images/tutorials_01_introduction_and_fermionic_circuits_21_0.png" />
+</div>
+</div>
+<p>We now see that the single particle in the register is found either in mode 0 or mode 2 with equal probability.</p>
+</section>
+</section>
+<section id="The-fermionic-simulator-backend">
+<h2>The fermionic simulator backend<a class="headerlink" href="#The-fermionic-simulator-backend" title="Permalink to this headline">¶</a></h2>
+<p>We have already seen above how to use the <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> to simulate measurements of the occupation of the fermionic modes. Internally, this backend simulates the evolution of the circuit by exact diagonalization and therefore also has access to the statevector and unitary of the system in the familiar way of <code class="docutils literal notranslate"><span class="pre">result.get_statevector()</span></code> and <code class="docutils literal notranslate"><span class="pre">result.get_unitary()</span></code>. If there is a final measurement in the circuit, the returned state and unitary of the circuit are those just prior to
+measurement.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">split_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">split_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">swap_fermions</span><span class="p">,</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">1234</span><span class="p">)</span>
+
+<span class="c1"># access the counts</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;counts :&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+
+<span class="c1"># access the memory of individual outcomes</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">memory :&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_memory</span><span class="p">())</span>
+
+<span class="c1"># access the statevector</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">statevector :&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_statevector</span><span class="p">())</span>
+
+<span class="c1"># accedd the unitary</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">circuit unitary : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_unitary</span><span class="p">())</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+counts : {&#39;1010&#39;: 1, &#39;0011&#39;: 1, &#39;1100&#39;: 5, &#39;0101&#39;: 3}
+
+memory : [&#39;0011&#39;, &#39;1010&#39;, &#39;0101&#39;, &#39;1100&#39;, &#39;1100&#39;, &#39;0101&#39;, &#39;0101&#39;, &#39;1100&#39;, &#39;1100&#39;, &#39;1100&#39;]
+
+statevector : [0.-0.5j 0.+0.5j 0.+0.j  0.+0.j  0.+0.5j 0.-0.5j]
+
+circuit unitary :
+ [[ 0. +0.j   0.5+0.j   0. +0.5j  0. -0.5j  0.5+0.j   0. +0.j ]
+ [ 0. +0.j   0.5+0.j   0. +0.5j  0. +0.5j -0.5+0.j   0. +0.j ]
+ [ 0. +0.j   0. +0.j   0. +0.j   0. +0.j   0. +0.j   0. +1.j ]
+ [ 0. -1.j   0. +0.j   0. +0.j   0. +0.j   0. +0.j   0. +0.j ]
+ [ 0. +0.j  -0.5+0.j   0. +0.5j  0. +0.5j  0.5+0.j   0. +0.j ]
+ [ 0. +0.j  -0.5+0.j   0. +0.5j  0. -0.5j -0.5+0.j   0. +0.j ]]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_01_introduction_and_fermionic_circuits_24_1.png" src="../_images/tutorials_01_introduction_and_fermionic_circuits_24_1.png" />
+</div>
+</div>
+<p>Note that the statevector and unitary are defined in a Hilbert space of dimension six. This is because the simulator checks for the conservation of the total number of particles under the applied gates. If all gates conserve the total particle number, the simulation will only be carried out in the relevant subspace. In order to see which index in this basis belongs to which state, the basis of the simulation of a circuits can be accessed as:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">get_basis</span><span class="p">(</span><span class="n">qc</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+ 0.   |0, 0, 1, 1&gt;
+ 1.   |0, 1, 0, 1&gt;
+ 2.   |0, 1, 1, 0&gt;
+ 3.   |1, 0, 0, 1&gt;
+ 4.   |1, 0, 1, 0&gt;
+ 5.   |1, 1, 0, 0&gt;
+</pre></div></div>
+</div>
+<section id="Measuring-observables">
+<h3>Measuring observables<a class="headerlink" href="#Measuring-observables" title="Permalink to this headline">¶</a></h3>
+<p>The fermionic backends come with a method to sample the expectation value of observables which are diagonal in the occupation number basis. Like the gate Hamiltonians, these observables are given as a <code class="docutils literal notranslate"><span class="pre">FermionicOp</span></code>.</p>
+<p>For example, we can measure the correlation of the occupations of two sites in the above circuit:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">corr</span> <span class="o">=</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;NINI&quot;</span><span class="p">)</span> <span class="o">+</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;EIEI&quot;</span><span class="p">)</span>
+
+<span class="n">exp_val</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">measure_observable_expectation</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">observable</span><span class="o">=</span><span class="n">corr</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">exp_val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.484]
+</pre></div></div>
+</div>
+</section>
+<section id="Further-remarks">
+<h3>Further remarks<a class="headerlink" href="#Further-remarks" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">FermionSimulator</span></code> is a general simulator backend in the sense that it accepts any <code class="docutils literal notranslate"><span class="pre">FermionicGate</span></code> with a well-defined fermionic generator. Similar to the <code class="docutils literal notranslate"><span class="pre">qasm_simulator</span></code> for qubits, there are no coupling maps or further restrictions posed on the applicable gates.</p>
+<p>To see how fermionic circuits can describe a concrete experimental system of ultracold fermionic atoms with the gateset and coupling map of a real device please see the <a class="reference internal" href="03_fermionic_tweezer_hardware.html"><span class="doc">fermionic tweezer hardware tutorial</span></a>.</p>
+</section>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<p>[1] Gross, Christian and Bloch, Immanuel <em>Quantum simulations with ultracold atoms in optical lattices</em>, Science, 357, 995-1001, 2017</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td><code>qiskit-terra</code></td><td>0.18.2</td></tr><tr><td><code>qiskit-aer</code></td><td>0.9.0</td></tr><tr><td><code>qiskit-ignis</code></td><td>0.6.0</td></tr><tr><td><code>qiskit-ibmq-provider</code></td><td>0.16.0</td></tr><tr><td><code>qiskit-aqua</code></td><td>0.9.5</td></tr><tr><td><code>qiskit</code></td><td>0.30.0</td></tr><tr><td><code>qiskit-nature</code></td><td>0.2.1</td></tr><tr><td><code>qiskit-optimization</code></td><td>0.1.0</td></tr><tr><th>System information</th></tr><tr><td>Python</td><td>3.8.5 (default, Sep  4 2020, 07:30:14)
+[GCC 7.3.0]</td></tr><tr><td>OS</td><td>Linux</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.525524139404297</td></tr><tr><td colspan='2'>Thu Sep 30 13:50:12 2021 CEST</td></tr></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2021.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02_spin_circuits.html" class="btn btn-neutral float-right" title="Spin circuits" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Qiskit Cold Atom Tutorials" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Introduction &amp; Fermionic Circuits</a><ul>
+<li><a class="reference internal" href="#Fermionic-setting">Fermionic setting</a></li>
+<li><a class="reference internal" href="#Fermionic-Gates">Fermionic Gates</a><ul>
+<li><a class="reference internal" href="#Superposition">Superposition</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#The-fermionic-simulator-backend">The fermionic simulator backend</a><ul>
+<li><a class="reference internal" href="#Measuring-observables">Measuring observables</a></li>
+<li><a class="reference internal" href="#Further-remarks">Further remarks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

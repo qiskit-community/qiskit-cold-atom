@@ -1,0 +1,8 @@
+
+
+Interaction.num_clbits
+================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Interaction.num_clbits

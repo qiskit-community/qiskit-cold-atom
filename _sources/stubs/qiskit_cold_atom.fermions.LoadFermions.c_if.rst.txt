@@ -1,0 +1,8 @@
+
+
+LoadFermions.c_if
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: LoadFermions.c_if

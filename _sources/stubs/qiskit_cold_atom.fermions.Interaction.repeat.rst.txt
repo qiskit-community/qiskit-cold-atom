@@ -1,0 +1,8 @@
+
+
+Interaction.repeat
+============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Interaction.repeat

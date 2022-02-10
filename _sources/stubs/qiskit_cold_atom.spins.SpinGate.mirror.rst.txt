@@ -1,0 +1,8 @@
+
+
+SpinGate.mirror
+======================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinGate.mirror

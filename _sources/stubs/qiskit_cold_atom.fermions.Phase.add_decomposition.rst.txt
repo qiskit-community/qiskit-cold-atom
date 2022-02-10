@@ -1,0 +1,8 @@
+
+
+Phase.add_decomposition
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Phase.add_decomposition

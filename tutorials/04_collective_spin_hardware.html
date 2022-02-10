@@ -1,0 +1,1055 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Collective Spin Hardware &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Qiskit Cold Atom Provider" href="05_cold_atom_provider.html" />
+    <link rel="prev" title="Fermionic Tweezer Hardware" href="03_fermionic_tweezer_hardware.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Collective Spin Hardware</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/04_collective_spin_hardware.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Collective-Spin-Hardware">
+<h1>Collective Spin Hardware<a class="headerlink" href="#Collective-Spin-Hardware" title="Permalink to this headline">¶</a></h1>
+<section id="Experimental-system">
+<h2>Experimental system<a class="headerlink" href="#Experimental-system" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial, we show how the spin circuit setting, introduced in the <a class="reference internal" href="02_spin_circuits.html"><span class="doc">second tutorial</span></a>, can describe a realistic cold atomic experimental setup based on spins as a backend in Qiskit-cold-atom. We call this setting the “collective spin hardware”.</p>
+<p>Collective spins can be experimentally realized by trapping a cloud of bosonic atoms with two internal states (denoted <span class="math notranslate nohighlight">\(\uparrow\)</span> and <span class="math notranslate nohighlight">\(\downarrow\)</span>) i.e. effective spin-<span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>-systems in a Bose-Einstein-Condensate (BEC) [1]. Due to their bosonic indistinguishability, the state of <span class="math notranslate nohighlight">\(N\)</span> such spin-<span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> particles can be described as the state of one long angular momentum (or “spin”) of length <span class="math notranslate nohighlight">\(L=\frac{N}{2}\)</span> [1]. This so-called “collective spin”
+has <span class="math notranslate nohighlight">\(2L+1\)</span> internal states which are the eigenstates of the projection onto the quantization axis <span class="math notranslate nohighlight">\(L_z\)</span>.</p>
+<p>Multiple collective spins can be realized by having atoms trapped in multiple lattice sites or optical tweezers, where the atoms in each tweezer form a BEC. If all atoms are spin-<span class="math notranslate nohighlight">\(\uparrow\)</span>, their collective spin will be at its maximal value <span class="math notranslate nohighlight">\(L_z = \frac{N}{2}\)</span>, whereas if all atoms are spin-<span class="math notranslate nohighlight">\(\downarrow\)</span>, their collective spin will be at is minimal value <span class="math notranslate nohighlight">\(L_z = -\frac{N}{2}\)</span>. The value of <span class="math notranslate nohighlight">\(L_z\)</span> thus corresponds to the value of half the number of atoms in the
+<span class="math notranslate nohighlight">\(\uparrow\)</span>-state minus half the number of atoms in the <span class="math notranslate nohighlight">\(\downarrow\)</span>-state: <span class="math notranslate nohighlight">\(L_z = \frac{N_\uparrow - N_\downarrow}{2}\)</span>. This is shown schematically in the figure below where each dot corresponds to an atom whose internal state is indicated by the color.</p>
+<p><img alt="450835eec23f43d4b51c8c9f47e5a355" class="no-scaled-link" src="../_images/collective_spin_array.png" style="width: 800px;" /></p>
+<p>The arrows below the tweezers indicate the “orientation” of the spin which can take one of the <span class="math notranslate nohighlight">\(N+1\)</span> discrete values indicated by the dashed lines.</p>
+<p>By tuning the number of atoms loaded into each tweezer in the state preparation step, the length of the collective spin <span class="math notranslate nohighlight">\(L\)</span> can be controlled.</p>
+</section>
+<section id="Circuit-description">
+<h2>Circuit description<a class="headerlink" href="#Circuit-description" title="Permalink to this headline">¶</a></h2>
+<p>Each collective spin will be assigned one wire in the circuit.</p>
+<section id="Initialization">
+<h3>Initialization<a class="headerlink" href="#Initialization" title="Permalink to this headline">¶</a></h3>
+<p>Instead of labeling the individual states from $ <span class="math">\left</span>| -<span class="math">\frac{N}{2}</span> <span class="math">\right</span>&gt;$ to <span class="math notranslate nohighlight">\(\left| \frac{N}{2} \right&gt;\)</span>, we label them from <span class="math notranslate nohighlight">\(\left| 0 \right&gt;\)</span> to <span class="math notranslate nohighlight">\(\left| N+1 \right&gt;\)</span> which is closer to the language used in quantum information.</p>
+<p>Similar to qubits, the state of the individual collective spins is initialized in <span class="math notranslate nohighlight">\(\left| 0 \right&gt;\)</span>, that is all individual atoms are aligned in the <span class="math notranslate nohighlight">\(\uparrow\)</span>-direction.</p>
+<p>The <a class="reference internal" href="05_cold_atom_provider.html"><span class="doc">ColdAtomProvider</span></a> includes the backend to simulate the collective spins hardware:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers</span> <span class="kn">import</span> <span class="n">ColdAtomProvider</span>
+
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;collective_spin_simulator&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Readout">
+<h3>Readout<a class="headerlink" href="#Readout" title="Permalink to this headline">¶</a></h3>
+<p>Upon readout, each wire is projected onto the eigenstates of <span class="math notranslate nohighlight">\(L_z\)</span>. Experimentally, this is accomplished by counting the number of atoms found in each of the two spin states <span class="math notranslate nohighlight">\(N_\uparrow\)</span> and <span class="math notranslate nohighlight">\(N_\downarrow\)</span>.</p>
+</section>
+<section id="Gates-and-dynamics">
+<h3>Gates and dynamics<a class="headerlink" href="#Gates-and-dynamics" title="Permalink to this headline">¶</a></h3>
+<p>As laid out in the introductory notebook, within Qiskit-cold-atom, the unitary gates available in the hardware are described by their generating Hamiltonian.</p>
+<section id="Single-spin-gates">
+<h4>Single-spin gates<a class="headerlink" href="#Single-spin-gates" title="Permalink to this headline">¶</a></h4>
+<p>The physical dynamics of the individual collective spins in this hardware are described by a so-called <em>one-axis-twisting</em> Hamiltonian [2]:</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{OAT}}(\chi, \Delta, \omega) = \sum_{i=1}^3 \chi_i L_{z, i}^2 + \Delta_i L_{z, i} + \Omega_i L_{x, i}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(i\)</span> indexes the tweezer mode.</p>
+<ul class="simple">
+<li><p>The first term parameterized by the couplings <span class="math notranslate nohighlight">\(\chi\)</span> stems from the interactions of the particles which can be switched on and off.</p></li>
+<li><p>The second term generates rotations of the long spin around the <span class="math notranslate nohighlight">\(z\)</span>-axis which can be controlled by a magnetic field through the parameter <span class="math notranslate nohighlight">\(\Delta\)</span>.</p></li>
+<li><p>The third term arises from a Rabi coupling <span class="math notranslate nohighlight">\(\Omega\)</span> of the two internal spin states of the atoms, generating a rotation around the x-axis of the collective spin.</p></li>
+</ul>
+<p>Having individual control over the parameters <span class="math notranslate nohighlight">\(\chi, \Delta, \Omega\)</span> allows to generate all single-spin unitaries [1]. We can thus use this Hamiltonian to define a set of unitary quantum gates on a single wire. By choosing specific values <span class="math notranslate nohighlight">\(\{\chi_i, \Delta_i, \Omega_i\}\)</span>, the unitary of the gate is defined as <span class="math notranslate nohighlight">\(U_{\text{OAT}} = e^{-i H_{\text{OAT}}(\chi_i, \Delta_i, \Omega_i)}\)</span>.</p>
+<p>Let’s look at a first example circuit where a one-axis-twisting gate is applied to a single collective spin:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins.spins_gate_library</span> <span class="kn">import</span> <span class="n">OATGate</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OATGate</span><span class="p">(</span><span class="n">chi</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">delta</span><span class="o">=-</span><span class="mf">1.</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="mf">2.</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># alternatively append the OAT gate directly:</span>
+<span class="c1"># qc.oat(chi=0.4, delta=-1., omega=2., wire=0)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="c1"># simulate the circuit with a spin length L=5</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="c1"># convert counts to integers for better formatting</span>
+<span class="n">plot_histogram</span><span class="p">({</span><span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">):</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_04_collective_spin_hardware_9_0.png" src="../_images/tutorials_04_collective_spin_hardware_9_0.png" />
+</div>
+</div>
+<p>This gate creates a complicated superposition of the individual levels of the collective spin.</p>
+<p>Similar to the <a class="reference internal" href="03_fermionic_tweezer_hardware.html"><span class="doc">fermionic gateset</span></a> built up from Fermi-Hubbard interactions, we can separate the different terms in the one-axis-twisting Hamiltonian to define gates with a more refined behaviour:</p>
+<ul class="simple">
+<li><p>An <code class="docutils literal notranslate"><span class="pre">RLXGate</span></code> with unitary <span class="math notranslate nohighlight">\(U_{\text{LX}}(\Omega) = U_{\text{OAT}}(\chi=0, \Delta=0, \Omega)\)</span> describing rotations around the collective spin’s x-axis</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">RLZGate</span></code> with unitary <span class="math notranslate nohighlight">\(U_{\text{LZ}}(\Delta) = U_{\text{OAT}}(\chi=0, \Delta, \Omega=0)\)</span> describing rotations around the collective spin’s z-axis</p></li>
+<li><p>A <code class="docutils literal notranslate"><span class="pre">RLZ2Gate</span></code> with unitary <span class="math notranslate nohighlight">\(U_{\text{LZ2}}(\chi) = U_{\text{OAT}}(\chi, \Delta=0, \Omega=0)\)</span> describing a non-linear “spin-squeezing” dynamic</p></li>
+</ul>
+<p>These gates are available as <code class="docutils literal notranslate"><span class="pre">SpinGates</span></code> from the <code class="docutils literal notranslate"><span class="pre">spin_gate_library</span></code>. As detailed in the introduction notebook, these gates have their generating Hamiltonians defined as a <code class="docutils literal notranslate"><span class="pre">SpinOp</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins.spins_gate_library</span> <span class="kn">import</span> <span class="n">RLXGate</span><span class="p">,</span> <span class="n">RLZGate</span><span class="p">,</span> <span class="n">RLZ2Gate</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LX generator: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">RLXGate</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span><span class="o">.</span><span class="n">generator</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LZ generator: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">RLZGate</span><span class="p">(</span><span class="mf">1.</span><span class="p">)</span><span class="o">.</span><span class="n">generator</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LZ2 generator: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">RLZ2Gate</span><span class="p">(</span><span class="mf">1.5</span><span class="p">)</span><span class="o">.</span><span class="n">generator</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+LX generator:
+ X_0 * (0.5+0j)
+LZ generator:
+ Z_0 * (1+0j)
+LZ2 generator:
+ Z_0^2 * (1.5+0j)
+</pre></div></div>
+</div>
+</section>
+<section id="Rabi-oscillations:">
+<h4>Rabi oscillations:<a class="headerlink" href="#Rabi-oscillations:" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">LXGate</span></code> is sufficient to generate Rabi-oscillations of individual collective spins. For Rabi oscilattions, we create a list of circuits with increasing angles <span class="math notranslate nohighlight">\(\Omega\)</span> in the LX-gate used above. These can be sent to the backend in a single job:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">Parameter</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># lenght of spin for the simulation</span>
+<span class="n">spin</span> <span class="o">=</span> <span class="mi">20</span>
+
+<span class="c1"># sample at 50 angles between 0 and 4*pi</span>
+<span class="n">vals</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">angles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+
+<span class="n">omega</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;omega&quot;</span><span class="p">)</span>
+<span class="c1"># create list of circuits</span>
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">omega</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">rabi_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">circuit</span><span class="o">.</span><span class="n">bind_parameters</span><span class="p">([</span><span class="n">angle</span><span class="p">])</span> <span class="k">for</span> <span class="n">angle</span> <span class="ow">in</span> <span class="n">angles</span><span class="p">]</span>
+
+<span class="n">job_rabi</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">rabi_list</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">spin</span> <span class="o">=</span> <span class="n">spin</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">5462</span><span class="p">)</span>
+<span class="n">result_rabi</span> <span class="o">=</span> <span class="n">job_rabi</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">result_rabi</span><span class="o">.</span><span class="n">get_memory</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">vals</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">angles</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">yerr</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#4589ff&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rabi oscillations for a single collective spin of length L = </span><span class="si">{</span><span class="n">spin</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;measurement outcome&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;angle of x-rotation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_04_collective_spin_hardware_14_0.png" src="../_images/tutorials_04_collective_spin_hardware_14_0.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">LXGate</span></code> takes the collective spin from its initial position at <span class="math notranslate nohighlight">\(\left| 0 \right&gt;\)</span> all the way to its maximum value <span class="math notranslate nohighlight">\(\left| 2L \right&gt;\)</span> and back. In between, the errorbars on the measurement outcomes are larger indicating a larger spread in the measurement distributions. As we saw in the introduction to spin circuits tutorial, this is due to the binomial distribution of measurement outcomes generated by a single rotation.</p>
+<p>This spread can be decreased by a phenomenom called <a class="reference external" href="https://en.wikipedia.org/wiki/Spin_squeezing">spin squeezing</a>, which can be engineered with the <code class="docutils literal notranslate"><span class="pre">LZ2Gate2</span></code>. In a spin-squeezed state, the variance in one spin projection is reduced at the cost of increasing the spread in another spin direction. This can be useful for quantum metrology applications [3].</p>
+</section>
+<section id="Spin-squeezing">
+<h4>Spin squeezing<a class="headerlink" href="#Spin-squeezing" title="Permalink to this headline">¶</a></h4>
+<p>To observe spin squeezing, we implement the following sequence: - The state is rotated onto the y-axis by the LX gate. - This state is spin-squeezed by applying LZ2. - To “see” the squeezing in the computational (<span class="math notranslate nohighlight">\(L_z\)</span>) basis we rotate the squeezed state along the y-axis which is done by a z- and x-rotation</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># circuit with spin squeezing</span>
+<span class="n">squeez_circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">squeez_circ</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">squeez_circ</span><span class="o">.</span><span class="n">rlz2</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">squeez_circ</span><span class="o">.</span><span class="n">rlz</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">squeez_circ</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">squeez_circ</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">job_squeez</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">squeez_circ</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">squeez_circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_04_collective_spin_hardware_16_0.png" src="../_images/tutorials_04_collective_spin_hardware_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># for comparison: circuit with a single rotation</span>
+<span class="n">circ_x</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">circ_x</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circ_x</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">job_x</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circ_x</span><span class="p">,</span> <span class="n">shots</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;spin squeezing circuit&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;single rotation circuit&quot;</span><span class="p">)</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">job_squeez</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#9f1853&quot;</span><span class="p">)</span> <span class="c1">#, number_to_keep=10)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">job_x</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">(),</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">)</span> <span class="c1">#, number_to_keep=10)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_04_collective_spin_hardware_17_0.png" src="../_images/tutorials_04_collective_spin_hardware_17_0.png" />
+</div>
+</div>
+<p>The spin squeezing generated by the <span class="math notranslate nohighlight">\(LZ2\)</span>-gate is a vital tool in this architecture to amplify the amplitude of a target state, such as “20” in the above example.</p>
+</section>
+<section id="Multiple-spin-gates">
+<h4>Multiple-spin gates<a class="headerlink" href="#Multiple-spin-gates" title="Permalink to this headline">¶</a></h4>
+<p>Interactions between the collective spins in the individual tweezers can be mediated through collisions with a second species of atoms present in an overlapping trap [1]. In the setting we employ here, this results in an interaction which implements the spin-analogue of a ZZ-rotation with a generating Hamiltonian</p>
+<div class="math notranslate nohighlight">
+\[H_{int}(\gamma) = \gamma L_{z, i} L_{z, j}\]</div>
+<p>where <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> are the indices of the coupled tweezers. This can be used to create entanglement between two collective spins:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins.spins_gate_library</span> <span class="kn">import</span> <span class="n">RLZLZGate</span>
+
+<span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rlzlz</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_04_collective_spin_hardware_20_0.png" src="../_images/tutorials_04_collective_spin_hardware_20_0.png" />
+</div>
+</div>
+<p>The state we have created here can be seen as the generalization of a Bell state of two qubits, which we can verify if we run the simulation with a single atom, i.e. spin length <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plot_histogram</span><span class="p">(</span><span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">qc</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_04_collective_spin_hardware_22_0.png" src="../_images/tutorials_04_collective_spin_hardware_22_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="Description-as-a-backend">
+<h2>Description as a backend<a class="headerlink" href="#Description-as-a-backend" title="Permalink to this headline">¶</a></h2>
+<p>The framework describing the collective spin hardware is implemented as a dedicated <em>backend</em>.</p>
+<p>We could have also run the circuits above on the generic <code class="docutils literal notranslate"><span class="pre">SpinSimulator</span></code> backend. However, by defining a specific <code class="docutils literal notranslate"><span class="pre">CollectiveSpinSimulator</span></code> backend, we have a direct way of describing the accepted gates, size and other settings of this specific system in the backend’s <em>configuration</em>.</p>
+<p>The backend configuration explicitly states which instructions are accepted and in what way these instructions can be applied to the spin register. The latter is achieved through <em>coupling maps</em> which define the accepted wiring for all gates. For reference, here is the entire configuration of the <code class="docutils literal notranslate"><span class="pre">CollectiveSpinSimulator</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="n">collective_spins_configuration</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+
+<span class="n">pprint</span><span class="p">(</span><span class="n">collective_spins_configuration</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;atomic_species&#39;: [&#39;na&#39;],
+ &#39;backend_name&#39;: &#39;collective_spin_simulator&#39;,
+ &#39;backend_version&#39;: &#39;0.0.1&#39;,
+ &#39;basis_gates&#39;: [&#39;rlx&#39;, &#39;rly&#39;, &#39;rlz&#39;, &#39;rlz2&#39;, &#39;OAT&#39;, &#39;rlzlz&#39;, &#39;rlxly&#39;],
+ &#39;cold_atom_type&#39;: &#39;spin&#39;,
+ &#39;conditional&#39;: False,
+ &#39;coupling_map&#39;: None,
+ &#39;description&#39;: &#39;simulator of a collective hardware. Each wire in the circuit &#39;
+                &#39;denotes the orientation of one collective spin in the &#39;
+                &#39;hardware&#39;,
+ &#39;dynamic_reprate_enabled&#39;: False,
+ &#39;gates&#39;: [{&#39;coupling_map&#39;: [[0], [1], [2]],
+            &#39;description&#39;: &#39;local rotation of the coherent spin around x&#39;,
+            &#39;name&#39;: &#39;rlx&#39;,
+            &#39;parameters&#39;: [&#39;omega&#39;],
+            &#39;qasm_def&#39;: &#39;gate rlx(omega) {}&#39;},
+           {&#39;coupling_map&#39;: [[0], [1], [2]],
+            &#39;description&#39;: &#39;local rotation of the coherent spin around y&#39;,
+            &#39;name&#39;: &#39;rly&#39;,
+            &#39;parameters&#39;: [&#39;delta&#39;],
+            &#39;qasm_def&#39;: &#39;gate rly(delta) {}&#39;},
+           {&#39;coupling_map&#39;: [[0], [1], [2]],
+            &#39;description&#39;: &#39;local rotation of the coherent spin around z&#39;,
+            &#39;name&#39;: &#39;rlz&#39;,
+            &#39;parameters&#39;: [&#39;delta&#39;],
+            &#39;qasm_def&#39;: &#39;gate rlz(delta) {}&#39;},
+           {&#39;coupling_map&#39;: [[0], [1], [2]],
+            &#39;description&#39;: &#39;local spin evolution generated by one-axis &#39;
+                           &#39;twisting Hamiltonian Lz^2&#39;,
+            &#39;name&#39;: &#39;rlz2&#39;,
+            &#39;parameters&#39;: [&#39;chi&#39;],
+            &#39;qasm_def&#39;: &#39;gate rlz2(chi) {}&#39;},
+           {&#39;coupling_map&#39;: [[0], [1], [2]],
+            &#39;description&#39;: &#39;local spin evolution generated by (chi*Lz^2 + &#39;
+                           &#39;delta*Lz + omega*Lx)&#39;,
+            &#39;name&#39;: &#39;oat&#39;,
+            &#39;parameters&#39;: [&#39;chi&#39;, &#39;delta&#39;, &#39;omega&#39;],
+            &#39;qasm_def&#39;: &#39;gate rot(chi, delta, omega) {}&#39;},
+           {&#39;coupling_map&#39;: [[0, 1], [1, 2], [1, 0], [2, 1]],
+            &#39;description&#39;: &#39;ZZ-interaction coupling two collective spins&#39;,
+            &#39;name&#39;: &#39;rlzlz&#39;,
+            &#39;parameters&#39;: [&#39;gamma&#39;],
+            &#39;qasm_def&#39;: &#39;gate rlzlz(gamma) {}&#39;},
+           {&#39;coupling_map&#39;: [[0, 1], [1, 2], [1, 0], [2, 1]],
+            &#39;description&#39;: &#39;LXLY-interaction coupling two collective spins&#39;,
+            &#39;name&#39;: &#39;rlxly&#39;,
+            &#39;parameters&#39;: [&#39;gamma&#39;],
+            &#39;qasm_def&#39;: &#39;gate rlxly(gamma) {}&#39;}],
+ &#39;local&#39;: True,
+ &#39;max_experiments&#39;: 10,
+ &#39;max_shots&#39;: 1000000.0,
+ &#39;memory&#39;: True,
+ &#39;n_qubits&#39;: 3,
+ &#39;open_pulse&#39;: False,
+ &#39;simulator&#39;: True,
+ &#39;supported_instructions&#39;: [&#39;rlz&#39;,
+                            &#39;rlx&#39;,
+                            &#39;rly&#39;,
+                            &#39;rlz2&#39;,
+                            &#39;OAT&#39;,
+                            &#39;rlzlz&#39;,
+                            &#39;rlxly&#39;,
+                            &#39;measure&#39;,
+                            &#39;barrier&#39;]}
+</pre></div></div>
+</div>
+<p>Note how each gate has a custom coupling map which defines the allowed wire indices with which the gate can be added to the circuit.</p>
+<p>Apart from that, the <code class="docutils literal notranslate"><span class="pre">CollectiveSpinSimulator</span></code> inherits all functionality of the generic <code class="docutils literal notranslate"><span class="pre">SpinSimulator</span></code> such as retrieving the statevector and the unitary.</p>
+</section>
+<section id="Outlook">
+<h2>Outlook<a class="headerlink" href="#Outlook" title="Permalink to this headline">¶</a></h2>
+<p>The collective spin simulator backend can be used as a tool to study what kind of quantum computations can be performed in a realistic experimental hardware based on spins as the carriers of quantum information. This collective spin setting is particularly interesting as its gateset forms a universal set on the Hilbert space of the collective spins and could implement error correction when encoding a qubit in each collective spin [2].</p>
+<p>The supported functionality for spin circuits in Qiskit-cold-atom can in principle be utilized to describe a larger class of spin setups, i.e. other trap- or lattice-based architectures that can deterministically prepare, manipulate and measure individual spins encoded in bosonic atoms. Such experiments might have different underlying Hamiltonian dynamics, number of atomic species, available gates and coupling maps.</p>
+<p>This tutorial is just one example showing how Qiskit can be used to build a backend for a specific experimental setting that greatly differs from superconducting-qubit-based quantum computers.</p>
+<p>Interested users are encouraged to explore spin circuits and backend configurations for other setups.</p>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<p>[1] Gross, Christian <em>Spin squeezing, entanglement and quantum metrology with Bose–Einstein condensates</em> Journal of Physics B: Atomic, Molecular and Optical Physics. 45 (10):103001</p>
+<p>[2] Kasper, Valentin et al., <em>Universal quantum computation and quantum error correction with ultracold atomic mixtures</em>, arXiv preprint arXiv:2010.15923, 2020</p>
+<p>[3] Strobel, Helmut et al. <em>Fisher information and entanglement of non-Gaussian spin states</em>, Science, 345(6195):424–427, 2014</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td><code>qiskit-terra</code></td><td>0.19.0.dev0+ad8edae</td></tr><tr><td><code>qiskit-aer</code></td><td>0.9.0</td></tr><tr><td><code>qiskit-ignis</code></td><td>0.6.0</td></tr><tr><td><code>qiskit-ibmq-provider</code></td><td>0.19.0.dev0+8f49a34</td></tr><tr><td><code>qiskit-aqua</code></td><td>0.9.5</td></tr><tr><td><code>qiskit</code></td><td>0.30.0</td></tr><tr><td><code>qiskit-nature</code></td><td>0.2.1</td></tr><tr><td><code>qiskit-optimization</code></td><td>0.1.0</td></tr><tr><th>System information</th></tr><tr><td>Python version</td><td>3.8.5</td></tr><tr><td>Python compiler</td><td>GCC 7.3.0</td></tr><tr><td>Python build</td><td>default, Sep  4 2020 07:30:14</td></tr><tr><td>OS</td><td>Linux</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.525527954101562</td></tr><tr><td colspan='2'>Tue Nov 30 16:06:37 2021 CET</td></tr></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2021.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05_cold_atom_provider.html" class="btn btn-neutral float-right" title="The Qiskit Cold Atom Provider" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="03_fermionic_tweezer_hardware.html" class="btn btn-neutral" title="Fermionic Tweezer Hardware" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Collective Spin Hardware</a><ul>
+<li><a class="reference internal" href="#Experimental-system">Experimental system</a></li>
+<li><a class="reference internal" href="#Circuit-description">Circuit description</a><ul>
+<li><a class="reference internal" href="#Initialization">Initialization</a></li>
+<li><a class="reference internal" href="#Readout">Readout</a></li>
+<li><a class="reference internal" href="#Gates-and-dynamics">Gates and dynamics</a><ul>
+<li><a class="reference internal" href="#Single-spin-gates">Single-spin gates</a></li>
+<li><a class="reference internal" href="#Rabi-oscillations:">Rabi oscillations:</a></li>
+<li><a class="reference internal" href="#Spin-squeezing">Spin squeezing</a></li>
+<li><a class="reference internal" href="#Multiple-spin-gates">Multiple-spin gates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#Description-as-a-backend">Description as a backend</a></li>
+<li><a class="reference internal" href="#Outlook">Outlook</a></li>
+<li><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

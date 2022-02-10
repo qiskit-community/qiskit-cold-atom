@@ -1,3 +1,0 @@
-include LICENSE.txt
-include requirements.txt
-include qiskit_cold_atom/VERSION.txt

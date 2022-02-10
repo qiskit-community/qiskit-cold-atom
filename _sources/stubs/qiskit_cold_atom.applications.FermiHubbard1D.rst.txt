@@ -1,0 +1,38 @@
+﻿
+
+FermiHubbard1D
+============================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoclass:: FermiHubbard1D
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermiHubbard1D.size
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermiHubbard1D.to_circuit
+      FermiHubbard1D.to_fermionic_op
+   
+
+   
+   

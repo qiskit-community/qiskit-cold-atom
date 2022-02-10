@@ -1,0 +1,38 @@
+﻿
+
+TimeEvolutionSolver
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoclass:: TimeEvolutionSolver
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      TimeEvolutionSolver.MAPPER_DICT
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      TimeEvolutionSolver.construct_qubit_circuits
+      TimeEvolutionSolver.solve
+   
+
+   
+   

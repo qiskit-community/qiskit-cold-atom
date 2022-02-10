@@ -1,0 +1,8 @@
+
+
+RLXLYGate.num_qubits
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLXLYGate.num_qubits

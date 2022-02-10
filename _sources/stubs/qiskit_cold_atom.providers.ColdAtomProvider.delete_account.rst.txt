@@ -1,0 +1,8 @@
+
+
+ColdAtomProvider.delete_account
+==========================================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. automethod:: ColdAtomProvider.delete_account

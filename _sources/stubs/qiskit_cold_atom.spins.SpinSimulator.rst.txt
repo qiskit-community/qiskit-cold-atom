@@ -1,0 +1,46 @@
+﻿
+
+SpinSimulator
+====================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: SpinSimulator
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      SpinSimulator.options
+      SpinSimulator.version
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      SpinSimulator.configuration
+      SpinSimulator.draw
+      SpinSimulator.get_empty_circuit
+      SpinSimulator.name
+      SpinSimulator.properties
+      SpinSimulator.provider
+      SpinSimulator.run
+      SpinSimulator.set_options
+      SpinSimulator.status
+   
+
+   
+   

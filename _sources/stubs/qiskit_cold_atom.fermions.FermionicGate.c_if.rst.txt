@@ -1,0 +1,8 @@
+
+
+FermionicGate.c_if
+============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionicGate.c_if

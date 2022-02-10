@@ -1,0 +1,8 @@
+
+
+RLZLZGate.add_decomposition
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLZLZGate.add_decomposition

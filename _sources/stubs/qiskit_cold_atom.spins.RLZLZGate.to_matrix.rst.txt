@@ -1,0 +1,8 @@
+
+
+RLZLZGate.to_matrix
+==========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLZLZGate.to_matrix

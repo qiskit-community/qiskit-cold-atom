@@ -1,0 +1,8 @@
+
+
+RLXLYGate.control
+========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLXLYGate.control

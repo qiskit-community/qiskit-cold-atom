@@ -1,0 +1,8 @@
+
+
+Phase.label
+=====================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Phase.label

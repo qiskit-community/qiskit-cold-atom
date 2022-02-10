@@ -1,0 +1,8 @@
+
+
+Interaction.definition
+================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Interaction.definition

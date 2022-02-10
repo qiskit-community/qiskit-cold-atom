@@ -1,0 +1,8 @@
+
+
+LoadFermions.is_parameterized
+=======================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: LoadFermions.is_parameterized

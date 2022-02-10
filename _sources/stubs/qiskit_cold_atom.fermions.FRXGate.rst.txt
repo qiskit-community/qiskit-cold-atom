@@ -1,0 +1,63 @@
+﻿
+
+FRXGate
+=================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: FRXGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FRXGate.condition_bits
+      FRXGate.decompositions
+      FRXGate.definition
+      FRXGate.duration
+      FRXGate.generator
+      FRXGate.label
+      FRXGate.name
+      FRXGate.num_clbits
+      FRXGate.num_qubits
+      FRXGate.params
+      FRXGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FRXGate.add_decomposition
+      FRXGate.assemble
+      FRXGate.broadcast_arguments
+      FRXGate.c_if
+      FRXGate.control
+      FRXGate.copy
+      FRXGate.inverse
+      FRXGate.is_parameterized
+      FRXGate.mirror
+      FRXGate.operator_to_mat
+      FRXGate.power
+      FRXGate.qasm
+      FRXGate.repeat
+      FRXGate.reverse_ops
+      FRXGate.soft_compare
+      FRXGate.to_matrix
+      FRXGate.validate_parameter
+   
+
+   
+   

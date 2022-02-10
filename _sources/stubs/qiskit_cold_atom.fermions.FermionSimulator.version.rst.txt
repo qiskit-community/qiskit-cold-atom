@@ -1,0 +1,8 @@
+
+
+FermionSimulator.version
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoattribute:: FermionSimulator.version

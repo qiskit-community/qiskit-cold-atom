@@ -1,0 +1,8 @@
+
+
+OATGate.decompositions
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: OATGate.decompositions

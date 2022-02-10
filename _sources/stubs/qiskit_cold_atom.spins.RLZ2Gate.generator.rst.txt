@@ -1,0 +1,8 @@
+
+
+RLZ2Gate.generator
+=========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLZ2Gate.generator

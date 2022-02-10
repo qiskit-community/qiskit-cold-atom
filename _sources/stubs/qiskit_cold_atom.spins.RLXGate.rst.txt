@@ -1,0 +1,62 @@
+﻿
+
+RLXGate
+==============================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: RLXGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      RLXGate.condition_bits
+      RLXGate.decompositions
+      RLXGate.definition
+      RLXGate.duration
+      RLXGate.generator
+      RLXGate.label
+      RLXGate.name
+      RLXGate.num_clbits
+      RLXGate.num_qubits
+      RLXGate.params
+      RLXGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      RLXGate.add_decomposition
+      RLXGate.assemble
+      RLXGate.broadcast_arguments
+      RLXGate.c_if
+      RLXGate.control
+      RLXGate.copy
+      RLXGate.inverse
+      RLXGate.is_parameterized
+      RLXGate.mirror
+      RLXGate.power
+      RLXGate.qasm
+      RLXGate.repeat
+      RLXGate.reverse_ops
+      RLXGate.soft_compare
+      RLXGate.to_matrix
+      RLXGate.validate_parameter
+   
+
+   
+   

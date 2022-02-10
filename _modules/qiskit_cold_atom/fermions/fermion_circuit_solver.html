@@ -1,0 +1,636 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qiskit_cold_atom.fermions.fermion_circuit_solver &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../index.html">Module code</a> &gt;</li>
+        
+      <li>qiskit_cold_atom.fermions.fermion_circuit_solver</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for qiskit_cold_atom.fermions.fermion_circuit_solver</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This code is part of Qiskit.</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright IBM 2021.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
+
+<span class="sd">&quot;&quot;&quot;Module to simulate fermionic circuits.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.sparse</span> <span class="kn">import</span> <span class="n">csc_matrix</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+<span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">FermionicOp</span>
+
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.base_circuit_solver</span> <span class="kn">import</span> <span class="n">BaseCircuitSolver</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.exceptions</span> <span class="kn">import</span> <span class="n">QiskitColdAtomError</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermionic_state</span> <span class="kn">import</span> <span class="n">FermionicState</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermionic_basis</span> <span class="kn">import</span> <span class="n">FermionicBasis</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermion_gate_library</span> <span class="kn">import</span> <span class="n">FermionicGate</span>
+
+
+<div class="viewcode-block" id="FermionCircuitSolver"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.html#qiskit_cold_atom.fermions.FermionCircuitSolver">[docs]</a><span class="k">class</span> <span class="nc">FermionCircuitSolver</span><span class="p">(</span><span class="n">BaseCircuitSolver</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Numerically simulate fermionic systems by exactly computing the time</span>
+<span class="sd">    evolution under unitary operations generated by fermionic Hamiltonians.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">shots</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">num_species</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Args:</span>
+<span class="sd">            shots: amount of shots for the measurement simulation;</span>
+<span class="sd">                if not None, measurements are performed</span>
+<span class="sd">            seed: seed for the RNG for the measurement simulation</span>
+<span class="sd">            num_species: number of different fermionic species, defaults to 1 for a single type of</span>
+<span class="sd">                (spinless) fermions, 2 for spin-1/2 fermions etc. If &gt; 1, the solver will check for</span>
+<span class="sd">                conservation of the particle number per fermionic species in order to reduce the</span>
+<span class="sd">                Hilbert space dimension of the simulation</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span> <span class="o">=</span> <span class="n">num_species</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="n">seed</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">basis</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicBasis</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the basis of fermionic occupation number states. This basis is updated via the</span>
+<span class="sd">        setter whenever a new circuit is passed to __call__.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span>
+
+    <span class="nd">@basis</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">basis</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">basis</span><span class="p">:</span> <span class="n">FermionicBasis</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Set the basis of the simulation and check its dimensions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            basis: The new basis.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: If the dimension of the basis is too large.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">basis</span><span class="o">.</span><span class="n">dimension</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_dimension</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Dimension </span><span class="si">{</span><span class="n">basis</span><span class="o">.</span><span class="n">dimension</span><span class="si">}</span><span class="s2"> exceeds the maximum &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;allowed dimension </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_dimension</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span> <span class="o">=</span> <span class="n">basis</span>
+
+<div class="viewcode-block" id="FermionCircuitSolver.preprocess_circuit"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.preprocess_circuit.html#qiskit_cold_atom.fermions.FermionCircuitSolver.preprocess_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">preprocess_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Pre-processing fermionic circuits includes setting up the basis for the simulation</span>
+<span class="sd">        by extracting the size, particle number and spin conservation from the circuit.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            circuit: A fermionic quantum circuit for which to setup a basis.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">initial_occupations</span> <span class="o">=</span> <span class="n">FermionicState</span><span class="o">.</span><span class="n">initial_state</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">spin_conservation</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_conservations</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">basis</span> <span class="o">=</span> <span class="n">FermionicBasis</span><span class="o">.</span><span class="n">from_state</span><span class="p">(</span><span class="n">initial_occupations</span><span class="p">,</span> <span class="n">spin_conservation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_dim</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="o">.</span><span class="n">dimension</span></div>
+
+<div class="viewcode-block" id="FermionCircuitSolver.get_initial_state"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.get_initial_state.html#qiskit_cold_atom.fermions.FermionCircuitSolver.get_initial_state">[docs]</a>    <span class="k">def</span> <span class="nf">get_initial_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">csc_matrix</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Return the initial state of the quantum circuit as a sparse column vector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            circuit: The circuit for which to extract the initial_state.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            The initial state of the circuit as a sparse matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">init_state</span> <span class="o">=</span> <span class="n">FermionicState</span><span class="o">.</span><span class="n">initial_state</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span><span class="p">)</span>
+        <span class="n">initial_occs</span> <span class="o">=</span> <span class="n">init_state</span><span class="o">.</span><span class="n">occupations_flat</span>
+        <span class="n">initial_index</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="o">.</span><span class="n">get_occupations</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">initial_occs</span><span class="p">)</span>
+
+        <span class="n">initial_state</span> <span class="o">=</span> <span class="n">csc_matrix</span><span class="p">(</span>
+            <span class="p">([</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">0</span><span class="n">j</span><span class="p">],</span> <span class="p">([</span><span class="n">initial_index</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">])),</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="o">.</span><span class="n">dimension</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">dtype</span><span class="o">=</span><span class="nb">complex</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">initial_state</span></div>
+
+    <span class="k">def</span> <span class="nf">_embed_operator</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">:</span> <span class="n">FermionicOp</span><span class="p">,</span> <span class="n">num_wires</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">qargs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FermionicOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Turn a FermionicOp operator that acts on the wires given in qargs into an operator</span>
+<span class="sd">        that acts on the entire state space of the circuit by padding with identities &quot;I&quot; on the</span>
+<span class="sd">        remaining wires</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            operator: FermionicOp describing the generating Hamiltonian of a gate</span>
+<span class="sd">            num_wires: The total number of wires in which the operator should be embedded into</span>
+<span class="sd">            qargs: The wire indices the gate acts on</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            FermionicOp, an operator acting on the entire quantum register of the Circuit</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError:</span>
+<span class="sd">                - If the given operator is not a FermionicOp</span>
+<span class="sd">                - If the size of the operator does not match the given qargs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="n">FermionicOp</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Expected FermionicOp; got </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="n">operator</span><span class="p">)</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s2"> instead.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">operator</span><span class="o">.</span><span class="n">register_length</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">qargs</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;length of gate labels </span><span class="si">{</span><span class="n">operator</span><span class="o">.</span><span class="n">register_length</span><span class="si">}</span><span class="s2"> does not match &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;qargs </span><span class="si">{</span><span class="n">qargs</span><span class="si">}</span><span class="s2"> of the gates&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">embedded_op_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">for</span> <span class="n">partial_label</span><span class="p">,</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">operator</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+
+            <span class="n">full_label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;I&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="n">num_wires</span>
+
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">individual_label</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">partial_label</span><span class="p">)):</span>
+
+                <span class="n">full_label</span><span class="p">[</span><span class="n">qargs</span><span class="p">[</span><span class="n">i</span><span class="p">]]</span> <span class="o">=</span> <span class="n">individual_label</span>
+
+            <span class="n">embedded_op_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">full_label</span><span class="p">),</span> <span class="n">factor</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="n">embedded_op_list</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_conservations</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">bool</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Check if the fermionic operators defined in the circuit conserve the total particle number</span>
+<span class="sd">        (i.e. there are as many creation operators as annihilation operators) and the particle</span>
+<span class="sd">        number per spin species (e.g. there are as many up/down creation operators as there are</span>
+<span class="sd">        up/down annihilation operators).</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            circuit: A quantum circuit with fermionic gates</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            particle_conservation: True if the particle number is conserved in the circuit</span>
+<span class="sd">            spin_conservation: True if the particle number is conserved for each spin species</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError:</span>
+<span class="sd">                - If an operator in the circuit is not a FermionicOp.</span>
+<span class="sd">                - If the length of the fermionic operators does not match the system size.</span>
+<span class="sd">                - If the circuit has a number of wires that is not a multiple of the number</span>
+<span class="sd">                  of fermionic species.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">particle_conservation</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">spin_conservation</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">for</span> <span class="n">fermionic_op</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_operators</span><span class="p">(</span><span class="n">circuit</span><span class="p">):</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">fermionic_op</span><span class="p">,</span> <span class="n">FermionicOp</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;operators need to be given as FermionicOp&quot;</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">fermionic_op</span><span class="o">.</span><span class="n">to_list</span><span class="p">():</span>
+                <span class="n">opstring</span> <span class="o">=</span> <span class="n">term</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">opstring</span><span class="p">)</span> <span class="o">!=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Expected length </span><span class="si">{</span><span class="n">circuit</span><span class="o">.</span><span class="n">num_qubits</span><span class="si">}</span><span class="s2"> for fermionic operator; &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;received </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">opstring</span><span class="p">)</span><span class="si">}</span><span class="s2">.&quot;</span>
+                    <span class="p">)</span>
+
+                <span class="n">num_creators</span> <span class="o">=</span> <span class="n">opstring</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)</span>
+                <span class="n">num_annihilators</span> <span class="o">=</span> <span class="n">opstring</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+                <span class="k">if</span> <span class="n">num_creators</span> <span class="o">!=</span> <span class="n">num_annihilators</span><span class="p">:</span>
+                    <span class="k">return</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span>
+
+                <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+
+                    <span class="k">if</span> <span class="n">circuit</span><span class="o">.</span><span class="n">num_qubits</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                            <span class="sa">f</span><span class="s2">&quot;The number of wires in the circuit </span><span class="si">{</span><span class="n">circuit</span><span class="o">.</span><span class="n">num_qubits</span><span class="si">}</span><span class="s2"> is not a &quot;</span>
+                            <span class="sa">f</span><span class="s2">&quot;multiple of the </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">num_species</span><span class="si">}</span><span class="s2"> fermionic species number.&quot;</span>
+                        <span class="p">)</span>
+
+                    <span class="n">sites</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">num_qubits</span> <span class="o">//</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span>
+
+                    <span class="c1"># check if the particle number is conserved for each spin species</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">num_species</span><span class="p">):</span>
+
+                        <span class="n">ops</span> <span class="o">=</span> <span class="n">opstring</span><span class="p">[</span><span class="n">i</span> <span class="o">*</span> <span class="n">sites</span> <span class="p">:</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sites</span><span class="p">]</span>
+                        <span class="n">num_creators</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;+&quot;</span><span class="p">)</span>
+                        <span class="n">num_annihilators</span> <span class="o">=</span> <span class="n">ops</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+
+                        <span class="k">if</span> <span class="n">num_creators</span> <span class="o">!=</span> <span class="n">num_annihilators</span><span class="p">:</span>
+                            <span class="n">spin_conservation</span> <span class="o">=</span> <span class="kc">False</span>
+                            <span class="k">break</span>
+
+        <span class="k">return</span> <span class="n">particle_conservation</span><span class="p">,</span> <span class="n">spin_conservation</span>
+
+<div class="viewcode-block" id="FermionCircuitSolver.operator_to_mat"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.operator_to_mat.html#qiskit_cold_atom.fermions.FermionCircuitSolver.operator_to_mat">[docs]</a>    <span class="k">def</span> <span class="nf">operator_to_mat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">operator</span><span class="p">:</span> <span class="n">FermionicOp</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">csc_matrix</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Convert the fermionic operator to a sparse matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            operator: fermionic operator of which to compute the matrix representation</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            scipy.sparse matrix of the Hamiltonian</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">FermionicGate</span><span class="o">.</span><span class="n">operator_to_mat</span><span class="p">(</span><span class="n">operator</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">num_species</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_basis</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="FermionCircuitSolver.draw_shots"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.draw_shots.html#qiskit_cold_atom.fermions.FermionCircuitSolver.draw_shots">[docs]</a>    <span class="k">def</span> <span class="nf">draw_shots</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement_distribution</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Helper function to draw counts from a given distribution of measurement outcomes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            measurement_distribution: List of probabilities of the individual measurement outcomes</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a list of individual measurement results, e.g. [&quot;011000&quot;, &quot;100010&quot;, ...]</span>
+<span class="sd">            The outcome of each shot is denoted by a binary string of the occupations of the individual</span>
+<span class="sd">            modes in little endian convention</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError:</span>
+<span class="sd">                - If the length of the given probabilities does not match the expected Hilbert space</span>
+<span class="sd">                dimension.</span>
+<span class="sd">                - If the number of shots self.shots has not been specified.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">meas_dim</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">measurement_distribution</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">meas_dim</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Dimension of the measurement probabilities </span><span class="si">{</span><span class="n">meas_dim</span><span class="si">}</span><span class="s2"> does not &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;match the dimension expected by the solver, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">shots</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="s2">&quot;The number of shots has to be set before drawing measurements&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># list all possible outcomes as strings &#39;001011&#39;, reversing the order of the wires</span>
+        <span class="c1"># to comply with Qiskit&#39;s ordering convention</span>
+        <span class="n">outcome_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">basis</span><span class="o">.</span><span class="n">get_occupations</span><span class="p">()]</span>
+
+        <span class="c1"># Draw measurements:</span>
+        <span class="n">meas_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">outcome_strings</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shots</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">measurement_distribution</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">meas_results</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span></div></div>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+         <script src="../../../_static/jquery.js"></script>
+         <script src="../../../_static/underscore.js"></script>
+         <script src="../../../_static/doctools.js"></script>
+         <script src="../../../_static/thebelab-helper.js"></script>
+         <script src="../../../_static/tabs.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

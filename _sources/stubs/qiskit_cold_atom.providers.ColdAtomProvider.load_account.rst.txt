@@ -1,0 +1,8 @@
+
+
+ColdAtomProvider.load_account
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. automethod:: ColdAtomProvider.load_account

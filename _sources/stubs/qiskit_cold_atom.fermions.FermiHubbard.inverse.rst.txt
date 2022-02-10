@@ -1,0 +1,8 @@
+
+
+FermiHubbard.inverse
+==============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermiHubbard.inverse

@@ -1,0 +1,58 @@
+﻿
+
+LoadFermions
+======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: LoadFermions
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      LoadFermions.condition_bits
+      LoadFermions.decompositions
+      LoadFermions.definition
+      LoadFermions.duration
+      LoadFermions.label
+      LoadFermions.name
+      LoadFermions.num_clbits
+      LoadFermions.num_qubits
+      LoadFermions.params
+      LoadFermions.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      LoadFermions.add_decomposition
+      LoadFermions.assemble
+      LoadFermions.broadcast_arguments
+      LoadFermions.c_if
+      LoadFermions.copy
+      LoadFermions.inverse
+      LoadFermions.is_parameterized
+      LoadFermions.mirror
+      LoadFermions.qasm
+      LoadFermions.repeat
+      LoadFermions.reverse_ops
+      LoadFermions.soft_compare
+      LoadFermions.validate_parameter
+   
+
+   
+   

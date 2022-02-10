@@ -1,0 +1,8 @@
+
+
+RLXLYGate.name
+=====================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLXLYGate.name

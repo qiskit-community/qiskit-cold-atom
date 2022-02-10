@@ -1,0 +1,8 @@
+
+
+RLZLZGate.duration
+=========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLZLZGate.duration

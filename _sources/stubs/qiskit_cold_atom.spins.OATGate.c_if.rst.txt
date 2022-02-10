@@ -1,0 +1,8 @@
+
+
+OATGate.c_if
+===================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: OATGate.c_if

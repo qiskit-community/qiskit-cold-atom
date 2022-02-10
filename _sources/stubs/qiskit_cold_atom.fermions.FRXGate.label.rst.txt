@@ -1,0 +1,8 @@
+
+
+FRXGate.label
+=======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FRXGate.label
