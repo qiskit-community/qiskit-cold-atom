@@ -1,0 +1,8 @@
+
+
+Hop.name
+==================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Hop.name

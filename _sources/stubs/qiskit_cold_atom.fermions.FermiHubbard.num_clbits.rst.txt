@@ -1,0 +1,8 @@
+
+
+FermiHubbard.num_clbits
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermiHubbard.num_clbits

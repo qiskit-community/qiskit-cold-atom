@@ -1,0 +1,8 @@
+
+
+FRZGate.condition_bits
+================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FRZGate.condition_bits

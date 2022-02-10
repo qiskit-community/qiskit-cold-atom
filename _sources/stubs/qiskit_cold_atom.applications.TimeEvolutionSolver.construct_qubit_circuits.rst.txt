@@ -1,0 +1,8 @@
+
+
+TimeEvolutionSolver.construct_qubit_circuits
+==========================================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. automethod:: TimeEvolutionSolver.construct_qubit_circuits

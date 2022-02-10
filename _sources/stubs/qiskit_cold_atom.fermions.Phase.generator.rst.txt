@@ -1,0 +1,8 @@
+
+
+Phase.generator
+=========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Phase.generator

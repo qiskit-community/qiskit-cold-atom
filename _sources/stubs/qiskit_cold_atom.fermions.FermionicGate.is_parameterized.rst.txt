@@ -1,0 +1,8 @@
+
+
+FermionicGate.is_parameterized
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionicGate.is_parameterized

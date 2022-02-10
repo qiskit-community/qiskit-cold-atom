@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.__call__
+=======================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionCircuitSolver.__call__

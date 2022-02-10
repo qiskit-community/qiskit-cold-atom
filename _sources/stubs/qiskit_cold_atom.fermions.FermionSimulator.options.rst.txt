@@ -1,0 +1,8 @@
+
+
+FermionSimulator.options
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermionSimulator.options

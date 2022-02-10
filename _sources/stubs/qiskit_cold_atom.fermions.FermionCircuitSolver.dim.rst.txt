@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.dim
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermionCircuitSolver.dim

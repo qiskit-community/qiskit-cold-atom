@@ -1,0 +1,477 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Spins &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BaseSpinBackend" href="../stubs/qiskit_cold_atom.spins.BaseSpinBackend.html" />
+    <link rel="prev" title="ColdAtomJob.wait_for_final_state" href="../stubs/qiskit_cold_atom.providers.ColdAtomJob.wait_for_final_state.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="qiskit_cold_atom.html">Qiskit Cold Atom API Reference</a> &gt;</li>
+        
+      <li>Spins</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apidocs/qiskit_cold_atom.spins.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <br><br><br><section id="spins">
+<h1>Spins<a class="headerlink" href="#spins" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-qiskit_cold_atom.spins"><span id="qiskit-cold-atom-spins"></span></span><p>Module to support spin circuits.</p>
+<p>The spins module holds the circuit instructions and simulators needed for cold-atom setups which
+control the collective spin of an ensemble of atoms in a Bose-Einstein-condensate.</p>
+<p>In this setting, each wire in a quantum circuit describes a single quantum mechanical angular momentum
+(or spin) with principal quantum number <span class="math notranslate nohighlight">\(S\)</span>. Upon measurement, each wire can be found in a state
+ranging from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(2S\)</span>.
+Backends to describe such spin circuits are subclasses of the <a class="reference internal" href="../stubs/qiskit_cold_atom.spins.BaseSpinBackend.html#qiskit_cold_atom.spins.BaseSpinBackend" title="qiskit_cold_atom.spins.BaseSpinBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseSpinBackend</span></code></a> class.
+The <a class="reference internal" href="../stubs/qiskit_cold_atom.spins.SpinSimulator.html#qiskit_cold_atom.spins.SpinSimulator" title="qiskit_cold_atom.spins.SpinSimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinSimulator</span></code></a> backend is a general purpose simulator backend that simulates spin
+circuits.</p>
+<section id="spin-backends">
+<h2>Spin backends<a class="headerlink" href="#spin-backends" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.BaseSpinBackend.html#qiskit_cold_atom.spins.BaseSpinBackend" title="qiskit_cold_atom.spins.BaseSpinBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseSpinBackend</span></code></a>(configuration[, provider])</p></td>
+<td><p>Abstract base class for atomic mixture backends.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.SpinSimulator.html#qiskit_cold_atom.spins.SpinSimulator" title="qiskit_cold_atom.spins.SpinSimulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinSimulator</span></code></a>([config_dict, provider])</p></td>
+<td><p>A simulator to simulate general spin circuits.</p></td>
+</tr>
+</tbody>
+</table>
+<p>At the start of the circuit each spin is taken to be initialized in the 0 state, in analogy to qubits.</p>
+<section id="spin-gates">
+<h3>Spin gates<a class="headerlink" href="#spin-gates" title="Permalink to this headline">¶</a></h3>
+<p>Spin gates are quantum circuit instructions designed specifically for cold-atom based setups that
+control large spin ensembles. These gates are characterized by their effect on the spin ensemble.
+Spin gates are subclasses or instances of the <a class="reference internal" href="../stubs/qiskit_cold_atom.spins.SpinGate.html#qiskit_cold_atom.spins.SpinGate" title="qiskit_cold_atom.spins.SpinGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinGate</span></code></a> class. All of these gates define a
+<code class="docutils literal notranslate"><span class="pre">generator</span></code> property used to compute the time-evolution. These generators are second quantized
+operators (<code class="xref py py-class docutils literal notranslate"><span class="pre">SpinOp</span></code> from Qiskit Nature) that describe the gate Hamiltonian acting on the spins.
+When an entry of the <a class="reference internal" href="#module-qiskit_cold_atom.spins" title="qiskit_cold_atom.spins"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_cold_atom.spins</span></code></a> module is imported, the Spin gates are added to the
+<code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> class in Qiskit.</p>
+<p>The module includes a number of gates suitable to a platform that implements rotations and squeezing of
+collective spins.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.SpinGate.html#qiskit_cold_atom.spins.SpinGate" title="qiskit_cold_atom.spins.SpinGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinGate</span></code></a>(name, num_modes[, params, label, ...])</p></td>
+<td><p>Unitary gates for spin circuits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.RLXGate.html#qiskit_cold_atom.spins.RLXGate" title="qiskit_cold_atom.spins.RLXGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RLXGate</span></code></a>(omega[, label])</p></td>
+<td><p>Rotation of the collective spin of a cold atomic Bose-Einstein condensate around the x-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.RLYGate.html#qiskit_cold_atom.spins.RLYGate" title="qiskit_cold_atom.spins.RLYGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RLYGate</span></code></a>(omega[, label])</p></td>
+<td><p>Rotation of the collective spin of a cold atomic Bose-Einstein condensate around the y-axis.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.RLZGate.html#qiskit_cold_atom.spins.RLZGate" title="qiskit_cold_atom.spins.RLZGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RLZGate</span></code></a>(delta[, label])</p></td>
+<td><p>Rotation of the collective spin of a cold atomic Bose-Einstein condensate around the z-axis.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.RLZ2Gate.html#qiskit_cold_atom.spins.RLZ2Gate" title="qiskit_cold_atom.spins.RLZ2Gate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RLZ2Gate</span></code></a>(chi[, label])</p></td>
+<td><p>Evolution of a coherent spin under the twisting dynamic generated by Lz^2'.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.OATGate.html#qiskit_cold_atom.spins.OATGate" title="qiskit_cold_atom.spins.OATGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OATGate</span></code></a>(chi, delta, omega[, label])</p></td>
+<td><p>Evolution of a coherent spin under the one-axis-twisting Hamiltonian.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.RLZLZGate.html#qiskit_cold_atom.spins.RLZLZGate" title="qiskit_cold_atom.spins.RLZLZGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RLZLZGate</span></code></a>(gamma[, label])</p></td>
+<td><p>Coupled ZZ-rotation of two collective spins.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.RLXLYGate.html#qiskit_cold_atom.spins.RLXLYGate" title="qiskit_cold_atom.spins.RLXLYGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RLXLYGate</span></code></a>(gamma[, label])</p></td>
+<td><p>The spin exchange gate of two collective spins.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These gates should serve as an example of how a concrete collective spin platform can be described
+through <a class="reference internal" href="qiskit_cold_atom.html#module-qiskit_cold_atom" title="qiskit_cold_atom"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_cold_atom</span></code></a>.
+Users are encouraged to define their own gates to describe different collective spin experiments.
+If these gates define a <code class="docutils literal notranslate"><span class="pre">generator</span></code> property as laid out above, the :class:SpinSimulator
+can be used to simulate circuits with such custom gates.</p>
+</section>
+<section id="circuit-solvers">
+<h3>Circuit solvers<a class="headerlink" href="#circuit-solvers" title="Permalink to this headline">¶</a></h3>
+<p>Circuit solvers are classes that allow users to simulate a quantum circuit
+for cold-atom based setups. They are subclasses of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCircuitSolver</span></code> and can be called on quantum circuits to solve them.
+The numerical simulation of spin circuits is carried out by the <a class="reference internal" href="../stubs/qiskit_cold_atom.spins.SpinCircuitSolver.html#qiskit_cold_atom.spins.SpinCircuitSolver" title="qiskit_cold_atom.spins.SpinCircuitSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">SpinCircuitSolver</span></code></a> class.
+This simulates the circuits via exact diagonalization and provides access to the unitary,
+the statevector and simulated measurement outcomes of the circuit.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.spins.SpinCircuitSolver.html#qiskit_cold_atom.spins.SpinCircuitSolver" title="qiskit_cold_atom.spins.SpinCircuitSolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SpinCircuitSolver</span></code></a>([spin, shots, seed])</p></td>
+<td><p>Performs numerical simulations of spin systems by exactly computing the time evolution under unitary operations generated by exponentiating spin Hamiltonians.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../stubs/qiskit_cold_atom.spins.BaseSpinBackend.html" class="btn btn-neutral float-right" title="BaseSpinBackend" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../stubs/qiskit_cold_atom.providers.ColdAtomJob.wait_for_final_state.html" class="btn btn-neutral" title="ColdAtomJob.wait_for_final_state" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Spins</a><ul>
+<li><a class="reference internal" href="#spin-backends">Spin backends</a><ul>
+<li><a class="reference internal" href="#spin-gates">Spin gates</a></li>
+<li><a class="reference internal" href="#circuit-solvers">Circuit solvers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+
+
+OATGate.validate_parameter
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: OATGate.validate_parameter

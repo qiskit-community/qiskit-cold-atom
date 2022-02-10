@@ -1,0 +1,8 @@
+
+
+Hop.reverse_ops
+=========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Hop.reverse_ops

@@ -1,0 +1,48 @@
+﻿
+
+FermionSimulator
+==========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: FermionSimulator
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionSimulator.options
+      FermionSimulator.version
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionSimulator.configuration
+      FermionSimulator.draw
+      FermionSimulator.get_basis
+      FermionSimulator.initialize_circuit
+      FermionSimulator.measure_observable_expectation
+      FermionSimulator.name
+      FermionSimulator.properties
+      FermionSimulator.provider
+      FermionSimulator.run
+      FermionSimulator.set_options
+      FermionSimulator.status
+   
+
+   
+   

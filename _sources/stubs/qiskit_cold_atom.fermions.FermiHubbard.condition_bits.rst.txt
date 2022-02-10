@@ -1,0 +1,8 @@
+
+
+FermiHubbard.condition_bits
+=====================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermiHubbard.condition_bits

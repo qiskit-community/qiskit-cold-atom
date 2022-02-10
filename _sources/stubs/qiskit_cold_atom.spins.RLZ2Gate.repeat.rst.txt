@@ -1,0 +1,8 @@
+
+
+RLZ2Gate.repeat
+======================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLZ2Gate.repeat

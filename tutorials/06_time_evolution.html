@@ -1,0 +1,935 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Simulation of time evolution &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Squeezing in atomic qudits" href="07_squeezing_in_qudits.html" />
+    <link rel="prev" title="The Qiskit Cold Atom Provider" href="05_cold_atom_provider.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Simulation of time evolution</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/06_time_evolution.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Simulation-of-time-evolution">
+<h1>Simulation of time evolution<a class="headerlink" href="#Simulation-of-time-evolution" title="Permalink to this headline">¶</a></h1>
+<p>Cold atomic backends are excellent simulators of physical systems as they naturally implement many Hamiltonians of interest in a controllable fashion. For example, the fermionic tweezer setup, discussed in <a class="reference internal" href="03_fermionic_tweezer_hardware.html"><span class="doc">fermionic tweezer hardware tutorial</span></a>, implements the Fermi-Hubbard Hamiltonian. In this tutorial we look at how such cold atomic backends can be leveraged to simulate Hamiltonian dynamics and how this can be integrated into Qiskit’s structure based on
+problems and solvers. Typically, this will involve setting up the system in some initial state and letting it evolve under the Hamiltonian.</p>
+<p>Specifically, we will simulate the time evolution of a fermionic lattice system. We compare how this problem is solved on the fermionic tweezer hardware and a conventional qubit hardware. This highlights how cold atomic hardware could be integrated into the Qiskit stack as a pluggable backend for certain types of problems.</p>
+<p>The workflow consists of the following steps:</p>
+<ol class="arabic simple">
+<li><p>Define a <code class="docutils literal notranslate"><span class="pre">FermionicEvolutionProblem</span></code> made of a fermionic system, an initial state and an observable: Here, the initial state evolves under the time dynamics of the underlying system Hamiltonian. After evolution for a given time, the observable is measured.</p></li>
+<li><p>Initialize a <code class="docutils literal notranslate"><span class="pre">solver</span></code> which accepts as input a backend which can be a fermionic backend or a qubit-based universal backend. Here, the fermionic backend is not universal but well-suited to simulate the specific problem as it natively implements the Hamiltonian of interest.</p></li>
+<li><p>Call <code class="docutils literal notranslate"><span class="pre">solver.solve(problem)</span></code> to compute the time-dynamics of the problem. If the backend is qubit-based a mapping from fermions to qubits will be used.</p></li>
+</ol>
+<section id="1)-Problem-definition">
+<h2>1) Problem definition<a class="headerlink" href="#1)-Problem-definition" title="Permalink to this headline">¶</a></h2>
+<p>The problem <code class="docutils literal notranslate"><span class="pre">FermionicEvolutionProblem</span></code> is a time evolution of a fermionic lattice system, after which an observable is measured. It consists of the following steps:</p>
+<ul>
+<li><p>a <code class="docutils literal notranslate"><span class="pre">system</span></code>, which describes the fermionic system to investigate. Here, we consider a 1-dimensional Fermi-Hubbard model with spin-<span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> fermions which is described by the following Hamiltonian:</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{FH}} =  J{\sum_{i=1,\sigma}^{L-1} (f^\dagger_{i,\sigma} f_{i+1,\sigma} + f^\dagger_{i+1,\sigma} f_{i,\sigma} )} + {U \sum_{i=1}^{L}  n_{i,\uparrow}n_{i,\downarrow}} + {\sum_{i=1,\sigma}^{L} \mu_i n_{i,\sigma}}\]</div>
+<p>As before, <span class="math notranslate nohighlight">\(J\)</span> is the strength of the hopping between neighboring sites, <span class="math notranslate nohighlight">\(U\)</span> is the interaction strength of two atoms on the same site, and <span class="math notranslate nohighlight">\(\mu_i\)</span> describe local potential offsets.</p>
+</li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.applications</span> <span class="kn">import</span> <span class="n">FermiHubbard1D</span>
+
+<span class="c1"># defining the system</span>
+<span class="n">system</span> <span class="o">=</span> <span class="n">FermiHubbard1D</span><span class="p">(</span>
+    <span class="n">num_sites</span> <span class="o">=</span> <span class="mi">3</span><span class="p">,</span>          <span class="c1"># number of lattice sites</span>
+    <span class="n">particles_up</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>       <span class="c1"># number of spin up particles</span>
+    <span class="n">particles_down</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>     <span class="c1"># number of spin down particles</span>
+    <span class="n">hop_strength</span> <span class="o">=</span> <span class="mf">2.</span><span class="p">,</span>      <span class="c1"># parameter J tuning the hopping</span>
+    <span class="n">int_strength</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>       <span class="c1"># parameter U tuning the interaction</span>
+    <span class="n">potential</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># parameters mu tuning the local potential</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The system is initialized in an initial state given as a <code class="docutils literal notranslate"><span class="pre">FermionicState</span></code> object, which describes states in occupation number basis. These occupations are given as a nested list, where the first list describes the occupations of the spin-<span class="math notranslate nohighlight">\(\uparrow\)</span> particles and the second list denotes the occupations of the spin-<span class="math notranslate nohighlight">\(\downarrow\)</span> particles.</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermion_circuit_solver</span> <span class="kn">import</span> <span class="n">FermionicState</span>
+
+<span class="c1"># defining the initial state with one spin_up particle in the left site</span>
+<span class="c1"># and one spin-down particle in the right site</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">FermionicState</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The observables to be measured after the time evolution are defined in terms of Qiskit Nature’s <code class="docutils literal notranslate"><span class="pre">FermionicOp</span></code> objects:</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">FermionicOp</span>
+
+<span class="c1"># Observables: Spin-density and particle density at the first site</span>
+<span class="n">spin_density</span> <span class="o">=</span> <span class="n">FermionicOp</span><span class="p">([(</span><span class="s1">&#39;NIIIII&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;IIINII&#39;</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)])</span>
+<span class="n">particle_density</span> <span class="o">=</span> <span class="n">FermionicOp</span><span class="p">([(</span><span class="s1">&#39;NIIIII&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;IIINII&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Finally, we specify the times after which these observables are measured:</p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">evolution_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We define two <code class="docutils literal notranslate"><span class="pre">FermionicEvolutionProblem</span></code> objects for the two different observables:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.applications</span> <span class="kn">import</span> <span class="n">FermionicEvolutionProblem</span>
+
+<span class="n">spin_problem</span> <span class="o">=</span> <span class="n">FermionicEvolutionProblem</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">evolution_times</span><span class="p">,</span> <span class="n">spin_density</span><span class="p">)</span>
+<span class="n">particle_problem</span> <span class="o">=</span> <span class="n">FermionicEvolutionProblem</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">initial_state</span><span class="p">,</span> <span class="n">evolution_times</span><span class="p">,</span> <span class="n">particle_density</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2)-Defining-the-Solver">
+<h2>2) Defining the Solver<a class="headerlink" href="#2)-Defining-the-Solver" title="Permalink to this headline">¶</a></h2>
+<p>We will compare the implementations of the problem above on both qubit-based hardware and the cold atomic simulators. The solver algorithm <code class="docutils literal notranslate"><span class="pre">TimeEvolutionSolver</span></code> is intialized with a given backend which can be either a fermionic backend, such as the one introduced in <a class="reference internal" href="03_fermionic_tweezer_hardware.html"><span class="doc">tutorial 03</span></a> or any qubit-based backend.</p>
+<p>With the fermionic backend, the time-evolution is directly simulated in an analog fashion on the fermionic hardware. If the backend is a qubit-based backend, the time-evolution is simulated by trotterization, for which a fermion-to-qubit mapping and the number of trotter steps must be specified.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers.fermionic_tweezer_backend</span> <span class="kn">import</span> <span class="n">FermionicTweezerSimulator</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.applications</span> <span class="kn">import</span> <span class="n">TimeEvolutionSolver</span>
+
+<span class="c1"># initializing the fermionic solver</span>
+<span class="n">fermionic_backend</span> <span class="o">=</span> <span class="n">FermionicTweezerSimulator</span><span class="p">(</span><span class="n">n_tweezers</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fermionic_solver</span> <span class="o">=</span> <span class="n">TimeEvolutionSolver</span><span class="p">(</span><span class="n">backend</span> <span class="o">=</span> <span class="n">fermionic_backend</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We will use two qubit-based solvers. A <code class="docutils literal notranslate"><span class="pre">shallow_qubit_solver</span></code> with a small number of Trotter steps and a <code class="docutils literal notranslate"><span class="pre">deep_qubit_solver</span></code> with a larger number of Trotter steps to show the effect of Trotterization. These solvers also accept different fermion-to-qubit mappings such as the Bravyi-Kitaev, Jordan-Wigner, and the Parity mapping.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span>
+
+<span class="c1"># initializing the qubit solver with the qasm simulator backend</span>
+<span class="n">qubit_backend</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s1">&#39;qasm_simulator&#39;</span><span class="p">)</span>
+
+<span class="n">mapping</span> <span class="o">=</span> <span class="s1">&#39;bravyi_kitaev&#39;</span>
+<span class="c1"># mapping = &#39;jordan_wigner&#39;</span>
+<span class="c1"># mapping = &#39;parity&#39;</span>
+
+<span class="n">shallow_qubit_solver</span> <span class="o">=</span> <span class="n">TimeEvolutionSolver</span><span class="p">(</span><span class="n">backend</span> <span class="o">=</span> <span class="n">qubit_backend</span><span class="p">,</span> <span class="n">map_type</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">trotter_steps</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">deep_qubit_solver</span> <span class="o">=</span> <span class="n">TimeEvolutionSolver</span><span class="p">(</span><span class="n">backend</span> <span class="o">=</span> <span class="n">qubit_backend</span><span class="p">,</span> <span class="n">map_type</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">,</span> <span class="n">trotter_steps</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="3)-Solve-the-problems-and-display-the-results">
+<h2>3) Solve the problems and display the results<a class="headerlink" href="#3)-Solve-the-problems-and-display-the-results" title="Permalink to this headline">¶</a></h2>
+<p>We call <code class="docutils literal notranslate"><span class="pre">solver.solve(problem)</span></code> to simulate the time evolution on the backend and measure the specified observable. The solver returns the measured expectation values at the different <code class="docutils literal notranslate"><span class="pre">evolution_times</span></code> specified in the problem.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">spin_vals_fermions</span> <span class="o">=</span> <span class="n">fermionic_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">spin_problem</span><span class="p">)</span>
+<span class="n">particle_vals_fermions</span> <span class="o">=</span> <span class="n">fermionic_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">particle_problem</span><span class="p">)</span>
+
+<span class="n">spin_vals_qubits_shallow</span> <span class="o">=</span> <span class="n">shallow_qubit_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">spin_problem</span><span class="p">)</span>
+<span class="n">particle_vals_qubits_shallow</span> <span class="o">=</span> <span class="n">shallow_qubit_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">particle_problem</span><span class="p">)</span>
+
+<span class="n">spin_vals_qubits_deep</span> <span class="o">=</span> <span class="n">deep_qubit_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">spin_problem</span><span class="p">)</span>
+<span class="n">particle_vals_qubits_deep</span> <span class="o">=</span> <span class="n">deep_qubit_solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">particle_problem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s plot the measured expectation values as a function of the evolution time:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">})</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;evolution time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Spin at site 1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;evolution of spin density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evolution_times</span><span class="p">,</span> <span class="n">spin_vals_qubits_shallow</span><span class="p">,</span> <span class="s1">&#39;--o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d02670&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;qubits, 1 trotter step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evolution_times</span><span class="p">,</span> <span class="n">spin_vals_qubits_deep</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#08bdba&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;qubits, 6 trotter steps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evolution_times</span><span class="p">,</span> <span class="n">spin_vals_fermions</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0f62fe&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fermionic backend&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_06_time_evolution_19_0.png" src="../_images/tutorials_06_time_evolution_19_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;evolution time&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Particle number at site 1&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;evolution of particle density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evolution_times</span><span class="p">,</span> <span class="n">particle_vals_qubits_shallow</span><span class="p">,</span> <span class="s1">&#39;--o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d02670&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;qubits, 1 trotter step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evolution_times</span><span class="p">,</span> <span class="n">particle_vals_qubits_deep</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#08bdba&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;qubits, 6 trotter steps&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">evolution_times</span><span class="p">,</span> <span class="n">particle_vals_fermions</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#0f62fe&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fermionic backend&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_06_time_evolution_20_0.png" src="../_images/tutorials_06_time_evolution_20_0.png" />
+</div>
+</div>
+<p>We observe that for both observables, the qubit solvers that have to trotterize the circuit have trouble reproducing the results obtained by the direct simulation on the fermionic backend. The solver with one Trotter step performs particularly poorly because it can not account for the non-commuting nature of the different terms in the Fermi-Hubbard Hamiltonian.</p>
+<p>With a larger number of Trotter steps, the qubit solutions follow the fermionic solution well for shorter evolution times but differ significantly as the errors of the trotter steps accumulate with increasing times.</p>
+</section>
+<section id="Circuit-comparison">
+<h2>Circuit comparison<a class="headerlink" href="#Circuit-comparison" title="Permalink to this headline">¶</a></h2>
+<p>We now show what the quantum circuits that the solver sends to the fermionic and qubit-based backends look like. In particular, we observe that even for the very moderate system sizes employed here, the qubit-based circuits are very deep. This highlights the capability of cold atomic backends to efficiently simulate specific, hardware-native problems.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fermion_circuit</span> <span class="o">=</span> <span class="n">spin_problem</span><span class="o">.</span><span class="n">circuits</span><span class="p">(</span><span class="n">fermionic_backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">(</span><span class="n">initial_state</span><span class="o">.</span><span class="n">occupations</span><span class="p">))[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">fermion_circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">qubit_circuit</span> <span class="o">=</span> <span class="n">deep_qubit_solver</span><span class="o">.</span><span class="n">construct_qubit_circuits</span><span class="p">(</span><span class="n">spin_problem</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">qubit_circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fermion_circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_06_time_evolution_24_0.png" src="../_images/tutorials_06_time_evolution_24_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">transpile</span>
+<span class="kn">from</span> <span class="nn">qiskit.test.mock</span> <span class="kn">import</span> <span class="n">FakeGuadalupe</span>
+
+<span class="n">qubit_device</span> <span class="o">=</span> <span class="n">FakeGuadalupe</span><span class="p">()</span>
+
+<span class="n">transpiled_circ</span> <span class="o">=</span> <span class="n">transpile</span><span class="p">(</span><span class="n">qubit_circuit</span><span class="p">,</span> <span class="n">qubit_device</span><span class="p">,</span> <span class="n">optimization_level</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">transpiled_circ</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">,</span> <span class="n">idle_wires</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_06_time_evolution_25_0.png" src="../_images/tutorials_06_time_evolution_25_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td>Qiskit</td><td>None</td></tr><tr><td>Terra</td><td>0.18.0.dev0+2eee566</td></tr><tr><td>Aer</td><td>0.9.0.dev0+df38186</td></tr><tr><td>Ignis</td><td>0.7.0.dev0+8195559</td></tr><tr><td>Aqua</td><td>None</td></tr><tr><td>IBM Q Provider</td><td>0.12.0</td></tr><tr><th>System information</th></tr><tr><td>Python</td><td>3.9.4 (default, Apr  9 2021, 11:43:21) [MSC v.1916 64 bit (AMD64)]</td></tr><tr><td>OS</td><td>Windows</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.807106018066406</td></tr><tr><td colspan='2'>Thu Jun 24 20:25:12 2021 W. Europe Daylight Time</td></tr></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2021.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="07_squeezing_in_qudits.html" class="btn btn-neutral float-right" title="Squeezing in atomic qudits" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="05_cold_atom_provider.html" class="btn btn-neutral" title="The Qiskit Cold Atom Provider" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Simulation of time evolution</a><ul>
+<li><a class="reference internal" href="#1)-Problem-definition">1) Problem definition</a></li>
+<li><a class="reference internal" href="#2)-Defining-the-Solver">2) Defining the Solver</a></li>
+<li><a class="reference internal" href="#3)-Solve-the-problems-and-display-the-results">3) Solve the problems and display the results</a></li>
+<li><a class="reference internal" href="#Circuit-comparison">Circuit comparison</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

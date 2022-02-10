@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.get_initial_state
+================================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionCircuitSolver.get_initial_state

@@ -1,0 +1,8 @@
+
+
+BaseFermionBackend.run
+================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: BaseFermionBackend.run

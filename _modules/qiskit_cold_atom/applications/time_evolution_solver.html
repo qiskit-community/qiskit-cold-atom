@@ -1,0 +1,516 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qiskit_cold_atom.applications.time_evolution_solver &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../index.html">Module code</a> &gt;</li>
+        
+      <li>qiskit_cold_atom.applications.time_evolution_solver</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for qiskit_cold_atom.applications.time_evolution_solver</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This code is part of Qiskit.</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright IBM 2021.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
+
+<span class="sd">&quot;&quot;&quot;A solver for time-evolution problems.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">FermionicOp</span>
+<span class="kn">from</span> <span class="nn">qiskit_nature.mappers.second_quantization</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">JordanWignerMapper</span><span class="p">,</span>
+    <span class="n">BravyiKitaevMapper</span><span class="p">,</span>
+    <span class="n">ParityMapper</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">qiskit_nature.converters.second_quantization</span> <span class="kn">import</span> <span class="n">QubitConverter</span>
+
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">QuantumRegister</span>
+<span class="kn">from</span> <span class="nn">qiskit.opflow.evolutions</span> <span class="kn">import</span> <span class="n">PauliTrotterEvolution</span>
+<span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">execute</span>
+
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.applications.fermionic_evolution_problem</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">FermionicEvolutionProblem</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.base_fermion_backend</span> <span class="kn">import</span> <span class="n">BaseFermionBackend</span>
+
+
+<div class="viewcode-block" id="TimeEvolutionSolver"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.applications.TimeEvolutionSolver.html#qiskit_cold_atom.applications.TimeEvolutionSolver">[docs]</a><span class="k">class</span> <span class="nc">TimeEvolutionSolver</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solver class that solves time evolution problem by either analog simulation on fermionic</span>
+<span class="sd">    hardware or trotterized time evolution on qubit hardware. The computation that this time</span>
+<span class="sd">    evolution solver will do depends on the type of the backend.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">MAPPER_DICT</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;bravyi_kitaev&quot;</span><span class="p">:</span> <span class="n">BravyiKitaevMapper</span><span class="p">(),</span>
+        <span class="s2">&quot;jordan_wigner&quot;</span><span class="p">:</span> <span class="n">JordanWignerMapper</span><span class="p">(),</span>
+        <span class="s2">&quot;parity&quot;</span><span class="p">:</span> <span class="n">ParityMapper</span><span class="p">(),</span>
+    <span class="p">}</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">backend</span><span class="p">,</span>
+        <span class="n">map_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">trotter_steps</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">shots</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize a time evolution solver</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            backend: The backend on which to execute the problem, may be qubit or fermionic.</span>
+<span class="sd">            map_type: The fermion-to-qubit mapping required if a qubit backend is given</span>
+<span class="sd">            trotter_steps: The amount of trotter steps to approximate time evolution on</span>
+<span class="sd">                qubit backends</span>
+<span class="sd">            shots: number of measurements taken of the constructed circuits</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="n">backend</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map_type</span> <span class="o">=</span> <span class="n">map_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trotter_steps</span> <span class="o">=</span> <span class="n">trotter_steps</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shots</span> <span class="o">=</span> <span class="n">shots</span>
+
+<div class="viewcode-block" id="TimeEvolutionSolver.solve"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.applications.TimeEvolutionSolver.solve.html#qiskit_cold_atom.applications.TimeEvolutionSolver.solve">[docs]</a>    <span class="k">def</span> <span class="nf">solve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">FermionicEvolutionProblem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Solve the problem using the provided backend</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            problem: The FermionicEvolutionProblem to solve.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A list of expectation values of the observable of the problem. This list has the</span>
+<span class="sd">            same length as the list of times for which to compute the time evolution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="n">BaseFermionBackend</span><span class="p">):</span>
+            <span class="n">qc_load</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">initial_state</span><span class="o">.</span><span class="n">occupations</span><span class="p">)</span>
+            <span class="n">circuits</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">circuits</span><span class="p">(</span><span class="n">qc_load</span><span class="p">)</span>
+
+            <span class="n">observable_evs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="o">.</span><span class="n">measure_observable_expectation</span><span class="p">(</span>
+                <span class="n">circuits</span><span class="p">,</span> <span class="n">problem</span><span class="o">.</span><span class="n">observable</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">shots</span>
+            <span class="p">)</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># use qubit pipeline</span>
+            <span class="n">circuits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">construct_qubit_circuits</span><span class="p">(</span><span class="n">problem</span><span class="p">)</span>
+
+            <span class="c1"># construct observable</span>
+            <span class="n">mapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAPPER_DICT</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">map_type</span><span class="p">]</span>
+            <span class="n">qubit_observable</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">observable</span><span class="p">)</span>
+            <span class="n">observable_mat</span> <span class="o">=</span> <span class="n">qubit_observable</span><span class="o">.</span><span class="n">to_spmatrix</span><span class="p">()</span>
+
+            <span class="n">observable_evs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">problem</span><span class="o">.</span><span class="n">evolution_times</span><span class="p">)</span>
+
+            <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">circuit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">circuits</span><span class="p">):</span>
+
+                <span class="n">circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+                <span class="n">job</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shots</span><span class="p">)</span>
+                <span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span><span class="o">.</span><span class="n">int_outcomes</span><span class="p">()</span>
+
+                <span class="k">for</span> <span class="n">outcome_ind</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+                    <span class="n">prob</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">outcome_ind</span><span class="p">]</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">shots</span>
+
+                    <span class="n">observable_evs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">+=</span> <span class="n">prob</span> <span class="o">*</span> <span class="n">observable_mat</span><span class="o">.</span><span class="n">diagonal</span><span class="p">()[</span><span class="n">outcome_ind</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+
+        <span class="k">return</span> <span class="n">observable_evs</span></div>
+
+<div class="viewcode-block" id="TimeEvolutionSolver.construct_qubit_circuits"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.applications.TimeEvolutionSolver.construct_qubit_circuits.html#qiskit_cold_atom.applications.TimeEvolutionSolver.construct_qubit_circuits">[docs]</a>    <span class="k">def</span> <span class="nf">construct_qubit_circuits</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">problem</span><span class="p">:</span> <span class="n">FermionicEvolutionProblem</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">QuantumCircuit</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Convert the problem to a trotterized qubit circuit using the specified map_type</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            problem: The fermionic evolution problem specifying the system, evolution-time</span>
+<span class="sd">                and observable to be measured</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a list of quantum circuits that simulate the time evolution.</span>
+<span class="sd">            There is one circuit for each evolution time specified in the problem&#39;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">psi_0</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">initial_state</span>
+        <span class="n">system</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">system</span>
+        <span class="n">hamiltonian</span> <span class="o">=</span> <span class="n">system</span><span class="o">.</span><span class="n">to_fermionic_op</span><span class="p">()</span>
+
+        <span class="n">mapper</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">MAPPER_DICT</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">map_type</span><span class="p">]</span>
+
+        <span class="n">circuits</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># construct circuit of initial state:</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;+&quot;</span> <span class="k">if</span> <span class="n">bit</span> <span class="k">else</span> <span class="s2">&quot;I&quot;</span> <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">psi_0</span><span class="o">.</span><span class="n">occupations_flat</span><span class="p">]</span>
+        <span class="n">bitstr_op</span> <span class="o">=</span> <span class="n">FermionicOp</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">label</span><span class="p">))</span>
+        <span class="n">qubit_op</span> <span class="o">=</span> <span class="n">QubitConverter</span><span class="p">(</span><span class="n">mapper</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">bitstr_op</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">init_circ</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="n">QuantumRegister</span><span class="p">(</span><span class="n">qubit_op</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">,</span> <span class="s2">&quot;q&quot;</span><span class="p">))</span>
+        <span class="c1"># Add gates in the right positions: we are only interested in the `X` gates because we want</span>
+        <span class="c1"># to create particles (0 -&gt; 1) where the initial state introduced a creation (`+`) operator.</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">qubit_op</span><span class="o">.</span><span class="n">primitive</span><span class="o">.</span><span class="n">table</span><span class="o">.</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">bit</span><span class="p">:</span>
+                <span class="n">init_circ</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">time</span> <span class="ow">in</span> <span class="n">problem</span><span class="o">.</span><span class="n">evolution_times</span><span class="p">:</span>
+
+            <span class="c1"># time-step of zero will cause PauliTrotterEvolution to fail</span>
+            <span class="k">if</span> <span class="n">time</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+                <span class="n">time</span> <span class="o">+=</span> <span class="mf">1e-10</span>
+
+            <span class="c1"># map fermionic hamiltonian to qubits</span>
+            <span class="n">qubit_hamiltonian</span> <span class="o">=</span> <span class="n">mapper</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">hamiltonian</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>
+            <span class="c1"># get time evolution operator by exponentiating</span>
+            <span class="n">exp_op</span> <span class="o">=</span> <span class="n">qubit_hamiltonian</span><span class="o">.</span><span class="n">exp_i</span><span class="p">()</span>
+            <span class="c1"># perform trotterization</span>
+
+            <span class="n">evolved_op</span> <span class="o">=</span> <span class="n">PauliTrotterEvolution</span><span class="p">(</span><span class="n">reps</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trotter_steps</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">exp_op</span><span class="p">)</span>
+
+            <span class="n">trotter_circ</span> <span class="o">=</span> <span class="n">evolved_op</span><span class="o">.</span><span class="n">to_circuit_op</span><span class="p">()</span><span class="o">.</span><span class="n">to_circuit</span><span class="p">()</span>
+
+            <span class="n">circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">init_circ</span><span class="o">.</span><span class="n">compose</span><span class="p">(</span><span class="n">trotter_circ</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">circuits</span></div></div>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+         <script src="../../../_static/jquery.js"></script>
+         <script src="../../../_static/underscore.js"></script>
+         <script src="../../../_static/doctools.js"></script>
+         <script src="../../../_static/thebelab-helper.js"></script>
+         <script src="../../../_static/tabs.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

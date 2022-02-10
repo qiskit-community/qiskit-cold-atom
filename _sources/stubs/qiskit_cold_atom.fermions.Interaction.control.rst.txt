@@ -1,0 +1,8 @@
+
+
+Interaction.control
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Interaction.control

@@ -1,0 +1,1317 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tunneling of fermionic atoms &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Squeezing in atomic qudits" href="07_squeezing_in_qudits.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Tunneling of fermionic atoms</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/08_fermions_in_double_well.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Tunneling-of-fermionic-atoms">
+<h1>Tunneling of fermionic atoms<a class="headerlink" href="#Tunneling-of-fermionic-atoms" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we take a look at how fermionic atoms can tunnel in cold atomic experiments, based on the paper “Two Fermions in a Double Well: Exploring a Fundamental Building Block of the Hubbard Model” from the Jochim group <a class="reference external" href="#References">[1]</a>. In these experiments, two fermions of different spins are put into a single tweezer and then coupled to a second tweezer. The paper <a class="reference external" href="#References">[1]</a> shows experimental data on how the atom number in the second tweezer evolves with time. It is
+therefore a very pedagogical example that exemplifies the possibilities of controlling single fermions in cold atomic gases.</p>
+<p>As mentioned in the <a class="reference internal" href="03_fermionic_tweezer_hardware.html#Gates-and-dynamics"><span class="std std-ref">third tutorial</span></a>, the physical dynamics of the 1-D tweezer array are governed by a Fermi-Hubbard Hamiltonian in second quantization:</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{FH}}(\boldsymbol{J},U,\boldsymbol{\Delta}) =  \underbrace{-J\sum_{\sigma}(f^\dagger_{L,\sigma} f_{R,\sigma} + f^\dagger_{R,\sigma} f_{L,\sigma} )}_{\text{Tunneling/Hopping}} + \underbrace{U \left( n_{L,\uparrow}n_{L,\downarrow}+n_{R,\uparrow}n_{R,\downarrow}\right)}_{\text{interaction}} + \underbrace{\Delta\left(\sum_{\sigma}(n_{L,\sigma}-n_{R,\sigma} \right)}_{\text{potential offset}}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(f_{i,\sigma}, f^\dagger_{i,\sigma}\)</span> are annihilation/creation operators for atoms in tweezers at site <span class="math notranslate nohighlight">\(i=L, R\)</span> (left/right) with spin <span class="math notranslate nohighlight">\(\sigma\)</span> and <span class="math notranslate nohighlight">\(n_{i,\sigma} = f^\dagger_{i,\sigma} f_{i,\sigma}\)</span> is the number operator. Note that here, we replaced <span class="math notranslate nohighlight">\(\mu\)</span> by <span class="math notranslate nohighlight">\(\Delta\)</span> to adapt to the notation of the paper <a class="reference external" href="#References">[1]</a>. The details about the different terms in the Hamiltonian are available in the <a class="reference internal" href="03_fermionic_tweezer_hardware.html#Gates-and-dynamics"><span class="std std-ref">third
+tutorial</span></a>.</p>
+<p>This notebook is structured as follows: 1. We will understand the experiments in a simple Hamiltonian description that includes only four levels and compare the predictions to the experimental data. 2. We will then show how you can simulate these experiments on your own laptop through <code class="docutils literal notranslate"><span class="pre">qiskit_cold_atom</span></code>. 3. In the last section, we show how to send such calculations to a cloud simulator.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<section id="Analytical-prediction">
+<h2>Analytical prediction<a class="headerlink" href="#Analytical-prediction" title="Permalink to this headline">¶</a></h2>
+<p>The evolution of the fermions under the Fermi-Hubbard Hamiltonian preserves the total number of particles, the total number of spin up particles and the total number of spin down particles. Owing to these conserved quantities, the Hamiltonian takes a block diagonal form in the occupation number basis. These blocks represent various sectors which are not coupled by the Hamiltonian.</p>
+<p>For the current example we initialize the system in the sector <span class="math notranslate nohighlight">\(N=2,S_z=0\)</span> (two atoms : one each for spin up and down). The dynamics of the system are limited to this subspace which is 4-dimensional. The Hamiltonian matrix in the subspace can be written down in the occupation number basis <span class="math notranslate nohighlight">\(\{LL, LR, RL, RR\}\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H = \left(\begin{array}{cccc}
+U+2\Delta &amp; -J &amp; -J &amp; 0\\
+-J &amp; 0 &amp; 0 &amp;-J\\
+-J &amp; 0 &amp; 0 &amp;-J\\
+0 &amp; -J &amp; -J &amp; U-2\Delta
+            \end{array}
+            \right)\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(L\)</span> and <span class="math notranslate nohighlight">\(R\)</span> denote the left and right tweezer respectively. In the remainder of the notebook, we consider the case for <span class="math notranslate nohighlight">\(\Delta = 0\)</span>, so the Hamiltonian matrix reads:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}H = \left(\begin{array}{cccc}
+U &amp; -J &amp; -J &amp; 0\\
+-J &amp; 0 &amp; 0 &amp;-J\\
+-J &amp; 0 &amp; 0 &amp;-J\\
+0 &amp; -J &amp; -J &amp; U
+            \end{array}
+            \right)\end{split}\]</div>
+<p>The experimental sequence is the following:</p>
+<ol class="arabic simple">
+<li><p>Both atoms are prepared in the left tweezer, such that the initial state is the basis state <span class="math notranslate nohighlight">\(|\psi(0)\rangle = |LL\rangle\)</span>.</p></li>
+<li><p>The atoms evolve under the Hamiltonian <span class="math notranslate nohighlight">\(H\)</span> with the parameters <span class="math notranslate nohighlight">\(J/\hbar = \pi \cdot 134\)</span> and <span class="math notranslate nohighlight">\(U = 0.7\cdot J\)</span> or <span class="math notranslate nohighlight">\(U=0\)</span> (later called the non-interacting case).</p></li>
+<li><p>The number of atoms in the right tweezer is read out in the end.</p></li>
+</ol>
+<p>Given the simple matrix structure of the problem we can directly solve it by computing the time evolution, i.e., exponentiating the Hamiltonian.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># the experimental parameters</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">134</span>  <span class="c1"># hopping parameter in units of hbar</span>
+<span class="n">U</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">J</span>  <span class="c1"># interaction parameter</span>
+
+<span class="n">Nt_an</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># number of time steps for plotting</span>
+<span class="n">t_analytical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">Nt_an</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span>  <span class="c1"># evolution times</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s define the Hamiltonian matrices as well as the initial state.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">H_with_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">U</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="n">U</span><span class="p">]])</span>
+<span class="n">H_wo_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="o">-</span><span class="n">J</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">psi0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span>
+<span class="n">psi0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+</pre></div>
+</div>
+</div>
+<p>Now, we have assembled all the necessary tools to directly calculate the probabilites of the different occupation numbers from:</p>
+<div class="math notranslate nohighlight">
+\[|\psi(t)\rangle = e^{-i \hat{H}t/\hbar}|\psi(0)\rangle\]</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
+
+<span class="n">psis_wo_int</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="n">Nt_an</span><span class="p">))</span>
+<span class="n">psis_w_int</span> <span class="o">=</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="n">Nt_an</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ti</span>  <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">t_analytical</span><span class="p">):</span>
+
+    <span class="n">U_wo</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ti</span> <span class="o">*</span> <span class="n">H_wo_int</span><span class="p">)</span>
+    <span class="n">psis_wo_int</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U_wo</span><span class="p">,</span> <span class="n">psi0</span><span class="p">)</span>
+
+    <span class="n">U_w</span> <span class="o">=</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ti</span> <span class="o">*</span> <span class="n">H_with_int</span><span class="p">)</span>
+    <span class="n">psis_w_int</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U_w</span><span class="p">,</span> <span class="n">psi0</span><span class="p">)</span>
+
+<span class="n">pops_wo</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psis_wo_int</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">pops_w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">psis_w_int</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+<p>In the final step, we have to assamble the observed quantity, i.e., the expectation value of the atoms in the right tweezer <span class="math notranslate nohighlight">\(\langle \hat{n}_{,R} \rangle\)</span>, from the calculated probabilities.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">nR_wo</span> <span class="o">=</span> <span class="n">pops_wo</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">pops_wo</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pops_wo</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:]</span>
+<span class="n">nR_w</span> <span class="o">=</span> <span class="n">pops_w</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">pops_w</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="p">:]</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">pops_w</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="p">:];</span>
+</pre></div>
+</div>
+</div>
+<p>At this stage, we are now ready to compare our calculations to the experimental observations, which we have extracted from the paper saved in the following arrays.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># raw values on experiments without interactions from the paper by Murmann et al.</span>
+<span class="n">no_int_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.84951456</span><span class="p">,</span> <span class="mf">1.52912621</span><span class="p">,</span> <span class="mf">2.20873786</span><span class="p">,</span> <span class="mf">3.05825243</span><span class="p">,</span> <span class="mf">4.0776699</span><span class="p">,</span> <span class="mf">4.75728155</span><span class="p">,</span> <span class="mf">5.26699029</span><span class="p">,</span> <span class="mf">6.28640777</span><span class="p">,</span> <span class="mf">6.7961165</span><span class="p">,</span> <span class="mf">7.64563107</span><span class="p">,</span> <span class="mf">8.32524272</span><span class="p">,</span> <span class="mf">9.00485437</span><span class="p">,</span> <span class="mf">9.85436893</span><span class="p">,</span> <span class="mf">10.53398058</span><span class="p">,</span> <span class="mf">11.38349515</span><span class="p">,</span> <span class="mf">12.0631068</span><span class="p">,</span> <span class="mf">12.74271845</span><span class="p">,</span> <span class="mf">13.4223301</span><span class="p">,</span> <span class="mf">14.27184466</span><span class="p">,</span> <span class="mf">14.95145631</span><span class="p">,</span> <span class="mf">15.80097087</span><span class="p">,</span> <span class="mf">16.48058252</span><span class="p">,</span> <span class="mf">17.16019417</span><span class="p">,</span> <span class="mf">18.00970874</span><span class="p">,</span> <span class="mf">18.68932039</span><span class="p">,</span> <span class="mf">19.53883495</span><span class="p">,</span> <span class="mf">20.2184466</span><span class="p">,</span> <span class="mf">21.06796117</span><span class="p">,</span> <span class="mf">21.74757282</span><span class="p">,</span> <span class="mf">22.42718447</span><span class="p">,</span> <span class="mf">23.27669903</span><span class="p">,</span> <span class="mf">23.95631068</span><span class="p">,</span> <span class="mf">24.80582524</span><span class="p">,]</span>
+<span class="p">)</span>
+
+<span class="n">no_int_nR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.07042254</span><span class="p">,</span> <span class="mf">0.56338028</span><span class="p">,</span> <span class="mf">1.23943662</span><span class="p">,</span> <span class="mf">1.43661972</span><span class="p">,</span> <span class="mf">1.8028169</span><span class="p">,</span> <span class="mf">1.57746479</span><span class="p">,</span> <span class="mf">1.22535211</span><span class="p">,</span> <span class="mf">0.81690141</span><span class="p">,</span> <span class="mf">0.42253521</span><span class="p">,</span> <span class="mf">0.21126761</span><span class="p">,</span> <span class="mf">0.07042254</span><span class="p">,</span> <span class="mf">0.43661972</span><span class="p">,</span> <span class="mf">0.73239437</span><span class="p">,</span> <span class="mf">1.33802817</span><span class="p">,</span> <span class="mf">1.66197183</span><span class="p">,</span> <span class="mf">1.66197183</span><span class="p">,</span> <span class="mf">1.36619718</span><span class="p">,</span> <span class="mf">0.85915493</span><span class="p">,</span> <span class="mf">0.6056338</span><span class="p">,</span> <span class="mf">0.07042254</span><span class="p">,</span> <span class="mf">0.14084507</span><span class="p">,</span> <span class="mf">0.42253521</span><span class="p">,</span> <span class="mf">0.67605634</span><span class="p">,</span> <span class="mf">1.28169014</span><span class="p">,</span> <span class="mf">1.36619718</span><span class="p">,</span> <span class="mf">1.54929577</span><span class="p">,</span> <span class="mf">1.4084507</span><span class="p">,</span> <span class="mf">1.07042254</span><span class="p">,</span> <span class="mf">0.57746479</span><span class="p">,</span> <span class="mf">0.36619718</span><span class="p">,</span> <span class="mf">0.1971831</span><span class="p">,</span> <span class="mf">0.28169014</span><span class="p">,</span> <span class="mf">0.49295775</span><span class="p">,</span> <span class="mf">0.92957746</span><span class="p">,]</span>
+<span class="p">)</span>
+
+<span class="c1"># raw values on experiments with interactions from the paper by Murmann et al.</span>
+<span class="n">with_int_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="o">-</span><span class="mf">0.16990291</span><span class="p">,</span> <span class="mf">0.84951456</span><span class="p">,</span> <span class="mf">1.52912621</span><span class="p">,</span> <span class="mf">2.03883495</span><span class="p">,</span> <span class="mf">2.88834951</span><span class="p">,</span> <span class="mf">3.73786408</span><span class="p">,</span> <span class="mf">4.41747573</span><span class="p">,</span> <span class="mf">5.94660194</span><span class="p">,</span> <span class="mf">5.09708738</span><span class="p">,</span> <span class="mf">6.62621359</span><span class="p">,</span> <span class="mf">7.47572816</span><span class="p">,</span> <span class="mf">8.15533981</span><span class="p">,</span> <span class="mf">9.00485437</span><span class="p">,</span> <span class="mf">9.68446602</span><span class="p">,</span> <span class="mf">10.53398058</span><span class="p">,</span> <span class="mf">11.21359223</span><span class="p">,</span> <span class="mf">11.89320388</span><span class="p">,</span> <span class="mf">12.74271845</span><span class="p">,</span> <span class="mf">13.4223301</span><span class="p">,</span> <span class="mf">14.27184466</span><span class="p">,</span> <span class="mf">14.95145631</span><span class="p">,</span> <span class="mf">15.63106796</span><span class="p">,</span> <span class="mf">16.48058252</span><span class="p">,</span> <span class="mf">17.16019417</span><span class="p">,</span> <span class="mf">18.00970874</span><span class="p">,</span> <span class="mf">18.68932039</span><span class="p">,</span> <span class="mf">19.36893204</span><span class="p">,</span> <span class="mf">20.2184466</span><span class="p">,</span> <span class="mf">21.06796117</span><span class="p">,</span> <span class="mf">21.74757282</span><span class="p">,</span> <span class="mf">22.42718447</span><span class="p">,</span> <span class="mf">23.27669903</span><span class="p">,</span> <span class="mf">23.95631068</span><span class="p">,</span> <span class="mf">24.63592233</span><span class="p">,</span> <span class="mf">25.48543689</span><span class="p">,</span> <span class="mf">26.16504854</span><span class="p">,</span> <span class="mf">27.01456311</span><span class="p">,</span> <span class="mf">27.69417476</span><span class="p">,]</span>
+<span class="p">)</span>
+
+<span class="n">with_int_nR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span><span class="mf">0.06896552</span><span class="p">,</span> <span class="mf">0.35862069</span><span class="p">,</span> <span class="mf">1.00689655</span><span class="p">,</span> <span class="mf">1.35172414</span><span class="p">,</span> <span class="mf">1.42068966</span><span class="p">,</span> <span class="mf">1.35172414</span><span class="p">,</span> <span class="mf">1.28275862</span><span class="p">,</span> <span class="mf">1.00689655</span><span class="p">,</span> <span class="mf">0.85517241</span><span class="p">,</span> <span class="mf">0.56551724</span><span class="p">,</span> <span class="mf">0.35862069</span><span class="p">,</span> <span class="mf">0.57931034</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.99310345</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.14482759</span><span class="p">,</span> <span class="mf">0.99310345</span><span class="p">,</span> <span class="mf">1.46206897</span><span class="p">,</span> <span class="mf">1.43448276</span><span class="p">,</span> <span class="mf">1.48965517</span><span class="p">,</span> <span class="mf">1.07586207</span><span class="p">,</span> <span class="mf">0.92413793</span><span class="p">,</span> <span class="mf">0.75862069</span><span class="p">,</span> <span class="mf">0.28965517</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.60689655</span><span class="p">,</span> <span class="mf">0.64827586</span><span class="p">,</span> <span class="mf">1.42068966</span><span class="p">,</span> <span class="mf">1.35172414</span><span class="p">,</span> <span class="mf">1.25517241</span><span class="p">,</span> <span class="mf">1.35172414</span><span class="p">,</span> <span class="mf">1.06206897</span><span class="p">,</span> <span class="mf">0.71724138</span><span class="p">,</span> <span class="mf">0.42758621</span><span class="p">,</span> <span class="mf">0.28965517</span><span class="p">,</span> <span class="mf">0.37241379</span><span class="p">,</span> <span class="mf">0.35862069</span><span class="p">,]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>And now, we can observe a beautiful agreement between the predicted evolution and the experimentally observed quantities:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no_int_time</span><span class="p">,</span> <span class="n">no_int_nR</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;experiment&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_analytical</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">nR_wo</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;analytical&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">with_int_time</span><span class="p">,</span> <span class="n">with_int_nR</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;experiment&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_analytical</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">nR_w</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;analytical&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;atoms in right tweezer&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;atoms in right tweezer&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;time (ms)&quot;</span><span class="p">)</span>
+<span class="c1"># ax2.set_xlim(0, 20)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Hopping without interactions ($U=0$)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Hopping with interactions ($U=0.7*J$)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_15_0.png" src="../_images/tutorials_08_fermions_in_double_well_15_0.png" />
+</div>
+</div>
+<p>These dynamics have an intuitive explanation: Without interaction, both atoms tunnel back and forth between <span class="math notranslate nohighlight">\(|L\rangle\)</span> and <span class="math notranslate nohighlight">\(|R\rangle\)</span> at the same rate, which leads to sinusoidal interactions. With interaction, the atoms repel each other (as <span class="math notranslate nohighlight">\(U&gt;0\)</span>) whichs forms a complicated beating pattern of the tunneling.</p>
+</section>
+<section id="Simulation-with-qiskit_cold_atom">
+<h2>Simulation with <code class="docutils literal notranslate"><span class="pre">qiskit_cold_atom</span></code><a class="headerlink" href="#Simulation-with-qiskit_cold_atom" title="Permalink to this headline">¶</a></h2>
+<p>While the previous approach works out quite nicely for this simple example, it requires the user to have a good understanding of the numerical methods, which are adapted to simulate the experiment and does not connect directly to the gate based approach. We will now show that the experiment presented above can be described in a circuit language using <code class="docutils literal notranslate"><span class="pre">qiskit_cold_atom</span></code>. For a first introduction to fermionic circuits, please see the <a class="reference internal" href="01_introduction_and_fermionic_circuits.html"><span class="doc">first
+tutorial</span></a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions</span> <span class="kn">import</span> <span class="n">FermionSimulator</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.fermions.fermion_gate_library</span> <span class="kn">import</span> <span class="n">FermiHubbard</span>
+<span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">FermionicOp</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">Parameter</span>
+
+<span class="n">backend</span> <span class="o">=</span> <span class="n">FermionSimulator</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>For a circuit description of the two-tweezer experiment, we first initialize the circuit with the correct number and location of atoms. Then we apply a Fermi-Hubbard gate which captures the full dynamics of the system.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hop_param</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;hop_param&quot;</span><span class="p">)</span>
+<span class="n">int_param</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;int_param&quot;</span><span class="p">)</span>
+
+<span class="c1"># initialize one spin-up and one spin-down atom in the left tweezer</span>
+<span class="n">qc</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">initialize_circuit</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+<span class="c1"># apply a global Fermi-Hubbard gate with interaction</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">fhubbard</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="p">[</span><span class="n">hop_param</span><span class="p">],</span> <span class="n">u</span><span class="o">=</span><span class="n">int_param</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">modes</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_20_0.png" src="../_images/tutorials_08_fermions_in_double_well_20_0.png" />
+</div>
+</div>
+<p>To directly simulate the experiment, we run a list of circuits with different evolution times on the simulator backend.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Ntimes</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># create list of circuits without interaction</span>
+<span class="n">circuits_no_int</span> <span class="o">=</span> <span class="p">[</span><span class="n">qc</span><span class="o">.</span><span class="n">bind_parameters</span><span class="p">({</span><span class="n">hop_param</span><span class="p">:</span> <span class="n">J</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="n">int_param</span><span class="p">:</span> <span class="mi">0</span><span class="p">})</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">times</span><span class="p">]</span>
+<span class="c1"># measure the observable from simulated shots</span>
+<span class="n">job_no_int</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuits_no_int</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+c:\users\laurinfischer\documents\qiskit-cold-atom\qiskit_cold_atom\fermions\fermion_gate_library.py:321: UserWarning: The default value for `display_format` will be changed from &#39;dense&#39; to &#39;sparse&#39; in version 0.3.0. Once that happens, you must specify display_format=&#39;dense&#39; directly.
+  return FermionicOp(&#34;I_0&#34;, register_length=self.num_modes)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># create list of circuits without interaction</span>
+<span class="n">circuits_int</span> <span class="o">=</span> <span class="p">[</span><span class="n">qc</span><span class="o">.</span><span class="n">bind_parameters</span><span class="p">({</span><span class="n">hop_param</span><span class="p">:</span> <span class="n">J</span><span class="o">*</span><span class="n">t</span><span class="p">,</span> <span class="n">int_param</span><span class="p">:</span> <span class="n">U</span><span class="o">*</span><span class="n">t</span><span class="p">})</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">times</span><span class="p">]</span>
+<span class="c1"># measure the observable from simulated shots</span>
+<span class="n">job_int</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuits_int</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># extract the observable from the measured data</span>
+<span class="k">def</span> <span class="nf">mean_counts_right</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">N_circs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Compute the average number of number of atoms in the right tweezer.&quot;&quot;&quot;</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+    <span class="n">mean_counts</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_circs</span><span class="p">):</span>
+        <span class="n">outcomes</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">get_memory</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">right_counts</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">outcome</span> <span class="ow">in</span> <span class="n">outcomes</span><span class="p">:</span>
+            <span class="n">outcome_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">outcome</span><span class="o">.</span><span class="n">split</span><span class="p">())</span>
+            <span class="c1"># select spin-up (idx 1) and spin-down (idx 3) of the right tweezer</span>
+            <span class="n">right_counts</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">outcome_string</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">outcome_string</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+        <span class="n">mean_counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">right_counts</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">outcomes</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">mean_counts</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">means_no_int</span> <span class="o">=</span> <span class="n">mean_counts_right</span><span class="p">(</span><span class="n">job_no_int</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span>
+<span class="n">means_int</span> <span class="o">=</span> <span class="n">mean_counts_right</span><span class="p">(</span><span class="n">job_int</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s compare the Qiskit simulations to the experimental data and the numerical model from above:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+    <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">means_no_int</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;qiskit&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_analytical</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">nR_wo</span><span class="p">,</span> <span class="s2">&quot;rx&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;analytical&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no_int_time</span><span class="p">,</span> <span class="n">no_int_nR</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;experiment&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">means_int</span><span class="p">,</span> <span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;qiskit&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_analytical</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">nR_w</span><span class="p">,</span> <span class="s2">&quot;bx&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;analytical&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">with_int_time</span><span class="p">,</span> <span class="n">with_int_nR</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;experiment&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;atoms in right tweezer&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;atoms in right tweezer&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;time (ms)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper right&quot;</span><span class="p">)</span>
+<span class="c1"># ax1.set_xlim(-1, 20)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Hopping without interactions ($U=0$)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Hopping with interactions ($U=0.7*J$)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_28_0.png" src="../_images/tutorials_08_fermions_in_double_well_28_0.png" />
+</div>
+</div>
+<p>We see that Qiskit’s simulator allows to obtain the analytical predicition in an easy and intuitive way. The slight deviations arise from the sampling with a finite shot number.</p>
+</section>
+<section id="Optional:-Working-on-a-cloud-simulator">
+<h2>Optional: Working on a cloud simulator<a class="headerlink" href="#Optional:-Working-on-a-cloud-simulator" title="Permalink to this headline">¶</a></h2>
+<p>We would also like to send such circuits to some real hardware and investigate these results. In this last section, we will present this possibility with the <a class="reference external" href="https://qsimsim.synqs.org">synqs provider</a> .</p>
+<div class="alert alert-block alert-info"><p>Note: To run the cells in this part of the tutorial that interface with a remote device backend, you’ll need to have a registered account with a valid username and password for this provider which can be obtained at the URL linked above.</p>
+</div><p>In a first step, it is necessary to import the cold atom provider.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers</span> <span class="kn">import</span> <span class="n">ColdAtomProvider</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Parameter</span>
+</pre></div>
+</div>
+</div>
+<p>Saving/enabling your synqs backend credentials (Optional if not alreayd done).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># save an account to disk</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">save_account</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;http://qsimsim.synqs.org/api/singlequdit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;http://qsimsim.synqs.org/api/multiqudit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;http://qsimsim.synqs.org/api/fermions&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">load_account</span><span class="p">()</span>
+
+<span class="c1"># or enable an account in the current session</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">enable_account</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;http://qsimsim.synqs.org/api/singlequdit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;http://qsimsim.synqs.org/api/multiqudit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/fermions&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now access the remote fermionic simulator.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">fermion_device_backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;synqs_fermions_simulator&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fermion_device_backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">supported_instructions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;load&#39;, &#39;measure&#39;, &#39;barrier&#39;, &#39;fhop&#39;, &#39;fint&#39;, &#39;fphase&#39;]
+</pre></div></div>
+</div>
+<p><strong>Note: synqs’ fermion backend uses a different notation convention for the spin species in a fermionic circuit, where the spin-up and spin-down wires alternate.</strong></p>
+<section id="No-interaction">
+<h3>No interaction<a class="headerlink" href="#No-interaction" title="Permalink to this headline">¶</a></h3>
+<p>In a first set of experiments there are no interactions and the two atoms are simply allowed to hop. The experiment is then described by the following, simple circuit.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">theta_j</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;theta_j&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># the parameters of the experiment</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">134</span>
+<span class="n">Ntimes</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span>
+<span class="n">theta_js</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">J</span> <span class="o">*</span> <span class="n">times</span>
+<span class="n">means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Ntimes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit1</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">circuit1</span><span class="o">.</span><span class="n">fload</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit1</span><span class="o">.</span><span class="n">fload</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">circuit1</span><span class="o">.</span><span class="n">fhop</span><span class="p">([</span><span class="n">theta_j</span><span class="p">],</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">)))</span>
+<span class="n">circuit1</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circuit1</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_41_0.png" src="../_images/tutorials_08_fermions_in_double_well_41_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit1_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">circuit1</span><span class="o">.</span><span class="n">bind_parameters</span><span class="p">({</span><span class="n">theta_j</span><span class="p">:</span> <span class="n">theta</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)})</span> <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_js</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job1</span> <span class="o">=</span> <span class="n">fermion_device_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit1_list</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job_retrieved1</span> <span class="o">=</span> <span class="n">fermion_device_backend</span><span class="o">.</span><span class="n">retrieve_job</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="n">job1</span><span class="o">.</span><span class="n">job_id</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;job status: &quot;</span><span class="p">,</span> <span class="n">job_retrieved1</span><span class="o">.</span><span class="n">status</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+job status:  JobStatus.INITIALIZING
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">means</span> <span class="o">=</span> <span class="n">mean_counts_right</span><span class="p">(</span><span class="n">job_retrieved1</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">means</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Qiskit&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">no_int_time</span><span class="p">,</span> <span class="n">no_int_nR</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;U = 0&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;atoms in right valley&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;time (ms)&quot;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_46_0.png" src="../_images/tutorials_08_fermions_in_double_well_46_0.png" />
+</div>
+</div>
+</section>
+<section id="Hopping-with-interactions">
+<h3>Hopping with interactions<a class="headerlink" href="#Hopping-with-interactions" title="Permalink to this headline">¶</a></h3>
+<p>In a next step, the atoms are interacting. As you can see, this backend is only implementing a limited set of gates. To simulate the simultaneous hopping and interaction, the circuit has to be trotterized.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">theta_j</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;theta_j&quot;</span><span class="p">)</span>
+<span class="n">theta_u</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;theta_u&quot;</span><span class="p">)</span>
+
+<span class="c1"># the parameters of the experiment</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">134</span>
+<span class="n">U</span> <span class="o">=</span> <span class="mf">0.7</span> <span class="o">*</span> <span class="n">J</span>
+<span class="n">Ntimes</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span> <span class="o">*</span> <span class="mf">1e-3</span>
+<span class="n">theta_js</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">J</span> <span class="o">*</span> <span class="n">times</span>
+<span class="n">theta_us</span> <span class="o">=</span> <span class="n">U</span> <span class="o">*</span> <span class="n">times</span>
+<span class="n">means_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">Ntimes</span><span class="p">)</span>
+<span class="n">Ntrott</span> <span class="o">=</span> <span class="mi">14</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit2</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">circuit2</span><span class="o">.</span><span class="n">fload</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit2</span><span class="o">.</span><span class="n">fload</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ntrott</span><span class="p">):</span>
+    <span class="n">circuit2</span><span class="o">.</span><span class="n">fhop</span><span class="p">([</span><span class="n">theta_j</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+    <span class="n">circuit2</span><span class="o">.</span><span class="n">fint</span><span class="p">(</span><span class="n">theta_u</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]:</span>
+    <span class="n">circuit2</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+
+<span class="n">circuit2</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_49_0.png" src="../_images/tutorials_08_fermions_in_double_well_49_0.png" />
+</div>
+</div>
+<p>next we set up the circuits that calculate each time step and send it to the backend</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit2_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">circuit2</span><span class="o">.</span><span class="n">bind_parameters</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="n">theta_j</span><span class="p">:</span> <span class="p">(</span><span class="n">theta1</span> <span class="o">/</span> <span class="n">Ntrott</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span>
+            <span class="n">theta_u</span><span class="p">:</span> <span class="p">(</span><span class="n">theta2</span> <span class="o">/</span> <span class="n">Ntrott</span><span class="p">)</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">theta_js</span><span class="p">,</span> <span class="n">theta_us</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">job2</span> <span class="o">=</span> <span class="n">fermion_device_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit2_list</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>You can now save the job and wait until the job status has changed to done.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job_retrieved2</span> <span class="o">=</span> <span class="n">fermion_device_backend</span><span class="o">.</span><span class="n">retrieve_job</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="n">job2</span><span class="o">.</span><span class="n">job_id</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;job status: &quot;</span><span class="p">,</span> <span class="n">job_retrieved2</span><span class="o">.</span><span class="n">status</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+job status:  JobStatus.INITIALIZING
+</pre></div></div>
+</div>
+<p>Once the job is done, we can obtain once again the usual results, which are saved on the backend.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">means_int</span> <span class="o">=</span> <span class="n">mean_counts_right</span><span class="p">(</span><span class="n">job_retrieved2</span><span class="p">,</span> <span class="n">Ntimes</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span> <span class="o">*</span> <span class="mf">1e3</span><span class="p">,</span> <span class="n">means_int</span><span class="p">,</span> <span class="s2">&quot;b.-&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Qiskit simulation&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">with_int_time</span><span class="p">,</span>
+    <span class="n">with_int_nR</span><span class="p">,</span>
+    <span class="s2">&quot;bo&quot;</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;experimental data&quot;</span><span class="p">,</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;atoms in right valley&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;time (ms)&quot;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(0.0, 20.0)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_08_fermions_in_double_well_55_1.png" src="../_images/tutorials_08_fermions_in_double_well_55_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.114.080402">Simon Murmann et al.</a> <em>Two Fermions in a Double Well: Exploring a Fundamental Building Block of the Hubbard Model</em>. Phys. Rev. Lett. 114, 080402 (2015).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td><code>qiskit-terra</code></td><td>0.18.2</td></tr><tr><td><code>qiskit-aer</code></td><td>0.9.0</td></tr><tr><td><code>qiskit-nature</code></td><td>0.2.1</td></tr><tr><th>System information</th></tr><tr><td>Python</td><td>3.9.7 | packaged by conda-forge | (default, Sep 14 2021, 01:11:01) [MSC v.1916 64 bit (AMD64)]</td></tr><tr><td>OS</td><td>Windows</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.807106018066406</td></tr><tr><td colspan='2'>Wed Jan 19 18:57:47 2022 W. Europe Standard Time</td></tr></table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="07_squeezing_in_qudits.html" class="btn btn-neutral" title="Squeezing in atomic qudits" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Tunneling of fermionic atoms</a><ul>
+<li><a class="reference internal" href="#Analytical-prediction">Analytical prediction</a></li>
+<li><a class="reference internal" href="#Simulation-with-qiskit_cold_atom">Simulation with <code class="docutils literal notranslate"><span class="pre">qiskit_cold_atom</span></code></a></li>
+<li><a class="reference internal" href="#Optional:-Working-on-a-cloud-simulator">Optional: Working on a cloud simulator</a><ul>
+<li><a class="reference internal" href="#No-interaction">No interaction</a></li>
+<li><a class="reference internal" href="#Hopping-with-interactions">Hopping with interactions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

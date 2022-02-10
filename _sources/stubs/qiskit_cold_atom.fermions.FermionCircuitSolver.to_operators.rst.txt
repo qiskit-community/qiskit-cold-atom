@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.to_operators
+===========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionCircuitSolver.to_operators

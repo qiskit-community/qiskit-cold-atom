@@ -1,0 +1,8 @@
+
+
+RLZGate.is_parameterized
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLZGate.is_parameterized

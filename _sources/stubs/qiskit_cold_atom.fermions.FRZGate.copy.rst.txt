@@ -1,0 +1,8 @@
+
+
+FRZGate.copy
+======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRZGate.copy

@@ -1,0 +1,8 @@
+
+
+OATGate.inverse
+======================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: OATGate.inverse

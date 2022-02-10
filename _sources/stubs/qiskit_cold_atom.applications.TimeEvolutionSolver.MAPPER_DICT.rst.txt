@@ -1,0 +1,8 @@
+
+
+TimeEvolutionSolver.MAPPER_DICT
+=============================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoattribute:: TimeEvolutionSolver.MAPPER_DICT

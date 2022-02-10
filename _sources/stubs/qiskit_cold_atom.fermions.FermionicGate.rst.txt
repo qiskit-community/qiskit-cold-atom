@@ -1,0 +1,63 @@
+﻿
+
+FermionicGate
+=======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: FermionicGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionicGate.condition_bits
+      FermionicGate.decompositions
+      FermionicGate.definition
+      FermionicGate.duration
+      FermionicGate.generator
+      FermionicGate.label
+      FermionicGate.name
+      FermionicGate.num_clbits
+      FermionicGate.num_qubits
+      FermionicGate.params
+      FermionicGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionicGate.add_decomposition
+      FermionicGate.assemble
+      FermionicGate.broadcast_arguments
+      FermionicGate.c_if
+      FermionicGate.control
+      FermionicGate.copy
+      FermionicGate.inverse
+      FermionicGate.is_parameterized
+      FermionicGate.mirror
+      FermionicGate.operator_to_mat
+      FermionicGate.power
+      FermionicGate.qasm
+      FermionicGate.repeat
+      FermionicGate.reverse_ops
+      FermionicGate.soft_compare
+      FermionicGate.to_matrix
+      FermionicGate.validate_parameter
+   
+
+   
+   

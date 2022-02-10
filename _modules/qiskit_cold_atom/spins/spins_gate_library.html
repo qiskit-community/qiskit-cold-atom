@@ -1,0 +1,725 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>qiskit_cold_atom.spins.spins_gate_library &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../../../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="../../index.html">Module code</a> &gt;</li>
+        
+      <li>qiskit_cold_atom.spins.spins_gate_library</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <h1>Source code for qiskit_cold_atom.spins.spins_gate_library</h1><div class="highlight"><pre>
+<span></span><span class="c1"># This code is part of Qiskit.</span>
+<span class="c1">#</span>
+<span class="c1"># (C) Copyright IBM 2021.</span>
+<span class="c1">#</span>
+<span class="c1"># This code is licensed under the Apache License, Version 2.0. You may</span>
+<span class="c1"># obtain a copy of this license in the LICENSE.txt file in the root directory</span>
+<span class="c1"># of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.</span>
+<span class="c1">#</span>
+<span class="c1"># Any modifications or derivative works of this code must retain this</span>
+<span class="c1"># copyright notice, and modified files need to carry a notice indicating</span>
+<span class="c1"># that they have been altered from the originals.</span>
+
+<span class="sd">&quot;&quot;&quot;Gates for spin backends.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">List</span>
+<span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">expm</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.circuit.gate</span> <span class="kn">import</span> <span class="n">Instruction</span><span class="p">,</span> <span class="n">Gate</span>
+<span class="kn">from</span> <span class="nn">qiskit_nature.operators.second_quantization</span> <span class="kn">import</span> <span class="n">SpinOp</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom</span> <span class="kn">import</span> <span class="n">QiskitColdAtomError</span><span class="p">,</span> <span class="n">add_gate</span>
+
+
+<div class="viewcode-block" id="SpinGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.SpinGate.html#qiskit_cold_atom.spins.SpinGate">[docs]</a><span class="k">class</span> <span class="nc">SpinGate</span><span class="p">(</span><span class="n">Gate</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Unitary gates for spin circuits.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">num_modes</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="n">params</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">generator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">SpinOp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a new spin gate.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: The Qobj name of the gate.</span>
+<span class="sd">            num_modes: The number of fermionic modes the gate acts on.</span>
+<span class="sd">            params: A list of parameters.</span>
+<span class="sd">            label: An optional label for the gate.</span>
+<span class="sd">            generator: The generating Hamiltonian of the gate unitary given as a SpinOp</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span> <span class="o">=</span> <span class="n">generator</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span> <span class="o">=</span> <span class="n">num_modes</span>
+
+        <span class="k">if</span> <span class="n">params</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">params</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="n">num_modes</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<div class="viewcode-block" id="SpinGate.power"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.SpinGate.power.html#qiskit_cold_atom.spins.SpinGate.power">[docs]</a>    <span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">exponent</span><span class="p">:</span> <span class="nb">float</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Creates a spin gate as `gate^exponent`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            exponent (float): The exponent with which the gate is exponentiated</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            SpinGate: To which `.generator` is self.generator*exponent.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            QiskitColdAtomError: Ff the gate generator is not defined.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span>
+                <span class="s2">&quot;Gate can not be exponentiated if the gate generator is not defined.&quot;</span>
+            <span class="p">)</span>
+        <span class="c1"># the generator of the exponentiated gate is the old generator times the exponent</span>
+        <span class="n">exp_generator</span> <span class="o">=</span> <span class="n">exponent</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">generator</span>
+
+        <span class="n">exp_params</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span> <span class="k">else</span> <span class="p">[</span><span class="n">exponent</span> <span class="o">*</span> <span class="n">param</span> <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">]</span>
+
+        <span class="n">exp_label</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;^</span><span class="si">{</span><span class="n">exponent</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">return</span> <span class="n">SpinGate</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;^</span><span class="si">{</span><span class="n">exponent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+            <span class="n">num_modes</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_modes</span><span class="p">,</span>
+            <span class="n">params</span><span class="o">=</span><span class="n">exp_params</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="n">exp_label</span><span class="p">,</span>
+            <span class="n">generator</span><span class="o">=</span><span class="n">exp_generator</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+    <span class="c1"># pylint: disable=arguments-differ</span>
+<div class="viewcode-block" id="SpinGate.to_matrix"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.SpinGate.to_matrix.html#qiskit_cold_atom.spins.SpinGate.to_matrix">[docs]</a>    <span class="k">def</span> <span class="nf">to_matrix</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">spin</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="n">Fraction</span><span class="p">]</span> <span class="o">=</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return a Numpy.array for the gate unitary matrix.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            spin: The spin value of each wire that the gate acts on</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            A dense np.array of the unitary of the gate</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">spin_op</span> <span class="o">=</span> <span class="n">SpinOp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">generator</span><span class="o">.</span><span class="n">to_list</span><span class="p">(),</span> <span class="n">spin</span><span class="o">=</span><span class="n">spin</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_qubits</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">expm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">spin_op</span><span class="o">.</span><span class="n">to_matrix</span><span class="p">())</span></div>
+
+<div class="viewcode-block" id="SpinGate.control"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.SpinGate.control.html#qiskit_cold_atom.spins.SpinGate.control">[docs]</a>    <span class="k">def</span> <span class="nf">control</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">num_ctrl_qubits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">ctrl_state</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Overwrite control method which is supposed to return a controlled version of the gate.</span>
+<span class="sd">        This is not applicable in the spin setting.&quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="n">QiskitColdAtomError</span><span class="p">(</span><span class="s2">&quot;Spin gates have no controlled version&quot;</span><span class="p">)</span></div>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The Hamiltonian that generates the unitary of the gate, given as a SpinOp.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generator</span></div>
+
+
+<div class="viewcode-block" id="RLXGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.RLXGate.html#qiskit_cold_atom.spins.RLXGate">[docs]</a><span class="k">class</span> <span class="nc">RLXGate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotation of the collective spin of a cold atomic Bose-Einstein</span>
+<span class="sd">    condensate around the x-axis.</span>
+
+<span class="sd">    The generating Hamiltonian of the LX gate is</span>
+
+<span class="sd">    :math:`H = \omega L_x`</span>
+
+<span class="sd">    where :math:`\omega` is the free gate parameter.</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">    .. parsed-literal::</span>
+
+<span class="sd">             ┌────────────┐</span>
+<span class="sd">        q_0: ┤ RLX(omega) ├</span>
+<span class="sd">             └────────────┘</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new RLX gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rlx&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">omega</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the LX gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">rlx</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">wire</span><span class="p">):</span>
+    <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="sd">&quot;&quot;&quot;add the RLX gate to a QuantumCircuit&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLXGate</span><span class="p">(</span><span class="n">omega</span><span class="p">),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+
+
+<div class="viewcode-block" id="RLYGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.RLYGate.html#qiskit_cold_atom.spins.RLYGate">[docs]</a><span class="k">class</span> <span class="nc">RLYGate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotation of the collective spin of a cold atomic Bose-Einstein</span>
+<span class="sd">    condensate around the y-axis.</span>
+
+<span class="sd">    The generating Hamiltonian of the LY gate is</span>
+
+<span class="sd">    :math:`H = \omega L_y`</span>
+
+<span class="sd">    where :math:`\omega` is the free gate parameter</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">    .. parsed-literal::</span>
+
+<span class="sd">             ┌────────────┐</span>
+<span class="sd">        q_0: ┤ RLY(omega) ├</span>
+<span class="sd">             └────────────┘</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new RLY gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rly&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">omega</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the LY gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">rly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">omega</span><span class="p">,</span> <span class="n">wire</span><span class="p">):</span>
+    <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="sd">&quot;&quot;&quot;add the RLY gate to a QuantumCircuit&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLYGate</span><span class="p">(</span><span class="n">omega</span><span class="p">),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+
+
+<div class="viewcode-block" id="RLZGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.RLZGate.html#qiskit_cold_atom.spins.RLZGate">[docs]</a><span class="k">class</span> <span class="nc">RLZGate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Rotation of the collective spin of a cold atomic Bose-Einstein condensate around the z-axis.</span>
+
+<span class="sd">    The generating Hamiltonian of the LZ gate is</span>
+
+<span class="sd">    :math:`H = \delta L_z`</span>
+
+<span class="sd">    where :math:`\delta` is the free gate parameter</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">    .. parsed-literal::</span>
+
+<span class="sd">             ┌────────────┐</span>
+<span class="sd">        q_0: ┤ RLZ(delta) ├</span>
+<span class="sd">             └────────────┘</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new RLZ gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rlz&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">delta</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the LZ gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">rlz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">wire</span><span class="p">):</span>
+    <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="sd">&quot;&quot;&quot;add the RLZ gate to a QuantumCircuit&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLZGate</span><span class="p">(</span><span class="n">delta</span><span class="p">),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+
+
+<div class="viewcode-block" id="RLZ2Gate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.RLZ2Gate.html#qiskit_cold_atom.spins.RLZ2Gate">[docs]</a><span class="k">class</span> <span class="nc">RLZ2Gate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Evolution of a coherent spin under the twisting dynamic generated by Lz^2&#39;.</span>
+
+<span class="sd">    The generating Hamiltonian of the LZ2 gate is</span>
+
+<span class="sd">    :math:`H = \chi L_z^2`</span>
+
+<span class="sd">    where :math:`\chi` is the free gate parameter.</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">    .. parsed-literal::</span>
+
+<span class="sd">             ┌───────────┐</span>
+<span class="sd">        q_0: ┤ RLZ2(chi) ├</span>
+<span class="sd">             └───────────┘</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new rz2 gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rlz2&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">chi</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the LZ gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Z_0^2&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">rlz2</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi</span><span class="p">,</span> <span class="n">wire</span><span class="p">):</span>
+    <span class="c1"># pylint: disable=invalid-name</span>
+    <span class="sd">&quot;&quot;&quot;Add the RLZ2 gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLZ2Gate</span><span class="p">(</span><span class="n">chi</span><span class="p">),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+
+
+<div class="viewcode-block" id="OATGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.OATGate.html#qiskit_cold_atom.spins.OATGate">[docs]</a><span class="k">class</span> <span class="nc">OATGate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Evolution of a coherent spin under the one-axis-twisting Hamiltonian.</span>
+
+<span class="sd">    The generating Hamiltonian of the OATgate is</span>
+
+<span class="sd">    :math:`H = \chi L_z^2 + \Delta L_z + \Omega L_x`</span>
+
+<span class="sd">    where :math:`\chi`, :math:`\Delta` and :math:`\Omega` are the free gate parameters.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">omega</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new one-axis-twisting rotation gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;OAT&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">chi</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">omega</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the OAT gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Z_0^2&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Z&quot;</span><span class="p">)</span>
+            <span class="o">+</span> <span class="nb">float</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">oat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">chi</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">omega</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">wire</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the RLZ2 gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OATGate</span><span class="p">(</span><span class="n">chi</span><span class="o">=</span><span class="n">chi</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="n">delta</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">omega</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+
+
+<div class="viewcode-block" id="RLZLZGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.RLZLZGate.html#qiskit_cold_atom.spins.RLZLZGate">[docs]</a><span class="k">class</span> <span class="nc">RLZLZGate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Coupled ZZ-rotation of two collective spins.</span>
+
+<span class="sd">    The generating Hamiltonian of the RLZLZGate is</span>
+
+<span class="sd">    :math:`H = \gamma L_{z, i} + L_{z, j}`</span>
+
+<span class="sd">    where :math:`\gamma` is the free gate parameter and :math:`i` and :math:`j` index the wires</span>
+<span class="sd">    the gate acts on.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new RLZLZ gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rlzlz&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">gamma</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the LZZ gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Z_0 Z_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">rlzlz</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">wires</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the RLZLZ gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLZLZGate</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">wires</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="RLXLYGate"><a class="viewcode-back" href="../../../stubs/qiskit_cold_atom.spins.RLXLYGate.html#qiskit_cold_atom.spins.RLXLYGate">[docs]</a><span class="k">class</span> <span class="nc">RLXLYGate</span><span class="p">(</span><span class="n">SpinGate</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The spin exchange gate of two collective spins.</span>
+
+<span class="sd">    The generating Hamiltonian of the LxLyGate is</span>
+
+<span class="sd">    :math:`H = \gamma (L_{x, i}L_{x,j} + L_{y, i} L_{y,j})`</span>
+
+<span class="sd">    where :math:`\gamma` is the free gate parameter and :math:`i` and :math:`j` index the wires the gate</span>
+<span class="sd">    acts on. This gate is equivalently expressed through raising and lowering operators as:</span>
+
+<span class="sd">    :math:`H = 2\gamma (L_{+, i}L_{-,j} + L_{-, i} L_{+,j})`</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create new RLXLY gate.&quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;rlxly&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">[</span><span class="n">gamma</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">generator</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SpinOp</span><span class="p">:</span>
+        <span class="sa">r</span><span class="sd">&quot;&quot;&quot;The generating Hamiltonian of the LxLy gate.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span>
+            <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;X_0 X_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">SpinOp</span><span class="p">(</span><span class="s2">&quot;Y_0 Y_1&quot;</span><span class="p">,</span> <span class="n">register_length</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">rlxly</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gamma</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">wires</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the RLXLY gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">RLXLYGate</span><span class="p">(</span><span class="n">gamma</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="n">wires</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">LoadSpins</span><span class="p">(</span><span class="n">Instruction</span><span class="p">):</span>
+    <span class="sa">r</span><span class="sd">&quot;&quot;&quot;An instruction to define the spin length of each qudit mode.</span>
+
+<span class="sd">    This gate loads `num_atoms` onto the wire of index `wire`. This results in a</span>
+<span class="sd">    local spin length of :math:`\ell = N/2`.</span>
+
+<span class="sd">    **Circuit symbol:**</span>
+
+<span class="sd">    .. parsed-literal::</span>
+
+<span class="sd">             ┌──────┐</span>
+<span class="sd">        q_0: ┤ Load ├</span>
+<span class="sd">             └──────┘</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_atoms</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Initialise new load instruction.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            num_atoms: The integer number of atoms loaded into this wire. n Qobj name of the gate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;load&quot;</span><span class="p">,</span> <span class="n">num_qubits</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_clbits</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="p">[</span><span class="n">num_atoms</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+
+<span class="nd">@add_gate</span>
+<span class="k">def</span> <span class="nf">load_spins</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_atoms</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">wire</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Add the load spin gate to a QuantumCircuit.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">LoadSpins</span><span class="p">(</span><span class="n">num_atoms</span><span class="p">),</span> <span class="p">[</span><span class="n">wire</span><span class="p">],</span> <span class="p">[])</span>
+</pre></div>
+
+             </article>
+             
+            </div>
+            <footer>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+         <script src="../../../_static/jquery.js"></script>
+         <script src="../../../_static/underscore.js"></script>
+         <script src="../../../_static/doctools.js"></script>
+         <script src="../../../_static/thebelab-helper.js"></script>
+         <script src="../../../_static/tabs.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../../../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../../../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

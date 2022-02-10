@@ -1,0 +1,46 @@
+﻿
+
+BaseSpinBackend
+======================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: BaseSpinBackend
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      BaseSpinBackend.options
+      BaseSpinBackend.version
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      BaseSpinBackend.configuration
+      BaseSpinBackend.draw
+      BaseSpinBackend.get_empty_circuit
+      BaseSpinBackend.name
+      BaseSpinBackend.properties
+      BaseSpinBackend.provider
+      BaseSpinBackend.run
+      BaseSpinBackend.set_options
+      BaseSpinBackend.status
+   
+
+   
+   

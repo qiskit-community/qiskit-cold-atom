@@ -1,0 +1,8 @@
+
+
+FRYGate.add_decomposition
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRYGate.add_decomposition

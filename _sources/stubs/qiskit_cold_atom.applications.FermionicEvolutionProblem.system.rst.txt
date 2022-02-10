@@ -1,0 +1,8 @@
+
+
+FermionicEvolutionProblem.system
+==============================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoproperty:: FermionicEvolutionProblem.system

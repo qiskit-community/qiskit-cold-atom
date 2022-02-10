@@ -1,0 +1,8 @@
+
+
+Phase.operator_to_mat
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Phase.operator_to_mat

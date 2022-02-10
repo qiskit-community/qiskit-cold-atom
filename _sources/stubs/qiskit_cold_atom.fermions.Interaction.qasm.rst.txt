@@ -1,0 +1,8 @@
+
+
+Interaction.qasm
+==========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Interaction.qasm

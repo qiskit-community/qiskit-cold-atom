@@ -1,0 +1,8 @@
+
+
+FermiHubbard.c_if
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermiHubbard.c_if

@@ -1,0 +1,62 @@
+﻿
+
+RLZ2Gate
+===============================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoclass:: RLZ2Gate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      RLZ2Gate.condition_bits
+      RLZ2Gate.decompositions
+      RLZ2Gate.definition
+      RLZ2Gate.duration
+      RLZ2Gate.generator
+      RLZ2Gate.label
+      RLZ2Gate.name
+      RLZ2Gate.num_clbits
+      RLZ2Gate.num_qubits
+      RLZ2Gate.params
+      RLZ2Gate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      RLZ2Gate.add_decomposition
+      RLZ2Gate.assemble
+      RLZ2Gate.broadcast_arguments
+      RLZ2Gate.c_if
+      RLZ2Gate.control
+      RLZ2Gate.copy
+      RLZ2Gate.inverse
+      RLZ2Gate.is_parameterized
+      RLZ2Gate.mirror
+      RLZ2Gate.power
+      RLZ2Gate.qasm
+      RLZ2Gate.repeat
+      RLZ2Gate.reverse_ops
+      RLZ2Gate.soft_compare
+      RLZ2Gate.to_matrix
+      RLZ2Gate.validate_parameter
+   
+
+   
+   

@@ -1,0 +1,8 @@
+
+
+RLYGate.definition
+=========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLYGate.definition

@@ -1,0 +1,8 @@
+
+
+RLXLYGate.condition_bits
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLXLYGate.condition_bits

@@ -1,0 +1,8 @@
+
+
+Interaction.broadcast_arguments
+=========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Interaction.broadcast_arguments

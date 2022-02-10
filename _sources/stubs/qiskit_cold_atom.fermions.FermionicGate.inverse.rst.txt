@@ -1,0 +1,8 @@
+
+
+FermionicGate.inverse
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionicGate.inverse

@@ -1,0 +1,8 @@
+
+
+SpinCircuitSolver.ignore_barriers
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: SpinCircuitSolver.ignore_barriers

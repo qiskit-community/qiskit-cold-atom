@@ -1,0 +1,8 @@
+
+
+FermionicGate.assemble
+================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionicGate.assemble

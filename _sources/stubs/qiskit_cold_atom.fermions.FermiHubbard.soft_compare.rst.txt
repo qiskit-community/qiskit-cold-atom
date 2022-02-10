@@ -1,0 +1,8 @@
+
+
+FermiHubbard.soft_compare
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermiHubbard.soft_compare

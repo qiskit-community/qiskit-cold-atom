@@ -1,0 +1,8 @@
+
+
+BaseSpinBackend.set_options
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: BaseSpinBackend.set_options

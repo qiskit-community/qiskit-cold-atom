@@ -1,0 +1,38 @@
+﻿
+
+FermionicLattice
+==============================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoclass:: FermionicLattice
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionicLattice.size
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionicLattice.to_circuit
+      FermionicLattice.to_fermionic_op
+   
+
+   
+   

@@ -1,0 +1,8 @@
+
+
+OATGate.label
+====================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: OATGate.label

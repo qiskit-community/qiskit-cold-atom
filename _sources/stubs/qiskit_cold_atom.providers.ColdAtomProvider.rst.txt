@@ -1,0 +1,45 @@
+﻿
+
+ColdAtomProvider
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. autoclass:: ColdAtomProvider
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      ColdAtomProvider.version
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      ColdAtomProvider.active_account
+      ColdAtomProvider.add_url
+      ColdAtomProvider.backends
+      ColdAtomProvider.delete_account
+      ColdAtomProvider.enable_account
+      ColdAtomProvider.get_backend
+      ColdAtomProvider.load_account
+      ColdAtomProvider.save_account
+      ColdAtomProvider.stored_account
+   
+
+   
+   

@@ -1,0 +1,63 @@
+﻿
+
+FermiHubbard
+======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: FermiHubbard
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermiHubbard.condition_bits
+      FermiHubbard.decompositions
+      FermiHubbard.definition
+      FermiHubbard.duration
+      FermiHubbard.generator
+      FermiHubbard.label
+      FermiHubbard.name
+      FermiHubbard.num_clbits
+      FermiHubbard.num_qubits
+      FermiHubbard.params
+      FermiHubbard.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermiHubbard.add_decomposition
+      FermiHubbard.assemble
+      FermiHubbard.broadcast_arguments
+      FermiHubbard.c_if
+      FermiHubbard.control
+      FermiHubbard.copy
+      FermiHubbard.inverse
+      FermiHubbard.is_parameterized
+      FermiHubbard.mirror
+      FermiHubbard.operator_to_mat
+      FermiHubbard.power
+      FermiHubbard.qasm
+      FermiHubbard.repeat
+      FermiHubbard.reverse_ops
+      FermiHubbard.soft_compare
+      FermiHubbard.to_matrix
+      FermiHubbard.validate_parameter
+   
+
+   
+   

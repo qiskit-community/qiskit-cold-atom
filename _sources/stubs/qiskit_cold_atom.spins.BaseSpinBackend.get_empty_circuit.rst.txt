@@ -1,0 +1,8 @@
+
+
+BaseSpinBackend.get_empty_circuit
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: BaseSpinBackend.get_empty_circuit

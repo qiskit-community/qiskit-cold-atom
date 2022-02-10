@@ -1,0 +1,8 @@
+
+
+SpinGate.reverse_ops
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinGate.reverse_ops

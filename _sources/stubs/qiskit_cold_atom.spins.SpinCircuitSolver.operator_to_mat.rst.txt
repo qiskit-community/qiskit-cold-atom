@@ -1,0 +1,8 @@
+
+
+SpinCircuitSolver.operator_to_mat
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinCircuitSolver.operator_to_mat

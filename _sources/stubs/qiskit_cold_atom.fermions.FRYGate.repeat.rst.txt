@@ -1,0 +1,8 @@
+
+
+FRYGate.repeat
+========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRYGate.repeat

@@ -1,0 +1,8 @@
+
+
+FRZGate.is_parameterized
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRZGate.is_parameterized

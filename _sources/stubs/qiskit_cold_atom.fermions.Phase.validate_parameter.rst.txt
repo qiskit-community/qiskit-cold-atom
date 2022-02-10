@@ -1,0 +1,8 @@
+
+
+Phase.validate_parameter
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Phase.validate_parameter

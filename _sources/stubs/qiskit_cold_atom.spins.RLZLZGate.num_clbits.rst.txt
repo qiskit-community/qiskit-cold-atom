@@ -1,0 +1,8 @@
+
+
+RLZLZGate.num_clbits
+===========================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: RLZLZGate.num_clbits

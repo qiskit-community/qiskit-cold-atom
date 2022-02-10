@@ -1,0 +1,8 @@
+
+
+RLZ2Gate.broadcast_arguments
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLZ2Gate.broadcast_arguments

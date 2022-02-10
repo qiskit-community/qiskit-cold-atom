@@ -1,0 +1,8 @@
+
+
+LoadFermions.assemble
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: LoadFermions.assemble

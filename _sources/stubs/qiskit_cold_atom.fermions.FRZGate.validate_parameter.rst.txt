@@ -1,0 +1,8 @@
+
+
+FRZGate.validate_parameter
+====================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRZGate.validate_parameter

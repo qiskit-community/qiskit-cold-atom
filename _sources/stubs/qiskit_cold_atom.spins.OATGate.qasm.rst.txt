@@ -1,0 +1,8 @@
+
+
+OATGate.qasm
+===================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: OATGate.qasm

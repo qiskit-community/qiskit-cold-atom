@@ -1,0 +1,8 @@
+
+
+RLXGate.qasm
+===================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLXGate.qasm

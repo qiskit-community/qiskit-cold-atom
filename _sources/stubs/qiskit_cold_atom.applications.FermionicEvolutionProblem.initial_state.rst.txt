@@ -1,0 +1,8 @@
+
+
+FermionicEvolutionProblem.initial_state
+=====================================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoproperty:: FermionicEvolutionProblem.initial_state

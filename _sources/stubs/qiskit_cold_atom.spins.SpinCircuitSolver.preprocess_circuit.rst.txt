@@ -1,0 +1,8 @@
+
+
+SpinCircuitSolver.preprocess_circuit
+===========================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinCircuitSolver.preprocess_circuit

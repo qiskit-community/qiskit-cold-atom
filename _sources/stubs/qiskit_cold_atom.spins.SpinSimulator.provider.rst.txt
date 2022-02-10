@@ -1,0 +1,8 @@
+
+
+SpinSimulator.provider
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinSimulator.provider

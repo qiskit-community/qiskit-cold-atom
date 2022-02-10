@@ -1,0 +1,8 @@
+
+
+Interaction.reverse_ops
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Interaction.reverse_ops

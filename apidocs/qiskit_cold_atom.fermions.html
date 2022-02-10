@@ -1,0 +1,483 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Fermions &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BaseFermionBackend" href="../stubs/qiskit_cold_atom.fermions.BaseFermionBackend.html" />
+    <link rel="prev" title="TimeEvolutionSolver.solve" href="../stubs/qiskit_cold_atom.applications.TimeEvolutionSolver.solve.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="qiskit_cold_atom.html">Qiskit Cold Atom API Reference</a> &gt;</li>
+        
+      <li>Fermions</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/apidocs/qiskit_cold_atom.fermions.rst.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  <br><br><br><section id="fermions">
+<h1>Fermions<a class="headerlink" href="#fermions" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="module-qiskit_cold_atom.fermions"><span id="qiskit-cold-atom-fermions"></span></span><p>Module to support fermionic circuits.</p>
+<p>The fermions module holds the circuit instructions and simulators needed
+by cold-atom setups that trap fermionic atoms in optical tweezer arrays or lattices.</p>
+<p>In this setting, each wire in a quantum circuit describes a fermionic mode. Upon measurement, each mode
+can be found to be occupied by a single particle (1) or be empty (0).
+Backends to describe such fermionic circuits are subclasses of the <a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.BaseFermionBackend.html#qiskit_cold_atom.fermions.BaseFermionBackend" title="qiskit_cold_atom.fermions.BaseFermionBackend"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseFermionBackend</span></code></a> class.
+The <a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionSimulator.html#qiskit_cold_atom.fermions.FermionSimulator" title="qiskit_cold_atom.fermions.FermionSimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionSimulator</span></code></a> backend is a general purpose simulator backend that simulates fermionic
+circuits similar to the QasmSimulator for qubits.</p>
+<section id="fermionic-backends">
+<h2>Fermionic backends<a class="headerlink" href="#fermionic-backends" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.BaseFermionBackend.html#qiskit_cold_atom.fermions.BaseFermionBackend" title="qiskit_cold_atom.fermions.BaseFermionBackend"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BaseFermionBackend</span></code></a>(configuration[, provider])</p></td>
+<td><p>Abstract base class for fermionic tweezer backends.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionSimulator.html#qiskit_cold_atom.fermions.FermionSimulator" title="qiskit_cold_atom.fermions.FermionSimulator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FermionSimulator</span></code></a>([config_dict, provider])</p></td>
+<td><p>A simulator to simulate general fermionic circuits.</p></td>
+</tr>
+</tbody>
+</table>
+<p>The fermions might also come in several distinguishable species, as is the case when they carry a spin
+degree of freedom. In this case, each spatial mode of an experiment can be occupied by a particle
+of each spin state. In the circuit description, each individual mode is assigned its own wire.
+For example, a system of spin-1/2 fermions in four spatial modes is described by a circuit with eight
+wires where the first four wires denote the spin-up and the last four wires denote the spin-down modes.</p>
+<p>Prior to applying gates, the fermionic modes in a quantum circuit need to be initialized with particles,
+which defines the total number of particles (excitations) in the circuit. This initial occupation number
+state can then be manipulated by applying Fermionic gates.</p>
+</section>
+<section id="fermionic-gates">
+<h2>Fermionic gates<a class="headerlink" href="#fermionic-gates" title="Permalink to this headline">¶</a></h2>
+<p>Fermionic gates are quantum circuit instructions designed specifically for
+cold-atom based setups that control fermionic atoms in tweezers. These gates are
+characterized by their effect on the fermions. Fermionic gates are subclasses or instances of the
+<a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionicGate.html#qiskit_cold_atom.fermions.FermionicGate" title="qiskit_cold_atom.fermions.FermionicGate"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionicGate</span></code></a> class. All of these gates define a <code class="docutils literal notranslate"><span class="pre">generator</span></code> property used to compute
+the time-evolution. These generators are second quantized operators (<code class="xref py py-class docutils literal notranslate"><span class="pre">FermionicOp</span></code> from Qiskit
+Nature) that describe the gate Hamiltonian acting on the register.
+When an entry of the <a class="reference internal" href="#module-qiskit_cold_atom.fermions" title="qiskit_cold_atom.fermions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_cold_atom.fermions</span></code></a> module is imported, the Fermionic Gates are added
+to the <code class="xref py py-class docutils literal notranslate"><span class="pre">QuantumCircuit</span></code> class in Qiskit.</p>
+<p>The module includes a number of gates suitable to a platform that natively implements Fermi-Hubbard type
+dynamics.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionicGate.html#qiskit_cold_atom.fermions.FermionicGate" title="qiskit_cold_atom.fermions.FermionicGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FermionicGate</span></code></a>(name, num_modes[, params, ...])</p></td>
+<td><p>Unitary gates for fermionic circuits.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermiHubbard.html#qiskit_cold_atom.fermions.FermiHubbard" title="qiskit_cold_atom.fermions.FermiHubbard"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FermiHubbard</span></code></a>(num_modes, j, u, mu[, label])</p></td>
+<td><p>Global 1D-Fermi-Hubbard dynamic consisting of the hopping, interaction and local phase gates.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.Hop.html#qiskit_cold_atom.fermions.Hop" title="qiskit_cold_atom.fermions.Hop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Hop</span></code></a>(num_modes, j[, label])</p></td>
+<td><p>Hopping of particles to neighbouring wells due to tunneling.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.Interaction.html#qiskit_cold_atom.fermions.Interaction" title="qiskit_cold_atom.fermions.Interaction"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Interaction</span></code></a>(num_modes, u[, label])</p></td>
+<td><p>On-site interaction of particles of opposite spin species on the same site.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.Phase.html#qiskit_cold_atom.fermions.Phase" title="qiskit_cold_atom.fermions.Phase"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Phase</span></code></a>(num_modes, mu[, label])</p></td>
+<td><p>Applying a local phase to individual tweezers through an external potential</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FRXGate.html#qiskit_cold_atom.fermions.FRXGate" title="qiskit_cold_atom.fermions.FRXGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FRXGate</span></code></a>(phi[, label])</p></td>
+<td><p>X-rotation between the spin-up and spin-down state at one tweezer site.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FRYGate.html#qiskit_cold_atom.fermions.FRYGate" title="qiskit_cold_atom.fermions.FRYGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FRYGate</span></code></a>(phi[, label])</p></td>
+<td><p>Y-rotation between the spin-up and spin-down state at one tweezer site.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FRZGate.html#qiskit_cold_atom.fermions.FRZGate" title="qiskit_cold_atom.fermions.FRZGate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FRZGate</span></code></a>(phi[, label])</p></td>
+<td><p>Z-rotation between the spin-up and spin-down state at one tweezer site.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.LoadFermions.html#qiskit_cold_atom.fermions.LoadFermions" title="qiskit_cold_atom.fermions.LoadFermions"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LoadFermions</span></code></a>()</p></td>
+<td><p>LoadFermions places a particle in an empty fermionic mode.</p></td>
+</tr>
+</tbody>
+</table>
+<p>These gates should serve as an example of how a concrete fermionic platform can be described
+through <a class="reference internal" href="qiskit_cold_atom.html#module-qiskit_cold_atom" title="qiskit_cold_atom"><code class="xref py py-mod docutils literal notranslate"><span class="pre">qiskit_cold_atom</span></code></a>.
+Users are encouraged to define their own gates to describe different fermionic hardware.
+If these gates define a <code class="docutils literal notranslate"><span class="pre">generator</span></code> property as laid out above, the <a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionSimulator.html#qiskit_cold_atom.fermions.FermionSimulator" title="qiskit_cold_atom.fermions.FermionSimulator"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionSimulator</span></code></a>
+can be used to simulate circuits with such custom gates.</p>
+</section>
+<section id="circuit-solver">
+<h2>Circuit Solver<a class="headerlink" href="#circuit-solver" title="Permalink to this headline">¶</a></h2>
+<p>Circuit solvers are classes that allow users to simulate a quantum circuit
+for cold-atom based setups. They are subclasses of
+<code class="xref py py-class docutils literal notranslate"><span class="pre">BaseCircuitSolver</span></code> and can be called on quantum circuits to solve them.
+The numerical simulation of fermionic circuits is carried out by the <a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.html#qiskit_cold_atom.fermions.FermionCircuitSolver" title="qiskit_cold_atom.fermions.FermionCircuitSolver"><code class="xref py py-class docutils literal notranslate"><span class="pre">FermionCircuitSolver</span></code></a> class.
+This simulates the circuits via exact diagonalization and provides access to the unitary,
+the statevector and simulated measurement outcomes of the circuit.</p>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="../stubs/qiskit_cold_atom.fermions.FermionCircuitSolver.html#qiskit_cold_atom.fermions.FermionCircuitSolver" title="qiskit_cold_atom.fermions.FermionCircuitSolver"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FermionCircuitSolver</span></code></a>([shots, seed, num_species])</p></td>
+<td><p>Numerically simulate fermionic systems by exactly computing the time evolution under unitary operations generated by fermionic Hamiltonians.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../stubs/qiskit_cold_atom.fermions.BaseFermionBackend.html" class="btn btn-neutral float-right" title="BaseFermionBackend" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="../stubs/qiskit_cold_atom.applications.TimeEvolutionSolver.solve.html" class="btn btn-neutral" title="TimeEvolutionSolver.solve" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Fermions</a><ul>
+<li><a class="reference internal" href="#fermionic-backends">Fermionic backends</a></li>
+<li><a class="reference internal" href="#fermionic-gates">Fermionic gates</a></li>
+<li><a class="reference internal" href="#circuit-solver">Circuit Solver</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

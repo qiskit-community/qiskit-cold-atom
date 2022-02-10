@@ -1,0 +1,48 @@
+﻿
+
+ColdAtomJob
+======================================
+
+.. currentmodule:: qiskit_cold_atom.providers
+
+.. autoclass:: ColdAtomJob
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      ColdAtomJob.version
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      ColdAtomJob.backend
+      ColdAtomJob.cancel
+      ColdAtomJob.cancelled
+      ColdAtomJob.done
+      ColdAtomJob.error_message
+      ColdAtomJob.in_final_state
+      ColdAtomJob.job_id
+      ColdAtomJob.result
+      ColdAtomJob.running
+      ColdAtomJob.status
+      ColdAtomJob.submit
+      ColdAtomJob.wait_for_final_state
+   
+
+   
+   

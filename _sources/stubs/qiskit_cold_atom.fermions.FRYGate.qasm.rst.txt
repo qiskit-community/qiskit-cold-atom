@@ -1,0 +1,8 @@
+
+
+FRYGate.qasm
+======================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRYGate.qasm

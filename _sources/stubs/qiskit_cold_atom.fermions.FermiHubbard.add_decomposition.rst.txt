@@ -1,0 +1,8 @@
+
+
+FermiHubbard.add_decomposition
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermiHubbard.add_decomposition

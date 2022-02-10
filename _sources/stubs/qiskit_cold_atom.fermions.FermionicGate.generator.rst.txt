@@ -1,0 +1,8 @@
+
+
+FermionicGate.generator
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermionicGate.generator

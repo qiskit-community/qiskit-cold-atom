@@ -1,0 +1,8 @@
+
+
+SpinGate.control
+=======================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinGate.control

@@ -1,0 +1,8 @@
+
+
+FermiHubbard1D.size
+=================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoproperty:: FermiHubbard1D.size

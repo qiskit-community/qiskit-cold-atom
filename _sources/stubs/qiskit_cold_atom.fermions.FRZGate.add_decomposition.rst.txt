@@ -1,0 +1,8 @@
+
+
+FRZGate.add_decomposition
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRZGate.add_decomposition

@@ -1,0 +1,63 @@
+﻿
+
+FRYGate
+=================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoclass:: FRYGate
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FRYGate.condition_bits
+      FRYGate.decompositions
+      FRYGate.definition
+      FRYGate.duration
+      FRYGate.generator
+      FRYGate.label
+      FRYGate.name
+      FRYGate.num_clbits
+      FRYGate.num_qubits
+      FRYGate.params
+      FRYGate.unit
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FRYGate.add_decomposition
+      FRYGate.assemble
+      FRYGate.broadcast_arguments
+      FRYGate.c_if
+      FRYGate.control
+      FRYGate.copy
+      FRYGate.inverse
+      FRYGate.is_parameterized
+      FRYGate.mirror
+      FRYGate.operator_to_mat
+      FRYGate.power
+      FRYGate.qasm
+      FRYGate.repeat
+      FRYGate.reverse_ops
+      FRYGate.soft_compare
+      FRYGate.to_matrix
+      FRYGate.validate_parameter
+   
+
+   
+   

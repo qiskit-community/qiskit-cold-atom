@@ -1,0 +1,8 @@
+
+
+Interaction.unit
+==========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Interaction.unit

@@ -1,0 +1,8 @@
+
+
+FermionCircuitSolver.seed
+===================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FermionCircuitSolver.seed

@@ -1,0 +1,8 @@
+
+
+FermionSimulator.get_basis
+====================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionSimulator.get_basis

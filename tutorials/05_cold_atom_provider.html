@@ -1,0 +1,982 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>The Qiskit Cold Atom Provider &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simulation of time evolution" href="06_time_evolution.html" />
+    <link rel="prev" title="Collective Spin Hardware" href="04_collective_spin_hardware.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>The Qiskit Cold Atom Provider</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/05_cold_atom_provider.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<section id="The-Qiskit-Cold-Atom-Provider">
+<h1>The Qiskit Cold Atom Provider<a class="headerlink" href="#The-Qiskit-Cold-Atom-Provider" title="Permalink to this headline">¶</a></h1>
+<p>The qiskit-cold-atom module comes with a provider that manages access to cold atomic backends.</p>
+<p>This tutorial shows the workflow of how a user interfaces with this provider.</p>
+<div class="alert alert-block alert-info"><p>Note: To run the cells in this tutorial that interface with a remote device backend, you’ll need to have a registered account with a valid username and token for this backend.</p>
+</div><section id="Credential-management">
+<h2>Credential management<a class="headerlink" href="#Credential-management" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">ColdAtomProvider</span></code> comes with an account system similar to the <code class="docutils literal notranslate"><span class="pre">IBMQ</span></code>-account, which will look familiar to many Qiskit users. This manages the access to all the backends that are available to the user.</p>
+<p>The necessary credentials to access remote backends can be saved to disk or used in a session and never saved. The main methods to manage credentials with the provider are the following:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">enable_account(urls,</span> <span class="pre">username,</span> <span class="pre">token)</span></code>: Enable your account in the current session.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">save_account(urls,</span> <span class="pre">username,</span> <span class="pre">token)</span></code>: Save your account credentials to disk for future use.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">load_account()</span></code>: Load account using stored credentials.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stored_account()</span></code>: List the account credentials stored to disk.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">active_account()</span></code>: List the account credentials currently in the session.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">delete_account()</span></code>: Delete the saved account credentials from disk.</p></li>
+</ul>
+<p>To access remote backends via the provider, the account credentials have to specify the third-party <code class="docutils literal notranslate"><span class="pre">url</span></code> of the desired backend and a valid <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">token</span></code> as a password.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers</span> <span class="kn">import</span> <span class="n">ColdAtomProvider</span>
+
+<span class="c1"># save an account to disk</span>
+<span class="c1"># ColdAtomProvider.save_account(url = [&quot;url_of_backend_1&quot;, &quot;url_of_backend_2&quot;], username=&quot;JohnDoe&quot;,token=&quot;123456&quot;)</span>
+
+<span class="c1"># load the stored account</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">load_account</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Backends">
+<h2>Backends<a class="headerlink" href="#Backends" title="Permalink to this headline">¶</a></h2>
+<p>Backends of the <code class="docutils literal notranslate"><span class="pre">ColdAtomProvider</span></code> represent either simulators or a real experimental hardware based on cold atomic experiments. A user may run suitable quantum circuits on these backends and retrieve the results.</p>
+<p>The backends of the provider can be retrieved with the following methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">provider.backends()</span></code>: Returns all backend objects known to the provider.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">provider.get_backend(NAME)</span></code>: Returns the named backend.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="n">provider</span><span class="o">.</span><span class="n">backends</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;FermionicTweezerSimulator(&#39;fermionic_tweezer_simulator&#39;)&gt;, &lt;CollectiveSpinSimulator(&#39;collective_spin_simulator&#39;)&gt;, &lt;SpinHardwareDevice(&#39;SYNQS_SoPa_backend&#39;)&gt;]
+</pre></div></div>
+</div>
+<p>The provider currently includes simulators of a fermionic tweezer hardware (introduced <a class="reference internal" href="03_fermionic_tweezer_hardware.html"><span class="doc">here</span></a>) and a collective spin hardware (introduced <a class="reference internal" href="04_collective_spin_hardware.html"><span class="doc">here</span></a>). As a first real device, an experimental system of collective spins is available, which is maintained by the Jendrzejewski group of the <a class="reference external" href="https://www.synqs.org/">“Synthetic Quantum Systems (SYNQS)”</a> collaboration located at Heidelberg University (Germany):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">spin_device_backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;SYNQS_SoPa_backend&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">status</span></code> of this backend can be queried to see whether it is currently online and how many jobs are queued:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">spin_device_backend</span><span class="o">.</span><span class="n">status</span><span class="p">()</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;backend_name&#39;: &#39;SYNQS_SoPa_backend&#39;,
+ &#39;backend_version&#39;: &#39;1&#39;,
+ &#39;operational&#39;: True,
+ &#39;pending_jobs&#39;: 0,
+ &#39;status_msg&#39;: &#39;&#39;}
+</pre></div></div>
+</div>
+<p>The backend <code class="docutils literal notranslate"><span class="pre">configuration</span></code> tells the user which quantum gates the backend can implement:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">spin_device_backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">supported_instructions</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;delay&#39;, &#39;measure&#39;, &#39;barrier&#39;]
+</pre></div></div>
+</div>
+<p>The gates and instructions made available by the backend naturally depend on the hardware developments happening on the backend. With future versions of the backend, additional gates that manipulate the collective spins in the hardware will be added.</p>
+</section>
+<section id="Jobs:">
+<h2>Jobs:<a class="headerlink" href="#Jobs:" title="Permalink to this headline">¶</a></h2>
+<p>The submission of circuits to execute on the backend is handled via <code class="docutils literal notranslate"><span class="pre">Job</span></code> instances. Circuits are submitted to the backend via the <code class="docutils literal notranslate"><span class="pre">run()</span></code> method which returns a <code class="docutils literal notranslate"><span class="pre">ColdAtomJob</span></code> object related to this submission.</p>
+<p>The user can interact with this job to gain information about the submitted circuits with the following methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">status()</span></code>: Returns the status of the job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backend()</span></code>: Returns the backend the job was run on.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">job_id()</span></code>: Gets the job_id.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cancel()</span></code>: Cancels the job.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result()</span></code>: Gets the results from the circuit run.</p></li>
+</ul>
+<p>Let’s submit some very simple example circuits on the remote backend as a toy example. The following circuits describe the loading of atoms into a trap during the <code class="docutils literal notranslate"><span class="pre">delay</span></code> instruction. Upon measurement, the total number of atoms in the trap is measured. This should increase with increasing loading time and eventually saturate at the traps limit.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Parameter</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;t&quot;</span><span class="p">)</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">duration</span> <span class="o">=</span> <span class="n">t</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">qarg</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s1">&#39;mpl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_05_cold_atom_provider_16_0.png" src="../_images/tutorials_05_cold_atom_provider_16_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># create a list of circuits with variable loading times:</span>
+<span class="n">load_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">circuit_list</span> <span class="o">=</span><span class="p">[</span><span class="n">circuit</span><span class="o">.</span><span class="n">bind_parameters</span><span class="p">({</span><span class="n">t</span><span class="p">:</span> <span class="n">load_time</span><span class="p">})</span> <span class="k">for</span> <span class="n">load_time</span> <span class="ow">in</span> <span class="n">load_times</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># send the list of circuits to the backend and execute with 5 shots each</span>
+<span class="c1"># demo_job = spin_device_backend.run(circuit_list, shots = 5)</span>
+</pre></div>
+</div>
+</div>
+<p>The job gets a unique <code class="docutils literal notranslate"><span class="pre">job_id</span></code> attached by the backend server which can be queried using the method <code class="docutils literal notranslate"><span class="pre">demo_job.job_id</span></code>.</p>
+<section id="Retrieving-jobs:">
+<h3>Retrieving jobs:<a class="headerlink" href="#Retrieving-jobs:" title="Permalink to this headline">¶</a></h3>
+<p>A job that has been run in a previous session can also be retrieved from the backend by providing the <code class="docutils literal notranslate"><span class="pre">job_id</span></code>:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job_retrieved</span> <span class="o">=</span> <span class="n">spin_device_backend</span><span class="o">.</span><span class="n">retrieve_job</span><span class="p">(</span><span class="n">job_id</span> <span class="o">=</span> <span class="s2">&quot;20210520_171502_89aec&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;job status: &quot;</span><span class="p">,</span> <span class="n">job_retrieved</span><span class="o">.</span><span class="n">status</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+job status:  JobStatus.DONE
+</pre></div></div>
+</div>
+<p>The result of the job can be accessed by directly calling <code class="docutils literal notranslate"><span class="pre">job.result()</span></code> which returns a <code class="docutils literal notranslate"><span class="pre">Qiskit.Result</span></code> object:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result</span> <span class="o">=</span> <span class="n">job_retrieved</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;qiskit.result.result.Result&#39;&gt;
+</pre></div></div>
+</div>
+<p>Let’s look at the results of the previously submitted demo_job in detail:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">outcomes</span> <span class="o">=</span> <span class="p">[</span><span class="n">result</span><span class="o">.</span><span class="n">get_memory</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">circuit_list</span><span class="p">))]</span>
+
+<span class="n">atom_numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span> <span class="k">for</span> <span class="n">counts</span> <span class="ow">in</span> <span class="n">outcomes</span><span class="p">]</span>
+<span class="n">atom_stds</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span> <span class="k">for</span> <span class="n">counts</span> <span class="ow">in</span> <span class="n">outcomes</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">load_times</span><span class="p">,</span> <span class="n">atom_numbers</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">atom_stds</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;x--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;loading of atoms in cold atomic device through Qiskit&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;loading time [s]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;atom number in trap [a.u.]&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_05_cold_atom_provider_27_0.png" src="../_images/tutorials_05_cold_atom_provider_27_0.png" />
+</div>
+</div>
+<p>The entire result object can also be viewed as a dictionary:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;backend_name&#39;: &#39;SYNQS_SoPa_backend&#39;,
+ &#39;backend_version&#39;: &#39;0.0.1&#39;,
+ &#39;qobj_id&#39;: None,
+ &#39;job_id&#39;: &#39;20210520_171502_89aec&#39;,
+ &#39;success&#39;: True,
+ &#39;results&#39;: [{&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;149.&#39;, &#39;-118.&#39;, &#39;-231.&#39;, &#39;-68.&#39;, &#39;317.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_0&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;2254.&#39;, &#39;2169.&#39;, &#39;2635.&#39;, &#39;2626.&#39;, &#39;2793.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_1&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;3688.&#39;, &#39;4348.&#39;, &#39;4157.&#39;, &#39;4323.&#39;, &#39;4023.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_2&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;5639.&#39;, &#39;5528.&#39;, &#39;5765.&#39;, &#39;5923.&#39;, &#39;5943.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_3&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;6924.&#39;, &#39;6105.&#39;, &#39;6773.&#39;, &#39;6429.&#39;, &#39;6151.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_4&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;7889.&#39;, &#39;7928.&#39;, &#39;6978.&#39;, &#39;7620.&#39;, &#39;6720.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_5&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;8160.&#39;, &#39;8696.&#39;, &#39;8542.&#39;, &#39;8216.&#39;, &#39;6924.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_6&#39;, &#39;extra metadata&#39;: &#39;text&#39;}},
+  {&#39;shots&#39;: 5,
+   &#39;success&#39;: True,
+   &#39;data&#39;: {&#39;memory&#39;: [&#39;8149.&#39;, &#39;8696.&#39;, &#39;8527.&#39;, &#39;9064.&#39;, &#39;8766.&#39;]},
+   &#39;meas_level&#39;: &lt;MeasLevel.CLASSIFIED: 2&gt;,
+   &#39;header&#39;: {&#39;name&#39;: &#39;experiment_7&#39;, &#39;extra metadata&#39;: &#39;text&#39;}}],
+ &#39;status&#39;: &#39;finished&#39;,
+ &#39;header&#39;: {}}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+<span class="o">%</span><span class="k">qiskit_copyright</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td>Qiskit</td><td>None</td></tr><tr><td>Terra</td><td>0.18.0.dev0+2eee566</td></tr><tr><td>Aer</td><td>0.9.0.dev0+df38186</td></tr><tr><td>Ignis</td><td>0.7.0.dev0+8195559</td></tr><tr><td>Aqua</td><td>None</td></tr><tr><td>IBM Q Provider</td><td>0.12.0</td></tr><tr><th>System information</th></tr><tr><td>Python</td><td>3.9.4 (default, Apr  9 2021, 11:43:21) [MSC v.1916 64 bit (AMD64)]</td></tr><tr><td>OS</td><td>Windows</td></tr><tr><td>CPUs</td><td>4</td></tr><tr><td>Memory (Gb)</td><td>15.807106018066406</td></tr><tr><td colspan='2'>Wed Jun 02 15:03:37 2021 W. Europe Daylight Time</td></tr></table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<div style='width: 100%; background-color:#d5d9e0;padding-left: 10px; padding-bottom: 10px; padding-right: 10px; padding-top: 5px'><h3>This code is a part of Qiskit</h3><p>&copy; Copyright IBM 2017, 2021.</p><p>This code is licensed under the Apache License, Version 2.0. You may<br>obtain a copy of this license in the LICENSE.txt file in the root directory<br> of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.<p>Any modifications or derivative works of this code must retain this<br>copyright notice, and modified files need to carry a notice indicating<br>that they have been altered from the originals.</p></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="06_time_evolution.html" class="btn btn-neutral float-right" title="Simulation of time evolution" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="04_collective_spin_hardware.html" class="btn btn-neutral" title="Collective Spin Hardware" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">The Qiskit Cold Atom Provider</a><ul>
+<li><a class="reference internal" href="#Credential-management">Credential management</a></li>
+<li><a class="reference internal" href="#Backends">Backends</a></li>
+<li><a class="reference internal" href="#Jobs:">Jobs:</a><ul>
+<li><a class="reference internal" href="#Retrieving-jobs:">Retrieving jobs:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

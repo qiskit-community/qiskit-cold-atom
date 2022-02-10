@@ -1,0 +1,8 @@
+
+
+BaseFermionBackend.set_options
+========================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: BaseFermionBackend.set_options

@@ -1,0 +1,8 @@
+
+
+FermionSimulator.draw
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermionSimulator.draw

@@ -1,0 +1,8 @@
+
+
+SpinSimulator.version
+============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoattribute:: SpinSimulator.version

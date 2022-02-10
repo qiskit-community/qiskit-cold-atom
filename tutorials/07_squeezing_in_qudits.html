@@ -1,0 +1,1527 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Squeezing in atomic qudits &mdash; Qiskit Cold Atom 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!-- <link rel="stylesheet" href="../_static/pygments.css" type="text/css" /> -->
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/tabs.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tunneling of fermionic atoms" href="08_fermions_in_double_well.html" />
+    <link rel="prev" title="Simulation of time evolution" href="06_time_evolution.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<div class="container-fluid header-holder tutorials-header" id="header-holder">
+  <div class="container">
+    <div class="header-container">
+      <a class="header-logo" href="" aria-label="PyTorch"></a>
+
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom/tree/master/docs/tutorials" target="_blank">Tutorials</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+
+      <a class="main-menu-open-button" href="#" data-behavior="open-mobile-menu"></a>
+    </div>
+
+  </div>
+</div>
+
+
+<body class="pytorch-body">
+
+   
+
+    
+
+    
+
+
+    <div class="table-of-contents-link-wrapper">
+      <span>Table of Contents</span>
+      <a href="#" class="toggle-table-of-contents" data-behavior="toggle-table-of-contents"></a>
+    </div>
+
+    <nav data-toggle="wy-nav-shift" class="pytorch-left-menu" id="pytorch-left-menu">
+      <div class="pytorch-side-scroll">
+        <div class="pytorch-menu pytorch-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          <div class="pytorch-left-menu-search">
+            
+
+            
+              
+              
+                <div class="version">
+                  0.1.0
+                </div>
+              
+            
+
+            
+
+
+  
+
+
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search Docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+            
+          </div>
+
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../guides/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/access.html">Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/usage.html">Submitting circuits</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../apidocs/qiskit_cold_atom.html">API References</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Tutorials</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <div class="pytorch-container">
+      <div class="pytorch-page-level-bar" id="pytorch-page-level-bar">
+        <div class="pytorch-breadcrumbs-wrapper">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="pytorch-breadcrumbs">
+    
+      <li>
+        <a href="../index.html">
+          
+            Docs
+          
+        </a> &gt;
+      </li>
+
+        
+          <li><a href="index.html">Qiskit Cold Atom Tutorials</a> &gt;</li>
+        
+      <li>Squeezing in atomic qudits</li>
+    
+    
+      <li class="pytorch-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/tutorials/07_squeezing_in_qudits.ipynb.txt" rel="nofollow"><img src="../_static/images/view-page-source-icon.svg"></a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+</div>
+        </div>
+
+        <div class="pytorch-shortcuts-wrapper" id="pytorch-shortcuts-wrapper">
+          Shortcuts
+        </div>
+      </div>
+
+      <section data-toggle="wy-nav-shift" id="pytorch-content-wrap" class="pytorch-content-wrap">
+        <div class="pytorch-content-left">
+          
+          <div class="rst-content">
+          
+            <div role="main" class="main-content" itemscope="itemscope" itemtype="http://schema.org/Article">
+             <article itemprop="articleBody" id="pytorch-article" class="pytorch-article">
+              
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<br><br><br><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Run interactively in jupyter notebook.</p>
+</div>
+<section id="Squeezing-in-atomic-qudits">
+<h1>Squeezing in atomic qudits<a class="headerlink" href="#Squeezing-in-atomic-qudits" title="Permalink to this headline">¶</a></h1>
+<p>In this notebook we will see how it is possible to detect entanglement in cold atomic experiments through the squeezing of the measured histograms. The notebook is structured as follows:</p>
+<ol class="arabic simple">
+<li><p>We start with a simple motivational example of two qubits, where we see that entanglement can reduce fluctuations in certain cases.</p></li>
+<li><p>Next, we discuss an experimental implementation, where 500 atoms were condensed into a Bose-Einstein condensate and squeezing was observed.</p></li>
+<li><p>We will then study how you can simulate the experiments on your own laptop through <code class="docutils literal notranslate"><span class="pre">qiskt-cold-atom</span></code>.</p></li>
+<li><p>In the last section, we show how to send such calculations to a cloud simulator.</p></li>
+</ol>
+<section id="Two-correlated-coins---a-toy-example-for-squeezing">
+<h2>Two correlated coins - a toy example for squeezing<a class="headerlink" href="#Two-correlated-coins---a-toy-example-for-squeezing" title="Permalink to this headline">¶</a></h2>
+<p>To understand the motivation for studying squeezing, we start out with a two-qubit quantum circuit. In a first step, we put both qubits into a 50-50 superposition as shown below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># initialization to create a 50 - 50 superposition</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># measurement</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_3_0.png" src="../_images/tutorials_07_squeezing_in_qudits_3_0.png" />
+</div>
+</div>
+<p>Each execution of such a circuit corresponds to flipping two coins. By writing down the outcomes of many executions we obtain a histogram of the counts where 0 and 1 could be interpreted as heads and tails, respectively (or vice versa).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">Aer</span>
+<span class="kn">from</span> <span class="nn">qiskit.visualization</span> <span class="kn">import</span> <span class="n">plot_histogram</span>
+
+<span class="k">def</span> <span class="nf">bit_counts_to_Lz</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;transform bitstring counts to collective counts.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        counts: a dict whose keys are the observed integers for the spin</span>
+<span class="sd">                and whose values is the number of observations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        counts: a dict whose keys are the observed integers for the total observed numbers of up</span>
+<span class="sd">                and whose values is the number of observations</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lz_counts</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">bitstring</span><span class="p">,</span> <span class="n">count</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">measured_label</span> <span class="o">=</span> <span class="n">bitstring</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;1&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">measured_label</span><span class="p">)</span> <span class="ow">in</span> <span class="n">lz_counts</span><span class="p">:</span>
+            <span class="n">lz_counts</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">measured_label</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">count</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">lz_counts</span><span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">measured_label</span><span class="p">)]</span> <span class="o">=</span> <span class="n">count</span>
+
+    <span class="k">return</span> <span class="n">lz_counts</span>
+
+
+<span class="n">qasm_simulator</span> <span class="o">=</span> <span class="n">Aer</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;aer_simulator&quot;</span><span class="p">)</span>
+<span class="n">job</span> <span class="o">=</span> <span class="n">qasm_simulator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">lz_counts_uncorrelated</span> <span class="o">=</span> <span class="n">bit_counts_to_Lz</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">lz_counts_uncorrelated</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_5_0.png" src="../_images/tutorials_07_squeezing_in_qudits_5_0.png" />
+</div>
+</div>
+<p>The histogram above shows the probability of obtaining the collective counts, i.e. the number of 1’s in each measured bit-string. For example, since each state 00, 01, 10, and 11 has a 25% probability of occuring we have a 50% probability of measuring 1 (i.e. states 01 and 10) and a 25% probability of measuring 2 (i.e. state 11). In the next step we will start correlating, i.e. entangling the qubits, and see how this correlation is visible in the histogram.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># initialization on x</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">h</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">x</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">cnot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># measurement</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+<span class="n">circuit</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_7_0.png" src="../_images/tutorials_07_squeezing_in_qudits_7_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job</span> <span class="o">=</span> <span class="n">qasm_simulator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+<span class="n">counts</span><span class="p">[</span><span class="s2">&quot;00&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">counts</span><span class="p">[</span><span class="s2">&quot;11&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">squeezed_lz_counts</span> <span class="o">=</span> <span class="n">bit_counts_to_Lz</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="n">plot_histogram</span><span class="p">(</span><span class="n">squeezed_lz_counts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_8_0.png" src="../_images/tutorials_07_squeezing_in_qudits_8_0.png" />
+</div>
+</div>
+<p>As we can see quite nicely the correlations between the qubits are inducing a reduction in the width of the observed histogram. It is this reduction that is called <strong>squeezing</strong> and its relation to quantum entanglement has motivated a large body of literature [1] and experimental work on this topic, which we will slightly touch on in the following example .</p>
+</section>
+<section id="Experimental-implementation-with-500-cold-atoms">
+<h2>Experimental implementation with 500 cold atoms<a class="headerlink" href="#Experimental-implementation-with-500-cold-atoms" title="Permalink to this headline">¶</a></h2>
+<p>We now discuss some results from a <a class="reference external" href="https://arxiv.org/abs/1507.03782">paper</a> on squeezing with cold atoms by Strobel et al. [2]. In this paper, <span class="math notranslate nohighlight">\(N_{at} = 500\)</span> atoms were cooled down to form a Bose-Einstein condensate. In this state, they are indistinguishable and each of the atoms can be controlled to be in one of two internal states. Altogether the system can be described in terms of angular momentum operators <span class="math notranslate nohighlight">\(\hat{L}_i\)</span> of length <span class="math notranslate nohighlight">\(\ell = \frac{N_{at}}{2}\)</span>. This system
+evolves under the Hamiltonian:</p>
+<div class="math notranslate nohighlight">
+\[H_{\text{OAT}}(\chi, \Delta, \Omega) =  \chi L_{z}^2 + \Delta L_{z} + \Omega L_{x}\]</div>
+<ul class="simple">
+<li><p>The first term arises from the interactions between the atoms. It is called <em>one-axis-twisting Hamiltonian</em>.</p></li>
+<li><p>The second term stems from an externally applied magnetic field and microwave. It introduces rotations around the z axis of the collective Bloch sphere. It’s strength <span class="math notranslate nohighlight">\(\Delta\)</span> is hence quite easily switched through the frequency of the externally applied magnetic field.</p></li>
+<li><p>The third term describes the Rabi coupling and its strength <span class="math notranslate nohighlight">\(\Omega\)</span> is directly controlled through the amplitude of the applied microwave signal.</p></li>
+</ul>
+<p>To observe squeezing the following actions were performed in the experiment.</p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Preparation</strong>: We prepare the collective spin such that the Bloch-sphere-vector points to one of the poles.</p></li>
+<li><p><strong>First step</strong>: The vector is rotated onto the equator by applying a very fast Rabi pulse such that only the third term of the Hamiltonian is of practical relevance. We can hence describe it by an <span class="math notranslate nohighlight">\(\mathcal{R}_y\)</span> rotation.</p></li>
+<li><p><strong>Second step</strong>: The state is squeezed such that it starts to wrap around the Bloch-sphere. This happens under the evolution of the above Hamiltonian with suitably chosen parameters. A <span class="math notranslate nohighlight">\(\pi\)</span>-pulse in the middle is suppressing certain unwanted noise to improve the observed squeezing. The evolution can hence be described by the unitary:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\hat{U}_{oat} = e^{i\hat{H}_{oat}t}\]</div>
+<ol class="arabic simple" start="3">
+<li><p><strong>Third step</strong>: In the last step we rotate the state around the <span class="math notranslate nohighlight">\(X\)</span>-axis. This rotation corresponds to the angle <span class="math notranslate nohighlight">\(\alpha\)</span> in this notebook.</p></li>
+</ol>
+<p>We can summarize this experiments with <code class="docutils literal notranslate"><span class="pre">qiskit-cold-atom</span></code> as follows:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers</span> <span class="kn">import</span> <span class="n">ColdAtomProvider</span>
+<span class="kn">from</span> <span class="nn">qiskit_cold_atom.spins.spins_gate_library</span> <span class="kn">import</span> <span class="n">OATGate</span>
+<span class="kn">from</span> <span class="nn">qiskit.circuit</span> <span class="kn">import</span> <span class="n">Parameter</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="p">()</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;collective_spin_simulator&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">qc</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">alpha</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;α&quot;</span><span class="p">)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;β&quot;</span><span class="p">)</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;γ&quot;</span><span class="p">)</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">rly</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OATGate</span><span class="p">(</span><span class="n">chi</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">beta</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">OATGate</span><span class="p">(</span><span class="n">chi</span><span class="o">=</span><span class="n">gamma</span><span class="p">,</span> <span class="n">delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">omega</span><span class="o">=</span><span class="n">beta</span><span class="p">),</span> <span class="n">qargs</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
+
+<span class="n">qc</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_13_0.png" src="../_images/tutorials_07_squeezing_in_qudits_13_0.png" />
+</div>
+</div>
+<p>This circuit is run multiple times and the collective spin is observed for two evolution times. Let us simulate such an experiment for two extreme cases of angles with large and small squeezing. The parameters are chosen from the experimental paper.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Number of atoms</span>
+<span class="n">Nat</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># The length of the spin</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Strength of the rotation around x</span>
+<span class="n">omegax</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">20</span>
+
+<span class="c1"># Time of the evolution</span>
+<span class="n">time</span> <span class="o">=</span> <span class="mf">15e-3</span>
+
+<span class="c1"># Strength of the Lz-squared operator</span>
+<span class="n">Lambda</span> <span class="o">=</span> <span class="mf">1.5</span>
+<span class="n">chi</span> <span class="o">=</span> <span class="n">Lambda</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">omegax</span><span class="p">)</span> <span class="o">/</span> <span class="n">Nat</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">50</span><span class="p">,</span> <span class="mi">140</span><span class="p">])</span> <span class="o">/</span> <span class="mi">180</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">assign_parameters</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="n">alpha</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">alphas</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+        <span class="n">beta</span><span class="p">:</span> <span class="n">omegax</span> <span class="o">*</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="p">:</span> <span class="n">chi</span> <span class="o">*</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">counts1</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+
+
+<span class="n">circuit</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">assign_parameters</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="n">alpha</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">alphas</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">beta</span><span class="p">:</span> <span class="n">omegax</span> <span class="o">*</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="n">gamma</span><span class="p">:</span> <span class="n">chi</span> <span class="o">*</span> <span class="n">time</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">counts2</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">binom</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">obs_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counts1</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+<span class="n">obs_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">counts1</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">obs_num</span> <span class="o">-</span> <span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">obs_vals</span> <span class="o">/</span> <span class="n">obs_vals</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+    <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;squeezed&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">obs_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">key</span><span class="p">)</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">counts2</span><span class="o">.</span><span class="n">keys</span><span class="p">()])</span>
+<span class="n">obs_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">counts2</span><span class="o">.</span><span class="n">values</span><span class="p">()])</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
+    <span class="n">obs_num</span> <span class="o">-</span> <span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="n">obs_vals</span> <span class="o">/</span> <span class="n">obs_vals</span><span class="o">.</span><span class="n">sum</span><span class="p">(),</span>
+    <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;anti-squeezed&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># and compare to the binomial distribution;</span>
+<span class="n">ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">Nat</span><span class="p">)</span>
+<span class="n">pk</span> <span class="o">=</span> <span class="n">binom</span><span class="p">(</span><span class="n">Nat</span><span class="p">,</span> <span class="n">ks</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="n">ks</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">**</span> <span class="p">(</span><span class="n">Nat</span> <span class="o">-</span> <span class="n">ks</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ks</span> <span class="o">-</span> <span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">pk</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;uncorrelated noise&quot;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;C2&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$L_z$&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_17_0.png" src="../_images/tutorials_07_squeezing_in_qudits_17_0.png" />
+</div>
+</div>
+<p>The observed variance <span class="math notranslate nohighlight">\(\Delta^2\)</span> is then compared to the variance of uncorrelated coin tosses, i.e. of a binomial distribution with <span class="math notranslate nohighlight">\(50%\)</span> success probability, <span class="math notranslate nohighlight">\(\Delta^2_{SN} = \frac{N_{at}}{4}\)</span>. The observed squeezing <span class="math notranslate nohighlight">\(\Delta\)</span> is then quantified in <em>dB</em> through the squeezing parameter:</p>
+<div class="math notranslate nohighlight">
+\[\xi = 10 \log\left(\frac{\Delta^2}{\Delta^2_{SN}}\right)\]</div>
+<p>In the histogram above we can see a squeezed state with a reduced variance. At this stage, we have discussed all the necessary ingredients to understand the experimental observations of the paper by Strobel. We will therefore simulate the observations at the reported evolution times (<span class="math notranslate nohighlight">\(t_1 = 15\)</span>ms, <span class="math notranslate nohighlight">\(t_1 = 25\)</span>ms) and compare the observed squeezing parameters to our simulations.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">t1</span> <span class="o">=</span> <span class="mf">15e-3</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="mf">25e-3</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">mean_var_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;calculate mean and variance from the counts.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        counts: a dict whose keys are the observed integers for the spin</span>
+<span class="sd">                and whose values is the number of observations</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        mean, var: mean and variance of the observed counts</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="n">count_sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">mean</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">v</span>
+        <span class="n">count_sum</span> <span class="o">+=</span> <span class="n">v</span>
+
+    <span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span> <span class="o">/</span> <span class="n">count_sum</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">counts</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">var</span> <span class="o">+=</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">v</span> <span class="o">/</span> <span class="n">count_sum</span>
+    <span class="k">return</span> <span class="n">mean</span><span class="p">,</span> <span class="n">var</span>
+</pre></div>
+</div>
+</div>
+<p>We now run the circuits for all the experimental data.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+<span class="n">variances_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">))</span>
+<span class="n">variances_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alphas</span><span class="p">)):</span>
+
+    <span class="c1"># first time step</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">assign_parameters</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="n">alpha</span><span class="p">:</span> <span class="n">alphas</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+            <span class="n">beta</span><span class="p">:</span> <span class="n">omegax</span> <span class="o">*</span> <span class="n">t1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="n">gamma</span><span class="p">:</span> <span class="n">chi</span> <span class="o">*</span> <span class="n">t1</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">mean_var_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">variances_1</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span>
+
+    <span class="c1"># and the second time step</span>
+    <span class="n">circuit</span> <span class="o">=</span> <span class="n">qc</span><span class="o">.</span><span class="n">assign_parameters</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="n">alpha</span><span class="p">:</span> <span class="n">alphas</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span>
+            <span class="n">beta</span><span class="p">:</span> <span class="n">omegax</span> <span class="o">*</span> <span class="n">t2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="n">gamma</span><span class="p">:</span> <span class="n">chi</span> <span class="o">*</span> <span class="n">t2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="p">},</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">job</span> <span class="o">=</span> <span class="n">backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">spin</span><span class="o">=</span><span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">counts</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">get_counts</span><span class="p">()</span>
+    <span class="n">mean</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="n">mean_var_from_counts</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+    <span class="n">variances_2</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>Import the data from the paper for comparison</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Import the data from the paper by Strobel et al.</span>
+<span class="n">strobel_15_dB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="mf">0.51993068</span><span class="p">,</span>
+        <span class="mf">10.39861352</span><span class="p">,</span>
+        <span class="mf">20.5372617</span><span class="p">,</span>
+        <span class="mf">30.41594454</span><span class="p">,</span>
+        <span class="mf">40.81455806</span><span class="p">,</span>
+        <span class="mf">45.49393414</span><span class="p">,</span>
+        <span class="mf">50.6932409</span><span class="p">,</span>
+        <span class="mf">56.152513</span><span class="p">,</span>
+        <span class="mf">60.05199307</span><span class="p">,</span>
+        <span class="mf">69.93067591</span><span class="p">,</span>
+        <span class="mf">79.80935875</span><span class="p">,</span>
+        <span class="mf">90.98786828</span><span class="p">,</span>
+        <span class="mf">100.08665511</span><span class="p">,</span>
+        <span class="mf">109.96533795</span><span class="p">,</span>
+        <span class="mf">120.36395147</span><span class="p">,</span>
+        <span class="mf">130.24263432</span><span class="p">,</span>
+        <span class="mf">139.86135182</span><span class="p">,</span>
+        <span class="mf">150.51993068</span><span class="p">,</span>
+        <span class="mf">160.13864818</span><span class="p">,</span>
+        <span class="mf">170.01733102</span><span class="p">,</span>
+        <span class="mf">180.1559792</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">strobel_15_alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="mf">9.27455357</span><span class="p">,</span>
+        <span class="mf">8.03571429</span><span class="p">,</span>
+        <span class="mf">6.19419643</span><span class="p">,</span>
+        <span class="mf">3.54910714</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">0.46875</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">2.27678571</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">4.11830357</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">4.01785714</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">2.94642857</span><span class="p">,</span>
+        <span class="mf">1.30580357</span><span class="p">,</span>
+        <span class="mf">4.55357143</span><span class="p">,</span>
+        <span class="mf">6.99776786</span><span class="p">,</span>
+        <span class="mf">8.50446429</span><span class="p">,</span>
+        <span class="mf">9.140625</span><span class="p">,</span>
+        <span class="mf">10.41294643</span><span class="p">,</span>
+        <span class="mf">10.546875</span><span class="p">,</span>
+        <span class="mf">10.64732143</span><span class="p">,</span>
+        <span class="mf">10.27901786</span><span class="p">,</span>
+        <span class="mf">9.74330357</span><span class="p">,</span>
+        <span class="mf">9.40848214</span><span class="p">,</span>
+        <span class="mf">8.27008929</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="c1"># and the values for 25ms</span>
+<span class="n">strobel_25_dB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="mf">0.51993068</span><span class="p">,</span>
+        <span class="mf">10.39861352</span><span class="p">,</span>
+        <span class="mf">20.5372617</span><span class="p">,</span>
+        <span class="mf">30.41594454</span><span class="p">,</span>
+        <span class="mf">40.81455806</span><span class="p">,</span>
+        <span class="mf">45.49393414</span><span class="p">,</span>
+        <span class="mf">50.6932409</span><span class="p">,</span>
+        <span class="mf">56.152513</span><span class="p">,</span>
+        <span class="mf">60.05199307</span><span class="p">,</span>
+        <span class="mf">69.93067591</span><span class="p">,</span>
+        <span class="mf">79.80935875</span><span class="p">,</span>
+        <span class="mf">90.98786828</span><span class="p">,</span>
+        <span class="mf">100.08665511</span><span class="p">,</span>
+        <span class="mf">109.96533795</span><span class="p">,</span>
+        <span class="mf">120.36395147</span><span class="p">,</span>
+        <span class="mf">130.24263432</span><span class="p">,</span>
+        <span class="mf">139.86135182</span><span class="p">,</span>
+        <span class="mf">150.51993068</span><span class="p">,</span>
+        <span class="mf">160.13864818</span><span class="p">,</span>
+        <span class="mf">170.01733102</span><span class="p">,</span>
+        <span class="mf">180.1559792</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">strobel_25_alpha</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="mf">16.07142857</span><span class="p">,</span>
+        <span class="mf">15.46875</span><span class="p">,</span>
+        <span class="mf">14.02901786</span><span class="p">,</span>
+        <span class="mf">11.71875</span><span class="p">,</span>
+        <span class="mf">8.40401786</span><span class="p">,</span>
+        <span class="mf">4.72098214</span><span class="p">,</span>
+        <span class="mf">2.20982143</span><span class="p">,</span>
+        <span class="o">-</span><span class="mf">0.46875</span><span class="p">,</span>
+        <span class="mf">0.0</span><span class="p">,</span>
+        <span class="mf">2.74553571</span><span class="p">,</span>
+        <span class="mf">7.734375</span><span class="p">,</span>
+        <span class="mf">10.98214286</span><span class="p">,</span>
+        <span class="mf">13.39285714</span><span class="p">,</span>
+        <span class="mf">14.89955357</span><span class="p">,</span>
+        <span class="mf">15.73660714</span><span class="p">,</span>
+        <span class="mf">16.50669643</span><span class="p">,</span>
+        <span class="mf">17.00892857</span><span class="p">,</span>
+        <span class="mf">17.31026786</span><span class="p">,</span>
+        <span class="mf">17.24330357</span><span class="p">,</span>
+        <span class="mf">16.77455357</span><span class="p">,</span>
+        <span class="mf">15.80357143</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>and calculate the variance as presented above.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">number_squeezing_factor_to_db</span><span class="p">(</span><span class="n">var_CSS</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calcululate the squeezing parameter from the observed variance.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">var</span> <span class="o">/</span> <span class="n">var_CSS</span><span class="p">)</span>
+
+<span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Number Squeezing&quot;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">alphas</span><span class="p">),</span>
+    <span class="n">number_squeezing_factor_to_db</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">variances_1</span><span class="p">),</span>
+    <span class="s2">&quot;r-&quot;</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;simulated  15ms&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strobel_15_dB</span><span class="p">,</span> <span class="n">strobel_15_alpha</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;1experiment 5ms&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">alphas</span><span class="p">),</span>
+    <span class="n">number_squeezing_factor_to_db</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">variances_2</span><span class="p">),</span>
+    <span class="s2">&quot;b-&quot;</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;simulated  25ms&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strobel_25_dB</span><span class="p">,</span> <span class="n">strobel_25_alpha</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;experiment 25ms&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Number Squeezing in $dB$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;tomography angle $\alpha$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_26_0.png" src="../_images/tutorials_07_squeezing_in_qudits_26_0.png" />
+</div>
+</div>
+<p>As we can see the experiments are well understood as a quantum information circuit with specifically chosen parmeters.</p>
+</section>
+<section id="Optional:-Working-on-a-cloud-simulator">
+<h2>Optional: Working on a cloud simulator<a class="headerlink" href="#Optional:-Working-on-a-cloud-simulator" title="Permalink to this headline">¶</a></h2>
+<p>We would also like to send such circuits to some real hardware and investigate these results. In this last section, we will present this possibility with the <a class="reference external" href="htttps://qsimsim.synqs.org">synqs</a> provider.</p>
+<div class="alert alert-block alert-info"><p>Note: To run the cells in this part of the tutorial that interface with a remote device backend, you’ll need to have a registered account with a valid username and token for this provider. You can obtain such credentials by visiting the sign-up page</p>
+</div><p>In a first step, it is necessary to import the cold atom provider.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">qiskit_cold_atom.providers</span> <span class="kn">import</span> <span class="n">ColdAtomProvider</span>
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+</pre></div>
+</div>
+</div>
+<p>Saving/enabling your synqs backend credentials (Optional if not alreayd done).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># save an account to disk</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">save_account</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/singlequdit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/multiqudit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/fermions&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">load_account</span><span class="p">()</span>
+
+<span class="c1"># or enable an account in the current session</span>
+<span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">enable_account</span><span class="p">(</span>
+    <span class="n">url</span><span class="o">=</span><span class="p">[</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/singlequdit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/multiqudit&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;https://qsimsim.synqs.org/api/fermions&quot;</span><span class="p">,</span>
+    <span class="p">],</span>
+    <span class="n">username</span><span class="o">=</span><span class="s2">&quot;name&quot;</span><span class="p">,</span>
+    <span class="n">token</span><span class="o">=</span><span class="s2">&quot;password&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We can now load the necessary backend</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">provider</span> <span class="o">=</span> <span class="n">ColdAtomProvider</span><span class="o">.</span><span class="n">load_account</span><span class="p">()</span>
+
+<span class="n">spin_device_backend</span> <span class="o">=</span> <span class="n">provider</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="s2">&quot;synqs_singlequdit_simulator&quot;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">spin_device_backend</span><span class="o">.</span><span class="n">configuration</span><span class="p">()</span><span class="o">.</span><span class="n">supported_instructions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;rlx&#39;, &#39;rlz&#39;, &#39;rlz2&#39;, &#39;measure&#39;, &#39;barrier&#39;, &#39;load&#39;]
+</pre></div></div>
+</div>
+<p>As you can see from above the simulator backend does not provide the OAT gate that we used previously. However, we will simply trotterize it in the simulation.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Nat</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">Nat</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># spin length</span>
+<span class="n">omegax</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">20</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="mf">15e-3</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="mf">25e-3</span>
+<span class="n">Lambda</span> <span class="o">=</span> <span class="mf">1.5</span>
+
+<span class="n">chi</span> <span class="o">=</span> <span class="n">Lambda</span> <span class="o">*</span> <span class="nb">abs</span><span class="p">(</span><span class="n">omegax</span><span class="p">)</span> <span class="o">/</span> <span class="n">Nat</span>
+
+<span class="n">Ntrott</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">alpha</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;α&quot;</span><span class="p">)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;β&quot;</span><span class="p">)</span>
+<span class="n">gamma</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="s2">&quot;γ&quot;</span><span class="p">)</span>
+
+<span class="n">qc_trott</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">qc_trott</span><span class="o">.</span><span class="n">load_spins</span><span class="p">(</span><span class="n">Nat</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_trott</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_trott</span><span class="o">.</span><span class="n">rlz</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">Ntrott</span><span class="p">):</span>
+    <span class="n">qc_trott</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">qc_trott</span><span class="o">.</span><span class="n">rlz2</span><span class="p">(</span><span class="n">gamma</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_trott</span><span class="o">.</span><span class="n">rlx</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_trott</span><span class="o">.</span><span class="n">measure</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">qc_trott</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">output</span><span class="o">=</span><span class="s2">&quot;mpl&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_37_0.png" src="../_images/tutorials_07_squeezing_in_qudits_37_0.png" />
+</div>
+</div>
+<p>as before we are now ready to send the job to the back-end and run it.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit1_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">qc_trott</span><span class="o">.</span><span class="n">assign_parameters</span><span class="p">(</span>
+        <span class="p">{</span><span class="n">alpha</span><span class="p">:</span> <span class="o">-</span><span class="n">a</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="n">gamma</span><span class="p">:</span> <span class="n">chi</span> <span class="o">*</span> <span class="n">t1</span> <span class="o">/</span> <span class="n">Ntrott</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="n">omegax</span> <span class="o">*</span> <span class="n">t1</span> <span class="o">/</span> <span class="n">Ntrott</span><span class="p">},</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span>
+<span class="p">]</span>
+<span class="n">job1</span> <span class="o">=</span> <span class="n">spin_device_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit1_list</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>we can now verify that it was successfully run through its job id. This comes in especially hand for longer jobs.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job1</span><span class="o">.</span><span class="n">job_id</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;20220121_135917-singlequdit-fnj-8ebfa&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job_retrieved1</span> <span class="o">=</span> <span class="n">spin_device_backend</span><span class="o">.</span><span class="n">retrieve_job</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="n">job1</span><span class="o">.</span><span class="n">job_id</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;job status: &quot;</span><span class="p">,</span> <span class="n">job_retrieved1</span><span class="o">.</span><span class="n">status</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+job status:  JobStatus.INITIALIZING
+</pre></div></div>
+</div>
+<p>Once the job status has switch towards done, the counts can be retrieved and analyzed. In the meantime we can send out the job for the other time:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">circuit2_list</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">qc_trott</span><span class="o">.</span><span class="n">assign_parameters</span><span class="p">(</span>
+        <span class="p">{</span><span class="n">alpha</span><span class="p">:</span> <span class="o">-</span><span class="n">a</span> <span class="o">%</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">),</span> <span class="n">gamma</span><span class="p">:</span> <span class="n">chi</span> <span class="o">*</span> <span class="n">t2</span> <span class="o">/</span> <span class="n">Ntrott</span><span class="p">,</span> <span class="n">beta</span><span class="p">:</span> <span class="n">omegax</span> <span class="o">*</span> <span class="n">t2</span> <span class="o">/</span> <span class="n">Ntrott</span><span class="p">},</span>
+        <span class="n">inplace</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alphas</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job2</span> <span class="o">=</span> <span class="n">spin_device_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">circuit2_list</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job2</span><span class="o">.</span><span class="n">job_id</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;20220121_135932-singlequdit-fnj-3bedc&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">job_retrieved2</span> <span class="o">=</span> <span class="n">spin_device_backend</span><span class="o">.</span><span class="n">retrieve_job</span><span class="p">(</span><span class="n">job_id</span><span class="o">=</span><span class="n">job2</span><span class="o">.</span><span class="n">job_id</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;job status: &quot;</span><span class="p">,</span> <span class="n">job_retrieved2</span><span class="o">.</span><span class="n">status</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+job status:  JobStatus.INITIALIZING
+</pre></div></div>
+</div>
+<p>The result of the job can be accessed by directly calling <code class="docutils literal notranslate"><span class="pre">job.result()</span></code> which returns a <code class="docutils literal notranslate"><span class="pre">Qiskit.Result</span></code> object and be transformed into the necessary variances.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">result1</span> <span class="o">=</span> <span class="n">job_retrieved1</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+<span class="n">result2</span> <span class="o">=</span> <span class="n">job_retrieved2</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+
+<span class="n">outcomes1</span> <span class="o">=</span> <span class="p">[</span><span class="n">result1</span><span class="o">.</span><span class="n">get_memory</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">circuit1_list</span><span class="p">))]</span>
+<span class="n">outcomes2</span> <span class="o">=</span> <span class="p">[</span><span class="n">result2</span><span class="o">.</span><span class="n">get_memory</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">circuit2_list</span><span class="p">))]</span>
+
+<span class="n">variances_1</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span> <span class="k">for</span> <span class="n">counts1</span> <span class="ow">in</span> <span class="n">outcomes1</span><span class="p">]</span>
+<span class="n">variances_2</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts2</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">))</span> <span class="k">for</span> <span class="n">counts2</span> <span class="ow">in</span> <span class="n">outcomes2</span><span class="p">]</span>
+
+<span class="n">variances_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">variances_1</span><span class="p">)</span>
+<span class="n">variances_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">variances_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Number Squeezing&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span>
+    <span class="n">number_squeezing_factor_to_db</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">variances_1</span><span class="p">),</span>
+    <span class="s2">&quot;r-&quot;</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;simulated  15ms&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">rad2deg</span><span class="p">(</span><span class="n">alphas</span><span class="p">),</span>
+    <span class="n">number_squeezing_factor_to_db</span><span class="p">(</span><span class="n">l</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">variances_2</span><span class="p">),</span>
+    <span class="s2">&quot;b-&quot;</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">label</span><span class="o">=</span><span class="s2">&quot;simulated  25ms&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strobel_15_dB</span><span class="p">,</span> <span class="n">strobel_15_alpha</span><span class="p">,</span> <span class="s2">&quot;ro&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;15ms&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">strobel_25_dB</span><span class="p">,</span> <span class="n">strobel_25_alpha</span><span class="p">,</span> <span class="s2">&quot;bo&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;25ms&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+
+<span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;g&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;Number Squeezing in $dB$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;tomography angle $\alpha$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;matplotlib.legend.Legend at 0x7fba281e62b0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/tutorials_07_squeezing_in_qudits_50_1.png" src="../_images/tutorials_07_squeezing_in_qudits_50_1.png" />
+</div>
+</div>
+</section>
+<section id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<p>[1] <a class="reference external" href="https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.90.035005">Luca Pezze et al.</a> <em>Quantum metrology with nonclassical states of atomic ensembles</em>. Reviews of Modern Physics 90, 035005 (2018).</p>
+<p>[2] <a class="reference external" href="https://doi.org/10.1126/science.1250147">Helmut Strobel et al.</a> <em>Fisher information and entanglement of non-Gaussian spin states</em>. Science 345, 424 (2014).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">qiskit.tools.jupyter</span>
+
+<span class="o">%</span><span class="k">qiskit_version_table</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<h3>Version Information</h3><table><tr><th>Qiskit Software</th><th>Version</th></tr><tr><td><code>qiskit-terra</code></td><td>0.19.1</td></tr><tr><td><code>qiskit-aer</code></td><td>0.10.1</td></tr><tr><td><code>qiskit-nature</code></td><td>0.3.0</td></tr><tr><th>System information</th></tr><tr><td>Python version</td><td>3.8.5</td></tr><tr><td>Python compiler</td><td>Clang 10.0.0 </td></tr><tr><td>Python build</td><td>default, Sep  4 2020 02:22:02</td></tr><tr><td>OS</td><td>Darwin</td></tr><tr><td>CPUs</td><td>8</td></tr><tr><td>Memory (Gb)</td><td>8.0</td></tr><tr><td colspan='2'>Fri Jan 21 15:00:10 2022 CET</td></tr></table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+             </article>
+             
+            </div>
+            <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="08_fermions_in_double_well.html" class="btn btn-neutral float-right" title="Tunneling of fermionic atoms" accesskey="n" rel="next">Next <img src="../_static/images/chevron-right-orange.svg" class="next-page"></a>
+      
+      
+        <a href="06_time_evolution.html" class="btn btn-neutral" title="Simulation of time evolution" accesskey="p" rel="prev"><img src="../_static/images/chevron-right-orange.svg" class="previous-page"> Previous</a>
+      
+    </div>
+  
+
+  
+
+    <hr>
+
+  
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2021, Qiskit Cold Atom Development Team.
+
+    </p>
+  </div>
+    
+      <div>
+        Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+      </div>
+     
+
+</footer>
+
+          </div>
+        </div>
+
+        <div class="pytorch-content-right" id="pytorch-content-right">
+          <div class="pytorch-right-menu" id="pytorch-right-menu">
+            <div class="pytorch-side-scroll" id="pytorch-side-scroll-right">
+              <ul>
+<li><a class="reference internal" href="#">Squeezing in atomic qudits</a><ul>
+<li><a class="reference internal" href="#Two-correlated-coins---a-toy-example-for-squeezing">Two correlated coins - a toy example for squeezing</a></li>
+<li><a class="reference internal" href="#Experimental-implementation-with-500-cold-atoms">Experimental implementation with 500 cold atoms</a></li>
+<li><a class="reference internal" href="#Optional:-Working-on-a-cloud-simulator">Optional: Working on a cloud simulator</a></li>
+<li><a class="reference internal" href="#References">References</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  
+
+     
+       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+         <script src="../_static/jquery.js"></script>
+         <script src="../_static/underscore.js"></script>
+         <script src="../_static/doctools.js"></script>
+         <script src="../_static/thebelab-helper.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+         <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+     
+
+  
+
+  <script type="text/javascript" src="../_static/js/vendor/popper.min.js"></script>
+  <script type="text/javascript" src="../_static/js/vendor/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+ <script type="text/javascript">
+    $(document).ready(function() {
+        $(".toggle > *").hide();
+        $(".toggle .header").show();
+        $(".toggle .header").click(function() {
+            $(this).parent().children().not(".header").toggle(400);
+            $(this).parent().children(".header").toggleClass("open");
+        })
+    });
+</script>
+
+
+  <div>
+    <br>
+  </div>
+
+  <!-- Begin Mobile Menu -->
+
+  <div class="mobile-main-menu">
+    <div class="container-fluid">
+      <div class="container">
+        <div class="mobile-main-menu-header-container">
+          <a class="header-logo" href="" aria-label="PyTorch"></a>
+          <a class="main-menu-close-button" href="#" data-behavior="close-mobile-menu"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-main-menu-links-container">
+      <div class="main-menu">
+        <ul>
+          <li>
+            <a href="">Qiskit Documentation</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Learning Resources</a>
+          </li>
+
+          <li>
+            <a href="" target="_blank">Slack Support</a>
+          </li>
+
+          <li>
+            <a href="https://github.com/Qiskit-Extensions/qiskit-cold-atom" target="_blank">Github</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- End Mobile Menu -->
+
+  <script type="text/javascript" src="../_static/js/vendor/anchor.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      mobileMenu.bind();
+      mobileTOC.bind();
+      pytorchAnchors.bind();
+      sideMenus.bind();
+      scrollToAnchor.bind();
+      highlightNavigation.bind();
+      mainMenuDropdown.bind();
+      filterTags.bind();
+
+      // Add class to links that have code blocks, since we cannot create links in code blocks
+      $("article.pytorch-article a span.pre").each(function(e) {
+        $(this).closest("a").addClass("has-code");
+      });
+    })
+  </script>
+</body>
+</html>

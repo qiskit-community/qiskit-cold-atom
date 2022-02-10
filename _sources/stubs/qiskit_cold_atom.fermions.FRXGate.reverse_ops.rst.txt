@@ -1,0 +1,8 @@
+
+
+FRXGate.reverse_ops
+=============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRXGate.reverse_ops

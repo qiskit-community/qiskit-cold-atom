@@ -1,0 +1,8 @@
+
+
+SpinCircuitSolver.get_initial_state
+==========================================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: SpinCircuitSolver.get_initial_state

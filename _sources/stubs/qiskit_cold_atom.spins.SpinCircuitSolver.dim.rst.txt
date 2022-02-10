@@ -1,0 +1,8 @@
+
+
+SpinCircuitSolver.dim
+============================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. autoproperty:: SpinCircuitSolver.dim

@@ -1,0 +1,8 @@
+
+
+BaseFermionBackend.version
+====================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoattribute:: BaseFermionBackend.version

@@ -1,0 +1,8 @@
+
+
+Interaction.c_if
+==========================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: Interaction.c_if

@@ -1,0 +1,8 @@
+
+
+FRYGate.is_parameterized
+==================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRYGate.is_parameterized

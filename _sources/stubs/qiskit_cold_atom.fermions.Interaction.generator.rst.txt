@@ -1,0 +1,8 @@
+
+
+Interaction.generator
+===============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Interaction.generator

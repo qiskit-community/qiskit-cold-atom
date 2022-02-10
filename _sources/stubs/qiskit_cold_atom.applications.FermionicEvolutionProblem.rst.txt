@@ -1,0 +1,40 @@
+﻿
+
+FermionicEvolutionProblem
+=======================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. autoclass:: FermionicEvolutionProblem
+   :no-members:
+   :no-inherited-members:
+   :no-special-members:
+
+   
+   
+
+   .. rubric:: Attributes
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionicEvolutionProblem.evolution_times
+      FermionicEvolutionProblem.initial_state
+      FermionicEvolutionProblem.observable
+      FermionicEvolutionProblem.system
+   
+   
+
+   
+   
+
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ../stubs/
+   
+      FermionicEvolutionProblem.circuits
+   
+
+   
+   

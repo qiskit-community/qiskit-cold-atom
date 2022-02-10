@@ -1,0 +1,8 @@
+
+
+FRZGate.soft_compare
+==============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FRZGate.soft_compare

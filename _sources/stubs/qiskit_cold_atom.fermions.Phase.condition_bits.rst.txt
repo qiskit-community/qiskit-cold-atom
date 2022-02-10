@@ -1,0 +1,8 @@
+
+
+Phase.condition_bits
+==============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: Phase.condition_bits

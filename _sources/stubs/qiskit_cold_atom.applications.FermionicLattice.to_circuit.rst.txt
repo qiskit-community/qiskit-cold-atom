@@ -1,0 +1,8 @@
+
+
+FermionicLattice.to_circuit
+=========================================================
+
+.. currentmodule:: qiskit_cold_atom.applications
+
+.. automethod:: FermionicLattice.to_circuit

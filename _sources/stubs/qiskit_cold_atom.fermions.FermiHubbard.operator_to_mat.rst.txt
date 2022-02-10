@@ -1,0 +1,8 @@
+
+
+FermiHubbard.operator_to_mat
+======================================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. automethod:: FermiHubbard.operator_to_mat

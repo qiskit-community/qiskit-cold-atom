@@ -1,0 +1,8 @@
+
+
+FRZGate.definition
+============================================
+
+.. currentmodule:: qiskit_cold_atom.fermions
+
+.. autoproperty:: FRZGate.definition

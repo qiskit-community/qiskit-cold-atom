@@ -1,0 +1,8 @@
+
+
+RLXGate.c_if
+===================================
+
+.. currentmodule:: qiskit_cold_atom.spins
+
+.. automethod:: RLXGate.c_if
