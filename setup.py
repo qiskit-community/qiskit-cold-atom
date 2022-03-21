@@ -31,9 +31,8 @@ setuptools.setup(
     description="Integration of cold atomic experiments into the Qiskit SDK.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Qiskit-Partners/qiskit-cold-atom",
+    url="https://github.com/Qiskit-Extensions/qiskit-cold-atom",
     author="Qiskit cold atom development team",
-    author_email="hello@qiskit.org",
     license="Apache 2.0",
     classifiers=[
         "Environment :: Console",
