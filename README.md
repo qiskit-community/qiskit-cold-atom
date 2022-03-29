@@ -58,6 +58,7 @@ To see how to define and run gates through quantum circuits in this setting, ple
 
 ## Documentation
 
+The documentation can be found as Github pages here [https://qiskit-extensions.github.io/qiskit-cold-atom/](https://qiskit-extensions.github.io/qiskit-cold-atom/).
 To build the API reference locally, run:
 
 ```bash
