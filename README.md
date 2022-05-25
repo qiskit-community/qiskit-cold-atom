@@ -18,9 +18,17 @@ These require an environment to execute `.ipynb` notebooks such as jupyter lab.
 
 ## Installation
 
-To install Qiskit Cold Atom from source, clone this repository and install from the project root using pip:
+To install Qiskit Cold Atom from source and further develop the package, clone this repository and install from the project root using pip:
 ```bash
 pip install -e .
+```
+To use the repository you can also install using either
+```bash
+pip install git+https://github.com/Qiskit-Extensions/qiskit-cold-atom.git
+```
+or Pypi
+```bash
+pip install qiskit-cold-atom
 ```
 
 ## Setting up the Cold Atom Provider 
