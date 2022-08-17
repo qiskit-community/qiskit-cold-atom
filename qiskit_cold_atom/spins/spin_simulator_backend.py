@@ -81,7 +81,7 @@ class SpinSimulator(BaseSpinBackend):
         """
         Helper function to execute a job. The circuit and all relevant parameters are
         given in the data dict. Performs validation checks on the received circuits
-        and utilizes the FermionCircuitSolver to perform the numerical simulations.
+        and utilizes the SpinCircuitSolver to perform the numerical simulations.
 
         Args:
             data: Data dictionary that that contains the experiments to simulate, given in the shape:
