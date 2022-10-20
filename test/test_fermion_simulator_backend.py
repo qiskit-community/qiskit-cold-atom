@@ -15,9 +15,9 @@
 from time import sleep
 import numpy as np
 
+from qiskit_aer import AerJob
 from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.providers import JobStatus
-from qiskit.providers.aer import AerJob
 from qiskit.result import Result
 from qiskit.test import QiskitTestCase
 
