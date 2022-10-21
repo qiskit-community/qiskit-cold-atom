@@ -85,7 +85,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
             embedded_op = self.solver1._embed_operator(fer_op, num_wires, qargs)
             target_op = FermionicOp("+_1 -_3", register_length=4)
             self.assertTrue(
-                set(embedded_op.reduce().to_list()) == set(target_op.reduce().to_list())
+                set(embedded_op.simplify().to_list(display_format="dense"))
+                == set(target_op.simplify().to_list(display_format="dense"))
             )
 
     def test_conservation_checks(self):
@@ -132,7 +133,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
         with self.subTest("check dimensionality of operator"):
             self.solver2.preprocess_circuit(circ)
             fer_op_wrong = FermionicOp("+-I")
-            fer_op_correct = FermionicOp("+-II")
+            fer_op_correct = FermionicOp("+-II", register_length=4)
             with self.assertRaises(QiskitColdAtomError):
                 self.solver2.operator_to_mat(fer_op_wrong)
             self.solver2.operator_to_mat(fer_op_correct)
@@ -217,7 +218,10 @@ class TestFermionCircuitSolver(QiskitTestCase):
                 FermionicOp([("NINI", 1), ("ININ", 1)]),
             ]
             for i, op in enumerate(operators):
-                self.assertEqual(set(op.reduce().to_list()), set(target[i].reduce().to_list()))
+                self.assertEqual(
+                    set(op.simplify().to_list(display_format="dense")),
+                    set(target[i].simplify().to_list(display_format="dense")),
+                )
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""

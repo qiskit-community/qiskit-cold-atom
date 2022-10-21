@@ -151,7 +151,7 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
         embedded_op_list = []
 
-        for partial_label, factor in operator.to_list():
+        for partial_label, factor in operator.to_list(display_format="dense"):
 
             full_label = ["I"] * num_wires
 
@@ -161,7 +161,7 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
             embedded_op_list.append(("".join(full_label), factor))
 
-        return FermionicOp(embedded_op_list)
+        return FermionicOp(embedded_op_list, display_format="dense")
 
     def _check_conservations(self, circuit: QuantumCircuit) -> Tuple[bool, bool]:
         """

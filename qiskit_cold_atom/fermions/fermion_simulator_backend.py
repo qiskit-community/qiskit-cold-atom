@@ -20,9 +20,9 @@ import datetime
 
 from qiskit.providers.models import BackendConfiguration
 from qiskit.providers import Options
-from qiskit.providers.aer import AerJob
 from qiskit import QuantumCircuit
 from qiskit.result import Result
+from qiskit_aer import AerJob
 
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolver
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend

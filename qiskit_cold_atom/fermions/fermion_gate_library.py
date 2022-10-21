@@ -73,7 +73,7 @@ class FermionicGate(Gate):
                 "Gate can not be exponentiated if the gate generator is not defined."
             )
         # the generator of the exponentiated gate is the old generator times the exponent
-        exp_generator = exponent * self.generator.reduce()
+        exp_generator = exponent * self.generator.simplify()
 
         exp_params = None if not self.params else [exponent * param for param in self.params]
 
@@ -136,8 +136,14 @@ class FermionicGate(Gate):
             scipy.sparse matrix of the Hamiltonian.
 
         Raises:
+            QiskitColdAtomError: If the type of the generator is not a FermionicOp.
             QiskitColdAtomError: If the fermion operator does not match the expected shape.
         """
+
+        if not isinstance(generator, FermionicOp):
+            raise QiskitColdAtomError(
+                f"Expected FermionicOp; got {type(generator).__name__} instead."
+            )
 
         if basis is None:
             basis = FermionicBasis.from_fermionic_op(generator)
@@ -147,7 +153,7 @@ class FermionicGate(Gate):
         basis_occupations = basis.get_occupations()
 
         # loop over all individual terms in the generators
-        for term in generator.to_list():
+        for term in generator.to_list(display_format="dense"):
             opstring = term[0]
             prefactor = term[1]
 
@@ -379,7 +385,7 @@ class Hop(FermionicGate):
         """The generating Hamiltonian of the hopping gate."""
         generator = FermiHubbard(
             num_modes=self.num_modes, j=self.params, u=0.0, mu=[0.0]
-        ).generator.reduce()
+        ).generator.simplify()
 
         if generator == 0:
             return FermionicOp("I_0", register_length=self.num_modes)
@@ -438,7 +444,7 @@ class Interaction(FermionicGate):
             j=[0.0] * (int(self.num_modes / 2) - 1),
             u=self.params[0],
             mu=[0.0],
-        ).generator.reduce()
+        ).generator.simplify()
 
         if generator == 0:
             return FermionicOp("I_0", register_length=self.num_modes)
@@ -504,7 +510,7 @@ class Phase(FermionicGate):
             j=[0.0] * (int(self.num_modes / 2) - 1),
             u=0.0,
             mu=self.params,
-        ).generator.reduce()
+        ).generator.simplify()
 
         if generator == 0:
             return FermionicOp("I_0", register_length=self.num_modes)

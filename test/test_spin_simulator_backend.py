@@ -17,9 +17,9 @@ import numpy as np
 
 from qiskit import QuantumCircuit
 from qiskit.providers import JobStatus
-from qiskit.providers.aer import AerJob
 from qiskit.result import Result
 from qiskit.test import QiskitTestCase
+from qiskit_aer import AerJob
 
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 from qiskit_cold_atom.spins import SpinSimulator

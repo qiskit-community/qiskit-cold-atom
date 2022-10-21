@@ -61,7 +61,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
             embedded_op = self.solver._embed_operator(spin_op, num_wires, qargs)
             target_op = SpinOp("+_1 -_3", spin=3 / 2, register_length=4)
             self.assertTrue(
-                set(embedded_op.reduce().to_list()) == set(target_op.reduce().to_list())
+                set(embedded_op.simplify().to_list()) == set(target_op.simplify().to_list())
             )
 
     def test_preprocess_circuit(self):
@@ -129,7 +129,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
             ]
 
             for i, op in enumerate(operators):
-                self.assertEqual(set(op.reduce().to_list()), set(target[i].reduce().to_list()))
+                self.assertEqual(set(op.simplify().to_list()), set(target[i].simplify().to_list()))
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""
@@ -216,13 +216,13 @@ class TestSpinCircuitSolver(QiskitTestCase):
             self.assertTrue(simulation["counts"], {"0 2": 1, "0 0": 1, "0 3": 1, "0 1": 2})
 
         with self.subTest("check equivalence to qubits for spin-1/2"):
-            from qiskit import Aer
+            from qiskit_aer import AerSimulator
 
             qubit_circ = QuantumCircuit(2)
             qubit_circ.rx(np.pi / 2, [0])
             qubit_circ.rz(-np.pi / 2, [0, 1])
             qubit_circ.save_unitary()
-            qubit_backend = Aer.get_backend("aer_simulator")
+            qubit_backend = AerSimulator()
             job = qubit_backend.run(qubit_circ)
             qubit_unitary = job.result().get_unitary()
 

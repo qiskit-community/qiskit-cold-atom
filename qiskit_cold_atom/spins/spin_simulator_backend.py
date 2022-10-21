@@ -21,10 +21,10 @@ import datetime
 
 from qiskit.providers.models import BackendConfiguration
 from qiskit.providers import Options
-from qiskit.providers.aer import AerJob
 from qiskit import QuantumCircuit
 from qiskit.result import Result
 from qiskit.circuit.measure import Measure
+from qiskit_aer import AerJob
 
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins.base_spin_backend import BaseSpinBackend
