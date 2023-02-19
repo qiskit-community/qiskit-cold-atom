@@ -23,17 +23,19 @@
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 #
-# import os
-# import sys
-# sys.path.insert(0, os.path.abspath('.'))
+import os
+import sys
+from datetime import date
+
+sys.path.insert(0, os.path.abspath(".."))
+sys.path.append(os.path.abspath("."))
 
 """
 Sphinx documentation builder
 """
 
-import os
 import qiskit_sphinx_theme
-import qiskit_cold_atom
+
 # Set env flag so that we can doc functions that may otherwise not be loaded
 # see for example interactive visualizations in qiskit.visualization.
 os.environ['QISKIT_DOCS'] = 'TRUE'
@@ -44,9 +46,9 @@ copyright = '2021, Qiskit Cold Atom Development Team'  # pylint: disable=redefin
 author = 'Qiskit Cold Atom Development Team'
 
 # The short X.Y version
-version = qiskit_cold_atom.__version__
+version = "0.1"
 # The full version, including alpha/beta/rc tags
-release = '0.1.0'
+release = '0.1.1'
 
 rst_prolog = """
 .. raw:: html
@@ -102,8 +104,7 @@ nbsphinx_timeout = 360
 nbsphinx_execute = os.getenv('QISKIT_DOCS_BUILD_TUTORIALS', 'never')
 nbsphinx_widgets_path = ''
 exclude_patterns = ['_build', '**.ipynb_checkpoints']
-nbsphinx_thumbnails = {
-}
+nbsphinx_thumbnails = {}
 
 # -----------------------------------------------------------------------------
 # Autosummary
@@ -156,7 +157,7 @@ add_module_names = False
 # (e.g., if this is set to ['foo.'], then foo.bar is shown under B, not F).
 # This can be handy if you document a project that consists of a single
 # package. Works only for the HTML builder currently.
-modindex_common_prefix = ['qiskit_cold_atom.']
+modindex_common_prefix = ["qiskit_cold_atom."]
 
 # -- Configuration for extlinks extension ------------------------------------
 # Refer to https://www.sphinx-doc.org/en/master/usage/extensions/extlinks.html
@@ -168,7 +169,7 @@ modindex_common_prefix = ['qiskit_cold_atom.']
 # a list of builtin themes.
 #
 #
-html_theme = 'qiskit_sphinx_theme'  # use the theme in subdir 'theme'
+html_theme = "qiskit_sphinx_theme"  # use the theme in subdir 'theme'
 
 html_theme_path = ['.', qiskit_sphinx_theme.get_html_theme_path()]
 
