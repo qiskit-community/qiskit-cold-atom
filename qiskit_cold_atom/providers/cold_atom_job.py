@@ -60,12 +60,10 @@ class ColdAtomJob(Job):
             if timeout and elapsed >= timeout:
                 raise JobTimeoutError("Timed out waiting for result")
 
-            result_payload = {"job_id": self._job_id}
-
             result = requests.get(
-                self._backend.url + "/get_job_result/",
+                self._backend.url + "/get_job_result",
                 params={
-                    "json": json.dumps(result_payload),
+                    "job_id": self._job_id,
                     "username": self.user,
                     "password": self.token,
                 },
@@ -102,12 +100,11 @@ class ColdAtomJob(Job):
         Returns:
             status: A string describing the status of the job.
         """
-        status_payload = {"job_id": self.job_id()}
 
         r = requests.get(
-            self._backend.url + "/get_job_status/",
+            self._backend.url + "/get_job_status",
             params={
-                "json": json.dumps(status_payload),
+                "job_id": self.job_id(),
                 "username": self.user,
                 "password": self.token,
             },
