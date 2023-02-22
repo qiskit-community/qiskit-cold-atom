@@ -137,11 +137,14 @@ class TimeEvolutionSolver:
         bitstr_op = FermionicOp("".join(label))
         qubit_op = QubitConverter(mapper).convert(bitstr_op)[0]
         init_circ = QuantumCircuit(QuantumRegister(qubit_op.num_qubits, "q"))
-        # Add gates in the right positions: we are only interested in the `X` gates because we want
-        # to create particles (0 -> 1) where the initial state introduced a creation (`+`) operator.
-        for i, bit in enumerate(qubit_op.primitive.table.X[0]):
-            if bit:
+
+        for i, pauli_label in enumerate(qubit_op.primitive.paulis[0].to_label()[::-1]):
+            if pauli_label == "X":
                 init_circ.x(i)
+            elif pauli_label == "Y":
+                init_circ.y(i)
+            elif pauli_label == "Z":
+                init_circ.z(i)
 
         for time in problem.evolution_times:
 
