@@ -2,16 +2,23 @@
 Backend communication schemas
 #############################
 
-``Qiskit-Cold-Atom`` and the backends communicate by exchanging data over a REST API.
-This tutorial outlines the schemas that are sent to, and received from the backend.
+``qiskit-cold-atom`` and the backends communicate by exchanging data over a REST API.
+This tutorial outlines the schemas that are sent to, and received from the backend. They have the following general steps, which describe in more detail below:
+
+1. Obtain the backend configuration through through a ``GET`` request at the endpoint ``get_config``.
+2. Post the job to the backend through a ``POST`` request at the endpoint ``post_job`` .
+3. Verify the job status through a ``GET`` request at the endpoint ``get_job_status``.
+4. Obtain the result  through a ``GET`` request at the endpoint ``get_job_result``.
+
+We will now discuss each step in more detail.
 
 Backend configuration
 ~~~~~~~~~~~~~~~~~~~~~
 
-``Qiskit-Cold-Atom`` must have some information from the backend to be able to prepare the
+``qiskit-cold-atom`` must have some information from the backend to be able to prepare the
 quantum circuits that will be run on the backend.
 Each backend has a unique URL assigned to it from which the configuration is retrieved.
-The cold atom backend is initialized by making a ``GET`` request, using python requests,
+The cold atom backend is initialized by making a ``GET`` request to the endpoint ``get_config``, using the python ``requests`` package,
 to this URL which retrieves the configuration data of the backend provided as a Json file.
 
 The configuration is created by calling ``BackendConfiguration.from_dict(r.json())`` where
@@ -68,9 +75,9 @@ We now discuss some of the entries in this JSon file in more detail.
 - ``n_qubits`` gives the maximum amount of wires (which are Qubit objects in Qiskit, hence the name)
   that an incoming circuit can have. In this case, we describe the experiment with one wire per
   atomic species, so ``n_qubits = 2``.
-  In the case of ``Qiskit-Cold-Atom`` the entry ``n_qubits`` is a misnomer but we use it here to comply
+  In the case of ``qiskit-cold-atom`` the entry ``n_qubits`` is a misnomer but we use it here to comply
   to the Qiskit schemas.
-  The fact that it is a misnomer does not impact ``Qiskit-Cold-Atom``.
+  The fact that it is a misnomer does not impact ``qiskit-cold-atom``.
 
 - ``basis_gates`` is a list of the supported instructions. These are defined via the ``GateConfig``
   class whose sepcifications are given as a dictionary under the key ``gates``.
@@ -104,8 +111,8 @@ This section describes the information that is sent to the backends to run quant
 If you want to expose a cold-atomic setup as a Qiskit backend then it must be capable of accepting
 these payloads.
 The ``run`` method of a backend converts the circuits into a Json serializable ``dict`` and sends it
-to the backend url via a ``PUT`` request.
-Additional parameters are sent along in the ``header`` dict.
+to the backend url via a ``POST`` request to the ``post_job`` endpoint.
+Additional parameters are sent along in the ``json`` dict of the request.
 The circuits are converted into the ``dict`` by the ``circuit_to_cold_atom()`` function.
 This ``dict`` has the structure shown below.
 Each circuit has a unique identifier ``experiment_id``.
@@ -129,14 +136,14 @@ Finally, ``params`` is the list of parameter values, e.g. a rotation angle, that
 
 As example consider the circuit data below which could be received by the NaLi device backend as a Json file.
 The instructions in data show that this circuit is to be run with one trapping site.
-An ``rx`` rotation with angle 0.7 radians is applied to the Na atoms followed by a 20 ms delay.
+An ``rlx`` rotation with angle 0.7 radians is applied to the Na atoms followed by a 20 ms delay.
 Finally the Na atom is measured.
 
 .. parsed-literal::
     {
       'experiment_0': {
         'instructions': [
-          ('rx', [0], [0.7]),
+          ('rlx', [0], [0.7]),
           ('delay', [0, 1], [20]),
           ('measure', [0], []),
           ('measure', [1], [])
@@ -147,7 +154,7 @@ Finally the Na atom is measured.
     }
 
 
-The ``PUT`` method of the web API will then handle this request and process it further.
+The ``POST`` method of the web API will then handle this request and process it further.
 In the case of the atomic mixtures backend the backend should perform the following tasks.
 
 - Verify the provided ``access_token``.
@@ -155,19 +162,19 @@ In the case of the atomic mixtures backend the backend should perform the follow
   therefore have a valid access token.
 
 - Assigning a unique job ID and placing the job in a job management system.
-  Note that this job management is not done by ``Qiskit Cold Atom``.
+  Note that this job management is not done by ``qiskit-cold-atom``.
 
 - Processing the circuit. This includes validation which determines if the input data corresponds
   to the outlined format and that all parameter values, including wire numbers, are within acceptable ranges.
   The input JSon data should be processed further.
   For instance, by converting it into a suitable ``experiment.py`` file for the control setup and
   running the experiment.
-  The actual implementation of this is left to the backend's discretion.
+  The actual implementation of this is left to the backend's discretion. An example of such an implementation is the `qlued <https://github.com/Alqor-UG/qlued>`_ framework.
 
-The ``response`` of this ``PUT`` request is sent back to the user as a Json that includes a ``job_id``.
+The ``response`` of this ``POST`` request is sent back to the user as a Json that includes a ``job_id``.
 This unique identification number is created by the backend for each submitted ``data`` file.
 The ``job_id`` is subsequently used to define a ``Job`` object which is the central object in Qiskit
-created to manage and handle the submitted task.
+created to manage and handle the submitted task. 
 
 Result payload
 ~~~~~~~~~~~~~~
