@@ -108,9 +108,9 @@ class RemoteBackend(Backend):
         job_payload = CircuitTools.circuit_to_cold_atom(circuit, self, shots=shots)
 
         res = requests.post(
-            self.url + "/post_job/",
-            data={
-                "json": json.dumps(job_payload),
+            self.url + "/post_job",
+            json={
+                "job": json.dumps(job_payload),
                 "username": self.username,
                 "password": self.token,
             },
