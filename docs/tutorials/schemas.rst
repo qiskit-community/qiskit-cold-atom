@@ -7,7 +7,8 @@ This tutorial outlines the schemas that are sent to, and received from the backe
 They have the following general steps, which we describe in more detail below.
 
 
-1. Obtain the backend configuration through through a ``GET`` request at the endpoint ``get_config``.
+1. Obtain the backend configuration through a ``GET`` request at the endpoint ``get_config``.
+
 2. Post the job to the backend through a ``POST`` request at the endpoint ``post_job`` .
 3. Verify the job status through a ``GET`` request at the endpoint ``get_job_status``.
 4. Obtain the result  through a ``GET`` request at the endpoint ``get_job_result``.
