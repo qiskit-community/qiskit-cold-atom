@@ -3,7 +3,9 @@ Backend communication schemas
 #############################
 
 ``qiskit-cold-atom`` and the backends communicate by exchanging data over a REST API.
-This tutorial outlines the schemas that are sent to, and received from the backend. They have the following general steps, which describe in more detail below:
+This tutorial outlines the schemas that are sent to, and received from the backend. 
+They have the following general steps, which we describe in more detail below.
+
 
 1. Obtain the backend configuration through through a ``GET`` request at the endpoint ``get_config``.
 2. Post the job to the backend through a ``POST`` request at the endpoint ``post_job`` .
