@@ -13,7 +13,8 @@ They have the following general steps, which we describe in more detail below.
 3. Verify the job status through a ``GET`` request at the endpoint ``get_job_status``.
 4. Obtain the result  through a ``GET`` request at the endpoint ``get_job_result``.
 
-We will now discuss each step in more detail.
+We now discuss each step in more detail.
+
 
 Backend configuration
 ~~~~~~~~~~~~~~~~~~~~~
