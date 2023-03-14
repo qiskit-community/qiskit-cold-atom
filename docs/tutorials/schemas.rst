@@ -169,7 +169,9 @@ In the case of the atomic mixtures backend the backend should perform the follow
   The input JSon data should be processed further.
   For instance, by converting it into a suitable ``experiment.py`` file for the control setup and
   running the experiment.
-  The actual implementation of this is left to the backend's discretion. An example of such an implementation is the `qlued <https://github.com/Alqor-UG/qlued>`_ framework.
+  The actual implementation of this is left to the backend's discretion. 
+  An example of such an implementation is the `qlued <https://github.com/Alqor-UG/qlued>`_ framework.
+
 
 The ``response`` of this ``POST`` request is sent back to the user as a Json that includes a ``job_id``.
 This unique identification number is created by the backend for each submitted ``data`` file.
