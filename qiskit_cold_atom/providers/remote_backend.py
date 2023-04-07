@@ -55,7 +55,7 @@ class RemoteBackend(Backend):
                 self.url + "/get_config",
                 params={
                     "username": self.username,
-                    "password": self.token,
+                    "token": self.token,
                 },
             )
         except requests.exceptions.ConnectionError as err:
@@ -112,7 +112,7 @@ class RemoteBackend(Backend):
             json={
                 "job": json.dumps(job_payload),
                 "username": self.username,
-                "password": self.token,
+                "token": self.token,
             },
         )
 

@@ -105,7 +105,7 @@ class ColdAtomProvider(Provider):
                 try:
                     r = requests.get(
                         url + "/get_config",
-                        params={"username": name, "password": token},
+                        params={"username": name, "token": token},
                     )
 
                     backend_type = r.json()["cold_atom_type"]
@@ -173,7 +173,7 @@ class ColdAtomProvider(Provider):
         Args:
             url: The url(s) of the backends(s) to connect to
             username: username of the account
-            token: the password token of the account
+            token: the token of the account
             overwrite: If true, will overwrite any credentials already stored on disk
             filename: Full path to the credentials file. If ``None``, the default
                 location is used (``$HOME/.qiskit/cold_atom_credentials``).
@@ -274,7 +274,7 @@ class ColdAtomProvider(Provider):
         Args:
             url: The url(s) of the backends(s) to connect to
             username: username of the account
-            token: the password token of the account
+            token: the token of the account
 
         Returns:
             A provider instance initialized with the backends available to the account
