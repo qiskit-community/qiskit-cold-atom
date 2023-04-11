@@ -65,7 +65,7 @@ class ColdAtomJob(Job):
                 params={
                     "job_id": self._job_id,
                     "username": self.user,
-                    "password": self.token,
+                    "token": self.token,
                 },
             ).json()
 
@@ -106,7 +106,7 @@ class ColdAtomJob(Job):
             params={
                 "job_id": self.job_id(),
                 "username": self.user,
-                "password": self.token,
+                "token": self.token,
             },
         )
 
@@ -142,11 +142,11 @@ class ColdAtomJob(Job):
         status_payload = {"job_id": self.job_id()}
 
         r = requests.get(
-            self._backend.url + "/get_job_status/",
+            self._backend.url + "/get_job_status",
             params={
                 "json": json.dumps(status_payload),
                 "username": self.user,
-                "password": self.token,
+                "token": self.token,
             },
         )
 
