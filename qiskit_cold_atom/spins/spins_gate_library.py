@@ -412,7 +412,7 @@ class RydbergFull(SpinGate):
         params = [omega, delta, phi]
 
         super().__init__(
-            name="ufull",
+            name="rydberg_full",
             num_modes=num_modes,
             params=params,
             label=label,
