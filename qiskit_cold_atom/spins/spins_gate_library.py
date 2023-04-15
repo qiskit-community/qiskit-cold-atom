@@ -446,8 +446,8 @@ class RydbergFull(SpinGate):
                 for j in range(i+1, self.num_modes):
                     coeff = phi/np.abs(i-j)**6
                     generators.append((f"Z_{i} Z_{j}", coeff))
-                    generators.append((f"Z_{i}", coeff/2))
-                    generators.append((f"Z_{j}", coeff/2))
+                    generators.append((f"Z_{i}", -coeff/2))
+                    generators.append((f"Z_{j}", -coeff/2))
        
         if not generators:
             return SpinOp("I_0", register_length=self.num_modes)
