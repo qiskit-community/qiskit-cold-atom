@@ -100,7 +100,7 @@ class SpinCircuitSolver(BaseCircuitSolver):
         embedded_op_list = []
         for label, factor in operator.to_list():
             old_labels = label.split()
-            new_labels = [term[:2] + str(qargs[int(term[2])]) for term in old_labels]
+            new_labels = [term[:2] + str(qargs[int(term[2])]) + term[3:] for term in old_labels]
             embedded_op_list.append((" ".join(map(str, new_labels)), factor))
 
         return SpinOp(embedded_op_list, spin=self.spin, register_length=num_wires)
