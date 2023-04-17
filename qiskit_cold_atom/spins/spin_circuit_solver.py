@@ -94,7 +94,7 @@ class SpinCircuitSolver(BaseCircuitSolver):
 
         if operator.register_length != len(qargs):
             raise QiskitColdAtomError(
-                f"length of operator {operator.register_length} does not match qargs {qargs} of the gates"
+                f"operator size {operator.register_length} does not match qargs {qargs} of the gates."
             )
 
         embedded_op_list = []
