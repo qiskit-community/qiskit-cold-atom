@@ -94,13 +94,13 @@ class SpinCircuitSolver(BaseCircuitSolver):
 
         if operator.register_length != len(qargs):
             raise QiskitColdAtomError(
-                f"length of operator {operator.register_length} does not match qargs {qargs} of the gates"
+                f"operator size {operator.register_length} does not match qargs {qargs} of the gates."
             )
 
         embedded_op_list = []
         for label, factor in operator.to_list():
             old_labels = label.split()
-            new_labels = [term[:2] + str(qargs[int(term[2])]) for term in old_labels]
+            new_labels = [term[:2] + str(qargs[int(term[2])]) + term[3:] for term in old_labels]
             embedded_op_list.append((" ".join(map(str, new_labels)), factor))
 
         return SpinOp(embedded_op_list, spin=self.spin, register_length=num_wires)
@@ -179,7 +179,7 @@ class SpinCircuitSolver(BaseCircuitSolver):
         for meas_idx in meas_results:
             digits = [0] * num_wires
             for i in range(num_wires):
-                digits[-i] = meas_idx % base
+                digits[i] = meas_idx % base
                 meas_idx //= base
 
             outcome_memory.append(" ".join(map(str, digits)))
