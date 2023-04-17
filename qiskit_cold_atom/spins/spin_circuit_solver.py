@@ -179,7 +179,7 @@ class SpinCircuitSolver(BaseCircuitSolver):
         for meas_idx in meas_results:
             digits = [0] * num_wires
             for i in range(num_wires):
-                digits[-i] = meas_idx % base
+                digits[i] = meas_idx % base
                 meas_idx //= base
 
             outcome_memory.append(" ".join(map(str, digits)))
