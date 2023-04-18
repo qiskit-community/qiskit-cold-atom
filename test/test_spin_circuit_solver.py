@@ -26,7 +26,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
     def setUp(self):
         super().setUp()
-        # Setup the simulator
+        # Set up the simulator
         self.solver = SpinCircuitSolver(spin=3 / 2)
 
     def test_spin_solver_initialization(self):
