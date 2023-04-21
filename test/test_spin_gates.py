@@ -26,6 +26,8 @@ from qiskit_cold_atom.spins.spins_gate_library import (
     RLZGate,
     RLZ2Gate,
     RLXLYGate,
+    RydbergBlockade,
+    RydbergFull,
 )
 
 
@@ -175,6 +177,35 @@ class TestSpinGates(QiskitTestCase):
                             ]
                         )
                         ** 2
+                    ),
+                )
+            )
+
+    def test_rydberg_block_gate(self):
+        """check matrix form of the rydberg blockade gate on two qubits"""
+        chi = 2 * np.pi
+        circ = QuantumCircuit(2)
+        circ.append(RydbergBlockade(2, phi=chi), qargs=[0, 1])
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_block(chi, [0, 1])
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    np.exp(1j * np.pi / 2)
+                    * expm(
+                        -1j
+                        * chi
+                        * np.array(
+                            [
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 1],
+                            ]
+                        )
                     ),
                 )
             )
