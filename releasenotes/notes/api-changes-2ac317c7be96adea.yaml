@@ -1,0 +1,7 @@
+---
+upgrade:
+  - |
+    The API for a Cold Atom Job now takes a token instead of a password. Furthermore,
+    get requests are no-longer done with an entry under json in the request params
+    but are instead done using a job_id entry. Post requests are now done with
+    the structure json={"job": ..., ...} instead of data={"json": ..., ...}.
