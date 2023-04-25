@@ -383,7 +383,7 @@ class RydbergFull(SpinGate):
     + \Delta \sum_i \sigma_{z,i}
     + \phi \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
 
-    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin, 
+    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin,
     :math:`\Omega` are the Rabi couplings, :math:`\phi` is the interaction strength and
     :math:`\Delta` are the detunings.
 
