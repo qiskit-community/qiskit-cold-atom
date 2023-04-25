@@ -3,7 +3,7 @@ stestr
 Sphinx>=3.0.0
 pylint==2.7.1
 reno>=3.2.0
-qiskit-sphinx-theme>=1.6
+qiskit-sphinx-theme>=1.6, <=1.10.3
 sphinx-autodoc-typehints
 sphinx-panels
 sphinx-tabs
