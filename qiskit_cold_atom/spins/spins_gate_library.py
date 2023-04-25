@@ -381,10 +381,9 @@ class RydbergFull(SpinGate):
 
     :math:` \hat{H}_{ryd} = \Omega \sum_i \sigma_{x,i}
     + \Delta \sum_i \sigma_{z,i}
-    + V \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
+    + \phi \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
 
-    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin, :math:`L` gives the total number
-    of sites, :math:`\Omega` are the Rabi couplings, :math:`V` is the interaction strength and
+    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin, :math:`\Omega` are the Rabi couplings, :math:`\phi` is the interaction strength and
     :math:`\Delta` are the detunings.
 
     **Circuit symbol:**
@@ -476,8 +475,7 @@ class RydbergBlockade(SpinGate):
 
     :math:`\hat{H}_{block} =  \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
 
-    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin, :math:`L` gives the total number
-    of sites and :math:`U` is the interaction strength.
+    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin.
 
     **Circuit symbol:**
 

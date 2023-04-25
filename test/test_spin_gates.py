@@ -211,7 +211,7 @@ class TestSpinGates(QiskitTestCase):
             )
 
     def test_rydberg_full_gate(self):
-        """check matrix form of the rydberg blockade Hamiltonian on two qubits"""
+        """check matrix form of the full rydberg Hamiltonian on two qubits"""
         chi = 2 * np.pi
         circ = QuantumCircuit(2)
         circ.append(RydbergFull(2, omega=0, delta=0, phi=chi), qargs=[0, 1])
@@ -233,6 +233,58 @@ class TestSpinGates(QiskitTestCase):
                                 [0, 0, 0, 0],
                                 [0, 0, 0, 0],
                                 [0, 0, 0, 1],
+                            ]
+                        )
+                    ),
+                )
+            )
+        
+        # also test the sigma gates
+        circ = QuantumCircuit(2)
+        circ.append(RydbergFull(2, omega=np.pi, delta=0, phi=0), qargs=[0, 1])
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_full(omega=np.pi, delta=0, phi=0, modes=range(2))
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    expm(
+                        -1j
+                        * np.pi/2
+                        * np.array(
+                            [
+                                [0, 1, 1, 0],
+                                [1, 0, 0, 1],
+                                [1, 0, 0, 1],
+                                [0, 1, 1, 0],
+                            ]
+                        )
+                    ),
+                )
+            )
+
+        # also test the sigmaz gates
+        circ = QuantumCircuit(2)
+        circ.append(RydbergFull(2, omega=0, delta=np.pi, phi=0), qargs=[0, 1])
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_full(omega=0, delta=np.pi, phi=0, modes=range(2))
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    expm(
+                        -1j
+                        * np.pi/2
+                        * np.array(
+                            [
+                                [-2, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 2],
                             ]
                         )
                     ),
