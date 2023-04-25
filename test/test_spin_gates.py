@@ -238,7 +238,7 @@ class TestSpinGates(QiskitTestCase):
                     ),
                 )
             )
-        
+
         # also test the sigma gates
         circ = QuantumCircuit(2)
         circ.append(RydbergFull(2, omega=np.pi, delta=0, phi=0), qargs=[0, 1])
@@ -252,7 +252,8 @@ class TestSpinGates(QiskitTestCase):
                     unitary,
                     expm(
                         -1j
-                        * np.pi/2
+                        * np.pi
+                        / 2
                         * np.array(
                             [
                                 [0, 1, 1, 0],
@@ -278,7 +279,8 @@ class TestSpinGates(QiskitTestCase):
                     unitary,
                     expm(
                         -1j
-                        * np.pi/2
+                        * np.pi
+                        / 2
                         * np.array(
                             [
                                 [-2, 0, 0, 0],
