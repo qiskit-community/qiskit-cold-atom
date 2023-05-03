@@ -385,7 +385,8 @@ class RydbergFull(SpinGate):
 
     where :math:`i` indexes the mode, :math:`\sigma` indexes the spin,
     :math:`\Omega` are the Rabi couplings, :math:`\phi` is the interaction strength and
-    :math:`\Delta` are the detunings.
+    :math:`\Delta` are the detunings. The form of the third part of the Hamiltonian
+    implies that the atoms are arranged in a regularly spaced 1D chain.
 
     **Circuit symbol:**
 
@@ -476,7 +477,8 @@ class RydbergBlockade(SpinGate):
 
     :math:`\hat{H}_{block} =  \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
 
-    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin.
+    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin. The form of the Hamiltonian
+    implies that the atoms are arranged in a regularly spaced 1D chain.
 
     **Circuit symbol:**
 
