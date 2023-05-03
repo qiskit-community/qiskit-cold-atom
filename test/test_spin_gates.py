@@ -18,7 +18,6 @@ from scipy.linalg import expm
 from qiskit.test import QiskitTestCase
 from qiskit import QuantumCircuit
 from qiskit_nature.operators.second_quantization import SpinOp
-from qiskit.quantum_info import Operator
 
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins import SpinSimulator
@@ -201,7 +200,10 @@ class TestSpinGates(QiskitTestCase):
             )
         )
         # first test the RydbergBlockade only
-        self.assertTrue(np.allclose(Operator(RydbergBlockade(2, phi=chi)).data, expected))
+        with self.subTest("test generation of operator"):
+            from qiskit.quantum_info import Operator
+
+            self.assertTrue(np.allclose(Operator(RydbergBlockade(2, phi=chi)).data, expected))
 
         # add gate to circuit via the @add_gate-decorated method
         circ_decorated = QuantumCircuit(2)
