@@ -4,4 +4,4 @@ fixes:
     Fix incorrect parsing of spin operators in SpinCircuitSolver._embed_operator: 
     The previous implementation of this method was not able to handle gates where the generator 
     included terms that had a different number of non-identity operators.
-    The new implementation of this method is able to handle the more general case as well.
+    The new implementation of this method is able to handle the more general case as well. 
