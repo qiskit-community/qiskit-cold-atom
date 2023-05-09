@@ -26,7 +26,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
     def setUp(self):
         super().setUp()
-        # Setup the simulator
+        # Set up the simulator
         self.solver = SpinCircuitSolver(spin=3 / 2)
 
     def test_spin_solver_initialization(self):
@@ -44,7 +44,8 @@ class TestSpinCircuitSolver(QiskitTestCase):
     def test_embed_operator(self):
         """test embedding of an operator"""
         fer_op = FermionicOp("+-")
-        spin_op = SpinOp("+-")
+        # define a spin operator that has terms with different prefactors, support and power
+        spin_op = SpinOp("+-") + 2 * SpinOp("X_0^2", register_length=2)
         num_wires = 4
         qargs = [1, 3]
         qargs_wrong = [0, 1, 3]
@@ -59,7 +60,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
         with self.subTest("operator embedding"):
             embedded_op = self.solver._embed_operator(spin_op, num_wires, qargs)
-            target_op = SpinOp("+_1 -_3", spin=3 / 2, register_length=4)
+            target_op = SpinOp([("+_1 -_3", 1.0), ("X_1^2", 2.0)], spin=3 / 2, register_length=4)
             self.assertTrue(
                 set(embedded_op.simplify().to_list()) == set(target_op.simplify().to_list())
             )
@@ -72,26 +73,30 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
     def test_draw_shots(self):
         """test drawing of the shots from a measurement distribution"""
-        circ = QuantumCircuit(2)
+        n_spins = 5
+        circ = QuantumCircuit(n_spins)
+        circ.rly(np.pi / 2, [3])
         self.solver.preprocess_circuit(circ)
+        dim = int((2 * self.solver.spin + 1) ** n_spins)
 
         with self.subTest("check missing shot number"):
             # error because the number of shots is not specified
             with self.assertRaises(QiskitColdAtomError):
-                self.solver.draw_shots(np.ones(16) / 16)
+                self.solver.draw_shots(np.ones(dim) / dim)
 
-        self.solver.shots = 5
+        self.solver.shots = 3
 
         with self.subTest("check match of dimensions"):
             # error because there is a mismatch in the dimension
             with self.assertRaises(QiskitColdAtomError):
-                self.solver.draw_shots(np.ones(15) / 15)
+                self.solver.draw_shots(np.ones(dim - 1) / (dim - 1))
 
         with self.subTest("formatting of measurement outcomes"):
-
+            meas_distr = np.abs(self.solver(circ)["statevector"]) ** 2
             self.solver.seed = 45
-            outcomes = self.solver.draw_shots(np.ones(16) / 16)
-            self.assertEqual(outcomes, ["3 3", "0 2", "0 1", "1 0", "3 1"])
+            outcomes = self.solver.draw_shots(meas_distr)
+            # Note the second index changing with the gate being applied to wire [3] of 5
+            self.assertEqual(outcomes, ["0 3 0 0 0", "0 2 0 0 0", "0 1 0 0 0"])
 
     def test_to_operators(self):
         """test the to_operators method inherited form BaseCircuitSolver"""
