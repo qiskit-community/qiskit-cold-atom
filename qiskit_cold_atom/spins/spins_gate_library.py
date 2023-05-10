@@ -371,3 +371,169 @@ class LoadSpins(Instruction):
 def load_spins(self, num_atoms: int, wire: int):
     """Add the load spin gate to a QuantumCircuit."""
     return self.append(LoadSpins(num_atoms), [wire], [])
+
+
+class RydbergFull(SpinGate):
+    r"""
+    Global 1D-Rydberg dynamic consisting of the detuning, Rabi coupling and Rydberg blockade.
+
+    The generating Hamiltonian of the Rydberg dynamcis is
+
+    :math:` \hat{H}_{ryd} = \Omega \sum_i \sigma_{x,i}
+    + \Delta \sum_i \sigma_{z,i}
+    + \phi \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
+
+    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin,
+    :math:`\Omega` are the Rabi couplings, :math:`\phi` is the interaction strength and
+    :math:`\Delta` are the detunings. The form of the third part of the Hamiltonian
+    implies that the atoms are arranged in a regularly spaced 1D chain.
+
+    **Circuit symbol:**
+
+        .. parsed-literal::
+
+                 ┌────────────────┐
+            q_0: ┤   RydbergFull  ├
+                 └────────────────┘
+
+    """
+
+    def __init__(self, num_modes: int, omega: float, delta: float, phi: float, label=None):
+        """Initialize a global Rydberg gate
+
+        Args:
+            num_modes: number of tweezers on which the operator acts, must be entire quantum register
+            omega: global strength of the Rabi coupling on each site.
+            delta: global detuning
+            phi: global interaction strength
+            label: optional
+        """
+
+        params = [omega, delta, phi]
+
+        super().__init__(
+            name="rydberg_full",
+            num_modes=num_modes,
+            params=params,
+            label=label,
+        )
+
+    def inverse(self):
+        """Get the inverse gate by reversing the sign of all gate parameters"""
+        omega_val, delta_val, phi_val = self.params[0], self.params[1], self.params[2]
+
+        return RydbergFull(
+            num_modes=self.num_modes, omega=-omega_val, delta=-delta_val, phi=-phi_val
+        )
+
+    @property
+    def generator(self) -> SpinOp:
+        """The generating Hamiltonian of the Rydberg Hamiltonian."""
+        params = [float(param) for param in self.params]
+        omega, delta, phi = params[0], params[1], params[2]
+        generators = []
+
+        # add generators of Rabi coupling
+        if omega != 0.0:
+            for i in range(self.num_modes):
+                generators.append((f"X_{i}", omega))
+        # add generators of detuning
+        if delta != 0.0:
+            for i in range(self.num_modes):
+                generators.append((f"Z_{i}", delta))
+
+        # add generators of interaction term
+        if phi != 0.0:
+            for i in range(self.num_modes):
+                for j in range(i + 1, self.num_modes):
+                    coeff = phi / np.abs(i - j) ** 6
+                    generators.append((f"Z_{i} Z_{j}", coeff))
+                    generators.append((f"Z_{i}", -coeff / 2))
+                    generators.append((f"Z_{j}", -coeff / 2))
+
+        if not generators:
+            return SpinOp("I_0", register_length=self.num_modes)
+        else:
+            return sum(
+                coeff * SpinOp(label, register_length=self.num_modes) for label, coeff in generators
+            )
+
+
+# pylint: disable=invalid-name
+@add_gate
+def rydberg_full(self, omega: float, delta: float, phi: float, modes: List[int], label=None):
+    """Add the combined Rydberg Gate gate to a QuantumCircuit."""
+    return self.append(
+        RydbergFull(num_modes=len(modes), omega=omega, delta=delta, phi=phi, label=label),
+        qargs=modes,
+    )
+
+
+class RydbergBlockade(SpinGate):
+    r"""
+    Global 1D-Rydberg blockade.
+
+    The generating Hamiltonian of the Rydberg blockade is
+
+    :math:`\hat{H}_{block} =  \sum_{i\neq j} \frac{\hat{n}_i \hat{n}_j}{|i-j|^6}`
+
+    where :math:`i` indexes the mode, :math:`\sigma` indexes the spin. The form of the Hamiltonian
+    implies that the atoms are arranged in a regularly spaced 1D chain.
+
+    **Circuit symbol:**
+
+        .. parsed-literal::
+
+                 ┌────────────────────┐
+            q_0: ┤   RydbergBlockade  ├
+                 └────────────────────┘
+
+    """
+
+    def __init__(self, num_modes: int, phi: float, label=None):
+        """Initialize a global Rydberg gate
+
+        Args:
+            num_modes: number of tweezers on which the operator acts, must be entire quantum register
+            phi: global interaction strength
+            label: optional
+        """
+        super().__init__(
+            name="rydberg_blockade",
+            num_modes=num_modes,
+            params=[phi],
+            label=label,
+        )
+
+    def inverse(self):
+        """Get the inverse gate by reversing the sign of all gate parameters"""
+        return RydbergBlockade(num_modes=self.num_modes, phi=-self.params[0])
+
+    @property
+    def generator(self) -> SpinOp:
+        """The generating Hamiltonian of the Rydberg Blockade Hamiltonian."""
+        phi = float(self.params[0])
+        generators = []
+
+        # add generators of interaction term
+        if phi != 0.0:
+            for i in range(self.num_modes):
+                for j in range(i + 1, self.num_modes):
+                    coeff = phi / np.abs(i - j) ** 6
+                    generators.append((f"Z_{i} Z_{j}", coeff))
+                    generators.append((f"Z_{i}", -coeff / 2))
+                    generators.append((f"Z_{j}", -coeff / 2))
+
+        if not generators:
+            return SpinOp("I_0", register_length=self.num_modes)
+        else:
+            return sum(
+                coeff * SpinOp(label, register_length=self.num_modes) for label, coeff in generators
+            )
+
+
+# pylint: disable=invalid-name
+@add_gate
+def rydberg_block(self, phi: float, modes: List[int], label=None):
+    """Add the  Rydberg Blockade gate to a QuantumCircuit."""
+    return self.append(RydbergBlockade(num_modes=len(modes), phi=phi, label=label), qargs=modes)

@@ -18,6 +18,7 @@ from scipy.linalg import expm
 from qiskit.test import QiskitTestCase
 from qiskit import QuantumCircuit
 from qiskit_nature.operators.second_quantization import SpinOp
+
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins import SpinSimulator
 from qiskit_cold_atom.spins.spins_gate_library import (
@@ -26,6 +27,8 @@ from qiskit_cold_atom.spins.spins_gate_library import (
     RLZGate,
     RLZ2Gate,
     RLXLYGate,
+    RydbergBlockade,
+    RydbergFull,
 )
 
 
@@ -175,6 +178,119 @@ class TestSpinGates(QiskitTestCase):
                             ]
                         )
                         ** 2
+                    ),
+                )
+            )
+
+    def test_rydberg_block_gate(self):
+        """check matrix form of the rydberg blockade gate on two qubits"""
+        chi = 2 * np.pi
+
+        # the expected unitary is the following
+        expected = np.exp(1j * np.pi / 2) * expm(
+            -1j
+            * chi
+            * np.array(
+                [
+                    [0, 0, 0, 0],
+                    [0, 0, 0, 0],
+                    [0, 0, 0, 0],
+                    [0, 0, 0, 1],
+                ]
+            )
+        )
+        # first test the RydbergBlockade only
+        with self.subTest("test generation of operator"):
+            from qiskit.quantum_info import Operator
+
+            self.assertTrue(np.allclose(Operator(RydbergBlockade(2, phi=chi)).data, expected))
+
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_block(chi, [0, 1])
+        unitary = self.backend.run(circ_decorated).result().get_unitary()
+        self.assertTrue(np.allclose(unitary, expected))
+
+    def test_rydberg_full_gate(self):
+        """check matrix form of the full rydberg Hamiltonian on two qubits"""
+        chi = 2 * np.pi
+        circ = QuantumCircuit(2)
+        circ.append(RydbergFull(2, omega=0, delta=0, phi=chi), qargs=[0, 1])
+
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_full(omega=0, delta=0, phi=chi, modes=range(2))
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    np.exp(1j * np.pi / 2)
+                    * expm(
+                        -1j
+                        * chi
+                        * np.array(
+                            [
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 1],
+                            ]
+                        )
+                    ),
+                )
+            )
+
+        # also test the sigma gates
+        circ = QuantumCircuit(2)
+        circ.append(RydbergFull(2, omega=np.pi, delta=0, phi=0), qargs=[0, 1])
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_full(omega=np.pi, delta=0, phi=0, modes=range(2))
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    expm(
+                        -1j
+                        * np.pi
+                        / 2
+                        * np.array(
+                            [
+                                [0, 1, 1, 0],
+                                [1, 0, 0, 1],
+                                [1, 0, 0, 1],
+                                [0, 1, 1, 0],
+                            ]
+                        )
+                    ),
+                )
+            )
+
+        # also test the sigmaz gates
+        circ = QuantumCircuit(2)
+        circ.append(RydbergFull(2, omega=0, delta=np.pi, phi=0), qargs=[0, 1])
+        # add gate to circuit via the @add_gate-decorated method
+        circ_decorated = QuantumCircuit(2)
+        circ_decorated.rydberg_full(omega=0, delta=np.pi, phi=0, modes=range(2))
+        for circuit in [circ, circ_decorated]:
+            unitary = self.backend.run(circuit).result().get_unitary()
+            self.assertTrue(
+                np.allclose(
+                    unitary,
+                    expm(
+                        -1j
+                        * np.pi
+                        / 2
+                        * np.array(
+                            [
+                                [-2, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 0],
+                                [0, 0, 0, 2],
+                            ]
+                        )
                     ),
                 )
             )

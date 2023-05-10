@@ -1,0 +1,5 @@
+---
+features:
+  - |
+    Added gates that are necessary for circuits based on Rydberg atoms together
+    with a tutorial that highlights how they might be used.
