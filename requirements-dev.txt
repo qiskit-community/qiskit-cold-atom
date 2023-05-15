@@ -1,9 +1,9 @@
 black~=22.0
 stestr
-Sphinx>=3.0.0, <=6.2.1
+Sphinx>=5.0.0, <=6.2.1
 pylint==2.7.1
 reno>=3.2.0
-qiskit-sphinx-theme>=1.6, <=1.10.3
+qiskit-sphinx-theme~=1.11.1
 sphinx-autodoc-typehints
 sphinx-panels
 sphinx-tabs
@@ -11,4 +11,3 @@ jupyter
 jupyter-sphinx
 nbsphinx
 pylatexenc
-
