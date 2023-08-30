@@ -63,7 +63,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
         self.solver2.preprocess_circuit(circ)
         init_state = self.solver2.get_initial_state(circ)
         target = np.array([0, 0, 1, 0])
-        self.assertTrue(np.alltrue(init_state.toarray().T == target))
+        self.assertTrue(np.all(init_state.toarray().T == target))
 
     def test_embed_operator(self):
         """test embedding of an operator"""
@@ -149,7 +149,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
                 ]
             )
             test_op = self.solver2.operator_to_mat(Hop(num_modes=4, j=[0.5]).generator)
-            self.assertTrue(np.alltrue(test_op.toarray() == target))
+            self.assertTrue(np.all(test_op.toarray() == target))
 
     def test_draw_shots(self):
         """test drawing of the shots from a measurement distribution"""
@@ -171,7 +171,6 @@ class TestFermionCircuitSolver(QiskitTestCase):
                 self.solver2.draw_shots(np.ones(3) / 3)
 
         with self.subTest("formatting of measurement outcomes"):
-
             self.solver2.seed = 40
             outcomes = self.solver2.draw_shots(np.ones(4) / 4)
             self.assertEqual(outcomes, ["0110", "0101", "1010", "0110", "0110"])

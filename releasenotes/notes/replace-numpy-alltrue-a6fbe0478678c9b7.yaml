@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    Replaced usage of `numpy.alltrue` with `numpy.all` throughout the codebase, 
+    to be specific in: `test/test_fermion_circuit_solver.py`, `test/test_spin_circuit_solver.py`

@@ -39,7 +39,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
         circ = QuantumCircuit(1)
         init_state = self.solver.get_initial_state(circ)
         target = np.array([1, 0, 0, 0])
-        self.assertTrue(np.alltrue(init_state.toarray().T == target))
+        self.assertTrue(np.all(init_state.toarray().T == target))
 
     def test_embed_operator(self):
         """test embedding of an operator"""
