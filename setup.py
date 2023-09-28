@@ -31,7 +31,7 @@ setuptools.setup(
     description="Integration of cold atomic experiments into the Qiskit SDK.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/Qiskit-Extensions/qiskit-cold-atom",
+    url="https://github.com/qiskit-community/qiskit-cold-atom",
     author="Qiskit cold atom development team",
     license="Apache 2.0",
     classifiers=[
@@ -50,9 +50,7 @@ setuptools.setup(
         "Topic :: Scientific/Engineering",
     ],
     keywords="qiskit sdk quantum cold atoms",
-    packages=setuptools.find_packages(
-        include=["qiskit_cold_atom", "qiskit_cold_atom.*"]
-    ),
+    packages=setuptools.find_packages(include=["qiskit_cold_atom", "qiskit_cold_atom.*"]),
     install_requires=REQUIREMENTS,
     include_package_data=True,
     python_requires=">=3.6",
