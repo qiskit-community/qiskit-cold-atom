@@ -1,0 +1,4 @@
+---
+upgrade:
+  - |
+    Support for running with Python 3.6 and 3.7 has been removed. The new requirements for Python versions are from version 3.8 to 3.11.
