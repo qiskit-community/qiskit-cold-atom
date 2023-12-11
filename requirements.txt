@@ -2,6 +2,6 @@ numpy>=1.17
 scipy>=1.4
 requests>=2.25.1
 qiskit-terra>= 0.17.1
-qiskit-nature>=0.4.4
+qiskit-nature>=0.4.4,<=0.6.2
 qiskit-aer>=0.8.0
 matplotlib>=3.3
