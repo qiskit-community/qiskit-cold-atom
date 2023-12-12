@@ -1,0 +1,26 @@
+{
+    "version": 1,
+    "project": "qiskit-cold-atom",
+    "project_url": "https://github.com/qiskit-community/qiskit-cold-atom",
+    "repo": ".",
+    "branches": [
+        "ffsim"
+    ],
+    "environment_type": "virtualenv",
+    "show_commit_url": "http://github.com/qiskit-community/qiskit-cold-atom/commit/",
+    "pythons": [
+        "3.10"
+    ],
+    "matrix": {
+        "env_nobuild": {
+            "RAYON_NUM_THREADS": "1",
+            "OMP_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "MKL_NUM_THREADS": "1"
+        }
+    },
+    "default_benchmark_timeout": 5000,
+    "env_dir": ".asv/env",
+    "results_dir": ".asv/results",
+    "html_dir": ".asv/html"
+}
