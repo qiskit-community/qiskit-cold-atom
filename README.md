@@ -24,7 +24,7 @@ pip install -e .
 ```
 To use the repository you can also install using either
 ```bash
-pip install git+https://github.com/Qiskit-Extensions/qiskit-cold-atom.git
+pip install git+https://github.com/qiskit-community/qiskit-cold-atom.git
 ```
 or Pypi
 ```bash
@@ -66,7 +66,7 @@ To see how to define and run gates through quantum circuits in this setting, ple
 
 ## Documentation
 
-The documentation can be found as Github pages here [https://qiskit-extensions.github.io/qiskit-cold-atom/](https://qiskit-extensions.github.io/qiskit-cold-atom/).
+The documentation can be found as Github pages here [https://qiskit-community.github.io/qiskit-cold-atom/](https://qiskit-community.github.io/qiskit-cold-atom/).
 To build the API reference locally, run:
 
 ```bash
