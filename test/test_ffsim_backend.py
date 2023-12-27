@@ -68,13 +68,30 @@ class TestFfsimBackend:
         # test acting on subset of orbitals
         qc = sim_backend.initialize_circuit(occupations)
         orbs = rng.choice(np.arange(norb), norb - 1, replace=False)
-        # TODO remove sorting after adding support for out-of-order orbitals
-        orbs = np.sort(orbs)
         qubits = np.concatenate([orbs, orbs + norb])
         qc.append(Hop(2 * (norb - 1), hopping[: norb - 2]), list(qubits))
         job = sim_backend.run(qc, num_species=2)
         expected_vec = job.result().get_statevector()
         job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+    def test_hop_gate_sign(self):
+        norb = 4
+
+        occupations = [[1, 0, 1, 0], [1, 0, 1, 0]]
+        hopping = [1.0]
+
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        qc = sim_backend.initialize_circuit(occupations)
+        orbs = np.array([1, 0])
+        qubits = np.concatenate([orbs, orbs + norb])
+        qc.append(Hop(4, hopping), list(qubits))
+        job = sim_backend.run(qc, shots=10, seed=1234, num_species=2)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc, shots=10, seed=1234)
         ffsim_vec = job.result().get_statevector()
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 

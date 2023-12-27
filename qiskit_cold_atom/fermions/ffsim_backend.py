@@ -219,8 +219,6 @@ def _simulate_ffsim(circuit: QuantumCircuit, shots: int | None = None, seed=None
         op, qubits, _ = instruction.operation, instruction.qubits, instruction.clbits
         if isinstance(op, Hop):
             orbs = [qubit_indices[q] for q in qubits]
-            # TODO don't require orbitals to be sorted
-            assert orbs == sorted(orbs)
             spatial_orbs = _get_spatial_orbitals(orbs, norb)
             vec = _simulate_hop(
                 vec, np.array(op.params), spatial_orbs, norb=norb, nelec=nelec, copy=False
@@ -299,6 +297,8 @@ def _simulate_hop(
     mat = np.zeros((norb, norb))
     for i, val in zip(range(len(target_orbs) - 1), coeffs):
         j, k = target_orbs[i], target_orbs[i + 1]
+        if j < k:
+            val = -val
         mat[j, k] = -val
         mat[k, j] = -val
     coeffs, orbital_rotation = scipy.linalg.eigh(mat)
