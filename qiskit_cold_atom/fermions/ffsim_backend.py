@@ -27,10 +27,13 @@ from qiskit.providers import Options
 from qiskit.providers.models import BackendConfiguration
 from qiskit.result import Result
 from qiskit_aer import AerJob
+from qiskit_nature.operators.second_quantization import FermionicOp
+from scipy.sparse.linalg import expm_multiply
 
 from qiskit_cold_atom.circuit_tools import CircuitTools
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
 from qiskit_cold_atom.fermions.fermion_gate_library import (
+    FermionicGate,
     Hop,
     Interaction,
     LoadFermions,
@@ -236,6 +239,16 @@ def _simulate_ffsim(circuit: QuantumCircuit, shots: int | None = None, seed=None
             vec = _simulate_phase(
                 vec, np.array(op.params), spatial_orbs, norb=norb, nelec=nelec, copy=False
             )
+        elif isinstance(op, FermionicGate):
+            orbs = [qubit_indices[q] for q in qubits]
+            spatial_orbs = _get_spatial_orbitals(orbs, norb)
+            ferm_op = _fermionic_op_to_fermion_operator(op.generator, spatial_orbs)
+            linop = ffsim.linear_operator(ferm_op, norb, nelec)
+            # TODO use ferm_op.values once it's available
+            scale = sum(abs(ferm_op[k]) for k in ferm_op)
+            vec = expm_multiply(-1j * linop, vec, traceA=scale)
+            # TODO remove this
+            np.testing.assert_allclose(np.linalg.norm(vec), 1.0)
 
     result = {"statevector": vec}
 
@@ -267,12 +280,10 @@ def _get_initial_occupations(circuit: QuantumCircuit):
                         "already been operated on."
                     )
                 spin, orb = divmod(circuit.qubits.index(q), norb)
-                occupations[spin].add(orb)
+                # reverse index due to qiskit convention
+                occupations[spin].add(norb - 1 - orb)
         else:
             active_qubits |= set(instruction.qubits)
-    # reverse orbitals due to qiskit convention
-    occ_a = [norb - 1 - orb for orb in occ_a]
-    occ_b = [norb - 1 - orb for orb in occ_b]
     return tuple(occ_a), tuple(occ_b)
 
 
@@ -341,3 +352,19 @@ def _simulate_phase(
     return ffsim.apply_num_op_sum_evolution(
         vec, coeffs, time=1.0, norb=norb, nelec=nelec, copy=copy
     )
+
+
+def _fermionic_op_to_fermion_operator(
+    op: FermionicOp, target_orbs: list[int]
+) -> ffsim.FermionOperator:
+    """Convert a Qiskit Nature FermionicOp to an ffsim FermionOperator."""
+    norb_small = len(target_orbs)
+    coeffs = {}
+    for term, coeff in op.terms():
+        fermion_actions = []
+        for action_str, index in term:
+            action = action_str == "+"
+            spin, orb = divmod(index, norb_small)
+            fermion_actions.append((action, bool(spin), target_orbs[orb]))
+        coeffs[tuple(fermion_actions)] = coeff
+    return ffsim.FermionOperator(coeffs)

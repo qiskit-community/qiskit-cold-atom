@@ -16,7 +16,13 @@ import math
 
 import numpy as np
 
-from qiskit_cold_atom.fermions import FermionSimulator, Hop, Interaction, Phase
+from qiskit_cold_atom.fermions import (
+    FermiHubbard,
+    FermionSimulator,
+    Hop,
+    Interaction,
+    Phase,
+)
 from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
 
 
@@ -148,6 +154,62 @@ class TestFfsimBackend:
         orbs = rng.choice(np.arange(norb), norb - 1, replace=False)
         qubits = np.concatenate([orbs, orbs + norb])
         qc.append(Phase(2 * (norb - 1), mu[: norb - 1]), list(qubits))
+        job = sim_backend.run(qc, num_species=2)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+    def test_fermi_hubbard_gate(self):
+        norb = 5
+        nelec = (3, 2)
+
+        rng = np.random.default_rng()
+        occupations = _random_occupations(norb, nelec, seed=rng)
+        hopping = rng.standard_normal(norb - 1)
+        interaction = rng.standard_normal()
+        mu = rng.standard_normal(norb)
+
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb)))
+        job = sim_backend.run(qc, num_species=2)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+        # test acting on subset of orbitals
+        qc = sim_backend.initialize_circuit(occupations)
+        orbs = rng.choice(np.arange(norb), norb - 1, replace=False)
+        # TODO remove this after adding support for unsorted orbitals
+        orbs.sort()
+        qubits = np.concatenate([orbs, orbs + norb])
+        qc.append(
+            FermiHubbard(2 * (norb - 1), hopping[: norb - 2], interaction, mu[: norb - 1]),
+            list(qubits),
+        )
+        job = sim_backend.run(qc, num_species=2)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+    def test_fermi_hubbard_gate_simple(self):
+        norb = 4
+
+        occupations = [[1, 1, 0, 0], [1, 1, 0, 0]]
+        hopping = np.arange(norb - 1)
+        interaction = 1.0
+        mu = np.arange(norb)
+
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb)))
         job = sim_backend.run(qc, num_species=2)
         expected_vec = job.result().get_statevector()
         job = ffsim_backend.run(qc)

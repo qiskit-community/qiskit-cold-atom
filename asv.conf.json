@@ -19,7 +19,7 @@
             "MKL_NUM_THREADS": "1"
         }
     },
-    "default_benchmark_timeout": 5000,
+    "default_benchmark_timeout": 10000,
     "env_dir": ".asv/env",
     "results_dir": ".asv/results",
     "html_dir": ".asv/html"

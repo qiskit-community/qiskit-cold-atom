@@ -14,7 +14,13 @@ import ffsim
 import numpy as np
 from asv_runner.benchmarks.mark import skip_for_params
 
-from qiskit_cold_atom.fermions import FermionSimulator, Hop, Interaction, Phase
+from qiskit_cold_atom.fermions import (
+    FermiHubbard,
+    FermionSimulator,
+    Hop,
+    Interaction,
+    Phase,
+)
 from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
 
 FERMION_SIMULATOR_CONFIG = {
@@ -74,13 +80,29 @@ class FfsimBackendBenchmark:
             self.circuit.append(Phase(2 * norb, mu), list(range(2 * norb)))
         self.circuit.measure_all()
 
+        self.circuit_fh = self.fermion_simulator_backend.initialize_circuit(occupations)
+        for hopping, interaction, mu in zip(hopping_coeffs, interaction_coeffs, phase_coeffs):
+            self.circuit_fh.append(
+                FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb))
+            )
+        self.circuit_fh.measure_all()
+
         ffsim.init_cache(self.norb, self.nelec)
 
-    @skip_for_params([(8, 0.5), (12, 0.25), (12, 0.5), (16, 0.25), (16, 0.5)])
+    @skip_for_params([(12, 0.25), (12, 0.5), (16, 0.25), (16, 0.5)])
     def time_simulate_fermion_simulator(self, *_):
         job = self.fermion_simulator_backend.run(self.circuit, shots=self.shots, seed=1234)
         _ = job.result()
 
     def time_simulate_ffsim(self, *_):
         job = self.ffsim_backend.run(self.circuit, shots=self.shots, seed=1234)
+        _ = job.result()
+
+    @skip_for_params([(12, 0.25), (12, 0.5), (16, 0.25), (16, 0.5)])
+    def time_simulate_fermion_simulator_fermi_hubbard(self, *_):
+        job = self.fermion_simulator_backend.run(self.circuit_fh, shots=self.shots, seed=1234)
+        _ = job.result()
+
+    def time_simulate_ffsim_fermi_hubbard(self, *_):
+        job = self.ffsim_backend.run(self.circuit_fh, shots=self.shots, seed=1234)
         _ = job.result()
