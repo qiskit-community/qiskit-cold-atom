@@ -118,7 +118,6 @@ class FfsimBackend(BaseFermionBackend):
         output = {"results": []}
 
         num_species = data["num_species"]
-        assert num_species == 2
         shots = data["shots"]
         seed = data["seed"]
 
@@ -160,7 +159,7 @@ class FfsimBackend(BaseFermionBackend):
             if not measured_wires:
                 shots = None
 
-            simulation_result = _simulate_ffsim(circuit, shots, seed)
+            simulation_result = _simulate_ffsim(circuit, num_species, shots, seed)
 
             output["results"].append(
                 {
@@ -189,7 +188,7 @@ class FfsimBackend(BaseFermionBackend):
         circuits: Union[QuantumCircuit, List[QuantumCircuit]],
         shots: int = 1000,
         seed: Optional[int] = None,
-        num_species: int = 2,
+        num_species: int = 1,
         **run_kwargs,
     ) -> AerJob:
         """
@@ -206,8 +205,6 @@ class FfsimBackend(BaseFermionBackend):
         Returns:
             aer_job: a job object containing the result of the simulation
         """
-        assert num_species == 2
-
         if isinstance(circuits, QuantumCircuit):
             circuits = [circuits]
 
@@ -229,10 +226,13 @@ class FfsimBackend(BaseFermionBackend):
         return aer_job
 
 
-def _simulate_ffsim(circuit: QuantumCircuit, shots: int | None = None, seed=None) -> dict[str, Any]:
+def _simulate_ffsim(
+    circuit: QuantumCircuit, num_species: int, shots: int | None = None, seed=None
+) -> dict[str, Any]:
     assert circuit.num_qubits % 2 == 0
-    norb = circuit.num_qubits // 2
-    occ_a, occ_b = _get_initial_occupations(circuit)
+    assert num_species in (1, 2)
+    norb = circuit.num_qubits // num_species
+    occ_a, occ_b = _get_initial_occupations(circuit, num_species)
     nelec = len(occ_a), len(occ_b)
     vec = ffsim.slater_determinant(norb, (occ_a, occ_b))
     qubit_indices = {q: i for i, q in enumerate(circuit.qubits)}
@@ -240,26 +240,44 @@ def _simulate_ffsim(circuit: QuantumCircuit, shots: int | None = None, seed=None
         op, qubits, _ = instruction.operation, instruction.qubits, instruction.clbits
         if isinstance(op, Hop):
             orbs = [qubit_indices[q] for q in qubits]
-            spatial_orbs = _get_spatial_orbitals(orbs, norb)
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species)
             vec = _simulate_hop(
-                vec, np.array(op.params), spatial_orbs, norb=norb, nelec=nelec, copy=False
+                vec,
+                np.array(op.params),
+                spatial_orbs,
+                norb=norb,
+                nelec=nelec,
+                num_species=num_species,
+                copy=False,
             )
         elif isinstance(op, Interaction):
             orbs = [qubit_indices[q] for q in qubits]
-            spatial_orbs = _get_spatial_orbitals(orbs, norb)
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species)
             (interaction,) = op.params
             vec = _simulate_interaction(
-                vec, interaction, spatial_orbs, norb=norb, nelec=nelec, copy=False
+                vec,
+                interaction,
+                spatial_orbs,
+                norb=norb,
+                nelec=nelec,
+                num_species=num_species,
+                copy=False,
             )
         elif isinstance(op, Phase):
             orbs = [qubit_indices[q] for q in qubits]
-            spatial_orbs = _get_spatial_orbitals(orbs, norb)
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species)
             vec = _simulate_phase(
-                vec, np.array(op.params), spatial_orbs, norb=norb, nelec=nelec, copy=False
+                vec,
+                np.array(op.params),
+                spatial_orbs,
+                norb=norb,
+                nelec=nelec,
+                num_species=num_species,
+                copy=False,
             )
         elif isinstance(op, FermionicGate):
             orbs = [qubit_indices[q] for q in qubits]
-            spatial_orbs = _get_spatial_orbitals(orbs, norb)
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species)
             ferm_op = _fermionic_op_to_fermion_operator(op.generator, spatial_orbs)
             linop = ffsim.linear_operator(ferm_op, norb, nelec)
             # TODO use ferm_op.values once it's available
@@ -282,8 +300,9 @@ def _simulate_ffsim(circuit: QuantumCircuit, shots: int | None = None, seed=None
     return result
 
 
-def _get_initial_occupations(circuit: QuantumCircuit):
-    norb = circuit.num_qubits // 2
+def _get_initial_occupations(circuit: QuantumCircuit, num_species: int):
+    assert num_species in (1, 2)
+    norb = circuit.num_qubits // num_species
     occ_a, occ_b = set(), set()
     occupations = [occ_a, occ_b]
     active_qubits = set()
@@ -303,17 +322,63 @@ def _get_initial_occupations(circuit: QuantumCircuit):
     return tuple(occ_a), tuple(occ_b)
 
 
-def _get_spatial_orbitals(orbs: list[int], norb: int) -> list[int]:
-    assert len(orbs) % 2 == 0
-    alpha_orbs = orbs[: len(orbs) // 2]
-    beta_orbs = [orb - norb for orb in orbs[len(orbs) // 2 :]]
-    assert alpha_orbs == beta_orbs
+def _get_spatial_orbitals(orbs: list[int], norb: int, num_species: int) -> list[int]:
+    assert num_species in (1, 2)
+    assert len(orbs) % num_species == 0
+    alpha_orbs = orbs[: len(orbs) // num_species]
+    if num_species == 2:
+        beta_orbs = [orb - norb for orb in orbs[len(orbs) // 2 :]]
+        assert alpha_orbs == beta_orbs
     # reverse orbitals due to qiskit convention
     alpha_orbs = [norb - 1 - orb for orb in alpha_orbs]
     return alpha_orbs
 
 
 def _simulate_hop(
+    vec: np.ndarray,
+    coeffs: np.ndarray,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
+    num_species: int,
+    copy: bool,
+) -> np.ndarray:
+    if num_species == 1:
+        return _simulate_hop_spinless(
+            vec=vec, coeffs=coeffs, target_orbs=target_orbs, norb=norb, nelec=nelec, copy=copy
+        )
+    else:  # num_species == 2
+        return _simulate_hop_spinful(
+            vec=vec, coeffs=coeffs, target_orbs=target_orbs, norb=norb, nelec=nelec, copy=copy
+        )
+
+
+def _simulate_hop_spinless(
+    vec: np.ndarray,
+    coeffs: np.ndarray,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
+    copy: bool,
+) -> np.ndarray:
+    assert norb % 2 == 0
+    assert len(target_orbs) % 2 == 0
+    mat = np.zeros((norb, norb))
+    for i, val in zip(range(len(target_orbs) // 2 - 1), coeffs):
+        j, k = target_orbs[i], target_orbs[i + 1]
+        mat[j, k] = -val
+        mat[k, j] = -val
+    for i, val in zip(range(len(target_orbs) // 2, len(target_orbs) - 1), coeffs):
+        j, k = target_orbs[i], target_orbs[i + 1]
+        mat[j, k] = -val
+        mat[k, j] = -val
+    coeffs, orbital_rotation = scipy.linalg.eigh(mat)
+    return ffsim.apply_num_op_sum_evolution(
+        vec, coeffs, 1.0, norb=norb, nelec=nelec, orbital_rotation=orbital_rotation, copy=copy
+    )
+
+
+def _simulate_hop_spinful(
     vec: np.ndarray,
     coeffs: np.ndarray,
     target_orbs: list[int],
@@ -338,6 +403,58 @@ def _simulate_interaction(
     target_orbs: list[int],
     norb: int,
     nelec: tuple[int, int],
+    num_species: int,
+    copy: bool,
+) -> np.ndarray:
+    if num_species == 1:
+        return _simulate_interaction_spinless(
+            vec=vec,
+            interaction=interaction,
+            target_orbs=target_orbs,
+            norb=norb,
+            nelec=nelec,
+            copy=copy,
+        )
+    else:  # num_species == 2
+        return _simulate_interaction_spinful(
+            vec=vec,
+            interaction=interaction,
+            target_orbs=target_orbs,
+            norb=norb,
+            nelec=nelec,
+            copy=copy,
+        )
+
+
+def _simulate_interaction_spinless(
+    vec: np.ndarray,
+    interaction: float,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
+    copy: bool,
+) -> np.ndarray:
+    assert len(target_orbs) % 2 == 0
+    n_spatial_orbs = len(target_orbs) // 2
+    mat = np.zeros((norb, norb))
+    mat[target_orbs[:n_spatial_orbs], target_orbs[n_spatial_orbs:]] = interaction
+    mat[target_orbs[n_spatial_orbs:], target_orbs[:n_spatial_orbs]] = interaction
+    return ffsim.apply_diag_coulomb_evolution(
+        vec,
+        mat=mat,
+        time=1.0,
+        norb=norb,
+        nelec=nelec,
+        copy=copy,
+    )
+
+
+def _simulate_interaction_spinful(
+    vec: np.ndarray,
+    interaction: float,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
     copy: bool,
 ) -> np.ndarray:
     mat_alpha_beta = np.zeros((norb, norb))
@@ -354,6 +471,53 @@ def _simulate_interaction(
 
 
 def _simulate_phase(
+    vec: np.ndarray,
+    mu: np.ndarray,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
+    num_species: int,
+    copy: bool,
+) -> np.ndarray:
+    if num_species == 1:
+        return _simulate_phase_spinless(
+            vec=vec,
+            mu=mu,
+            target_orbs=target_orbs,
+            norb=norb,
+            nelec=nelec,
+            copy=copy,
+        )
+    else:  # num_species == 2
+        return _simulate_phase_spinful(
+            vec=vec,
+            mu=mu,
+            target_orbs=target_orbs,
+            norb=norb,
+            nelec=nelec,
+            copy=copy,
+        )
+
+
+def _simulate_phase_spinless(
+    vec: np.ndarray,
+    mu: np.ndarray,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
+    copy: bool,
+) -> np.ndarray:
+    assert len(target_orbs) % 2 == 0
+    n_spatial_orbs = len(target_orbs) // 2
+    coeffs = np.zeros(norb)
+    coeffs[target_orbs[:n_spatial_orbs]] = mu
+    coeffs[target_orbs[n_spatial_orbs:]] = mu
+    return ffsim.apply_num_op_sum_evolution(
+        vec, coeffs, time=1.0, norb=norb, nelec=nelec, copy=copy
+    )
+
+
+def _simulate_phase_spinful(
     vec: np.ndarray,
     mu: np.ndarray,
     target_orbs: list[int],
