@@ -53,6 +53,7 @@ class TestFfsimBackend:
     """Test FfsimBackend."""
 
     def test_hop_gate(self):
+        """Test hop gate."""
         norb = 5
         nelec = (3, 2)
 
@@ -83,6 +84,7 @@ class TestFfsimBackend:
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 
     def test_hop_gate_sign(self):
+        """Test hop gate correctly handles fermionic sign."""
         norb = 4
 
         occupations = [[1, 0, 1, 0], [1, 0, 1, 0]]
@@ -102,6 +104,7 @@ class TestFfsimBackend:
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 
     def test_interaction_gate(self):
+        """Test interaction gate."""
         norb = 5
         nelec = (3, 2)
 
@@ -131,6 +134,7 @@ class TestFfsimBackend:
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 
     def test_phase_gate(self):
+        """Test phase gate."""
         norb = 5
         nelec = (3, 2)
 
@@ -161,6 +165,7 @@ class TestFfsimBackend:
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 
     def test_fermi_hubbard_gate(self):
+        """Test Fermi-Hubbard gate."""
         norb = 5
         nelec = (3, 2)
 
@@ -198,6 +203,7 @@ class TestFfsimBackend:
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 
     def test_fermi_hubbard_gate_simple(self):
+        """Test a simple Fermi-Hubbard gate."""
         norb = 4
 
         occupations = [[1, 1, 0, 0], [1, 1, 0, 0]]
@@ -217,6 +223,7 @@ class TestFfsimBackend:
         np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
 
     def test_simulate(self):
+        """Test simulating and measuring a statevector."""
         norb = 5
         nelec = (3, 2)
 

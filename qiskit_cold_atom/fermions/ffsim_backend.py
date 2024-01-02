@@ -354,7 +354,7 @@ def _simulate_phase(
     )
 
 
-def _fermionic_op_to_fermion_operator(
+def _fermionic_op_to_fermion_operator(  # pylint: disable=invalid-name
     op: FermionicOp, target_orbs: list[int]
 ) -> ffsim.FermionOperator:
     """Convert a Qiskit Nature FermionicOp to an ffsim FermionOperator."""
