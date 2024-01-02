@@ -247,8 +247,6 @@ def _simulate_ffsim(circuit: QuantumCircuit, shots: int | None = None, seed=None
             # TODO use ferm_op.values once it's available
             scale = sum(abs(ferm_op[k]) for k in ferm_op)
             vec = expm_multiply(-1j * linop, vec, traceA=scale)
-            # TODO remove this
-            np.testing.assert_allclose(np.linalg.norm(vec), 1.0)
 
     result = {"statevector": vec}
 
@@ -308,8 +306,10 @@ def _simulate_hop(
     mat = np.zeros((norb, norb))
     for i, val in zip(range(len(target_orbs) - 1), coeffs):
         j, k = target_orbs[i], target_orbs[i + 1]
-        if j < k:
-            val = -val
+        # TODO the following code makes the behavior match with FermionSimulator
+        # remove this comment after resolving sign differences with FermionSimulator
+        # if j < k:
+        #     val = -val
         mat[j, k] = -val
         mat[k, j] = -val
     coeffs, orbital_rotation = scipy.linalg.eigh(mat)
