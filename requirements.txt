@@ -5,4 +5,3 @@ qiskit-terra>= 0.17.1, <=0.25.2.1
 qiskit-nature>=0.4.4,<=0.6.2
 qiskit-aer>=0.8.0, <=0.12.2
 matplotlib>=3.3
-ffsim==0.0.17

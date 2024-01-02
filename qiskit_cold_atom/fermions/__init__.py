@@ -89,20 +89,22 @@ the statevector and simulated measurement outcomes of the circuit.
 
 """
 
-from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolver
-
 from qiskit_cold_atom.fermions.fermion_gate_library import (
-    FermionicGate,
-    LoadFermions,
-    Phase,
-    Hop,
-    Interaction,
     FermiHubbard,
+    FermionicGate,
     FRXGate,
     FRYGate,
     FRZGate,
+    Hop,
+    Interaction,
+    LoadFermions,
+    Phase,
 )
+from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 
-from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
+try:
+    from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
+except ImportError:
+    pass

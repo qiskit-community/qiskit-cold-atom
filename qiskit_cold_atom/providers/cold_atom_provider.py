@@ -28,7 +28,6 @@ from qiskit.providers.exceptions import QiskitBackendNotFoundError
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
 from qiskit_cold_atom.fermions import FermionSimulator
-from qiskit_cold_atom.fermions import FfsimBackend
 from qiskit_cold_atom.spins import SpinSimulator
 
 from qiskit_cold_atom.providers.fermionic_tweezer_backend import (
@@ -39,6 +38,13 @@ from qiskit_cold_atom.providers.remote_backend import (
     RemoteFermionBackend,
 )
 from qiskit_cold_atom.providers.collective_spin_backend import CollectiveSpinSimulator
+
+try:
+    from qiskit_cold_atom.fermions import FfsimBackend
+
+    HAVE_FFSIM = True
+except ImportError:
+    HAVE_FFSIM = False
 
 # Default location of the credentials file
 _DEFAULT_COLDATOM_FILE = os.path.join(
@@ -86,8 +92,9 @@ class ColdAtomProvider(Provider):
             SpinSimulator(provider=self),
             FermionicTweezerSimulator(provider=self),
             CollectiveSpinSimulator(provider=self),
-            FfsimBackend(provider=self),
         ]
+        if HAVE_FFSIM:
+            backends.append(FfsimBackend(provider=self))
 
         if credentials is not None:
             try:

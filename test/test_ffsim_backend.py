@@ -13,8 +13,10 @@
 """ffsim backend tests."""
 
 import math
+import unittest
 
 import numpy as np
+from qiskit.test import QiskitTestCase
 
 from qiskit_cold_atom.fermions import (
     FermiHubbard,
@@ -23,7 +25,13 @@ from qiskit_cold_atom.fermions import (
     Interaction,
     Phase,
 )
-from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
+
+try:
+    from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
+
+    HAVE_FFSIM = True
+except ImportError:
+    HAVE_FFSIM = False
 
 
 def _random_occupations(norb: int, nelec: tuple[int, int], seed=None):
@@ -49,7 +57,8 @@ def _fidelity(counts1: dict[str, int], counts2: dict[str, int]) -> float:
     return result**2
 
 
-class TestFfsimBackend:
+@unittest.skipUnless(HAVE_FFSIM, "requires ffsim")
+class TestFfsimBackend(QiskitTestCase):
     """Test FfsimBackend."""
 
     def test_hop_gate(self):

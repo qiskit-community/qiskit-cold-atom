@@ -19,7 +19,7 @@ import warnings
 from collections import Counter
 from typing import Any, Dict, List, Optional, Union
 
-import ffsim
+import ffsim  # pylint: disable=import-error
 import numpy as np
 import scipy.linalg
 from qiskit import QuantumCircuit
