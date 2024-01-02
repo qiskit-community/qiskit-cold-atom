@@ -12,6 +12,8 @@
 
 """Fermionic simulator backend that uses ffsim."""
 
+from __future__ import annotations
+
 import datetime
 import time
 import uuid
