@@ -104,3 +104,5 @@ from qiskit_cold_atom.fermions.fermion_gate_library import (
     FRYGate,
     FRZGate,
 )
+
+from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
