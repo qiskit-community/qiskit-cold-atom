@@ -22,6 +22,15 @@ Backends to describe such fermionic circuits are subclasses of the :class:`BaseF
 The :class:`FermionSimulator` backend is a general purpose simulator backend that simulates fermionic
 circuits similar to the QasmSimulator for qubits.
 
+For higher-performance simulation, you can use :class:`FfsimBackend`,
+which is much more efficient than :class:`FermionSimulator` and can handle larger circuits.
+:class:`FfsimBackend` is not supported on Windows, and a special ``pip`` command is
+needed to install it:
+
+.. code::
+
+    pip install "qiskit-cold-atom[ffsim]"
+
 Fermionic backends
 -------------------
 .. autosummary::
@@ -29,6 +38,7 @@ Fermionic backends
 
    BaseFermionBackend
    FermionSimulator
+   FfsimBackend
 
 The fermions might also come in several distinguishable species, as is the case when they carry a spin
 degree of freedom. In this case, each spatial mode of an experiment can be occupied by a particle

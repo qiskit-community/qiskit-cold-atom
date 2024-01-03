@@ -44,7 +44,23 @@ from qiskit_cold_atom.fermions.fermion_gate_library import (
 
 
 class FfsimBackend(BaseFermionBackend):
-    """Fermionic simulator backend that uses ffsim."""
+    """Fermionic simulator backend that uses ffsim.
+
+    This is a specialized simulator backend for fermionic circuits that uses `ffsim`_.
+    It computes the statevector and simulate measurements with vastly improved efficiency
+    compared with the :class:`~.FermionSimulator` backend. However, unlike
+    :class:`~.FermionSimulator`,
+    it does not compute the full unitary of a circuit.
+
+    This backend is not supported on Windows, and a special ``pip`` command is needed
+    to install it:
+
+    .. code::
+
+        pip install "qiskit-cold-atom[ffsim]"
+
+    .. _ffsim: https://github.com/qiskit-community/ffsim
+    """
 
     _DEFAULT_CONFIGURATION = {
         "backend_name": "ffsim_simulator",
