@@ -17,7 +17,7 @@ from scipy.linalg import expm
 
 from qiskit.test import QiskitTestCase
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import SpinOp
+from qiskit_nature.second_q.operators import SpinOp
 
 from qiskit_cold_atom.spins.spin_circuit_solver import SpinCircuitSolver
 from qiskit_cold_atom.spins import SpinSimulator

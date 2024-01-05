@@ -19,7 +19,7 @@ from scipy.sparse import csc_matrix
 import numpy as np
 
 from qiskit.circuit import Instruction, Gate
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 from qiskit_cold_atom import add_gate
@@ -165,7 +165,6 @@ class FermionicGate(Gate):
 
             # loop over all basis states
             for i_basis, occupations in enumerate(basis_occupations):
-
                 new_occupations = deepcopy(occupations)
                 mapped_to_zero = (
                     False  # boolean flag to check whether the basis state is mapped to zero
@@ -174,7 +173,6 @@ class FermionicGate(Gate):
 
                 # in reverse, loop over all individual fermionic creators/annihilators in the opstring:
                 for k, symbol in reversed(list(enumerate(opstring))):
-
                     if symbol == "I":
                         continue
 
@@ -324,10 +322,10 @@ class FermiHubbard(FermionicGate):
                 generators.append((f"N_{i+sites}", float(self.params[i + sites])))
 
         if not generators:
-            return FermionicOp("I_0", register_length=self.num_modes)
+            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
         else:
             return sum(
-                coeff * FermionicOp(label, register_length=self.num_modes)
+                coeff * FermionicOp(label, num_spin_orbitals=self.num_modes)
                 for label, coeff in generators
             )
 
@@ -388,7 +386,7 @@ class Hop(FermionicGate):
         ).generator.simplify()
 
         if generator == 0:
-            return FermionicOp("I_0", register_length=self.num_modes)
+            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
         else:
             return generator
 
@@ -447,7 +445,7 @@ class Interaction(FermionicGate):
         ).generator.simplify()
 
         if generator == 0:
-            return FermionicOp("I_0", register_length=self.num_modes)
+            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
         else:
             return generator
 
@@ -513,7 +511,7 @@ class Phase(FermionicGate):
         ).generator.simplify()
 
         if generator == 0:
-            return FermionicOp("I_0", register_length=self.num_modes)
+            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
         else:
             return generator
 
@@ -551,9 +549,9 @@ class FRXGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRX gate."""
-        op = float(self.params[0]) * FermionicOp("+_0 -_1", register_length=2) - float(
+        op = float(self.params[0]) * FermionicOp("+_0 -_1", num_spin_orbitals=2) - float(
             self.params[0]
-        ) * FermionicOp("-_0 +_1", register_length=2)
+        ) * FermionicOp("-_0 +_1", num_spin_orbitals=2)
         return op
 
 
@@ -589,9 +587,9 @@ class FRYGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRY gate."""
-        op = -1j * float(self.params[0]) * FermionicOp("+_0 -_1", register_length=2) - 1j * float(
+        op = -1j * float(self.params[0]) * FermionicOp("+_0 -_1", num_spin_orbitals=2) - 1j * float(
             self.params[0]
-        ) * FermionicOp("-_0 +_1", register_length=2)
+        ) * FermionicOp("-_0 +_1", num_spin_orbitals=2)
         return op
 
 
@@ -627,9 +625,9 @@ class FRZGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRZ gate."""
-        op = float(self.params[0]) * FermionicOp("N_0", register_length=2) - float(
+        op = float(self.params[0]) * FermionicOp("N_0", num_spin_orbitals=2) - float(
             self.params[0]
-        ) * FermionicOp("N_1", register_length=2)
+        ) * FermionicOp("N_1", num_spin_orbitals=2)
         return op
 
 

@@ -16,7 +16,7 @@ import numpy as np
 
 from qiskit import QuantumCircuit
 from qiskit.test import QiskitTestCase
-from qiskit_nature.operators.second_quantization import FermionicOp, SpinOp
+from qiskit_nature.second_q.operators import FermionicOp, SpinOp
 
 from qiskit_cold_atom.fermions.fermion_circuit_solver import (
     FermionCircuitSolver,

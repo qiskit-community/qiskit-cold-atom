@@ -17,7 +17,7 @@ import numpy as np
 from scipy.sparse import csc_matrix
 
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.base_circuit_solver import BaseCircuitSolver
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
@@ -152,11 +152,9 @@ class FermionCircuitSolver(BaseCircuitSolver):
         embedded_op_list = []
 
         for partial_label, factor in operator.to_list(display_format="dense"):
-
             full_label = ["I"] * num_wires
 
             for i, individual_label in enumerate(list(partial_label)):
-
                 full_label[qargs[i]] = individual_label
 
             embedded_op_list.append(("".join(full_label), factor))
@@ -188,7 +186,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
         spin_conservation = True
 
         for fermionic_op in self.to_operators(circuit):
-
             if not isinstance(fermionic_op, FermionicOp):
                 raise QiskitColdAtomError("operators need to be given as FermionicOp")
 
@@ -208,7 +205,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
                     return False, False
 
                 if self.num_species > 1:
-
                     if circuit.num_qubits % self.num_species != 0:
                         raise QiskitColdAtomError(
                             f"The number of wires in the circuit {circuit.num_qubits} is not a "
@@ -219,7 +215,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
                     # check if the particle number is conserved for each spin species
                     for i in range(self.num_species):
-
                         ops = opstring[i * sites : (i + 1) * sites]
                         num_creators = ops.count("+")
                         num_annihilators = ops.count("-")

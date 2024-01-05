@@ -18,7 +18,7 @@ from fractions import Fraction
 import numpy as np
 from scipy.sparse import csc_matrix
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import SpinOp
+from qiskit_nature.second_q.operators import SpinOp
 from qiskit_cold_atom.base_circuit_solver import BaseCircuitSolver
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 

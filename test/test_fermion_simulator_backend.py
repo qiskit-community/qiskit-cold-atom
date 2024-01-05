@@ -21,7 +21,7 @@ from qiskit.providers import JobStatus
 from qiskit.result import Result
 from qiskit.test import QiskitTestCase
 
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
