@@ -45,7 +45,7 @@ class TestSpinCircuitSolver(QiskitTestCase):
         """test embedding of an operator"""
         fer_op = FermionicOp("+-")
         # define a spin operator that has terms with different prefactors, support and power
-        spin_op = SpinOp("+-") + 2 * SpinOp("X_0^2", register_length=2)
+        spin_op = SpinOp("+-") + 2 * SpinOp("X_0^2", num_spins=2)
         num_wires = 4
         qargs = [1, 3]
         qargs_wrong = [0, 1, 3]
@@ -60,9 +60,9 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
         with self.subTest("operator embedding"):
             embedded_op = self.solver._embed_operator(spin_op, num_wires, qargs)
-            target_op = SpinOp([("+_1 -_3", 1.0), ("X_1^2", 2.0)], spin=3 / 2, register_length=4)
+            target_op = SpinOp([("+_1 -_3", 1.0), ("X_1^2", 2.0)], spin=3 / 2, num_spins=4)
             self.assertTrue(
-                set(embedded_op.simplify().to_list()) == set(target_op.simplify().to_list())
+                set(embedded_op.simplify().to_matrix()) == set(target_op.simplify().to_matrix())
             )
 
     def test_preprocess_circuit(self):
@@ -128,13 +128,15 @@ class TestSpinCircuitSolver(QiskitTestCase):
         with self.subTest("check returned operators"):
             operators = self.solver.to_operators(test_circ)
             target = [
-                SpinOp([("X_0", (0.5 + 0j))], spin=3 / 2, register_length=2),
-                SpinOp([("X_1", (0.5 + 0j))], spin=3 / 2, register_length=2),
-                SpinOp([("Z_1^2", (0.25 + 0j))], spin=3 / 2, register_length=2),
+                SpinOp([("X_0", (0.5 + 0j))], spin=3 / 2, num_spins=2),
+                SpinOp([("X_1", (0.5 + 0j))], spin=3 / 2, num_spins=2),
+                SpinOp([("Z_1^2", (0.25 + 0j))], spin=3 / 2, num_spins=2),
             ]
 
             for i, op in enumerate(operators):
-                self.assertEqual(set(op.simplify().to_list()), set(target[i].simplify().to_list()))
+                self.assertEqual(
+                    set(op.simplify().to_matrix()), set(target[i].simplify().to_matrix())
+                )
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""

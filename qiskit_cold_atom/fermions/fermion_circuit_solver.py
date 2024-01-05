@@ -159,7 +159,7 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
             embedded_op_list.append(("".join(full_label), factor))
 
-        return FermionicOp(embedded_op_list, display_format="dense")
+        return FermionicOp(embedded_op_list)
 
     def _check_conservations(self, circuit: QuantumCircuit) -> Tuple[bool, bool]:
         """

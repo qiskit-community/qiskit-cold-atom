@@ -14,13 +14,12 @@
 
 from typing import List
 
-from qiskit_nature.operators.second_quantization import FermionicOp
-from qiskit_nature.mappers.second_quantization import (
+from qiskit_nature.second_q.operators import FermionicOp
+from qiskit_nature.second_q.mappers import (
     JordanWignerMapper,
     BravyiKitaevMapper,
     ParityMapper,
 )
-from qiskit_nature.converters.second_quantization import QubitConverter
 
 from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.opflow.evolutions import PauliTrotterEvolution
@@ -99,7 +98,6 @@ class TimeEvolutionSolver:
             observable_evs = [0.0] * len(problem.evolution_times)
 
             for idx, circuit in enumerate(circuits):
-
                 circuit.measure_all()
 
                 job = execute(circuit, self.backend, shots=self.shots)
@@ -135,7 +133,7 @@ class TimeEvolutionSolver:
         # construct circuit of initial state:
         label = ["+" if bit else "I" for bit in psi_0.occupations_flat]
         bitstr_op = FermionicOp("".join(label))
-        qubit_op = QubitConverter(mapper).convert(bitstr_op)[0]
+        qubit_op = mapper.map(bitstr_op)[0]
         init_circ = QuantumCircuit(QuantumRegister(qubit_op.num_qubits, "q"))
 
         for i, pauli_label in enumerate(qubit_op.primitive.paulis[0].to_label()[::-1]):
@@ -147,7 +145,6 @@ class TimeEvolutionSolver:
                 init_circ.z(i)
 
         for time in problem.evolution_times:
-
             # time-step of zero will cause PauliTrotterEvolution to fail
             if time == 0.0:
                 time += 1e-10

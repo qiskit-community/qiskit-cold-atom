@@ -16,7 +16,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionicBasis
 from qiskit_cold_atom.fermions.fermion_gate_library import FermiHubbard
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
@@ -114,7 +114,6 @@ class FermiHubbard1D(FermionicLattice):
 
         # add hopping terms
         for idx in range(self.size - 1):
-
             right_to_left_up = "I" * idx + "+-" + "I" * (self.size * 2 - idx - 2)
             operator_labels.append((right_to_left_up, -self.J))
             left_to_right_up = "I" * idx + "-+" + "I" * (self.size * 2 - idx - 2)

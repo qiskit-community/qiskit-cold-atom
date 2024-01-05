@@ -83,11 +83,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
 
         with self.subTest("operator embedding"):
             embedded_op = self.solver1._embed_operator(fer_op, num_wires, qargs)
-            target_op = FermionicOp("+_1 -_3", register_length=4)
-            self.assertTrue(
-                set(embedded_op.simplify().to_list(display_format="dense"))
-                == set(target_op.simplify().to_list(display_format="dense"))
-            )
+            target_op = FermionicOp("+_1 -_3", num_spin_orbitals=4)
+            self.assertTrue(embedded_op.simplify() == target_op.simplify())
 
     def test_conservation_checks(self):
         """test the checks for conservation of spin-species."""
@@ -133,7 +130,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
         with self.subTest("check dimensionality of operator"):
             self.solver2.preprocess_circuit(circ)
             fer_op_wrong = FermionicOp("+-I")
-            fer_op_correct = FermionicOp("+-II", register_length=4)
+            fer_op_correct = FermionicOp("+-II", num_spin_orbitals=4)
             with self.assertRaises(QiskitColdAtomError):
                 self.solver2.operator_to_mat(fer_op_wrong)
             self.solver2.operator_to_mat(fer_op_correct)
@@ -218,8 +215,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
             ]
             for i, op in enumerate(operators):
                 self.assertEqual(
-                    set(op.simplify().to_list(display_format="dense")),
-                    set(target[i].simplify().to_list(display_format="dense")),
+                    set(op.simplify().to_matrix()),
+                    set(target[i].simplify().to_matrix()),
                 )
 
     def test_call_method(self):
