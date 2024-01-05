@@ -324,10 +324,6 @@ def _simulate_hop(
     mat = np.zeros((norb, norb))
     for i, val in zip(range(len(target_orbs) - 1), coeffs):
         j, k = target_orbs[i], target_orbs[i + 1]
-        # TODO the following code makes the behavior match with FermionSimulator
-        # remove this comment after resolving sign differences with FermionSimulator
-        # if j < k:
-        #     val = -val
         mat[j, k] = -val
         mat[k, j] = -val
     coeffs, orbital_rotation = scipy.linalg.eigh(mat)

@@ -86,8 +86,6 @@ class TestFfsimBackend(QiskitTestCase):
         # test acting on subset of orbitals
         qc = sim_backend.initialize_circuit(occupations)
         orbs = rng.choice(np.arange(norb), norb - 1, replace=False)
-        # TODO remove this after resolving sign differences with FermionSimulator
-        orbs.sort()
         qubits = np.concatenate([orbs, orbs + norb])
         qc.append(Hop(2 * (norb - 1), hopping[: norb - 2]), list(qubits))
         job = sim_backend.run(qc, num_species=2)
@@ -108,8 +106,6 @@ class TestFfsimBackend(QiskitTestCase):
 
         qc = sim_backend.initialize_circuit(occupations)
         orbs = np.array([1, 0])
-        # TODO remove this after resolving sign differences with FermionSimulator
-        orbs.sort()
         qubits = np.concatenate([orbs, orbs + norb])
         qc.append(Hop(4, hopping), list(qubits))
         job = sim_backend.run(qc, shots=10, seed=1234, num_species=2)
@@ -204,8 +200,6 @@ class TestFfsimBackend(QiskitTestCase):
         # test acting on subset of orbitals
         qc = sim_backend.initialize_circuit(occupations)
         orbs = rng.choice(np.arange(norb), norb - 1, replace=False)
-        # TODO remove this after resolving sign differences with FermionSimulator
-        orbs.sort()
         qubits = np.concatenate([orbs, orbs + norb])
         qc.append(
             FermiHubbard(2 * (norb - 1), hopping[: norb - 2], interaction, mu[: norb - 1]),
