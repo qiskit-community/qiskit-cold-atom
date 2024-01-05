@@ -149,19 +149,17 @@ class FermionCircuitSolver(BaseCircuitSolver):
                 f"qargs {qargs} of the gates"
             )
 
-        embedded_op_list = []
+        embedded_terms = []
 
-        for partial_label, factor in operator.to_list(display_format="dense"):
+        for term, coeff in operator.terms():
+            embedded_term = []
 
-            full_label = ["I"] * num_wires
+            for action, index in term:
+                embedded_term.append((action, qargs[index]))
 
-            for i, individual_label in enumerate(list(partial_label)):
+            embedded_terms.append(((embedded_term, coeff)))
 
-                full_label[qargs[i]] = individual_label
-
-            embedded_op_list.append(("".join(full_label), factor))
-
-        return FermionicOp(embedded_op_list, display_format="dense")
+        return FermionicOp(embedded_terms, register_length=num_wires, display_format="dense")
 
     def _check_conservations(self, circuit: QuantumCircuit) -> Tuple[bool, bool]:
         """
@@ -188,7 +186,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
         spin_conservation = True
 
         for fermionic_op in self.to_operators(circuit):
-
             if not isinstance(fermionic_op, FermionicOp):
                 raise QiskitColdAtomError("operators need to be given as FermionicOp")
 
@@ -208,7 +205,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
                     return False, False
 
                 if self.num_species > 1:
-
                     if circuit.num_qubits % self.num_species != 0:
                         raise QiskitColdAtomError(
                             f"The number of wires in the circuit {circuit.num_qubits} is not a "
@@ -219,7 +215,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
                     # check if the particle number is conserved for each spin species
                     for i in range(self.num_species):
-
                         ops = opstring[i * sites : (i + 1) * sites]
                         num_creators = ops.count("+")
                         num_annihilators = ops.count("-")
