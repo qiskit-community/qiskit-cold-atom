@@ -1,0 +1,5 @@
+---
+fixes:
+  - |
+    Fixes a bug in which the fermionic circuit simulator handled sign incorrectly.
+    See https://github.com/qiskit-community/qiskit-cold-atom/issues/92 for details.
