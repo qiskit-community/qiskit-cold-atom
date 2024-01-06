@@ -13,19 +13,19 @@
 """General fermionic simulator backend tests."""
 
 from time import sleep
-import numpy as np
 
-from qiskit_aer import AerJob
+import numpy as np
 from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.providers import JobStatus
 from qiskit.result import Result
 from qiskit.test import QiskitTestCase
-
+from qiskit_aer import AerJob
 from qiskit_nature.operators.second_quantization import FermionicOp
 
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
-from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
+from qiskit_cold_atom.fermions.fermion_gate_library import FermionicGate
+from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 
 
 class TestFermionSimulatorBackend(QiskitTestCase):
@@ -243,3 +243,21 @@ class TestFermionSimulatorBackend(QiskitTestCase):
         with self.subTest("test running with bound parameters"):
             bound_circ = test_circ.bind_parameters([0.2])
             self.assertTrue(isinstance(self.backend.run(bound_circ).result(), Result))
+
+    def test_permutation_invariance(self):
+        """Test that a permutation-invariant gate doesn't care about qubit order."""
+        generator = FermionicOp(
+            [("+_0 -_1", 1), ("+_1 -_0", 1)],
+            register_length=2,
+        )
+        gate = FermionicGate(name="test", num_modes=2, generator=generator)
+
+        circuit01 = self.backend.initialize_circuit([1, 0])
+        circuit01.append(gate, [0, 1])
+        vec01 = self.backend.run(circuit01).result().get_statevector()
+
+        circuit10 = self.backend.initialize_circuit([1, 0])
+        circuit10.append(gate, [1, 0])
+        vec10 = self.backend.run(circuit10).result().get_statevector()
+
+        np.testing.assert_allclose(vec01, vec10)
