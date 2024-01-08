@@ -52,7 +52,7 @@ def _fidelity(counts1: dict[str, int], counts2: dict[str, int]) -> float:
     result = 0
     shots = sum(counts1.values())
     assert sum(counts2.values()) == shots
-    for bitstring in counts1 | counts2:
+    for bitstring in counts1.keys() | counts2.keys():
         prob1 = counts1.get(bitstring, 0) / shots
         prob2 = counts2.get(bitstring, 0) / shots
         result += math.sqrt(prob1 * prob2)
