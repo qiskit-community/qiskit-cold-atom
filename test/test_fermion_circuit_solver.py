@@ -67,8 +67,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
 
     def test_embed_operator(self):
         """test embedding of an operator"""
-        fer_op = FermionicOp("+-")
-        spin_op = SpinOp("+-")
+        fer_op = FermionicOp({"+_0 -_1": 1.})
+        spin_op = SpinOp({"X_0 Y_1": 1})
         num_wires = 4
         qargs = [1, 3]
         qargs_wrong = [0, 1, 3]
@@ -83,7 +83,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
 
         with self.subTest("operator embedding"):
             embedded_op = self.solver1._embed_operator(fer_op, num_wires, qargs)
-            target_op = FermionicOp("+_1 -_3", num_spin_orbitals=4)
+            target_op = FermionicOp({"+_1 -_3": 1.}, num_spin_orbitals=4)
             self.assertTrue(embedded_op.simplify() == target_op.simplify())
 
     def test_conservation_checks(self):
@@ -119,7 +119,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
         """test matrix representation of fermionic gates"""
 
         with self.subTest("check operator type"):
-            spin_op = SpinOp("+-")
+            spin_op = SpinOp({"X_0 Y_1": 1.})
             with self.assertRaises(QiskitColdAtomError):
                 self.solver1.operator_to_mat(spin_op)
 
@@ -129,8 +129,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
 
         with self.subTest("check dimensionality of operator"):
             self.solver2.preprocess_circuit(circ)
-            fer_op_wrong = FermionicOp("+-I")
-            fer_op_correct = FermionicOp("+-II", num_spin_orbitals=4)
+            fer_op_wrong = FermionicOp({"+_0 -_1": 1.}, num_spin_orbitals=3)
+            fer_op_correct = FermionicOp({"+_0 -_1": 1.}, num_spin_orbitals=4)
             with self.assertRaises(QiskitColdAtomError):
                 self.solver2.operator_to_mat(fer_op_wrong)
             self.solver2.operator_to_mat(fer_op_correct)
@@ -204,14 +204,15 @@ class TestFermionCircuitSolver(QiskitTestCase):
             operators = self.solver1.to_operators(test_circ)
             target = [
                 FermionicOp(
-                    [
-                        ("+-II", -0.5),
-                        ("-+II", 0.5),
-                        ("II+-", -0.5),
-                        ("II-+", 0.5),
-                    ]
+                    {
+                        "+_0 -_1": -0.5,
+                        "-_0 +_1": 0.5,
+                        "+_2 -_3": -0.5,
+                        "-_2 +_3": 0.5,
+                    },
+                    num_spin_orbitals=4
                 ),
-                FermionicOp([("NINI", 1), ("ININ", 1)]),
+                FermionicOp({"+_0 -_0 +_2 -_2": 1, "+_1 -_1 +_3 -_3": 1}, num_spin_orbitals=4),
             ]
             for i, op in enumerate(operators):
                 self.assertEqual(

@@ -177,7 +177,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
         BaseFermionBackend"""
 
         with self.subTest("test error for non-diagonal observables"):
-            non_diag_observable = FermionicOp("+-NI")
+            non_diag_observable = FermionicOp({"+_0 -_1 +_2 -_2": 1.0}, num_spin_orbitals=4)
             test_circ = self.backend.initialize_circuit([0, 1, 0, 1])
             with self.assertRaises(QiskitColdAtomError):
                 self.backend.measure_observable_expectation(
@@ -185,7 +185,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
                 )
 
         with self.subTest("test match of dimensionality"):
-            observable_too_small = FermionicOp("NI")
+            observable_too_small = FermionicOp({"+_0 -_1": 1.0}, num_spin_orbitals=2)
             test_circ = self.backend.initialize_circuit([0, 1, 0, 1])
             with self.assertRaises(QiskitColdAtomError):
                 self.backend.measure_observable_expectation(
@@ -193,9 +193,11 @@ class TestFermionSimulatorBackend(QiskitTestCase):
                 )
 
         with self.subTest("test single measurement circuit"):
-            observable_1 = FermionicOp("INEI")
-            observable_2 = FermionicOp("INII") + FermionicOp("IIEI")
-            observable_3 = FermionicOp("NNII")
+            observable_1 = FermionicOp({"+_1 -_1 -_2 +_2": 1}, num_spin_orbitals=4)
+            observable_2 = FermionicOp({"+_1 -_1": 1}, num_spin_orbitals=4) + FermionicOp(
+                {"-_2 +_2": 1}, num_spin_orbitals=4
+            )
+            observable_3 = FermionicOp({"+_0 -_0 +_1 -_1": 1}, num_spin_orbitals=4)
 
             eval_1 = self.backend.measure_observable_expectation(
                 circuits=self.backend.initialize_circuit([0, 1, 0, 1]),
@@ -220,7 +222,7 @@ class TestFermionSimulatorBackend(QiskitTestCase):
         with self.subTest("test multiple measurement circuits"):
             test_circ_1 = self.backend.initialize_circuit([0, 1, 0, 1])
             test_circ_2 = self.backend.initialize_circuit([1, 0, 0, 1])
-            observable = FermionicOp("INEI")
+            observable = FermionicOp({"+_1 -_1 -_2 +_2": 1}, num_spin_orbitals=4)
             expval = self.backend.measure_observable_expectation(
                 [test_circ_1, test_circ_2], observable, shots=1
             )
@@ -241,5 +243,5 @@ class TestFermionSimulatorBackend(QiskitTestCase):
                 self.assertTrue(isinstance(self.backend.run(test_circ).result(), Result))
 
         with self.subTest("test running with bound parameters"):
-            bound_circ = test_circ.bind_parameters([0.2])
+            bound_circ = test_circ.assign_parameters([0.2])
             self.assertTrue(isinstance(self.backend.run(bound_circ).result(), Result))

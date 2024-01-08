@@ -43,9 +43,9 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
     def test_embed_operator(self):
         """test embedding of an operator"""
-        fer_op = FermionicOp("+-")
+        fer_op = FermionicOp({"+_0 -_1": 1}, num_spin_orbitals=2)
         # define a spin operator that has terms with different prefactors, support and power
-        spin_op = SpinOp("+-") + 2 * SpinOp("X_0^2", num_spins=2)
+        spin_op = SpinOp("+-") + 2 * SpinOp({"X_0^2": 1}, num_spins=2)
         num_wires = 4
         qargs = [1, 3]
         qargs_wrong = [0, 1, 3]

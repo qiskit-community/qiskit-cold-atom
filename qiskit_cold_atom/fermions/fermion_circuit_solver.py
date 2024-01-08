@@ -143,23 +143,24 @@ class FermionCircuitSolver(BaseCircuitSolver):
                 f"Expected FermionicOp; got {type(operator).__name__} instead."
             )
 
-        if operator.register_length != len(qargs):
+        if operator.num_spin_orbitals != len(qargs):
             raise QiskitColdAtomError(
-                f"length of gate labels {operator.register_length} does not match "
+                f"length of gate labels {operator.num_spin_orbitals} does not match "
                 f"qargs {qargs} of the gates"
             )
 
-        embedded_op_list = []
+        embedded_terms = []
 
-        for partial_label, factor in operator.to_list(display_format="dense"):
-            full_label = ["I"] * num_wires
+        for partial_label, factor in operator.terms():
+            embedded_terms.append((operator._permute_term(partial_label, qargs), factor))
+            # full_label = ["I"] * num_wires
+            # for i, individual_label in enumerate(list(partial_label)):
+            #     full_label[qargs[i]] = individual_label
+            # embedded_op_list.append(("".join(full_label), factor))
+        reordered_op = FermionicOp.from_terms(embedded_terms)
+        reordered_op.num_spin_orbitals = num_wires
 
-            for i, individual_label in enumerate(list(partial_label)):
-                full_label[qargs[i]] = individual_label
-
-            embedded_op_list.append(("".join(full_label), factor))
-
-        return FermionicOp(embedded_op_list)
+        return reordered_op
 
     def _check_conservations(self, circuit: QuantumCircuit) -> Tuple[bool, bool]:
         """
@@ -189,17 +190,17 @@ class FermionCircuitSolver(BaseCircuitSolver):
             if not isinstance(fermionic_op, FermionicOp):
                 raise QiskitColdAtomError("operators need to be given as FermionicOp")
 
-            for term in fermionic_op.to_list():
-                opstring = term[0]
+            if fermionic_op.num_spin_orbitals != circuit.num_qubits:
+                raise QiskitColdAtomError(
+                    f"Expected length {circuit.num_qubits} for fermionic operator; "
+                    f"received {fermionic_op.num_spin_orbitals}."
+                )
 
-                if len(opstring) != circuit.num_qubits:
-                    raise QiskitColdAtomError(
-                        f"Expected length {circuit.num_qubits} for fermionic operator; "
-                        f"received {len(opstring)}."
-                    )
+            for opstring, _ in fermionic_op.terms():
 
-                num_creators = opstring.count("+")
-                num_annihilators = opstring.count("-")
+                op_types = [op for op, _ in opstring]
+                num_creators = op_types.count("+")
+                num_annihilators = op_types.count("-")
 
                 if num_creators != num_annihilators:
                     return False, False
@@ -215,9 +216,10 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
                     # check if the particle number is conserved for each spin species
                     for i in range(self.num_species):
-                        ops = opstring[i * sites : (i + 1) * sites]
-                        num_creators = ops.count("+")
-                        num_annihilators = ops.count("-")
+                        spin_range = range(i * sites, (i + 1) * sites)
+                        op_types_in_range = [op for op, idx in opstring if idx in spin_range]
+                        num_creators = op_types_in_range.count("+")
+                        num_annihilators = op_types_in_range.count("-")
 
                         if num_creators != num_annihilators:
                             spin_conservation = False
