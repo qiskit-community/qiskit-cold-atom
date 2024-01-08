@@ -97,13 +97,13 @@ class SpinCircuitSolver(BaseCircuitSolver):
                 f"operator size {operator.num_spins} does not match qargs {qargs} of the gates."
             )
 
-        embedded_op_list = []
-        for label, factor in operator.to_list():
+        embedded_op_dict = {}
+        for label, factor in operator._data.items():
             old_labels = label.split()
             new_labels = [term[:2] + str(qargs[int(term[2])]) + term[3:] for term in old_labels]
-            embedded_op_list.append((" ".join(map(str, new_labels)), factor))
+            embedded_op_dict[" ".join(map(str, new_labels))] = factor
 
-        return SpinOp(embedded_op_list, spin=self.spin, num_spins=num_wires)
+        return SpinOp(embedded_op_dict, spin=self.spin, num_spins=num_wires)
 
     def operator_to_mat(self, operator: SpinOp) -> csc_matrix:
         """

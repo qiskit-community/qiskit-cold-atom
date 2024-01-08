@@ -127,19 +127,22 @@ class TestSpinCircuitSolver(QiskitTestCase):
 
         with self.subTest("check returned operators"):
             operators = self.solver.to_operators(test_circ)
+
+            print(operators)
+
             target = [
-                SpinOp([("X_0", (0.5 + 0j))], spin=3 / 2, num_spins=2),
-                SpinOp([("X_1", (0.5 + 0j))], spin=3 / 2, num_spins=2),
-                SpinOp([("Z_1^2", (0.25 + 0j))], spin=3 / 2, num_spins=2),
+                SpinOp({"X_0": (0.5 + 0j)}, spin=3 / 2, num_spins=2),
+                SpinOp({"X_1": (0.5 + 0j)}, spin=3 / 2, num_spins=2),
+                SpinOp({"Z_1^2": (0.25 + 0j)}, spin=3 / 2, num_spins=2),
             ]
 
             for i, op in enumerate(operators):
-                self.assertEqual(
-                    set(op.simplify().to_matrix()), set(target[i].simplify().to_matrix())
+                self.assertTrue(
+                    np.allclose(op.simplify().to_matrix(), target[i].simplify().to_matrix())
                 )
 
     def test_call_method(self):
-        """test the call method inherited form BaseCircuitSolver that simulates a circuit"""
+        """test the call method inherited from BaseCircuitSolver that simulates a circuit"""
 
         test_circ = QuantumCircuit(1)
         test_circ.rlx(np.pi / 2, 0)
