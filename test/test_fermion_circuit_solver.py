@@ -13,6 +13,7 @@
 """Fermionic circuit solver tests."""
 
 import numpy as np
+from scipy.sparse import csc_matrix
 
 from qiskit import QuantumCircuit
 from qiskit.test import QiskitTestCase
@@ -202,7 +203,7 @@ class TestFermionCircuitSolver(QiskitTestCase):
 
         with self.subTest("check returned operators"):
             operators = self.solver1.to_operators(test_circ)
-            target = [
+            target_ops = [
                 FermionicOp(
                     {
                         "+_0 -_1": -0.5,
@@ -214,11 +215,8 @@ class TestFermionCircuitSolver(QiskitTestCase):
                 ),
                 FermionicOp({"+_0 -_0 +_2 -_2": 1, "+_1 -_1 +_3 -_3": 1}, num_spin_orbitals=4),
             ]
-            for i, op in enumerate(operators):
-                self.assertEqual(
-                    set(op.simplify().to_matrix()),
-                    set(target[i].simplify().to_matrix()),
-                )
+            for op, target in zip(operators, target_ops):
+                self.assertTrue(op == target)
 
     def test_call_method(self):
         """test the call method inherited form BaseCircuitSolver that simulates a circuit"""

@@ -19,7 +19,7 @@ from qiskit import QuantumCircuit, QuantumRegister
 from qiskit.providers import JobStatus
 from qiskit.result import Result
 from qiskit.test import QiskitTestCase
-
+from qiskit_aer import AerJob
 from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
@@ -249,8 +249,8 @@ class TestFermionSimulatorBackend(QiskitTestCase):
     def test_permutation_invariance(self):
         """Test that a permutation-invariant gate doesn't care about qubit order."""
         generator = FermionicOp(
-            [("+_0 -_1", 1), ("+_1 -_0", 1)],
-            register_length=2,
+            {"+_0 -_1": 1, "+_1 -_0": 1},
+            num_spin_orbitals=2,
         )
         gate = FermionicGate(name="test", num_modes=2, generator=generator)
 

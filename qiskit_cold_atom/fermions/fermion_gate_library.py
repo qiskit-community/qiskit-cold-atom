@@ -113,8 +113,6 @@ class FermionicGate(Gate):
 
         generator_mat = self.operator_to_mat(self.generator, num_species, basis)
 
-        # print("here", generator_mat, type(generator_mat))
-
         if (generator_mat.H - generator_mat).count_nonzero() != 0:
             raise QiskitColdAtomError("generator of unitary gate is not hermitian!")
 
@@ -162,13 +160,11 @@ class FermionicGate(Gate):
 
         # loop over all individual terms in the generators
         for term in generator.terms():
-            # print("term", term)
             opstrings = term[0]
             prefactor = term[1]
 
             # loop over all basis states
             for i_basis, occupations in enumerate(basis_occupations):
-                # print(i_basis, occupations)
                 new_occupations = deepcopy(occupations)
                 mapped_to_zero = (
                     False  # boolean flag to check whether the basis state is mapped to zero
@@ -177,7 +173,6 @@ class FermionicGate(Gate):
 
                 # in reverse, loop over all individual fermionic creators/annihilators in the opstring:
                 for symbol, k in reversed(opstrings):
-                    # print(symbol, k)
                     if symbol == "-":
                         # If this mode is not occupied, the action of '-' on this state is zero
                         if new_occupations[k] == 0:
