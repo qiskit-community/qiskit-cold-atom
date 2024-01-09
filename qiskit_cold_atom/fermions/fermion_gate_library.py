@@ -148,20 +148,20 @@ class FermionicGate(Gate):
         if basis is None:
             basis = FermionicBasis.from_fermionic_op(generator)
 
+        if generator.num_spin_orbitals != num_species * basis.sites:
+            raise QiskitColdAtomError(
+                f"size of operator {generator.num_spin_orbitals} must match the number of "
+                f"modes in the basis {num_species * basis.sites}"
+            )
+
         csc_data, csc_col, csc_row = [], [], []
 
         basis_occupations = basis.get_occupations()
 
         # loop over all individual terms in the generators
-        for term in generator.to_list(display_format="dense"):
-            opstring = term[0]
+        for term in generator.terms():
+            opstrings = term[0]
             prefactor = term[1]
-
-            if len(opstring) != num_species * basis.sites:
-                raise QiskitColdAtomError(
-                    f"Length of operator {opstring} must match the number of "
-                    f"modes in the basis {num_species*basis.sites}"
-                )
 
             # loop over all basis states
             for i_basis, occupations in enumerate(basis_occupations):
@@ -172,37 +172,22 @@ class FermionicGate(Gate):
                 sign = 1
 
                 # in reverse, loop over all individual fermionic creators/annihilators in the opstring:
-                for k, symbol in reversed(list(enumerate(opstring))):
-                    if symbol == "I":
-                        continue
-
+                for symbol, k in reversed(opstrings):
                     if symbol == "-":
                         # If this mode is not occupied, the action of '-' on this state is zero
-                        if occupations[k] == 0:
+                        if new_occupations[k] == 0:
                             mapped_to_zero = True
                             break
-                        sign *= (-1) ** sum(occupations[:k])
+                        sign *= (-1) ** sum(new_occupations[:k])
                         new_occupations[k] = 0
 
                     elif symbol == "+":
                         # If this mode is already occupied, the action of '+' on this state is zero
-                        if occupations[k] == 1:
+                        if new_occupations[k] == 1:
                             mapped_to_zero = True
                             break
-                        sign *= (-1) ** sum(occupations[:k])
+                        sign *= (-1) ** sum(new_occupations[:k])
                         new_occupations[k] = 1
-
-                    elif symbol == "N":
-                        # If this mode is not occupied, the action of 'N' on this state is zero
-                        if occupations[k] == 0:
-                            mapped_to_zero = True
-                            break
-
-                    elif symbol == "E":
-                        # If this mode is occupied, the action of 'E' on this state is zero
-                        if occupations[k] == 1:
-                            mapped_to_zero = True
-                            break
 
                 if not mapped_to_zero:
                     # find the index of the new basis state that the operator strings maps to
@@ -302,31 +287,31 @@ class FermiHubbard(FermionicGate):
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FH Gate."""
         params = [float(param) for param in self.params]
-        generators = []
+        generators = {}
         sites = self.num_modes // 2
         # add generators of hopping term
         if not all(j == 0.0 for j in params[: sites - 1]):
             for i in range(sites - 1):
-                generators.append((f"+_{i} -_{i+1}", -1 * params[i]))
-                generators.append((f"-_{i} +_{i+1}", params[i]))
-                generators.append((f"+_{i+sites} -_{i+sites+1}", -1 * params[i]))
-                generators.append((f"-_{i+sites} +_{i+sites+1}", params[i]))
+                generators[f"+_{i} -_{i+1}"] = -1 * params[i]
+                generators[f"-_{i} +_{i+1}"] = params[i]
+                generators[f"+_{i+sites} -_{i+sites+1}"] = -1 * params[i]
+                generators[f"-_{i+sites} +_{i+sites+1}"] = params[i]
         # add generators of interaction term
         if params[sites - 1] != 0.0:
             for i in range(sites):
-                generators.append((f"N_{i} N_{i + sites}", params[sites - 1]))
+                generators[f"+_{i} -_{i} +_{i + sites} -_{i + sites}"] = params[sites - 1]
         # add generators of local phase term
         if not all(muval == 0.0 for muval in params[sites:]):
             for i in range(sites):
-                generators.append((f"N_{i}", float(self.params[i + sites])))
-                generators.append((f"N_{i+sites}", float(self.params[i + sites])))
+                generators[f"+_{i} -_{i}"] = float(self.params[i + sites])
+                generators[f"+_{i + sites} -_{i + sites}"] = float(self.params[i + sites])
 
-        if not generators:
-            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
+        if not generators:  # identity term
+            return FermionicOp({"-_0 +_0": 1.0, "+_0 -_0": 1.0}, num_spin_orbitals=self.num_modes)
         else:
             return sum(
-                coeff * FermionicOp(label, num_spin_orbitals=self.num_modes)
-                for label, coeff in generators
+                FermionicOp({label: coeff}, num_spin_orbitals=self.num_modes)
+                for label, coeff in generators.items()
             )
 
 
@@ -385,8 +370,8 @@ class Hop(FermionicGate):
             num_modes=self.num_modes, j=self.params, u=0.0, mu=[0.0]
         ).generator.simplify()
 
-        if generator == 0:
-            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
+        if generator == 0:  # identity term
+            return FermionicOp({"-_0 +_0": 1.0, "+_0 -_0": 1.0}, num_spin_orbitals=self.num_modes)
         else:
             return generator
 
@@ -444,8 +429,8 @@ class Interaction(FermionicGate):
             mu=[0.0],
         ).generator.simplify()
 
-        if generator == 0:
-            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
+        if generator == 0:  # identity term
+            return FermionicOp({"-_0 +_0": 1.0, "+_0 -_0": 1.0}, num_spin_orbitals=self.num_modes)
         else:
             return generator
 
@@ -510,8 +495,8 @@ class Phase(FermionicGate):
             mu=self.params,
         ).generator.simplify()
 
-        if generator == 0:
-            return FermionicOp("I_0", num_spin_orbitals=self.num_modes)
+        if generator == 0:  # identity term
+            return FermionicOp({"-_0 +_0": 1.0, "+_0 -_0": 1.0}, num_spin_orbitals=self.num_modes)
         else:
             return generator
 
@@ -549,9 +534,9 @@ class FRXGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRX gate."""
-        op = float(self.params[0]) * FermionicOp("+_0 -_1", num_spin_orbitals=2) - float(
-            self.params[0]
-        ) * FermionicOp("-_0 +_1", num_spin_orbitals=2)
+        op = FermionicOp({"+_0 -_1": float(self.params[0])}, num_spin_orbitals=2) - FermionicOp(
+            {"-_0 +_1": float(self.params[0])}, num_spin_orbitals=2
+        )
         return op
 
 
@@ -587,9 +572,9 @@ class FRYGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRY gate."""
-        op = -1j * float(self.params[0]) * FermionicOp("+_0 -_1", num_spin_orbitals=2) - 1j * float(
-            self.params[0]
-        ) * FermionicOp("-_0 +_1", num_spin_orbitals=2)
+        op = FermionicOp(
+            {"+_0 -_1": -1j * float(self.params[0])}, num_spin_orbitals=2
+        ) - FermionicOp({"-_0 +_1": 1j * float(self.params[0])}, num_spin_orbitals=2)
         return op
 
 
@@ -625,9 +610,7 @@ class FRZGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRZ gate."""
-        op = float(self.params[0]) * FermionicOp("N_0", num_spin_orbitals=2) - float(
-            self.params[0]
-        ) * FermionicOp("N_1", num_spin_orbitals=2)
+        op = FermionicOp({"+_0 -_0": float(self.params[0]), "+_1 -_1": -float(self.params[0])}, num_spin_orbitals=2)
         return op
 
 

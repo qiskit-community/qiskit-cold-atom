@@ -46,6 +46,7 @@ class TestFermionicGates(QiskitTestCase):
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
+
             self.assertTrue(
                 np.allclose(
                     unitary,
