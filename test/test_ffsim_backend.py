@@ -26,6 +26,9 @@ from qiskit_cold_atom.fermions import (
     Hop,
     Interaction,
     Phase,
+    FRXGate,
+    FRYGate,
+    FRZGate,
 )
 
 try:
@@ -271,6 +274,77 @@ class TestFfsimBackend(QiskitTestCase):
             job = ffsim_backend.run(qc, num_species=2)
             ffsim_vec = job.result().get_statevector()
             np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+    def test_frz_gate(self):
+        """Test FRZGate."""
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        occupations = [1, 0, 0, 1, 0, 1, 0, 1]
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FRZGate(0.25), [0, 4])
+        qc.append(FRZGate(0.5), [1, 5])
+        job = sim_backend.run(qc)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+        occupations = [[1, 0, 0, 1], [0, 1, 0, 1]]
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FRZGate(0.25), [0, 4])
+        qc.append(FRZGate(0.5), [1, 5])
+        job = sim_backend.run(qc, num_species=2)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc, num_species=2)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+    def test_frx_gate(self):
+        """Test FRXGate."""
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        occupations = [1, 0, 0, 1, 0, 1, 0, 1]
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FRXGate(0.25), [0, 4])
+        qc.append(FRXGate(0.5), [1, 5])
+        job = sim_backend.run(qc)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+        occupations = [[1, 0, 0, 1], [0, 1, 0, 1]]
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FRXGate(0.25), [0, 4])
+        qc.append(FRXGate(0.5), [1, 5])
+        with self.assertRaisesRegex(RuntimeError, "num_species"):
+            job = ffsim_backend.run(qc, num_species=2)
+            ffsim_vec = job.result().get_statevector()
+
+    def test_fry_gate(self):
+        """Test FRYGate."""
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        occupations = [1, 0, 0, 1, 0, 1, 0, 1]
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FRYGate(0.25), [0, 4])
+        qc.append(FRYGate(0.5), [1, 5])
+        job = sim_backend.run(qc)
+        expected_vec = job.result().get_statevector()
+        job = ffsim_backend.run(qc)
+        ffsim_vec = job.result().get_statevector()
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+
+        occupations = [[1, 0, 0, 1], [0, 1, 0, 1]]
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(FRYGate(0.25), [0, 4])
+        qc.append(FRYGate(0.5), [1, 5])
+        with self.assertRaisesRegex(RuntimeError, "num_species"):
+            job = ffsim_backend.run(qc, num_species=2)
+            ffsim_vec = job.result().get_statevector()
 
     def test_fermi_hubbard_gate_spinless(self):
         """Test Fermi-Hubbard gate."""

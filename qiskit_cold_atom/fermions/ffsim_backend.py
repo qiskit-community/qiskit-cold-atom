@@ -25,6 +25,7 @@ import ffsim  # pylint: disable=import-error
 import numpy as np
 import scipy.linalg
 from qiskit import QuantumCircuit
+from qiskit.circuit.library import Barrier, Measure
 from qiskit.providers import Options
 from qiskit.providers.models import BackendConfiguration
 from qiskit.result import Result
@@ -36,6 +37,9 @@ from qiskit_cold_atom.circuit_tools import CircuitTools
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
 from qiskit_cold_atom.fermions.fermion_gate_library import (
     FermionicGate,
+    FRXGate,
+    FRYGate,
+    FRZGate,
     Hop,
     Interaction,
     LoadFermions,
@@ -275,6 +279,42 @@ def _simulate_ffsim(
                 num_species=num_species,
                 copy=False,
             )
+        elif isinstance(op, FRZGate):
+            orbs = [qubit_indices[q] for q in qubits]
+            # pass num_species=1 here due to the definition of FRZGate
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species=1)
+            (phi,) = op.params
+            vec = _simulate_frz(
+                vec,
+                phi,
+                spatial_orbs,
+                norb=norb,
+                nelec=nelec,
+                num_species=num_species,
+                copy=False,
+            )
+        elif isinstance(op, FRXGate):
+            if num_species != 1:
+                raise RuntimeError(
+                    f"Encountered FRXGate even though num_species={num_species}. "
+                    "FRXGate is only supported for num_species=1."
+                )
+            orbs = [qubit_indices[q] for q in qubits]
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species=1)
+            (phi,) = op.params
+            vec = ffsim.apply_tunneling_interaction(
+                vec, -phi, spatial_orbs, norb, nelec, copy=False
+            )
+        elif isinstance(op, FRYGate):
+            if num_species != 1:
+                raise RuntimeError(
+                    f"Encountered FRXGate even though num_species={num_species}. "
+                    "FRXGate is only supported for num_species=1."
+                )
+            orbs = [qubit_indices[q] for q in qubits]
+            spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species=1)
+            (phi,) = op.params
+            vec = ffsim.apply_givens_rotation(vec, -phi, spatial_orbs, norb, nelec, copy=False)
         elif isinstance(op, FermionicGate):
             orbs = [qubit_indices[q] for q in qubits]
             spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species)
@@ -283,6 +323,11 @@ def _simulate_ffsim(
             # TODO use ferm_op.values once it's available
             scale = sum(abs(ferm_op[k]) for k in ferm_op)
             vec = expm_multiply(-1j * linop, vec, traceA=scale)
+        elif isinstance(op, (LoadFermions, Measure, Barrier)):
+            # these gates are handled separately or are no-ops
+            pass
+        else:
+            warnings.warn(f"Unrecognized gate type {type(op)}, skipping it...")
 
     result = {"statevector": vec}
 
@@ -530,6 +575,30 @@ def _simulate_phase_spinful(
     return ffsim.apply_num_op_sum_evolution(
         vec, coeffs, time=1.0, norb=norb, nelec=nelec, copy=copy
     )
+
+
+def _simulate_frz(
+    vec: np.ndarray,
+    phi: np.ndarray,
+    target_orbs: list[int],
+    norb: int,
+    nelec: tuple[int, int],
+    num_species: int,
+    copy: bool,
+) -> np.ndarray:
+    if num_species == 1:
+        a, b = target_orbs
+        vec = ffsim.apply_num_interaction(vec, -phi, a, norb, nelec, copy=copy)
+        vec = ffsim.apply_num_interaction(vec, phi, b, norb, nelec, copy=False)
+        return vec
+    else:  # num_species == 2
+        a, b = target_orbs
+        spin_a, orb_a = divmod(a, norb)
+        spin_b, orb_b = divmod(b, norb)
+        spins = (ffsim.Spin.ALPHA, ffsim.Spin.BETA)
+        vec = ffsim.apply_num_interaction(vec, -phi, orb_a, norb, nelec, spins[spin_a], copy=copy)
+        vec = ffsim.apply_num_interaction(vec, phi, orb_b, norb, nelec, spins[spin_b], copy=False)
+        return vec
 
 
 def _fermionic_op_to_fermion_operator(  # pylint: disable=invalid-name
