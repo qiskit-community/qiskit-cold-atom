@@ -1,0 +1,5 @@
+---
+upgrade:
+  - |
+    Upgrade the syntax to be compatible with the version 0.7 of the `qiskit-nature`.
+
