@@ -452,7 +452,7 @@ class RydbergFull(SpinGate):
                     generators.append((f"Z_{j}", -coeff / 2))
 
         if not generators:
-            return SpinOp("I_0", num_spins=self.num_modes)
+            return SpinOp({"X_0": 0.}, num_spins=self.num_modes)
         else:
             return sum(
                 SpinOp({label: coeff}, num_spins=self.num_modes) for label, coeff in generators
