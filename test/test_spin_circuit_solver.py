@@ -63,7 +63,9 @@ class TestSpinCircuitSolver(QiskitTestCase):
         with self.subTest("operator embedding"):
             embedded_op = self.solver._embed_operator(spin_op, num_wires, qargs)
             target_op = SpinOp(
-                {"X_1 X_3": 1, "Y_1 X_3": 1j, "X_1 Y_3": -1j, "Y_1 Y_3": 1, "X_1^2": 2.0}, spin=3 / 2, num_spins=4
+                {"X_1 X_3": 1, "Y_1 X_3": 1j, "X_1 Y_3": -1j, "Y_1 Y_3": 1, "X_1^2": 2.0},
+                spin=3 / 2,
+                num_spins=4,
             )
             self.assertTrue(
                 np.allclose(embedded_op.simplify().to_matrix(), target_op.simplify().to_matrix())
