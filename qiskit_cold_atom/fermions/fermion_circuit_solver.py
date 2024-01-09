@@ -153,10 +153,7 @@ class FermionCircuitSolver(BaseCircuitSolver):
 
         for partial_label, factor in operator.terms():
             embedded_terms.append((operator._permute_term(partial_label, qargs), factor))
-            # full_label = ["I"] * num_wires
-            # for i, individual_label in enumerate(list(partial_label)):
-            #     full_label[qargs[i]] = individual_label
-            # embedded_op_list.append(("".join(full_label), factor))
+
         reordered_op = FermionicOp.from_terms(embedded_terms)
         reordered_op.num_spin_orbitals = num_wires
 
