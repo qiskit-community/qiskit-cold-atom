@@ -610,7 +610,10 @@ class FRZGate(FermionicGate):
     @property
     def generator(self) -> FermionicOp:
         """The generating Hamiltonian of the FermionRZ gate."""
-        op = FermionicOp({"+_0 -_0": float(self.params[0]), "+_1 -_1": -float(self.params[0])}, num_spin_orbitals=2)
+        op = FermionicOp(
+            {"+_0 -_0": float(self.params[0]), "+_1 -_1": -float(self.params[0])},
+            num_spin_orbitals=2,
+        )
         return op
 
 

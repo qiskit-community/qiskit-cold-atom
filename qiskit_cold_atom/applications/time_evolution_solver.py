@@ -135,7 +135,6 @@ class TimeEvolutionSolver:
                 init_circ.z(i)
 
         for time in problem.evolution_times:
-
             # map fermionic hamiltonian to qubits
             qubit_hamiltonian = mapper.map(hamiltonian)
             # construct trotterization circuits

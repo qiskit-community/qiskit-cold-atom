@@ -96,7 +96,6 @@ class CircuitTools:
         config_dict = backend.configuration().to_dict()
 
         for circuit in circuits:
-
             try:
                 native_gates = {
                     gate.name: gate.coupling_map for gate in backend.configuration().gates

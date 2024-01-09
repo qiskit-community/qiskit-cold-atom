@@ -194,7 +194,6 @@ class FermionCircuitSolver(BaseCircuitSolver):
                 )
 
             for opstring, _ in fermionic_op.terms():
-
                 op_types = [op for op, _ in opstring]
                 num_creators = op_types.count("+")
                 num_annihilators = op_types.count("-")
