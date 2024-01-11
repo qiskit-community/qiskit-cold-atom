@@ -130,8 +130,6 @@ class FfsimBackend(BaseFermionBackend):
         output = {"results": []}
 
         num_species = data["num_species"]
-        if num_species not in (1, 2):
-            raise ValueError(f"FfsimBackend only supports num_species=1 or 2. Got {num_species}.")
         shots = data["shots"]
         seed = data["seed"]
 
@@ -218,7 +216,13 @@ class FfsimBackend(BaseFermionBackend):
 
         Returns:
             aer_job: a job object containing the result of the simulation
+
+        Raises:
+            ValueError: FfsimBackend only supports num_species=1 or 2.
         """
+        if num_species not in (1, 2):
+            raise ValueError(f"FfsimBackend only supports num_species=1 or 2. Got {num_species}.")
+
         if isinstance(circuits, QuantumCircuit):
             circuits = [circuits]
 
