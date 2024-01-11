@@ -50,14 +50,22 @@ from qiskit_cold_atom.fermions.fermion_gate_library import (
 class FfsimBackend(BaseFermionBackend):
     """Fermionic simulator backend that uses ffsim.
 
-    This is a specialized simulator backend for fermionic circuits that uses `ffsim`_.
-    It computes the statevector and simulate measurements with vastly improved efficiency
-    compared with the :class:`~.FermionSimulator` backend. However, unlike
-    :class:`~.FermionSimulator`,
+    This is a high-performance simulator backend for fermionic circuits that uses `ffsim`_.
+    It computes the state vector and simulate measurements with vastly improved efficiency
+    compared with the :class:`~.FermionSimulator` backend. Unlike :class:`~.FermionSimulator`,
     it does not compute the full unitary of a circuit.
 
-    This backend is not supported on Windows, and a special ``pip`` command is needed
-    to install it:
+    Currently, this simulator only supports simulations with 1 or 2 species of fermions.
+    The number of fermions of each species is assumed to be preserved, so that the
+    dimension of the state vector can be determined from the number of species and the
+    number of particles of each species. In particular, when simulating 2 species of fermions,
+    gates that mix particles of different species, such as :class:`~.FRXGate` and
+    :class:`FRYGate`, are not supported. In this respect, the behavior of this simulator
+    differs from :class:`FermionSimulator`, which would automatically resort to a
+    single-species simulation in which particles of each species are not distinguished.
+
+    This backend is not supported on Windows, and in order for it to be available,
+    Qiskit Cold Atom must be installed with the ``ffsim`` extra, e.g.
 
     .. code::
 
@@ -122,6 +130,8 @@ class FfsimBackend(BaseFermionBackend):
         output = {"results": []}
 
         num_species = data["num_species"]
+        if num_species not in (1, 2):
+            raise ValueError(f"FfsimBackend only supports num_species=1 or 2. Got {num_species}.")
         shots = data["shots"]
         seed = data["seed"]
 
@@ -233,8 +243,7 @@ class FfsimBackend(BaseFermionBackend):
 def _simulate_ffsim(
     circuit: QuantumCircuit, num_species: int, shots: int | None = None, seed=None
 ) -> dict[str, Any]:
-    assert circuit.num_qubits % 2 == 0
-    assert num_species in (1, 2)
+    assert circuit.num_qubits % num_species == 0
     norb = circuit.num_qubits // num_species
     occ_a, occ_b = _get_initial_occupations(circuit, num_species)
     nelec = len(occ_a), len(occ_b)
@@ -346,7 +355,6 @@ def _simulate_ffsim(
 
 
 def _get_initial_occupations(circuit: QuantumCircuit, num_species: int):
-    assert num_species in (1, 2)
     norb = circuit.num_qubits // num_species
     occ_a, occ_b = set(), set()
     occupations = [occ_a, occ_b]
@@ -368,7 +376,6 @@ def _get_initial_occupations(circuit: QuantumCircuit, num_species: int):
 
 
 def _get_spatial_orbitals(orbs: list[int], norb: int, num_species: int) -> list[int]:
-    assert num_species in (1, 2)
     assert len(orbs) % num_species == 0
     alpha_orbs = orbs[: len(orbs) // num_species]
     if num_species == 2:
