@@ -1,0 +1,8 @@
+---
+features:
+  - |
+    Adds a simulator backend based on `ffsim`_.
+    For supported circuits, the simulator is orders of magnitude faster than the existing
+    :class:`~.FermionSimulator` backend. This backend is not supported on Windows.
+    For more details, see https://github.com/qiskit-community/qiskit-cold-atom/pull/90.
+    .. _ffsim: https://github.com/qiskit-community/ffsim
