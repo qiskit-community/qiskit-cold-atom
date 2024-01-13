@@ -39,6 +39,13 @@ from qiskit_cold_atom.providers.remote_backend import (
 )
 from qiskit_cold_atom.providers.collective_spin_backend import CollectiveSpinSimulator
 
+try:
+    from qiskit_cold_atom.fermions import FfsimBackend
+
+    HAVE_FFSIM = True
+except ImportError:
+    HAVE_FFSIM = False
+
 # Default location of the credentials file
 _DEFAULT_COLDATOM_FILE = os.path.join(
     os.path.expanduser("~"), ".qiskit", "cold_atom_credentials.conf"
@@ -86,9 +93,10 @@ class ColdAtomProvider(Provider):
             FermionicTweezerSimulator(provider=self),
             CollectiveSpinSimulator(provider=self),
         ]
+        if HAVE_FFSIM:
+            backends.append(FfsimBackend(provider=self))
 
         if credentials is not None:
-
             try:
                 urls = self.credentials["urls"]
                 name = self.credentials["username"]
@@ -190,7 +198,6 @@ class ColdAtomProvider(Provider):
         credentials_present = False
 
         if os.path.isfile(filename):
-
             stored_credentials = ColdAtomProvider.stored_account(filename=filename)
 
             if stored_credentials != {}:
@@ -206,7 +213,6 @@ class ColdAtomProvider(Provider):
                     raise
 
         if not credentials_present or overwrite:
-
             credentials = {
                 "cold-atom-credentials": {
                     "urls": " ".join(url),

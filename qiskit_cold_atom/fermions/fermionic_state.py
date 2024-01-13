@@ -41,7 +41,7 @@ class FermionicState:
                 - If the occupations are not 0 or 1
         """
 
-        if isinstance(occupations[0], int):
+        if isinstance(occupations[0], (int, np.integer)):
             occupations = [occupations]
 
         self._sites = len(occupations[0])
@@ -153,7 +153,6 @@ class FermionicState:
 
         # check that there are no more 'LoadFermions' instructions
         for instruction in circuit.data:
-
             qargs = [circuit.qubits.index(qubit) for qubit in instruction[1]]
 
             if instruction[0].name == "load":

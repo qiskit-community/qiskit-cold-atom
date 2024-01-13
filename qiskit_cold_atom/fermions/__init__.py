@@ -22,6 +22,15 @@ Backends to describe such fermionic circuits are subclasses of the :class:`BaseF
 The :class:`FermionSimulator` backend is a general purpose simulator backend that simulates fermionic
 circuits similar to the QasmSimulator for qubits.
 
+For higher-performance simulation, you can use :class:`FfsimBackend`,
+which is much more efficient than :class:`FermionSimulator` and can handle larger circuits.
+:class:`FfsimBackend` is not supported on Windows, and a special ``pip`` command is
+needed to install it:
+
+.. code::
+
+    pip install "qiskit-cold-atom[ffsim]"
+
 Fermionic backends
 -------------------
 .. autosummary::
@@ -29,6 +38,7 @@ Fermionic backends
 
    BaseFermionBackend
    FermionSimulator
+   FfsimBackend
 
 The fermions might also come in several distinguishable species, as is the case when they carry a spin
 degree of freedom. In this case, each spatial mode of an experiment can be occupied by a particle
@@ -89,18 +99,22 @@ the statevector and simulated measurement outcomes of the circuit.
 
 """
 
-from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 from qiskit_cold_atom.fermions.base_fermion_backend import BaseFermionBackend
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolver
-
 from qiskit_cold_atom.fermions.fermion_gate_library import (
-    FermionicGate,
-    LoadFermions,
-    Phase,
-    Hop,
-    Interaction,
     FermiHubbard,
+    FermionicGate,
     FRXGate,
     FRYGate,
     FRZGate,
+    Hop,
+    Interaction,
+    LoadFermions,
+    Phase,
 )
+from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
+
+try:
+    from qiskit_cold_atom.fermions.ffsim_backend import FfsimBackend
+except ImportError:
+    pass
