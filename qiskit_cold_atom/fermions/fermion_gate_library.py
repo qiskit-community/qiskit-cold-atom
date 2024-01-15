@@ -172,7 +172,10 @@ class FermionicGate(Gate):
                 sign = 1
 
                 # in reverse, loop over all individual fermionic creators/annihilators in the opstring:
-                for symbol, k in reversed(opstrings):
+                for k, symbol in reversed(list(enumerate(opstrings))):
+                    if symbol == "I":
+                        continue
+
                     if symbol == "-":
                         # If this mode is not occupied, the action of '-' on this state is zero
                         if new_occupations[k] == 0:
@@ -551,7 +554,7 @@ class FRYGate(FermionicGate):
 
     The generating Hamiltonian of the FermionRy gate is
 
-    :math:`H = \phi (f^\dagger_{x,\uparrow} f_{x,\uparrow} - f^\dagger_{x,\downarrow} f_{x,\downarrow})`
+    :math:`H = i \phi (f^\dagger_{x,\downarrow} f_{x,\uparrow}-f^\dagger_{x,\uparrow} f_{x,\downarrow})`
 
     where :math:`x` is the index of the mode and :math:`\phi` is the free gate parameter
     """
@@ -589,7 +592,7 @@ class FRZGate(FermionicGate):
 
     The generating Hamiltonian of the FermionRz gate is
 
-    :math:`H = i \phi (f^\dagger_{x,\downarrow} f_{x,\uparrow}-f^\dagger_{x,\uparrow} f_{x,\downarrow})`
+    :math:`H = \phi (f^\dagger_{x,\uparrow} f_{x,\uparrow} - f^\dagger_{x,\downarrow} f_{x,\downarrow})`
 
     where :math:`x` is the index of the mode and :math:`\phi` is the free gate parameter.
     """
