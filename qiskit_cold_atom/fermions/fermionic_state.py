@@ -153,7 +153,6 @@ class FermionicState:
 
         # check that there are no more 'LoadFermions' instructions
         for instruction in circuit.data:
-
             qargs = [circuit.qubits.index(qubit) for qubit in instruction[1]]
 
             if instruction[0].name == "load":

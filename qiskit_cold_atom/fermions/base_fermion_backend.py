@@ -18,7 +18,7 @@ import numpy as np
 
 from qiskit.providers import BackendV1 as Backend
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.fermions.fermion_gate_library import LoadFermions
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionCircuitSolver
@@ -129,7 +129,6 @@ class BaseFermionBackend(Backend, ABC):
         observable_vars = [0] * len(circuits)
 
         for idx, circuit in enumerate(circuits):
-
             # check whether the observable is diagonal in the computational basis.
             solver = FermionCircuitSolver(num_species=2)
             solver.preprocess_circuit(circuit)

@@ -88,7 +88,6 @@ class ColdAtomProvider(Provider):
         ]
 
         if credentials is not None:
-
             try:
                 urls = self.credentials["urls"]
                 name = self.credentials["username"]
@@ -190,7 +189,6 @@ class ColdAtomProvider(Provider):
         credentials_present = False
 
         if os.path.isfile(filename):
-
             stored_credentials = ColdAtomProvider.stored_account(filename=filename)
 
             if stored_credentials != {}:
@@ -206,7 +204,6 @@ class ColdAtomProvider(Provider):
                     raise
 
         if not credentials_present or overwrite:
-
             credentials = {
                 "cold-atom-credentials": {
                     "urls": " ".join(url),

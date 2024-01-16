@@ -21,7 +21,7 @@ from scipy.sparse.linalg import expm
 
 from qiskit import QuantumCircuit
 from qiskit.circuit import Gate
-from qiskit_nature.operators.second_quantization import SecondQuantizedOp
+from qiskit_nature.second_q.operators import SparseLabelOp
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
 
@@ -175,10 +175,10 @@ class BaseCircuitSolver(ABC):
 
         return output
 
-    def to_operators(self, circuit: QuantumCircuit) -> List[SecondQuantizedOp]:
+    def to_operators(self, circuit: QuantumCircuit) -> List[SparseLabelOp]:
         """
         Convert a circuit to a list of second quantized operators that describe the generators of the
-        gates applied to the circuit. The SecondQuantizedOps generating the gates are embedded in the
+        gates applied to the circuit. The SparseLabelOps generating the gates are embedded in the
         larger space corresponding to the entire circuit.
 
         Args:
@@ -221,9 +221,9 @@ class BaseCircuitSolver(ABC):
                         f"Gate {inst[0].name} has no defined generator"
                     ) from attribute_error
 
-                if not isinstance(second_quantized_op, SecondQuantizedOp):
+                if not isinstance(second_quantized_op, SparseLabelOp):
                     raise QiskitColdAtomError(
-                        "Gate generator needs to be initialized as qiskit_nature SecondQuantizedOp"
+                        "Gate generator needs to be initialized as qiskit_nature SparseLabelOp"
                     )
                 for idx in qargs:
                     if measured[idx]:
@@ -251,24 +251,24 @@ class BaseCircuitSolver(ABC):
 
     @abstractmethod
     def _embed_operator(
-        self, operator: SecondQuantizedOp, num_wires: int, qargs: List[int]
-    ) -> SecondQuantizedOp:
+        self, operator: SparseLabelOp, num_wires: int, qargs: List[int]
+    ) -> SparseLabelOp:
         """
         Turning an operator that acts on the wires given in qargs into an operator
         that acts on the entire state space of a circuit. The implementation of the subclasses
         depends on whether the operators use sparse labels (SpinOp) or dense labels (FermionicOp).
 
         Args:
-            operator: SecondQuantizedOp describing the generating Hamiltonian of a gate
+            operator: SparseLabelOp describing the generating Hamiltonian of a gate
             num_wires: number of wires of the space in which to embed the operator
             qargs: The wire indices the gate acts on
 
-        Returns: A SecondQuantizedOp acting on the entire quantum register of the Circuit
+        Returns: A SparseLabelOp acting on the entire quantum register of the Circuit
         """
 
     @abstractmethod
-    def operator_to_mat(self, operator: SecondQuantizedOp) -> csc_matrix:
-        """Turn a SecondQuantizedOp into a sparse matrix."""
+    def operator_to_mat(self, operator: SparseLabelOp) -> csc_matrix:
+        """Turn a SparseLabelOp into a sparse matrix."""
 
     @abstractmethod
     def preprocess_circuit(self, circuit: QuantumCircuit):

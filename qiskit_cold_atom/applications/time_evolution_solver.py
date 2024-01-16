@@ -14,17 +14,18 @@
 
 from typing import List
 
-from qiskit_nature.operators.second_quantization import FermionicOp
-from qiskit_nature.mappers.second_quantization import (
+from qiskit_nature.second_q.operators import FermionicOp
+from qiskit_nature.second_q.mappers import (
     JordanWignerMapper,
     BravyiKitaevMapper,
     ParityMapper,
 )
-from qiskit_nature.converters.second_quantization import QubitConverter
 
-from qiskit import QuantumCircuit, QuantumRegister
-from qiskit.opflow.evolutions import PauliTrotterEvolution
-from qiskit import execute
+from qiskit import QuantumRegister
+from qiskit import QuantumCircuit
+from qiskit.algorithms import TimeEvolutionProblem
+from qiskit.algorithms.time_evolvers import TrotterQRTE
+from qiskit.quantum_info import Statevector
 
 from qiskit_cold_atom.applications.fermionic_evolution_problem import (
     FermionicEvolutionProblem,
@@ -91,24 +92,11 @@ class TimeEvolutionSolver:
             # use qubit pipeline
             circuits = self.construct_qubit_circuits(problem)
 
-            # construct observable
             mapper = self.MAPPER_DICT[self.map_type]
             qubit_observable = mapper.map(problem.observable)
-            observable_mat = qubit_observable.to_spmatrix()
-
-            observable_evs = [0.0] * len(problem.evolution_times)
-
-            for idx, circuit in enumerate(circuits):
-
-                circuit.measure_all()
-
-                job = execute(circuit, self.backend, shots=self.shots)
-                counts = job.result().get_counts().int_outcomes()
-
-                for outcome_ind in counts:
-                    prob = counts[outcome_ind] / self.shots
-
-                    observable_evs[idx] += prob * observable_mat.diagonal()[outcome_ind].real
+            observable_evs = [
+                Statevector(qc).expectation_value(qubit_observable) for qc in circuits
+            ]
 
         return observable_evs
 
@@ -133,12 +121,12 @@ class TimeEvolutionSolver:
         circuits = []
 
         # construct circuit of initial state:
-        label = ["+" if bit else "I" for bit in psi_0.occupations_flat]
-        bitstr_op = FermionicOp("".join(label))
-        qubit_op = QubitConverter(mapper).convert(bitstr_op)[0]
+        label = {f"+_{i}": 1.0 for i, bit in enumerate(psi_0.occupations_flat) if bit}
+        bitstr_op = FermionicOp(label, num_spin_orbitals=len(psi_0.occupations_flat))
+        qubit_op = mapper.map(bitstr_op)[0]
         init_circ = QuantumCircuit(QuantumRegister(qubit_op.num_qubits, "q"))
 
-        for i, pauli_label in enumerate(qubit_op.primitive.paulis[0].to_label()[::-1]):
+        for i, pauli_label in enumerate(qubit_op.paulis.to_labels()[0][::-1]):
             if pauli_label == "X":
                 init_circ.x(i)
             elif pauli_label == "Y":
@@ -147,21 +135,12 @@ class TimeEvolutionSolver:
                 init_circ.z(i)
 
         for time in problem.evolution_times:
-
-            # time-step of zero will cause PauliTrotterEvolution to fail
-            if time == 0.0:
-                time += 1e-10
-
             # map fermionic hamiltonian to qubits
-            qubit_hamiltonian = mapper.map(hamiltonian * time)
-            # get time evolution operator by exponentiating
-            exp_op = qubit_hamiltonian.exp_i()
-            # perform trotterization
-
-            evolved_op = PauliTrotterEvolution(reps=self.trotter_steps).convert(exp_op)
-
-            trotter_circ = evolved_op.to_circuit_op().to_circuit()
-
-            circuits.append(init_circ.compose(trotter_circ))
+            qubit_hamiltonian = mapper.map(hamiltonian)
+            # construct trotterization circuits
+            evolution_problem = TimeEvolutionProblem(qubit_hamiltonian, time, init_circ)
+            trotter_qrte = TrotterQRTE(num_timesteps=self.trotter_steps)
+            evolved_state = trotter_qrte.evolve(evolution_problem).evolved_state
+            circuits.append(evolved_state)
 
         return circuits

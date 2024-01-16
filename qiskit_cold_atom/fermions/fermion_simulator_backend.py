@@ -114,7 +114,6 @@ class FermionSimulator(BaseFermionBackend):
                 name = inst[0].name
 
                 if name == "measure":
-
                     for wire in inst[1]:
                         index = circuit.qubits.index(wire)
                         if index in measured_wires:

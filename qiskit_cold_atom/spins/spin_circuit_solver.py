@@ -18,7 +18,7 @@ from fractions import Fraction
 import numpy as np
 from scipy.sparse import csc_matrix
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import SpinOp
+from qiskit_nature.second_q.operators import SpinOp
 from qiskit_cold_atom.base_circuit_solver import BaseCircuitSolver
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
 
@@ -92,18 +92,18 @@ class SpinCircuitSolver(BaseCircuitSolver):
         if not isinstance(operator, SpinOp):
             raise QiskitColdAtomError(f"Expected SpinOp; got {type(operator).__name__} instead")
 
-        if operator.register_length != len(qargs):
+        if operator.num_spins != len(qargs):
             raise QiskitColdAtomError(
-                f"operator size {operator.register_length} does not match qargs {qargs} of the gates."
+                f"operator size {operator.num_spins} does not match qargs {qargs} of the gates."
             )
 
-        embedded_op_list = []
-        for label, factor in operator.to_list():
+        embedded_op_dict = {}
+        for label, factor in operator._data.items():
             old_labels = label.split()
             new_labels = [term[:2] + str(qargs[int(term[2])]) + term[3:] for term in old_labels]
-            embedded_op_list.append((" ".join(map(str, new_labels)), factor))
+            embedded_op_dict[" ".join(map(str, new_labels))] = factor
 
-        return SpinOp(embedded_op_list, spin=self.spin, register_length=num_wires)
+        return SpinOp(embedded_op_dict, spin=self.spin, num_spins=num_wires)
 
     def operator_to_mat(self, operator: SpinOp) -> csc_matrix:
         """

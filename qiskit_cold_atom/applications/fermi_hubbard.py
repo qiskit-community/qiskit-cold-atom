@@ -16,7 +16,7 @@ from abc import ABC, abstractmethod
 from typing import List
 
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 from qiskit_cold_atom.fermions.fermion_circuit_solver import FermionicBasis
 from qiskit_cold_atom.fermions.fermion_gate_library import FermiHubbard
 from qiskit_cold_atom.exceptions import QiskitColdAtomError
@@ -110,33 +110,32 @@ class FermiHubbard1D(FermionicLattice):
             A FermionicOp defining the systems Hamiltonian
         """
 
-        operator_labels = []
+        operator_labels = {}
 
         # add hopping terms
         for idx in range(self.size - 1):
-
-            right_to_left_up = "I" * idx + "+-" + "I" * (self.size * 2 - idx - 2)
-            operator_labels.append((right_to_left_up, -self.J))
-            left_to_right_up = "I" * idx + "-+" + "I" * (self.size * 2 - idx - 2)
-            operator_labels.append((left_to_right_up, self.J))
-            right_to_left_down = "I" * (self.size + idx) + "+-" + "I" * (self.size - idx - 2)
-            operator_labels.append((right_to_left_down, -self.J))
-            left_to_right_down = "I" * (self.size + idx) + "-+" + "I" * (self.size - idx - 2)
-            operator_labels.append((left_to_right_down, self.J))
+            right_to_left_up = f"+_{idx} -_{idx+1}"
+            operator_labels[right_to_left_up] = -self.J
+            left_to_right_up = f"-_{idx} +_{idx+1}"
+            operator_labels[left_to_right_up] = self.J
+            right_to_left_down = f"+_{self.size + idx} -_{self.size + idx+1}"
+            operator_labels[right_to_left_down] = -self.J
+            left_to_right_down = f"-_{self.size + idx} +_{self.size + idx+1}"
+            operator_labels[left_to_right_down] = self.J
 
         # add interaction terms
         for idx in range(self.size):
-            opstring = "I" * idx + "N" + "I" * (self.size - 1) + "N" + "I" * (self.size - 1 - idx)
-            operator_labels.append((opstring, self.U))
+            opstring = f"+_{idx} -_{idx} +_{self.size + idx} -_{self.size + idx}"
+            operator_labels[opstring] = self.U
 
         # add potential terms
         for idx in range(self.size):
-            op_up = "I" * idx + "N" + "I" * (2 * self.size - idx - 1)
-            operator_labels.append((op_up, self.mu[idx]))
-            op_down = "I" * (self.size + idx) + "N" + "I" * (self.size - idx - 1)
-            operator_labels.append((op_down, self.mu[idx]))
+            op_up = f"+_{idx} -_{idx}"
+            operator_labels[op_up] = self.mu[idx]
+            op_down = f"+_{self.size + idx} -_{self.size + idx}"
+            operator_labels[op_down] = self.mu[idx]
 
-        return FermionicOp(operator_labels)
+        return FermionicOp(operator_labels, num_spin_orbitals=2 * self.size)
 
     def to_circuit(self, time: float = 1.0) -> QuantumCircuit:
         """

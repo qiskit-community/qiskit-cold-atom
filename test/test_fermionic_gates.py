@@ -15,7 +15,7 @@
 import numpy as np
 from scipy.linalg import expm
 from qiskit.test import QiskitTestCase
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 from qiskit_cold_atom.fermions.fermion_simulator_backend import FermionSimulator
 from qiskit_cold_atom.fermions.fermion_gate_library import (
     Hop,
@@ -46,6 +46,7 @@ class TestFermionicGates(QiskitTestCase):
 
         for circuit in [circ, circ_decorated]:
             unitary = self.backend.run(circuit, num_species=2).result().get_unitary()
+
             self.assertTrue(
                 np.allclose(
                     unitary,
