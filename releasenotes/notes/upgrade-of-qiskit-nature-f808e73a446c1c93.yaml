@@ -2,4 +2,7 @@
 upgrade:
   - |
     Upgrade the syntax to be compatible with the version 0.7 of the `qiskit-nature`.
+    This affects the definitions of FermionicOp as the generator of a FermionicGate and SpinOp for a SpinGate.
+    FermionicOp now are now built from sparse labels with creators ("+") and annihilators ("-") and SpinOp allows for sparse labels with "X", "Y" and "Z". 
+    Please see the documentation of qiskit-nature for more details. 
 
