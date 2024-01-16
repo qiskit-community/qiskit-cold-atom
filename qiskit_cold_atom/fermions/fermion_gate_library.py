@@ -172,9 +172,7 @@ class FermionicGate(Gate):
                 sign = 1
 
                 # in reverse, loop over all individual fermionic creators/annihilators in the opstring:
-                for k, symbol in reversed(list(enumerate(opstrings))):
-                    if symbol == "I":
-                        continue
+                for symbol, k in reversed(opstrings):
 
                     if symbol == "-":
                         # If this mode is not occupied, the action of '-' on this state is zero
