@@ -30,7 +30,7 @@ from qiskit.providers import Options
 from qiskit.providers.models import BackendConfiguration
 from qiskit.result import Result
 from qiskit_aer import AerJob
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 from scipy.sparse.linalg import expm_multiply
 
 from qiskit_cold_atom.circuit_tools import CircuitTools
@@ -139,8 +139,13 @@ class FfsimBackend(BaseFermionBackend):
 
             # perform compatibility checks with the backend configuration in case gates and supported
             # instructions are constrained by the backend's configuration
-            if self.configuration().gates and self.configuration().supported_instructions:
-                CircuitTools.validate_circuits(circuits=circuit, backend=self, shots=shots)
+            if (
+                self.configuration().gates
+                and self.configuration().supported_instructions
+            ):
+                CircuitTools.validate_circuits(
+                    circuits=circuit, backend=self, shots=shots
+                )
 
             # check whether all wires are measured
             measured_wires = []
@@ -221,7 +226,9 @@ class FfsimBackend(BaseFermionBackend):
             ValueError: FfsimBackend only supports num_species=1 or 2.
         """
         if num_species not in (1, 2):
-            raise ValueError(f"FfsimBackend only supports num_species=1 or 2. Got {num_species}.")
+            raise ValueError(
+                f"FfsimBackend only supports num_species=1 or 2. Got {num_species}."
+            )
 
         if isinstance(circuits, QuantumCircuit):
             circuits = [circuits]
@@ -327,7 +334,9 @@ def _simulate_ffsim(
             orbs = [qubit_indices[q] for q in qubits]
             spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species=1)
             (phi,) = op.params
-            vec = ffsim.apply_givens_rotation(vec, -phi, spatial_orbs, norb, nelec, copy=False)
+            vec = ffsim.apply_givens_rotation(
+                vec, -phi, spatial_orbs, norb, nelec, copy=False
+            )
         elif isinstance(op, FermionicGate):
             orbs = [qubit_indices[q] for q in qubits]
             spatial_orbs = _get_spatial_orbitals(orbs, norb, num_species)
@@ -633,8 +642,12 @@ def _simulate_frz(
         spin_a, orb_a = divmod(a, norb)
         spin_b, orb_b = divmod(b, norb)
         spins = (ffsim.Spin.ALPHA, ffsim.Spin.BETA)
-        vec = ffsim.apply_num_interaction(vec, -phi, orb_a, norb, nelec, spins[spin_a], copy=copy)
-        vec = ffsim.apply_num_interaction(vec, phi, orb_b, norb, nelec, spins[spin_b], copy=False)
+        vec = ffsim.apply_num_interaction(
+            vec, -phi, orb_a, norb, nelec, spins[spin_a], copy=copy
+        )
+        vec = ffsim.apply_num_interaction(
+            vec, phi, orb_b, norb, nelec, spins[spin_b], copy=False
+        )
         return vec
 
 

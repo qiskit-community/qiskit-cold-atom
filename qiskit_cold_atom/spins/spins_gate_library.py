@@ -18,7 +18,7 @@ import numpy as np
 from scipy.linalg import expm
 
 from qiskit.circuit.gate import Instruction, Gate
-from qiskit_nature.operators.second_quantization import SpinOp
+from qiskit_nature.second_q.operators import SpinOp
 from qiskit_cold_atom import QiskitColdAtomError, add_gate
 
 
@@ -93,7 +93,7 @@ class SpinGate(Gate):
         Returns:
             A dense np.array of the unitary of the gate
         """
-        spin_op = SpinOp(self.generator.to_list(), spin=spin, register_length=self.num_qubits)
+        spin_op = SpinOp(self.generator._data, spin=spin, num_spins=self.num_qubits)
         return expm(-1j * spin_op.to_matrix())
 
     def control(
@@ -138,7 +138,7 @@ class RLXGate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LX gate."""
-        return float(self.params[0]) * SpinOp("X")
+        return SpinOp({"X_0": float(self.params[0])})
 
 
 @add_gate
@@ -174,7 +174,7 @@ class RLYGate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LY gate."""
-        return float(self.params[0]) * SpinOp("Y")
+        return SpinOp({"Y_0": float(self.params[0])})
 
 
 @add_gate
@@ -210,7 +210,7 @@ class RLZGate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LZ gate."""
-        return float(self.params[0]) * SpinOp("Z")
+        return SpinOp({"Z_0": float(self.params[0])})
 
 
 @add_gate
@@ -245,7 +245,7 @@ class RLZ2Gate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LZ gate."""
-        return float(self.params[0]) * SpinOp("Z_0^2", register_length=1)
+        return SpinOp({"Z_0^2": float(self.params[0])}, num_spins=1)
 
 
 @add_gate
@@ -273,9 +273,9 @@ class OATGate(SpinGate):
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the OAT gate."""
         return (
-            float(self.params[0]) * SpinOp("Z_0^2", register_length=1)
-            + float(self.params[1]) * SpinOp("Z")
-            + float(self.params[2]) * SpinOp("X")
+            SpinOp({"Z_0^2": float(self.params[0])}, num_spins=1)
+            + SpinOp({"Z_0": float(self.params[1])})
+            + SpinOp({"X_0": float(self.params[2])})
         )
 
 
@@ -303,7 +303,7 @@ class RLZLZGate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LZZ gate."""
-        return self.params[0] * SpinOp("Z_0 Z_1", register_length=2)
+        return SpinOp({"Z_0 Z_1": self.params[0]}, num_spins=2)
 
 
 @add_gate
@@ -332,8 +332,8 @@ class RLXLYGate(SpinGate):
     @property
     def generator(self) -> SpinOp:
         r"""The generating Hamiltonian of the LxLy gate."""
-        return self.params[0] * (
-            SpinOp("X_0 X_1", register_length=2) + SpinOp("Y_0 Y_1", register_length=2)
+        return SpinOp({"X_0 X_1": self.params[0]}, num_spins=2) + SpinOp(
+            {"Y_0 Y_1": self.params[0]}, num_spins=2
         )
 
 
@@ -452,17 +452,17 @@ class RydbergFull(SpinGate):
                     generators.append((f"Z_{j}", -coeff / 2))
 
         if not generators:
-            return SpinOp("I_0", register_length=self.num_modes)
+            return SpinOp({"X_0": 0.0}, num_spins=self.num_modes)
         else:
             return sum(
-                coeff * SpinOp(label, register_length=self.num_modes) for label, coeff in generators
+                SpinOp({label: coeff}, num_spins=self.num_modes) for label, coeff in generators
             )
 
 
 # pylint: disable=invalid-name
 @add_gate
 def rydberg_full(self, omega: float, delta: float, phi: float, modes: List[int], label=None):
-    """Add the combined Rydberg Gate gate to a QuantumCircuit."""
+    """Add the combined Rydberg gate to a QuantumCircuit."""
     return self.append(
         RydbergFull(num_modes=len(modes), omega=omega, delta=delta, phi=phi, label=label),
         qargs=modes,
@@ -525,10 +525,10 @@ class RydbergBlockade(SpinGate):
                     generators.append((f"Z_{j}", -coeff / 2))
 
         if not generators:
-            return SpinOp("I_0", register_length=self.num_modes)
+            return SpinOp("I_0", num_spins=self.num_modes)
         else:
             return sum(
-                coeff * SpinOp(label, register_length=self.num_modes) for label, coeff in generators
+                SpinOp({label: coeff}, num_spins=self.num_modes) for label, coeff in generators
             )
 
 

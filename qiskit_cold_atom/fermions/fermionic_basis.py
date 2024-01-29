@@ -16,7 +16,7 @@ from typing import List, Union
 from itertools import combinations, chain, product
 import numpy as np
 
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.fermions.fermionic_state import FermionicState
 
@@ -56,7 +56,6 @@ class FermionicBasis:
 
         if particle_conservation:
             if spin_conservation:
-
                 indices = []
                 for i, n in enumerate(self.n_particles):
                     indices.append(list(combinations(np.arange(sites) + i * sites, n)))

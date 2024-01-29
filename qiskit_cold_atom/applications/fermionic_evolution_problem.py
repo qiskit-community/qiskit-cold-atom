@@ -15,7 +15,7 @@
 from typing import List, Union
 
 from qiskit import QuantumCircuit
-from qiskit_nature.operators.second_quantization import FermionicOp
+from qiskit_nature.second_q.operators import FermionicOp
 
 from qiskit_cold_atom.fermions.fermionic_state import FermionicState
 from qiskit_cold_atom.fermions.fermionic_basis import FermionicBasis
