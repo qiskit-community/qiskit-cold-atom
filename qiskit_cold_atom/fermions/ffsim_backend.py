@@ -352,6 +352,10 @@ def _simulate_ffsim(
         probs = np.abs(vec) ** 2
         samples = rng.choice(np.arange(len(vec)), size=shots, replace=True, p=probs)
         bitstrings = ffsim.indices_to_strings(samples, norb, nelec)
+        # flip beta-alpha to alpha-beta ordering
+        bitstrings = [f"{b[len(b) // 2 :]}{b[: len(b) // 2]}" for b in bitstrings]
+        # remove bits from absent spins
+        bitstrings = [b[: num_species * norb] for b in bitstrings]
         result["memory"] = bitstrings
         result["counts"] = Counter(bitstrings)
 
@@ -401,11 +405,21 @@ def _simulate_hop(
 ) -> np.ndarray:
     if num_species == 1:
         return _simulate_hop_spinless(
-            vec=vec, coeffs=coeffs, target_orbs=target_orbs, norb=norb, nelec=nelec, copy=copy
+            vec=vec,
+            coeffs=coeffs,
+            target_orbs=target_orbs,
+            norb=norb,
+            nelec=nelec,
+            copy=copy,
         )
     else:  # num_species == 2
         return _simulate_hop_spinful(
-            vec=vec, coeffs=coeffs, target_orbs=target_orbs, norb=norb, nelec=nelec, copy=copy
+            vec=vec,
+            coeffs=coeffs,
+            target_orbs=target_orbs,
+            norb=norb,
+            nelec=nelec,
+            copy=copy,
         )
 
 
@@ -430,7 +444,13 @@ def _simulate_hop_spinless(
         mat[k, j] = -val
     coeffs, orbital_rotation = scipy.linalg.eigh(mat)
     return ffsim.apply_num_op_sum_evolution(
-        vec, coeffs, 1.0, norb=norb, nelec=nelec, orbital_rotation=orbital_rotation, copy=copy
+        vec,
+        coeffs,
+        1.0,
+        norb=norb,
+        nelec=nelec,
+        orbital_rotation=orbital_rotation,
+        copy=copy,
     )
 
 
@@ -449,7 +469,13 @@ def _simulate_hop_spinful(
         mat[k, j] = -val
     coeffs, orbital_rotation = scipy.linalg.eigh(mat)
     return ffsim.apply_num_op_sum_evolution(
-        vec, coeffs, 1.0, norb=norb, nelec=nelec, orbital_rotation=orbital_rotation, copy=copy
+        vec,
+        coeffs,
+        1.0,
+        norb=norb,
+        nelec=nelec,
+        orbital_rotation=orbital_rotation,
+        copy=copy,
     )
 
 

@@ -52,7 +52,7 @@ setuptools.setup(
     keywords="qiskit sdk quantum cold atoms",
     packages=setuptools.find_packages(include=["qiskit_cold_atom", "qiskit_cold_atom.*"]),
     install_requires=REQUIREMENTS,
-    extras_require={"ffsim": ["ffsim==0.0.19"]},
+    extras_require={"ffsim": ["ffsim==0.0.21"]},
     include_package_data=True,
     python_requires=">=3.8",
     zip_safe=False,

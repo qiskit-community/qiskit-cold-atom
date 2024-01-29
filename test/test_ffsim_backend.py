@@ -374,7 +374,10 @@ class TestFfsimBackend(QiskitTestCase):
             qubits = rng.choice(np.arange(norb), norb - 2, replace=False)
             qc.append(
                 FermiHubbard(
-                    norb - 2, hopping[: (norb - 2) // 2 - 1], interaction, mu[: (norb - 2) // 2]
+                    norb - 2,
+                    hopping[: (norb - 2) // 2 - 1],
+                    interaction,
+                    mu[: (norb - 2) // 2],
                 ),
                 list(qubits),
             )
@@ -400,7 +403,9 @@ class TestFfsimBackend(QiskitTestCase):
             mu = rng.standard_normal(norb)
 
             qc = sim_backend.initialize_circuit(occupations)
-            qc.append(FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb)))
+            qc.append(
+                FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb))
+            )
             job = sim_backend.run(qc, num_species=2)
             expected_vec = job.result().get_statevector()
             job = ffsim_backend.run(qc, num_species=2)
@@ -412,7 +417,9 @@ class TestFfsimBackend(QiskitTestCase):
             orbs = rng.choice(np.arange(norb), norb - 1, replace=False)
             qubits = np.concatenate([orbs, orbs + norb])
             qc.append(
-                FermiHubbard(2 * (norb - 1), hopping[: norb - 2], interaction, mu[: norb - 1]),
+                FermiHubbard(
+                    2 * (norb - 1), hopping[: norb - 2], interaction, mu[: norb - 1]
+                ),
                 list(qubits),
             )
             job = sim_backend.run(qc, num_species=2)
@@ -434,7 +441,9 @@ class TestFfsimBackend(QiskitTestCase):
         ffsim_backend = FfsimBackend()
 
         qc = sim_backend.initialize_circuit(occupations)
-        qc.append(FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb)))
+        qc.append(
+            FermiHubbard(2 * norb, hopping, interaction, mu), list(range(2 * norb))
+        )
         job = sim_backend.run(qc, num_species=2)
         expected_vec = job.result().get_statevector()
         job = ffsim_backend.run(qc, num_species=2)
@@ -467,6 +476,39 @@ class TestFfsimBackend(QiskitTestCase):
         expected_counts = result.get_counts()
 
         job = ffsim_backend.run(qc, shots=10000, seed=1234, num_species=2)
+        result = job.result()
+        ffsim_vec = result.get_statevector()
+        ffsim_counts = result.get_counts()
+
+        np.testing.assert_allclose(ffsim_vec, expected_vec, atol=1e-12)
+        assert _fidelity(ffsim_counts, expected_counts) > 0.99
+
+    def test_simulate_spinless(self):
+        """Test simulating and measuring a statevector."""
+        norb = 6
+        nelec = 3
+
+        sim_backend = FermionSimulator()
+        ffsim_backend = FfsimBackend()
+
+        rng = np.random.default_rng(1234)
+        occupations = _random_occupations(norb, (nelec, 0), seed=rng)[0]
+        hopping = rng.standard_normal(norb // 2 - 1)
+        interaction = rng.standard_normal()
+        mu = rng.standard_normal(norb // 2)
+
+        qc = sim_backend.initialize_circuit(occupations)
+        qc.append(Hop(norb, hopping), list(range(norb)))
+        qc.append(Interaction(norb, interaction), list(range(norb)))
+        qc.append(Phase(norb, mu), list(range(norb)))
+        qc.measure_all()
+
+        job = sim_backend.run(qc, shots=10000, seed=1234)
+        result = job.result()
+        expected_vec = result.get_statevector()
+        expected_counts = result.get_counts()
+
+        job = ffsim_backend.run(qc, shots=10000, seed=1234)
         result = job.result()
         ffsim_vec = result.get_statevector()
         ffsim_counts = result.get_counts()
