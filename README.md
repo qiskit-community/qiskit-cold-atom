@@ -13,7 +13,7 @@ Here, we extend this concept and allow wires to represent individual internal st
 This currently covers two settings, one for fermionic modes and one for spin modes, 
 demonstrating that a broad range of hardware can be accommodated in Qiskit.
 
-We encourage new users to familiarize themselves with the basic functionalities through the tutorial-style python notebooks in `/docs/tutorials`. 
+We encourage new users to familiarize themselves with the basic functionalities through the tutorial-style python notebooks in [`docs/tutorials`](docs/tutorials). 
 These require an environment to execute `.ipynb` notebooks such as jupyter lab. 
 
 ## Installation
@@ -29,6 +29,10 @@ pip install git+https://github.com/qiskit-community/qiskit-cold-atom.git
 or Pypi
 ```bash
 pip install qiskit-cold-atom
+```
+To install Qiskit Cold Atom with the [ffsim fermion simulator backend](#cold-atomic-circuits) (not supported on Windows), specify the `ffsim` extra in the `pip` install command, e.g.
+```bash
+pip install "qiskit-cold-atom[ffsim]"
 ```
 
 ## Setting up the Cold Atom Provider 
@@ -59,10 +63,20 @@ spin_simulator_backend = provider.get_backend("collective_spin_simulator")
 
 ## Cold atomic circuits
 
-The circuits that can be run on the cold atomic hardware explored in this project use different gates 
-from the qubit circuits typically employed in Qiskit, because their systems are described by different
-Hilbert spaces. 
-To see how to define and run gates through quantum circuits in this setting, please refer to the tutorials (in `/docs/tutorials`).
+The circuits that can be run on the cold atomic hardware explored in this project use different gates
+from the circuits typically employed in Qiskit, because these hardware are not built from qubits,
+but from fermions or spins.
+Qiskit Cold Atom includes basic simulators for both the fermion and spin settings that can be used
+to simulate small circuits. See [Introduction & Fermionic Circuits](docs/tutorials/01_introduction_and_fermionic_circuits.ipynb)
+and [Spin circuits](docs/tutorials/02_spin_circuits.ipynb) for tutorials on how to define and run gates through
+quantum circuits in these settings.
+
+Qiskit Cold Atom also includes a high-performance simulator for fermionic circuits based on
+[ffsim](https://github.com/qiskit-community/ffsim), which can handle much larger circuits than the basic simulator mentioned before. The ffsim simulator is not supported on Windows, and in order
+for it to be available, Qiskit Cold Atom must be installed with the `ffsim` extra, e.g.
+```bash
+pip install "qiskit-cold-atom[ffsim]"
+```
 
 ## Documentation
 

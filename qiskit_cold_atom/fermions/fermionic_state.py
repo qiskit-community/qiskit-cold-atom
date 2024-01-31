@@ -41,7 +41,7 @@ class FermionicState:
                 - If the occupations are not 0 or 1
         """
 
-        if isinstance(occupations[0], int):
+        if isinstance(occupations[0], (int, np.integer)):
             occupations = [occupations]
 
         self._sites = len(occupations[0])
