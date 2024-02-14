@@ -5,7 +5,7 @@
 First please read the overall project contributing guidelines. These are
 included in the Qiskit documentation here:
 
-https://qiskit.org/documentation/contributing_to_qiskit.html
+https://github.com/Qiskit/qiskit/blob/main/CONTRIBUTING.md
 
 ## Contributing to Qiskit Cold Atom
 
